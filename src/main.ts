@@ -7,7 +7,7 @@ import { loadAllPlugins } from '@/plugins/index';
 
 (async()=>{
    const app =  createApp(App);
-    await loadAllPlugins(app);
+   await loadAllPlugins(app);
     
    app.mount('#app');
 })();
