@@ -10,7 +10,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'eslint:recommended',
-    'plugin:prettier/recommended',
   ],
   globals: {
     defineProps: 'readonly',
@@ -20,7 +19,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 13,
     parser: '@typescript-eslint/parser',
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: ['vue', '@typescript-eslint'],
   rules: {
@@ -34,45 +33,33 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      {
-        argsIgnorePattern: '^h$',
-        varsIgnorePattern: '^h$'
-      }
-    ],
+    '@typescript-eslint/no-unused-vars': 'off',
     'no-unused-vars': [
       'error',
       {
         argsIgnorePattern: '^h$',
-        varsIgnorePattern: '^h$'
-      }
+        varsIgnorePattern: '^h$',
+      },
     ],
     'vue/max-attributes-per-line': [
       'error',
       {
-        singleline: {
-          max: 3,
-          allowFirstLine: true,
-        },
-        multiline: {
-          max: 1,
-          allowFirstLine: false,
-        }
-      }
+        singleline: 3,
+        multiline: 1,
+      },
     ],
     'space-before-function-paren': 'off',
     quotes: ['error', 'single'],
-    'comma-dangle': [
-      'error',
-      {
-        arrays: 'never',
-        objects: 'always',
-        imports: 'always',
-        exports: 'always',
-        functions: 'always'
-      }
-    ],
+    // 'comma-dangle': [
+    //   'error',
+    //   {
+    //     arrays: 'never',
+    //     objects: 'never',
+    //     imports: 'always',
+    //     exports: 'always',
+    //     functions: 'always'
+    //   },
+    // ],
     'vue/require-default-prop': 'off',
     'vue/custom-event-name-casing': 'off',
     'no-use-before-define': 'off',
@@ -83,5 +70,5 @@ module.exports = {
     complexity: [2, 9],
     semi: [2, 'always'],
     'key-spacing': [0, { beforeColon: false, afterColon: true }],
-  }
-}
+  },
+};
