@@ -9,8 +9,8 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
+    'eslint:recommended',
     'plugin:prettier/recommended',
-    'eslint:recommended'
   ],
   globals: {
     defineProps: 'readonly',
