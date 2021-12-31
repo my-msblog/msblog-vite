@@ -3,7 +3,7 @@ interface PermissionState {
   permission_menu: Array<MenuOptions>;
 }
 const state: PermissionState = {
-  permission_menu: [] as Array<MenuOptions>
+  permission_menu: [] as Array<MenuOptions>,
 };
 
 const actions = {
