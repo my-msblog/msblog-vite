@@ -1,5 +1,5 @@
-import { defineConfig, UserConfig, ConfigEnv} from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { UserConfig, ConfigEnv} from 'vite';
+import vue from '@vitejs/plugin-vue';
 import * as path from 'path';
 import viteSvgIcons from 'vite-plugin-svg-icons';
 import { loadEnv } from 'vite';
@@ -7,12 +7,12 @@ import { createProxy } from './build/proxy';
 import { wrapperEnv } from './build/utils';
 
 // https://vitejs.dev/config/
-export default ({ command, mode }: ConfigEnv): UserConfig => {
+export default ({mode }: ConfigEnv): UserConfig => {
   const root = process.cwd();
 
   const env = loadEnv(mode, root);
   const viteEnv = wrapperEnv(env);
-  const { VITE_PORT, VITE_APP_BASE_API, VITE_PROXY, VITE_APP_HOST } = viteEnv;
+  const { VITE_PORT, VITE_APP_BASE_API, VITE_APP_HOST } = viteEnv;
   return {
     plugins: [
       vue(),
@@ -36,21 +36,14 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           '@store': path.resolve(__dirname,'./src/store'),
         }
     },
-    
+
     server: {
       port: VITE_PORT,
       host: VITE_APP_HOST,
       https: false,
       proxy: {
-        '/api': {
-          // 接口域名
-          target: VITE_APP_BASE_API,
-          // 是否跨域
-          changeOrigin: true,
-          secure: false,
-          rewrite: path => path.replace(/^\/api/, ''),
-        }
+        '/api': createProxy(VITE_APP_BASE_API),
       }
     },
-  }
+  };
 };

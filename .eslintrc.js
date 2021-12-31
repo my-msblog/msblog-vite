@@ -3,6 +3,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    node: true,
   },
   parser: 'vue-eslint-parser',
   extends: [
@@ -34,11 +35,13 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
+    'no-undef': 'off',
     'no-unused-vars': [
       'error',
       {
+        vars: 'local',
         argsIgnorePattern: '^h$',
-        varsIgnorePattern: '^h$',
+        varsIgnorePattern: '^Null|^Vite|^No',
       },
     ],
     'vue/max-attributes-per-line': [
@@ -67,7 +70,7 @@ module.exports = {
     'vue/comment-directive': 'off',
     'vue/singleline-html-element-content-newline': 'off',
     'vue/html-self-closing': 'off',
-    complexity: [2, 9],
+    complexity: [2, 15],
     semi: [2, 'always'],
     'key-spacing': [0, { beforeColon: false, afterColon: true }],
   },
