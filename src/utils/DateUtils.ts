@@ -1,27 +1,26 @@
-/** 
-    * 对日期进行格式化 默认yyyy-MM-dd HH:mm:ss
-    * 可不带参数 一个日期参数 或一个格式化参数
-    * @param date 要格式化的日期 
-    * @param format 进行格式化的模式字符串
-    *     支持的模式字母有： 
-    *     y:年, 
-    *     M:年中的月份(1-12), 
-    *     d:月份中的天(1-31), 
-    *     H:小时(0-23), 
-    *     h:小时(0-11), 
-    *     m:分(0-59), 
-    *     s:秒(0-59), 
-    *     f:毫秒(0-999),
-    *     q:季度(1-4)
-    * @return String
-    * @author adswads@gmail.com
-    */
+/**
+ * 对日期进行格式化 默认yyyy-MM-dd HH:mm:ss
+ * 可不带参数 一个日期参数 或一个格式化参数
+ *     支持的模式字母有：
+ *     y:年,
+ *     M:年中的月份(1-12),
+ *     d:月份中的天(1-31),
+ *     H:小时(0-23),
+ *     h:小时(0-11),
+ *     m:分(0-59),
+ *     s:秒(0-59),
+ *     f:毫秒(0-999),
+ *     q:季度(1-4)
+ * @return String
+ * @param strDate
+ * @param strFormat
+ */
 export function dateFormat(strDate: any, strFormat?: any) {
-  if (!strDate){ 
-    return; 
+  if (!strDate){
+    return;
   }
-  if (!strFormat){ 
-    strFormat = 'yyyy-MM-dd'; 
+  if (!strFormat){
+    strFormat = 'yyyy-MM-dd';
   }
   switch (typeof strDate) {
     case 'string':
