@@ -6,7 +6,7 @@
     <el-container :class="{'folded':data.folded}">
       <el-aside class="ly_left">
         <el-scrollbar>
-          <PermissionMenu class="ly_menu" :menu="data.menu" :isCollapse="data.folded" />
+          <PermissionMenu class="ly_menu" :menu="data.menu" :is-collapse="data.folded" />
         </el-scrollbar>
         <span class="btn_folded" @click="data.folded = !data.folded">
           <i :class="data.folded ? 'el-icon-s-fold' : 'el-icon-s-unfold'" style="color: #888" />
