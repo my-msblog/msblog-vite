@@ -15,6 +15,7 @@ import {
   reactive,
   onUnmounted } from 'vue';
 import { Styles, affixProps } from './affixProps';
+import { isValidKey} from '@/utils/validate';
 
 export default defineComponent({
   name: 'Affix',
@@ -34,10 +35,14 @@ export default defineComponent({
       if (typeof ret !== 'number') {
         const d = w.document;
         // ie6,7,8 standard mode
-        ret = d.documentElement[method];
+        if (isValidKey(method, String)){
+          ret = d.documentElement[method];
+        }
         if (typeof ret !== 'number') {
           // quirks mode
-          ret = d.body[method];
+          if (isValidKey(method, String)) {
+            ret = d.body[method];
+          }
         }
       }
       return ret;

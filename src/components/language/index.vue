@@ -1,7 +1,8 @@
 <template>
   <el-dropdown class="ll_down" style="" @command="change">
     <span class="el-dropdown-link">
-      {{ $t('message.language') }}<i class="el-icon-arrow-down el-icon--right" />
+      {{ $t('message.language') }}
+      <el-icon> <ArrowDown /> </el-icon>
     </span>
     <template #dropdown>
       <el-dropdown-menu>
@@ -13,34 +14,34 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, getCurrentInstance, reactive } from 'vue';
-import { useI18n } from 'vue-i18n';
+import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'Language',
-  setup() {
-    const { t } = useI18n();
-    const data = reactive({
-      language: 'zh',
-      title: '',
-    });
-    const { proxy }: any = getCurrentInstance();
-    function change(type: string) {
-      proxy.$i18n.locale = type;
-      data.language = proxy.$i18n.locale;
-    }
-    // data.title = t('message.title');
-    return {
-      change,
-      data,
-      t
-    };
-  },
 });
 </script>
+<script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+import { ArrowDown } from '@element-plus/icons-vue';
+import { reactive, getCurrentInstance } from 'vue';
 
+const { t } = useI18n();
+const data = reactive({
+  language: 'zh',
+  title: '',
+});
+const { proxy }: any = getCurrentInstance();
+function change(type: string) {
+  proxy.$i18n.locale = type;
+  data.language = proxy.$i18n.locale;
+}
+</script>
 <style lang="scss">
 .ll_down{
   margin-left: 15px;
   color: rgba(255,255,255,0.9);
+  text-align: center;
+  .el-dropdown-link{
+    cursor: pointer;
+  }
 }
 </style>

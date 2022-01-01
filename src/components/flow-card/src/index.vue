@@ -3,8 +3,9 @@
     class="card"
     :style="{ 'border-radius': props.radius + 'px',
               'padding': props.padding + 'px',
-              'shadow': props.shadow}">
-    <slot /> 
+              'shadow': props.shadow}"
+  >
+    <slot />
   </el-card>
 </template>
 
