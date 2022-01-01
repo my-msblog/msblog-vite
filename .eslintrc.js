@@ -36,14 +36,9 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
     'no-undef': 'off',
-    'no-unused-vars': [
-      'error',
-      {
-        vars: 'local',
-        argsIgnorePattern: '^h$',
-        varsIgnorePattern: '^Null|^Vite|^No',
-      },
-    ],
+    'no-unused-vars': 'off',
+    'vue/multi-word-component-names': 'off',
+    'vue/v-on-event-hyphenation': 'off',
     'vue/max-attributes-per-line': [
       'error',
       {
@@ -70,8 +65,8 @@ module.exports = {
     'vue/comment-directive': 'off',
     'vue/singleline-html-element-content-newline': 'off',
     'vue/html-self-closing': 'off',
-    complexity: [2, 15],
-    semi: [2, 'always'],
+    'complexity': [2, 15],
+    'semi': [2, 'always'],
     'key-spacing': [0, { beforeColon: false, afterColon: true }],
   },
 };
