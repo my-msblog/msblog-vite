@@ -44,12 +44,13 @@ service.interceptors.response.use(
     });
   }, error => {
     const response = error.response;
-    let info = response.data;
-    if (response.status === 500){
+    let info = response ? response.data : 'error';
+    if (!response){
       info = t('message.server_error');
-    }
-    if(response.data.msg) {
-      info = response.data.msg;
+    }else {
+      if(response.data.msg) {
+        info = response.data.msg;
+      }
     }
     ElMessage({
       message: info,
