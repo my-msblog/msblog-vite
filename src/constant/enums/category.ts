@@ -1,10 +1,23 @@
-export enum Categroy{
-  '生活笔记' = 1,
-  '经验分享' = 2,
-  '技术总结' = 3,
-  '其他' = 4,
+import {isValidKey} from '@/utils/validate';
+
+export enum Category{
+  LifeNotes = 1,
+  ExperienceSharing = 2,
+  TechnicalSummary = 3,
+  Other = 4,
+}
+enum CategoryState {
+  LifeNotes = '生活笔记',
+  ExperienceSharing = '经验分享',
+  TechnicalSummary = '技术总结',
+  Other = '其他',
 }
 
 export function getCategory(index: number) {
-  return Categroy[index];
+  let res ;
+  const strIndex = Category[index];
+  if (isValidKey(strIndex, CategoryState)){
+    res = CategoryState[strIndex];
+  }
+  return res;
 }

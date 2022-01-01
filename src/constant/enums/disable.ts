@@ -2,7 +2,7 @@
 
 export enum Status{
   true = 0,
-  fales = 1,
+  false = 1,
 }
 export const getStatusEnum = {
   0: true,
