@@ -1,12 +1,12 @@
 import request from '@/utils/axios/request';
 import { CategoryVO, ArticleCategoryVO } from '@/api/model/client/category';
 enum Api {
-  categroy = '/article/list/category',
+  category = '/article/list/category',
   getById = '/article/category/'
 }
 export function getCategoryList(){
   return request.get<CategoryVO[]>({
-    url: Api.categroy,
+    url: Api.category,
   });
 }
 export function getArticleByCategoryId(id: string){
