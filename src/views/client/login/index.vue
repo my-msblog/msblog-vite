@@ -2,35 +2,37 @@
   <div style="overflow: hidden">
     <div id="paper">
       <el-form
+        v-loading="data.loading"
         class="login-container"
         label-position="left"
         label-width="0px"
         :rules="data.rules"
-        v-loading="data.loading">
+      >
         <div style="width: 100%">
           <h3 class="login_title">{{ $t('bar.title') }}</h3>
         </div>
         <el-form-item>
           <el-input
-            type="text"
             v-model="data.form.username"
+            type="text"
             autocomplete="off"
             :placeholder="$t('pages.account')"
           />
         </el-form-item>
         <el-form-item>
           <el-input
-            :type="data.pwd_type"
             v-model="data.form.password"
+            :type="data.pwd_type"
             autocomplete="off"
             :placeholder="$t('pages.password')"
           >
             <template #suffix>
               <SvgIcon
                 :name="data.visible"
-                @click="handleVisible()"
                 color="#939393"
-                size="28" />
+                size="28"
+                @click="handleVisible()"
+              />
             </template>
           </el-input>
         </el-form-item>
@@ -40,10 +42,11 @@
               <el-input
                 v-model="data.form.code"
                 autocomplete="off"
-                :placeholder="$t('pages.verificationCode')" />
+                :placeholder="$t('pages.verificationCode')"
+              />
             </el-col>
             <el-col :span="10">
-              <el-image :src="data.imgSrc" style="height: 40px"  @click="handleArithmetic">
+              <el-image :src="data.imgSrc" style="height: 40px" @click="handleArithmetic">
                 <template #error>
                   <div style="font-size: 30px">
                     <i class="el-icon-picture-outline" @click="handleArithmetic" />
@@ -169,7 +172,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 #paper {
-  height: 100vh;
+  min-height: 80vh;
   text-align: center;
   color: #fff !important;
   animation: header-effect 1s;

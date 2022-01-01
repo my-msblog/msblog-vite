@@ -36,9 +36,9 @@ export default defineComponent({
   margin-top: auto;
 }
 
-@keyframes bganimation {
+@keyframes baginmation {
   0% {
-    background-position: 0% 50%;
+    background-position: 0 50%;
   }
 
   50% {
@@ -46,7 +46,7 @@ export default defineComponent({
   }
 
   100% {
-    background-position: 0% 50%;
+    background-position: 0 50%;
   }
 }
 </style>

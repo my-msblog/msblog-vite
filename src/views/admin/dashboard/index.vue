@@ -20,7 +20,7 @@ export default defineComponent({
   components: { NavCards, FlowAnalysis },
   props: {
   },
-  setup(props) {
+  setup() {
     const data = ref({
       cardValue: {} as CardValue,
       cardTotal: {} as CardValue,

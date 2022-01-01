@@ -12,35 +12,34 @@
           :hollow="true"
           :type="handleColor(index)"
           placement="top"
-          :timestamp="dateFormat(activity.timestamp, 'yyyy-MM-dd')">
-          
+          :timestamp="dateFormat(activity.timestamp, 'yyyy-MM-dd')"
+        >
           <el-card @click="handleCardClick(activity.id)">
             <el-skeleton
               :rows="2"
               animated
-              :loading="data.loading">
+              :loading="data.loading"
+            >
               <h4>{{ activity.context }}</h4>
               <p> {{ activity.timestamp }}</p>
             </el-skeleton>
           </el-card>
-       
         </el-timeline-item>
       </el-timeline>
       <el-pagination
         background
         class="page"
         layout="prev, pager, next"
-        @current-change="handlePageChange"
         :pager-count="5"
         :page-count="data.page.count"
         :default-current-page="1"
         :page-size="data.pagination.size"
         :current-page="data.page.currentPage"
-        :total="data.page.total" />
+        :total="data.page.total"
+        @current-change="handlePageChange"
+      />
     </FlowCard>
-    
   </div>
-  
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from 'vue';
@@ -120,7 +119,7 @@ export default defineComponent({
     text-align: center;
     background-color: #49b1f5 !important;
     animation: header-effect 1s;
-    background: url("@/assets/background/archive.jpg") center center / cover no-repeat
+    background: url("src/assets/background/archive.jpg") center center / cover no-repeat
   }
   .a_title{
     color: #fff;

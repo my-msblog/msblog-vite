@@ -7,14 +7,15 @@
       <h1>{{ $t('pages.article_category') }} - {{ data.category_count }}</h1>
       <ul class="category-list">
         <li
-          class="category-list-item"
           v-for="(item, index ) in data.list"
           :key="item.categoryId"
+          class="category-list-item"
         >
           <el-link
             :href="'/categories/' + item.categoryId"
             :underline="false"
-            :type="handleType(index)">
+            :type="handleType(index)"
+          >
             {{ item.category }}
             <span class="category-count">({{ item.count }})</span>
           </el-link>
@@ -73,7 +74,7 @@ export default defineComponent({
   overflow: hidden;
   text-align: center;
   animation: header-effect 1s;
-  background: #fff url('@/assets/background/categories.png') no-repeat center/100%;
+  background: #fff url('src/assets/background/categories.png') no-repeat center/100%;
 
   .a_title{
     color: #fff;
@@ -113,7 +114,7 @@ export default defineComponent({
   }
   .category-list-item a:hover {
     transition: all 0.3s;
-   
+
   }
   .category-list-item a:not(:hover) {
     transition: all 0.3s;

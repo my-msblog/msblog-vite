@@ -1,16 +1,17 @@
 <template>
   <div>
     <UserTable
-      :tableData="data.tableData"
+      :table-data="data.tableData"
       :current-page="data.currentPage"
       :page-size="data.pageSize"
       :total="data.total"
+      class="u_form"
       @currentPage="handleCurrentPage"
       @sizeChange="handleCurrentPage"
       @edit="handleEdit"
       @deleted="handleDelete"
       @deletedList="handleDeleteList"
-      class="u_form" />
+    />
   </div>
 
   <EditForm

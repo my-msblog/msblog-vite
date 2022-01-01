@@ -4,7 +4,8 @@
       ref="formRef"
       :model="formData"
       :rules="data.rules"
-      label-width="100px">
+      label-width="100px"
+    >
       <div>
         <el-row :gutter="14">
           <el-col :span="24">
@@ -13,7 +14,8 @@
                 v-model="data.formData.username"
                 :placeholder="t('message.enter_username')"
                 clearable
-                :style="{width: '100%'}" />
+                :style="{width: '100%'}"
+              />
             </el-form-item>
           </el-col>
           <el-col :span="10">
@@ -22,7 +24,10 @@
                 <el-radio
                   v-for="(item, index) in data.sexOptions"
                   :key="index"
-                  :label="item.label">{{ item.value }}</el-radio>
+                  :label="item.label"
+                >
+                  {{ item.value }}
+                </el-radio>
               </el-radio-group>
             </el-form-item>
           </el-col>
@@ -32,7 +37,8 @@
                 v-model="data.formData.email"
                 :placeholder="t('message.enter_email')"
                 clearable
-                :style="{width: '100%'}" />
+                :style="{width: '100%'}"
+              />
             </el-form-item>
           </el-col>
           <el-col :span="10">
@@ -41,7 +47,8 @@
                 v-model="data.formData.phone"
                 :placeholder="t('message.input_phone')"
                 clearable
-                :style="{width: '100%'}" />
+                :style="{width: '100%'}"
+              />
             </el-form-item>
           </el-col>
           <el-col :span="5">
@@ -50,7 +57,8 @@
                 v-model="data.formData.code"
                 :placeholder="t('message.captcha')"
                 clearable
-                :style="{width: '100%'}" />
+                :style="{width: '100%'}"
+              />
             </el-form-item>
           </el-col>
           <el-col :span="5">
@@ -58,8 +66,9 @@
               <el-button
                 :type="data.show ? 'primary' : 'info'"
                 size="medium"
+                :disabled="!data.show"
                 @click="getCode"
-                :disabled="!data.show">
+              >
                 <span v-show="data.show">{{ t('message.get_captcha') }}</span>
                 <span v-show="!data.show" class="count"> {{ data.count }} s</span>
               </el-button>
@@ -72,7 +81,8 @@
                 type="textarea"
                 :placeholder="t('pages.introduce_yourself_briefly')"
                 :autosize="{minRows: 4, maxRows: 4}"
-                :style="{width: '100%'}" />
+                :style="{width: '100%'}"
+              />
             </el-form-item>
           </el-col>
         </el-row>

@@ -9,29 +9,31 @@
         <el-col
           :lg="{span:18, offset:0}"
           :sm="{span:20, offset:2}"
-          :xs="24">
-          <ArticleCards :article-list="data.articleList" v-loading="data.loading" :loading="data.loading" />
+          :xs="24"
+        >
+          <ArticleCards v-loading="data.loading" :article-list="data.articleList" :loading="data.loading" />
           <RefreshRight
             v-if="data.showFailed"
-            @click="handleReload"
             class="btn-reload"
+            @click="handleReload"
           />
           <el-pagination
             v-if="!data.showFailed && !data.loading"
             background
             class="page"
             layout="prev, pager, next"
-            @current-change="handleArticles"
             :pager-count="5"
             :page-count="data.page.count"
             :default-current-page="1"
             :page-size="data.pagination.size"
             :current-page="data.page.currentPage"
-            :total="data.page.total" />
+            :total="data.page.total"
+            @current-change="handleArticles"
+          />
         </el-col>
         <el-col
-          class="col-pd  hidden-md-and-down"
           id="affix-max"
+          class="col-pd  hidden-md-and-down"
           :lg="6"
           :sm="0"
         >
@@ -39,12 +41,14 @@
             <IdCard
               :article="data.idCardValue.article"
               :category="data.idCardValue.category"
-              :tags="data.idCardValue.tag" />
+              :tags="data.idCardValue.tag"
+            />
             <Announcement
               class="announcement-card"
               :context="data.announcement"
               :user="data.ann_user"
-              :time="data.ann_time" />
+              :time="data.ann_time"
+            />
             <Analysis class="analysis-card" />
           </div>
         </el-col>
@@ -55,7 +59,6 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from 'vue';
-import { useRouter } from 'vue-router';
 import { getArticlePage, getMainInfo, getAnnouncement } from '@/api/client/home';
 import { ArticleCardVO } from '@/api/model/client/home';
 import { useI18n } from 'vue-i18n';
@@ -77,7 +80,6 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n();
-    const router = useRouter();
     const data = reactive({
       pagination: {
         size: 5,

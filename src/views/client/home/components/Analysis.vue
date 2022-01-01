@@ -13,12 +13,13 @@
   </el-card>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, onMounted } from 'vue';
+import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'Analysis',
 });
 </script>
 <script lang="ts" setup>
+import { reactive, onMounted } from 'vue';
 import { TrendCharts } from '@element-plus/icons-vue';
 interface AnalysisProps {
   runtime: string,

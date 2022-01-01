@@ -6,7 +6,8 @@
           <el-skeleton
             style="width: 100%"
             :loading="loading"
-            animated>
+            animated
+          >
             <template #template>
               <el-skeleton-item variant="image" style="width: 100%; height: 100%" />
               <div>
@@ -15,7 +16,6 @@
                   style="
                     display: flex;
                     align-items: center;
-                    justify-items: space-between;
                   "
                 />
               </div>
@@ -28,10 +28,11 @@
       </div>
       <div class="article-item-info">
         <div class="info-title">
-          <el-link 
+          <el-link
             :href="'/articles/' + item.id"
             :underline="false"
-            style="font-size: 16px">
+            style="font-size: 16px"
+          >
             {{ item.title }}
           </el-link>
         </div>
@@ -40,22 +41,24 @@
             name="clock"
             size="15"
             color="rgba(0,0,0,.54)"
-            style="position:relative; top:3px;" />
+            style="position:relative; top:3px;"
+          />
           {{ item.createTime }}
           <div class="info-tag">
             <SvgIcon
               name="tag"
               size="15"
               color="rgba(0,0,0,.54)"
-              style="position:relative; top:3px;" />
+              style="position:relative; top:3px;"
+            />
             &nbsp;{{ item.typeName }}
           </div>
         </div>
       </div>
       <el-divider style="margin: 1px" />
       <div class="article-item-tags">
-        <div class="article-item-tag" v-for="(tag, index) in item.tagVOList" :key="index">
-          <el-link  :underline="false" :href="'/tags/'+tag.tagId">{{ tag.name }}</el-link>
+        <div v-for="(tag, index) in item.tagVOList" :key="index" class="article-item-tag">
+          <el-link :underline="false" :href="'/tags/'+tag.tagId">{{ tag.name }}</el-link>
         </div>
       </div>
     </FlowCard>
@@ -78,7 +81,7 @@ export default defineComponent({
     }
   },
   setup() {
-        
+
   },
 });
 </script>
@@ -97,9 +100,9 @@ export default defineComponent({
     border-top-right-radius: inherit;
     overflow: hidden;
      .on-hover{
-      width: 100%;
-      height:100%;
-      transition: all .6s;
+       width: 100%;
+       height:100%;
+       transition: all .6s;
      }
   }
   .article-item-info{
@@ -130,8 +133,8 @@ export default defineComponent({
       height: 22px;
       border-radius: 10px;
       padding: 0 12px !important;
-      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
-      background: linear-gradient(to right, #f8ffae,#bdfff3);     
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      background: linear-gradient(to right, #f8ffae,#bdfff3);
       opacity: 0.6;
       margin-right: 0.5rem;
       .el-link.el-link--default{
@@ -142,7 +145,7 @@ export default defineComponent({
       }
     }
   }
-  
+
 }
 .item-card:hover .on-hover{
   transform: scale(1.1);

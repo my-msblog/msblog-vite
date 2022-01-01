@@ -1,7 +1,7 @@
 <template>
   <el-container class="container">
     <ul class="bg-bubbles">
-      <li v-for="(item, index) in data.bubbles" :key="index" />
+      <li v-for="(index) in data.bubbles" :key="index" />
     </ul>
     <el-header class="c_header" :style="data.style">
       <TopBar class="header_main" />
@@ -22,8 +22,8 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
-import TopBar from '@/layout/client/components/TopBar.vue';
-import Footer from '@/layout/client/components/Footer.vue';
+import TopBar from './components/TopBar.vue';
+import Footer from './components/Footer.vue';
 export default defineComponent({
   name: 'ClientLayout',
   components: { TopBar, Footer },
@@ -34,7 +34,7 @@ export default defineComponent({
       bubbles: 10,
     });
     const handleWindowScroll = function () {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
       data.opacity = Math.abs(Math.round(scrollTop)) / 250;
       if (data.opacity > 0.85) {
         data.opacity = 0.85;
@@ -188,6 +188,6 @@ export default defineComponent({
       background-color: rgba(48, 54, 54, 0.2);
     }
   }
-  
+
 }
 </style>

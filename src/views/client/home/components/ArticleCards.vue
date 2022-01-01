@@ -1,15 +1,17 @@
 <template>
   <div>
     <el-card
-      class="card_main"
       v-for="(item, index) in articleList"
-      :key="item">
+      :key="item"
+      class="card_main"
+    >
       <div class="article-cover" :class="isRight(index)">
         <el-skeleton
           style="width: 100%"
           :loading="loading"
           animated
-          :count="3">
+          :count="3"
+        >
           <template #template>
             <el-skeleton-item variant="image" style="width: 100%; height: 100%" />
             <div style="padding: 14px">
@@ -32,15 +34,16 @@
           <span class="separator">|</span>
           <el-icon :size="14"><SvgIcon name="type" size="15" color="#0000008a" /></el-icon>
           &nbsp;{{ item.typeName }}
-          <div 
-            class="article-tag" 
-            v-for="( tag, index) in item.tagVOList" 
-            :key="index">
-            <span class="separator" v-if="tagsExceeds(index)">|</span>
+          <div
+            v-for="( tag, index) in item.tagVOList"
+            :key="index"
+            class="article-tag"
+          >
+            <span v-if="tagsExceeds(index)" class="separator">|</span>
             <el-icon v-if="tagsExceeds(index)"><CollectionTag /></el-icon>
             <span v-if="tagsExceeds(index)">{{ tag.nameZh }}</span>
           </div>
-          <div class="article-tag" v-if="showMore(item.tagVOList.length)">
+          <div v-if="showMore(item.tagVOList.length)" class="article-tag">
             <span class="separator">|</span>
             <el-icon><More /></el-icon>
           </div>
@@ -59,6 +62,7 @@ import { Calendar, More, CollectionTag } from '@element-plus/icons-vue';
 
 export default defineComponent({
   name: 'ArticleCards',
+  components: { Calendar, CollectionTag, More },
   props: {
     articleList: {
       type: [] as PropType<Array<ArticleCardVO>>,
@@ -69,8 +73,7 @@ export default defineComponent({
       default: true,
     }
   },
-  components: { Calendar, CollectionTag, More },
-  setup(props, { emit }) {
+  setup() {
     const data = reactive({
       loading: true,
       tagsLengths: 2,

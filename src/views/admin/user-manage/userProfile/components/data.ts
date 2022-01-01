@@ -1,4 +1,4 @@
-import { FormRulesMap } from 'element-plus/packages/components/form/src/form.type';
+import { FormRulesMap} from 'element-plus/es/components/form/src/form.type';
 import { BaseOptions } from '@/constant/Type';
 import { useI18n } from '@/hooks/useI18n';
 import { RoleString } from '@/constant/enums/role';
@@ -40,7 +40,12 @@ export const sexOptions: Array<BaseOptions<any>> =[
     value: t('sex.female')
   }
 ];
-export const roleOptions: Array<BaseOptions<string>> = [
+interface RolesOptions extends BaseOptions<String>{
+  label: string,
+  value: string,
+  disabled?: boolean,
+}
+export const roleOptions: Array<RolesOptions> = [
   {
     label: RoleString.VISITOR,
     value: t('role.' + RoleString.VISITOR),
@@ -49,9 +54,11 @@ export const roleOptions: Array<BaseOptions<string>> = [
   {
     label: RoleString.CONTENT_MANAGER,
     value: t('role.' + RoleString.CONTENT_MANAGER),
+    disabled: false,
   },
   {
     label: RoleString.SYSTEM_ADMIN,
     value: t('role.' + RoleString.SYSTEM_ADMIN),
+    disabled: false,
   },
 ];

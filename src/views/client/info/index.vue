@@ -37,7 +37,7 @@
       <el-divider />
       <el-row :gutter="20">
         <el-col :span="4">
-          <p  class="left_title"> {{ $t('pages.phone') }}: </p>
+          <p class="left_title"> {{ $t('pages.phone') }}: </p>
         </el-col>
         <el-col :span="18" class="text_el-col name-font">
           <p class="name-p">
@@ -47,7 +47,7 @@
       </el-row>
       <el-row :gutter="20">
         <el-col :span="4">
-          <p  class="left_title"> {{ $t('pages.email') }}: </p>
+          <p class="left_title"> {{ $t('pages.email') }}: </p>
         </el-col>
         <el-col :span="18" class="text_el-col name-font">
           <p class="name-p">
@@ -77,15 +77,17 @@
       </el-row>
     </el-card>
     <UserEditForm
-      :title="t('page.edit_info')"
       v-model="data.dialogFormVisible"
+      :title="t('page.edit_info')"
       :form-data="data.formData"
-      @close-form="data.dialogFormVisible = false" />
+      @close-form="data.dialogFormVisible = false"
+    />
     <el-pagination
       background
-      layout="prev, pager, next" 
+      layout="prev, pager, next"
       :current-page="2"
-      :total="1000" />
+      :total="1000"
+    />
   </div>
 </template>
 
@@ -175,7 +177,6 @@ export default defineComponent({
     text-align: left;
   }
   .name-font{
-    font-family: 'PingFang SC';
     font-size: 18px;
   }
 }
@@ -195,7 +196,6 @@ export default defineComponent({
     margin-bottom: 15px;
   }
   .title_info{
-    font-family: 'PingFang SC';
     font-size: 20px;
     font-weight: bold;
   }

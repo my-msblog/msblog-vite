@@ -10,7 +10,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
+import { defineComponent, reactive } from 'vue';
 export default defineComponent({
   name:'ArticleTagsList',
   setup() {
@@ -19,7 +19,7 @@ export default defineComponent({
     });
     return {
       data,
-    }
+    };
   },
 });
 

@@ -81,7 +81,7 @@ export default defineComponent({
     });
     const handleWindowScroll = function () {
       const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
       data.opacity = Math.abs(Math.round(scrollTop)) / 250;
       if (data.opacity > 0.85) {
         data.opacity = 0.85;
@@ -102,7 +102,7 @@ export default defineComponent({
     };
     const isAdmin = function (): boolean {
       const role = store.getters.getUserRole as string;
-      return role !== ''|| role !== undefined;
+      return role !== ''&& role !== 'undefined';
     };
     const handleCommand = async function (command: string) {
       switch (command) {

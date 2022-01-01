@@ -4,11 +4,12 @@
       <el-avatar
         shape="square"
         :size="70"
-        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
+        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+      />
       <div class="wapper-name">MS</div>
       <div class="wapper-motto">这个人很懒，什么都没有留下</div>
       <div class="blog-info">
-        <div class="blog-info-item" v-for="(item, index) in data.infoList" :key="index">
+        <div v-for="(item, index) in data.infoList" :key="index" class="blog-info-item">
           <div class="blog-info-item-title">{{ t('pages.'+item.title) }}</div>
           <div class="blog-info-item-value">{{ item.value }}</div>
         </div>
@@ -20,11 +21,18 @@
         plain
         round
         @click="handleClickLabel"
-      >{{ $t('button.add_to_tag') }}</el-button>
+      >
+        {{ $t('button.add_to_tag') }}
+      </el-button>
       <div class="icon-list">
-        <SvgIcon name="qq-circle" size="28" @click="handleQQ" class="svg-icon" />
-        <SvgIcon name="github"  size="28" class="svg-icon"/>
-        <SvgIcon name="gitee" size="28" class="svg-icon"/>
+        <SvgIcon
+          name="qq-circle"
+          size="28"
+          class="svg-icon"
+          @click="handleQQ"
+        />
+        <SvgIcon name="github" size="28" class="svg-icon" />
+        <SvgIcon name="gitee" size="28" class="svg-icon" />
       </div>
     </div>
   </el-card>
@@ -100,7 +108,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/el-card.scss";
+@import "src/styles/el-card.scss";
 .wapper{
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,
   Helvetica Neue,Lato,Roboto,PingFang SC,Microsoft YaHei,sans-serif!important;
