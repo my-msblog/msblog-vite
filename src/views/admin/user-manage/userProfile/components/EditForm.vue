@@ -7,15 +7,17 @@
       inline-message
       :status-icon="true"
       size="medium"
-      label-width="100px">
+      label-width="100px"
+    >
       <el-row :gutter="14">
         <el-col :span="24">
           <el-form-item label="id：" prop="id">
             <el-input
               v-model="data.formData.id"
               readonly
-              :disabled='true'
-              :style="{width: '100%'}" />
+              :disabled="true"
+              :style="{width: '100%'}"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="24">
@@ -24,7 +26,8 @@
               v-model="data.formData.username"
               placeholder="请输入用户名"
               clearable
-              :style="{width: '100%'}" />
+              :style="{width: '100%'}"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="24">
@@ -33,8 +36,9 @@
               <el-radio
                 v-for="(item, index) in data.sexOptions"
                 :key="index"
-                :label="item.label">
-                {{  item.value }}
+                :label="item.label"
+              >
+                {{ item.value }}
               </el-radio>
             </el-radio-group>
           </el-form-item>
@@ -45,7 +49,8 @@
               v-model="data.formData.email"
               placeholder="请输入邮箱"
               clearable
-              :style="{width: '100%'}" />
+              :style="{width: '100%'}"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="24">
@@ -54,7 +59,8 @@
               v-model="data.formData.phone"
               placeholder="请输入手机号"
               clearable
-              :style="{width: '100%'}" />
+              :style="{width: '100%'}"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -63,13 +69,15 @@
               v-model="data.formData.role"
               placeholder="请选择用户角色"
               clearable
-              :style="{width: '100%'}">
+              :style="{width: '100%'}"
+            >
               <el-option
                 v-for="(item, index) in data.roleOptions"
                 :key="index"
                 :label="item.value"
                 :value="item.label"
-                :disabled="item.disabled" />
+                :disabled="item.disabled"
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -93,7 +101,7 @@ import {
   Ref
 } from 'vue';
 import Props from '../props';
-import { UserProfileVO, UserProfileVOImpl } from '@/api/model/admin/user-profile';
+import { UserProfileVO } from '@/api/model/admin/user-profile';
 import { useI18n } from 'vue-i18n';
 import { editFormRule, sexOptions, roleOptions } from './data';
 import { ElMessageBox } from 'element-plus';
@@ -143,7 +151,7 @@ export default defineComponent({
           sex: data.formData.sex,
           phone: data.formData.phone,
           email: data.formData.email,
-          roleId: RoleId[data.formData.role],
+          roleId: RoleId[data.formData.role as keyof typeof RoleId],
         };
         adminChangeUser(params).then(()=>emit('afterChange'));
       });

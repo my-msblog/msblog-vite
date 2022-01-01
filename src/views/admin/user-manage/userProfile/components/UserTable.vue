@@ -6,24 +6,26 @@
         <div class="u_table_toolbar">
           <el-button type="success" size="mini" @click="handleAddUser">{{ $t('pages.add_user') }}</el-button>
           <el-divider direction="vertical" />
-          <el-icon :size="15">
+          <el-icon :size="18" @click="handleRefresh">
             <refresh-right />
           </el-icon>
         </div>
       </div>
       <el-table
+        ref="tableRef"
         :data="tableData"
         stripe
         border
         size="mini"
-        ref="tableRef"
-        @selection-change="handleSelectChange">
+        @selection-change="handleSelectChange"
+      >
         <el-table-column type="selection" width="35" />
         <el-table-column
           type="index"
           width="50"
           :label="$t('pages.No')"
-          align="center" />
+          align="center"
+        />
         <el-table-column property="id" label="id" width="170" />
         <el-table-column property="username" :label="$t('pages.username')" />
         <el-table-column
@@ -40,7 +42,8 @@
           :label="$t('pages.operation')"
           fixed="right"
           align="center"
-          width="150">
+          width="150"
+        >
           <template #default="scope">
             <el-switch
               v-model="scope.row.deleted"
@@ -52,15 +55,17 @@
               @change="handleStatusChange(scope.row)"
             />
             <el-button
-              @click="editUser(scope.row)"
               type="text"
-              size="small">
+              size="small"
+              @click="editUser(scope.row)"
+            >
               {{ $t('pages.edit') }}
             </el-button>
             <el-button
-              @click="deleteUser(scope.row)"
               type="text"
-              size="small">
+              size="small"
+              @click="deleteUser(scope.row)"
+            >
               {{ $t('pages.delete') }}
             </el-button>
           </template>
@@ -74,14 +79,14 @@
         <el-pagination
           class="bot_page"
           background
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
           :current-page="currentPage"
           :page-sizes="[5,10]"
           :page-size="pageSize"
           :pager-count="5"
           layout="total, sizes, prev, pager, next, jumper"
           :total="total"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
         />
       </div>
     </el-card>
@@ -89,7 +94,7 @@
       v-model="data.addFormShow"
       :title="$t('pages.add_user')"
       @addSuccess="handleCurrentChange(data.pagination.page)"
-      @close = "data.addFormShow = false"
+      @close="data.addFormShow = false"
     />
   </div>
 </template>
@@ -205,6 +210,9 @@ export default defineComponent({
         });
       });
     };
+    const handleRefresh =() =>{
+
+    };
     return {
       data,
       handleSizeChange,
@@ -220,6 +228,7 @@ export default defineComponent({
       setRole,
       getStatusEnum,
       handleStatusChange,
+      handleRefresh,
     };
   }
 });

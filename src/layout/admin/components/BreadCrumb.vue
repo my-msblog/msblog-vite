@@ -19,30 +19,18 @@ import {
   toRefs,
   watch
 } from 'vue';
-import { RouteLocationMatched, useRoute, useRouter } from 'vue-router';
+import { RouteLocationMatched, useRoute } from 'vue-router';
 
 export default defineComponent({
   name: 'BreadCrumb',
   setup() {
-    const router = useRouter();
     const route = useRoute();
     const data = reactive({
       breadList: [] as Array<RouteLocationMatched>,
       getBreadcrumb() {
         data.breadList = route.matched;
-        // if (data.breadList[0].path === '/admin') {
-        //   data.breadList.pop();
-        // }
       }
     });
-    // function handleLink(item) {
-    //   const { redirect, path } = item;
-    //   if (redirect) {
-    //     router.push(redirect);
-    //     return;
-    //   }
-    //   console.log(path);
-    // }
     onMounted(() => {
       data.getBreadcrumb();
     });
@@ -54,7 +42,6 @@ export default defineComponent({
     );
     return {
       data,
-      // handleLink,
       ...toRefs(data),
     };
   }

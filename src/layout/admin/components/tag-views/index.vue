@@ -6,16 +6,16 @@
       @scroll="handleScroll"
     >
       <el-tag
+        v-for="(tag, index) in tags"
         :key="tag.name"
         size="small"
         type="light"
-        v-for="(tag, index) in tags"
         :closable="tag.name !== 'dashboard'"
         :disable-transitions="true"
         :hit="true"
+        :effect="handleEffect(tag)"
         @close="handleClose(tag, index)"
         @click="changeMenu(tag)"
-        :effect="handleEffect(tag)"
       >
         {{ $t('router.'+ tag.name) }}
       </el-tag>
@@ -82,6 +82,7 @@ export default defineComponent({
   text-align: left;
 }
 .tags-view-wrapper {
+  text-align: left;
   .tags-view-item {
     .el-icon-close {
       width: 16px;
@@ -90,7 +91,6 @@ export default defineComponent({
       border-radius: 50%;
       transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
       transform-origin: 100% 50%;
-
       &:before {
         //transform: scale(0.6);
         display: inline-block;

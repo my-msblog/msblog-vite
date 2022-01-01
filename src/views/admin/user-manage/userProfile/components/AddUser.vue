@@ -2,12 +2,12 @@
   <el-dialog :title="title" :v-model="dialogFormVisible">
     <el-form
       ref="formRef"
-      :model="formData"
       :rules="data.rule"
       inline-message
       :status-icon="true"
       size="medium"
-      label-width="100px">
+      label-width="100px"
+    >
       <el-row :gutter="14">
         <el-col :span="24">
           <el-form-item label="用户名：" prop="username">
@@ -15,7 +15,8 @@
               v-model="data.form.username"
               placeholder="请输入用户名"
               clearable
-              :style="{width: '100%'}" />
+              :style="{width: '100%'}"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="24">
@@ -24,7 +25,8 @@
               v-model="data.form.pwd"
               placeholder="请输入密码"
               clearable
-              :style="{width: '100%'}" />
+              :style="{width: '100%'}"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="24">
@@ -33,8 +35,9 @@
               <el-radio
                 v-for="(item, index) in data.sexOptions"
                 :key="index"
-                :label="item.label">
-                {{  item.value }}
+                :label="item.label"
+              >
+                {{ item.value }}
               </el-radio>
             </el-radio-group>
           </el-form-item>
@@ -45,7 +48,8 @@
               v-model="data.form.email"
               placeholder="请输入邮箱"
               clearable
-              :style="{width: '100%'}" />
+              :style="{width: '100%'}"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="24">
@@ -54,7 +58,8 @@
               v-model="data.form.phone"
               placeholder="请输入手机号"
               clearable
-              :style="{width: '100%'}" />
+              :style="{width: '100%'}"
+            />
           </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -63,13 +68,15 @@
               v-model="data.form.role"
               placeholder="请选择用户角色"
               clearable
-              :style="{width: '100%'}">
+              :style="{width: '100%'}"
+            >
               <el-option
                 v-for="(item, index) in data.roleOptions"
                 :key="index"
                 :label="item.value"
                 :value="item.label"
-                :disabled="item.disabled" />
+                :disabled="item.disabled"
+              />
             </el-select>
           </el-form-item>
         </el-col>
@@ -98,15 +105,13 @@ import { roleOptions, sexOptions } from './data';
 import { adminAdd } from '@/api/admin/user-profile';
 import { useI18n } from 'vue-i18n';
 import { UserTableChangeDTO } from '@/api/model/user-info-model';
+
 export default defineComponent({
   name: '',
   props: {
     ...Props,
   },
-  emit: [
-    'close',
-    'addSuccess'
-  ],
+  emits: ['close', 'addSuccess'],
   setup(props, { emit }) {
     const { t } = useI18n();
     const formRef = ref();
@@ -142,7 +147,7 @@ export default defineComponent({
           pwd: data.form.pwd,
           phone: data.form.phone,
           email: data.form.email,
-          roleId: RoleId[data.form.role],
+          roleId: RoleId[data.form.role as keyof typeof RoleId]
         };
         adminAdd(params).then((res) => {
           ElMessage({

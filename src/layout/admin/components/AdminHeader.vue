@@ -9,7 +9,8 @@
         effect="dark"
         :content="$t('message.blog_home')"
         placement="bottom-start"
-        style="width: 1.3em; height: 1.3em;">
+        style="width: 1.3em; height: 1.3em;"
+      >
         <div @click="backHome">
           <el-icon>
             <monitor style="width: 1.3em; height: 1.3em; margin-right: 7px" />

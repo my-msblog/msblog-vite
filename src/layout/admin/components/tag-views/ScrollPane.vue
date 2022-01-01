@@ -74,11 +74,11 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      scrollWrapper.value.addEventListener('scroll', emitScroll, true);
+      //scrollWrapper.value.addEventListener('scroll', emitScroll, true);
     });
 
     onBeforeUnmount(() => {
-      scrollWrapper.value.removeEventListener('scroll', emitScroll);
+      //scrollWrapper.value.removeEventListener('scroll', emitScroll);
     });
     return {
       scrollContainerRef,

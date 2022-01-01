@@ -39,14 +39,14 @@ router.beforeEach(async (to, from, next) => {
     // 解决刷新空白，跳转admin主页
     if (to.path.includes('/admin/')) {
       await asyncRouters(router);
-      next({ path: 'admin' });
+      next({ path: '/admin' });
       return;
     }
     next();
   }
 });
 
-router.afterEach((to, from, next) => {
+router.afterEach(() => {
   // eslint-disable-next-line
   // @ts-ignore
   document.querySelector('body').setAttribute('style', 'overflow: auto !important;');

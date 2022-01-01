@@ -5,6 +5,8 @@ import { MenuOptions } from '@/constant/StoreOption';
 import AdminLayout from '@/layout/admin/index.vue';
 import store from '@/store';
 
+const modules = import.meta.glob('../views/**/**.vue');
+
 export async function asyncRouters (router: Router) {
   await getMenu().then(res => {
     const fmtRouter = formatRoutes(res);
@@ -27,8 +29,8 @@ function formatRoutes(menuRouter: Array<MenuVO>): Array<MenuOptions>{
     }
     const fmtRoute = {
       path: route.path,
-      component: route.component === 'layout' ? AdminLayout // : () => import('@/views/admin' + route.component),
-        : () => require('@/views/admin' + route.component + '/index.vue'),
+      component: route.component === 'layout' ? AdminLayout
+          : modules[`../views/admin${route.component}/index.vue`],
       nameZh: route.nameZh,
       icon: route.icon,
       children: route.children,

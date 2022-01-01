@@ -11,17 +11,17 @@ export const routes: Array<RouteRecordRaw> = [
     redirect: '/home',
     children: [
       {
-        path: '/home',
+        path: 'home',
         name: 'home',
         component: Home,
       },
       {
-        path: '/tags',
+        path: 'tags',
         name: 'Tags',
         component: () => import('@/views/client/tage/index.vue'),
       },
       {
-        path: '/tags/:id',
+        path: 'tags/:id',
         name: 'TagsList',
         component: () => import('@/views/client/tage/list/index.vue'),
       },
@@ -31,22 +31,22 @@ export const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/client/links/index.vue'),
       },
       {
-        path: '/about',
+        path: 'about',
         name: 'About',
         component: () => import('@/views/client/about/index.vue'),
       },
       {
-        path: '/categories',
+        path: 'categories',
         name: 'Categories',
         component: () => import('@/views/client/categories/index.vue'),
       },
       {
-        path: '/categories/:id',
+        path: 'categories/:id',
         name: 'CategoryList',
         component: () => import('@/views/client/categories/list/index.vue'),
       },
       {
-        path: '/login',
+        path: 'login',
         name: 'Login',
         component: () => import('@/views/client/login/index.vue'),
       },
@@ -56,12 +56,12 @@ export const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/client/info/index.vue'),
       },
       {
-        path: '/archive',
+        path: 'archive',
         name: 'Archive',
         component: () => import('@/views/client/archive/index.vue'),
       },
       {
-        path: '/artticle/:id',
+        path: 'article/:id',
         name: 'Article',
         component: () => import('@/views/client/article/index.vue'),
       },
@@ -79,8 +79,8 @@ export const routes: Array<RouteRecordRaw> = [
     },
     children: [
       {
-        path: '/admin/dashboard',
-        name: 'dashboard',
+        path: 'dashboard',
+        name: '/dashboard',
         component: () => import('@/views/admin/dashboard/index.vue'),
         meta: {
           requireAuth: true
