@@ -6,32 +6,32 @@ interface BarMenuItem {
 export const menuBarItem: BarMenuItem[]= [
   {
     route: '/',
-    icon: 'el-icon-s-home',
+    icon: 'HomeFilled',
     text: 'homepage',
   },
   {
     route: '/archive',
-    icon: 'el-icon-folder-opened',
+    icon: 'FolderOpened',
     text: 'archive',
   },
   {
     route: '/categories',
-    icon: 'el-icon-menu',
+    icon: 'Menu',
     text: 'categories',
   },
   {
     route: '/tags',
-    icon: 'el-icon-s-management',
+    icon: 'Management',
     text: 'tags',
   },
   {
     route: '/links',
-    icon: 'el-icon-connection',
+    icon: 'Connection',
     text: 'links',
   },
   {
     route: '/about',
-    icon: 'el-icon-s-promotion',
+    icon: 'Promotion',
     text: 'about',
   },
 ];

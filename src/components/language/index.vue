@@ -1,8 +1,8 @@
 <template>
   <el-dropdown class="ll_down" style="" @command="change">
-    <span class="el-dropdown-link">
+    <span class="el-dropdown-link" style="display: flex; align-items: center">
       {{ $t('message.language') }}
-      <el-icon> <ArrowDown /> </el-icon>
+      <el-icon style="margin-left:3px"> <ArrowDown /> </el-icon>
     </span>
     <template #dropdown>
       <el-dropdown-menu>

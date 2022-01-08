@@ -9,10 +9,12 @@
       <div class="menu-title">
         <div v-for="(item, index) in menuBarItem" :key="index">
           <router-link :to="item.route" class="text" :style="data.style">
-            <ElIcons :name="item.icon" />{{ $t('bar.' + item.text) }}
+            <span class="item-center">
+              <ElIcons :name="item.icon" />
+              {{ $t('bar.' + item.text) }}
+            </span>
           </router-link>
         </div>
-        <el-affix />
         <div>
           <router-link
             v-if="online()"
@@ -20,7 +22,10 @@
             class="text"
             :style="data.style"
           >
-            <el-icon class="el-icon-user-solid" />{{ $t('bar.login') }}
+            <span class="item-center"> 
+              <ElIcons name="UserFilled" />
+              {{ $t('bar.login') }}
+            </span>
           </router-link>
           <el-dropdown
             v-else
@@ -65,11 +70,10 @@ import { useI18n } from 'vue-i18n';
 import { logout } from '@/api/sys';
 import { ElMessage } from 'element-plus';
 import { menuBarItem } from './data';
-import ElIcons from '@/components/el-icon';
 
 export default defineComponent({
   name: 'TopBar',
-  components: { ElIcons, },
+  components: {},
   setup() {
     const { t } = useI18n();
     const store = useStore();
@@ -103,7 +107,7 @@ export default defineComponent({
     };
     const isAdmin = function (): boolean {
       const role = store.getters.getUserRole as string;
-      return role !== ''&& role !== 'undefined';
+      return role !== '' && role !== 'undefined';
     };
     const handleCommand = async function (command: string) {
       switch (command) {
@@ -161,7 +165,7 @@ export default defineComponent({
       font-size: 14px;
       align-items: center;
       float: right;
-      margin-right: 30px;
+      margin-right: 10px;
       text-align: center;
       font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Lato, Roboto,
         PingFang SC, Microsoft YaHei, sans-serif !important;
@@ -172,16 +176,19 @@ export default defineComponent({
     .text {
       text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.3);
       color: rgba(255, 255, 255, 0.9);
-      margin-top: 7px;
-      margin-left: 20px;
-      text-decoration: none;
+      margin-left: 10px;
+      margin-right: 10px;
+      font-size: 14px;
+      .item-center {
+        display: inline-flex;
+        align-items: center;
+      }
     }
     .title {
       text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.3);
       color: rgba(255, 255, 255, 0.9);
       margin-top: 7px;
-      margin-left: 20px;
-      text-decoration: none;
+      margin: 0 10px;
     }
     .router-link-active {
       text-decoration: none;
@@ -194,7 +201,7 @@ export default defineComponent({
     }
 
     &:deep(.change_text) {
-      margin-left: 20px;
+      margin: 0 10px;
       color: rgba(255, 255, 255, 0.9);
       text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.3) !important;
     }
