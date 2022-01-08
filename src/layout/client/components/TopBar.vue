@@ -9,7 +9,7 @@
       <div class="menu-title">
         <div v-for="(item, index) in menuBarItem" :key="index">
           <router-link :to="item.route" class="text" :style="data.style">
-            <i :class="item.icon" />{{ $t('bar.' + item.text) }}
+            <ElIcons :name="item.icon" />{{ $t('bar.' + item.text) }}
           </router-link>
         </div>
         <el-affix />
@@ -20,7 +20,7 @@
             class="text"
             :style="data.style"
           >
-            <i class="el-icon-user-solid" />{{ $t('bar.login') }}
+            <el-icon class="el-icon-user-solid" />{{ $t('bar.login') }}
           </router-link>
           <el-dropdown
             v-else
@@ -65,10 +65,11 @@ import { useI18n } from 'vue-i18n';
 import { logout } from '@/api/sys';
 import { ElMessage } from 'element-plus';
 import { menuBarItem } from './data';
+import ElIcons from '@/components/el-icon';
 
 export default defineComponent({
   name: 'TopBar',
-  components: {},
+  components: { ElIcons, },
   setup() {
     const { t } = useI18n();
     const store = useStore();
