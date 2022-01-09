@@ -6,6 +6,7 @@ declare global {
         NODE_ENV: string;
         VITE_BUILD_ENV: string;
         VITE_PUBLIC_PATH: string;
+        VITE_ADMIN_TITLE: string;
         VITE_PROXY: [string, string][];
         VITE_GLOB_APP_TITLE: string;
         VITE_GLOB_APP_SHORT_NAME: string;
