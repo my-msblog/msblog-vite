@@ -160,7 +160,7 @@ export default defineComponent({
   }
 }
 .user_info_m{
-  max-width: 1200px;
+  max-width: $client_user_info_card_width;
   margin: 48px auto 28px auto;
   padding: 30px;
   background-color: #fff;
@@ -181,7 +181,7 @@ export default defineComponent({
   }
 }
 .user_info_o{
-  max-width: 1200px;
+  max-width:$client_user_info_card_width;
   margin: 0 auto 28px auto;
   padding: 30px;
   background-color: #fff;

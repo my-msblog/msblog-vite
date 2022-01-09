@@ -5,6 +5,7 @@ import viteSvgIcons from 'vite-plugin-svg-icons';
 import { loadEnv } from 'vite';
 import { createProxy } from './build/proxy';
 import { wrapperEnv } from './build/utils';
+import { htmlPlugin } from './build/plugins';
 
 // https://vitejs.dev/config/
 export default ({mode }: ConfigEnv): UserConfig => {
@@ -12,7 +13,7 @@ export default ({mode }: ConfigEnv): UserConfig => {
 
   const env = loadEnv(mode, root);
   const viteEnv = wrapperEnv(env);
-  const { VITE_PORT, VITE_APP_BASE_API, VITE_APP_HOST } = viteEnv;
+  const { VITE_PORT, VITE_APP_BASE_API, VITE_APP_HOST, VITE_GLOB_APP_TITLE } = viteEnv;
   return {
     plugins: [
       vue(),
@@ -22,6 +23,7 @@ export default ({mode }: ConfigEnv): UserConfig => {
         // 指定symbolId格式
         symbolId: 'icon-[dir]-[name]',
       }),
+      htmlPlugin( VITE_GLOB_APP_TITLE),
     ],
     define: {
       'process.env': {}
@@ -36,13 +38,19 @@ export default ({mode }: ConfigEnv): UserConfig => {
           '@store': path.resolve(__dirname,'./src/store'),
         }
     },
-
     server: {
       port: VITE_PORT,
       host: VITE_APP_HOST,
       https: false,
       proxy: {
         '/api': createProxy(VITE_APP_BASE_API),
+      }
+    },
+    css: {
+      preprocessorOptions: { 
+        scss: {
+          additionalData: '@import "./src/styles/constant.scss";',
+        }
       }
     },
   };

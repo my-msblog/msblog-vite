@@ -48,8 +48,8 @@
             <el-col :span="10">
               <el-image :src="data.imgSrc" style="height: 40px" @click="handleArithmetic">
                 <template #error>
-                  <div style="font-size: 30px">
-                    <i class="el-icon-picture-outline" @click="handleArithmetic" />
+                  <div class="code-div">
+                    <ElIcons name="PictureFilled" color="#409EFC" />
                   </div>
                 </template>
               </el-image>
@@ -60,7 +60,7 @@
           <el-row :gutter="24" justify="space-around">
             <el-col :span="11">
               <el-button type="primary" class="btn_bg" @click="handleLogin">
-                {{ $t("pages.login") }}
+                {{ $t('pages.login') }}
               </el-button>
             </el-col>
             <el-col :span="11">
@@ -74,7 +74,7 @@
         </el-form-item>
         <el-form-item>
           <router-link to="/home">
-            <el-button icon="el-icon-back" type="text">{{ $t("pages.back") }}</el-button>
+            <el-button icon="el-icon-back" type="text">{{ $t('pages.back') }}</el-button>
           </router-link>
         </el-form-item>
       </el-form>
@@ -99,12 +99,8 @@ export default defineComponent({
     const router = useRouter();
     const data = reactive({
       rules: {
-        username: [
-          { required: true, message: '用户名不能为空', trigger: 'blur' },
-        ],
-        password: [
-          { required: true, message: '密码不能为空', trigger: 'blur' },
-        ],
+        username: [{ required: true, message: '用户名不能为空', trigger: 'blur' }],
+        password: [{ required: true, message: '密码不能为空', trigger: 'blur' }],
       },
       form: {
         username: '',
@@ -126,19 +122,21 @@ export default defineComponent({
         code: data.form.code,
         key: store.getters.getCodeKey,
       };
-      loginByPwd(request).then((res) => {
-        store.dispatch('setUserInfo', res);
-        ElMessage({
-          message: t('message.login_success'),
-          type: 'success',
-          duration: 2 * 1000,
+      loginByPwd(request)
+        .then((res) => {
+          store.dispatch('setUserInfo', res);
+          ElMessage({
+            message: t('message.login_success'),
+            type: 'success',
+            duration: 2 * 1000,
+          });
+          router.push('/userInfo');
+        })
+        .catch(() => {
+          handleArithmetic();
         });
-        router.push('/userInfo');
-      }).catch(() => {
-        handleArithmetic();
-      });
     };
-    const handleArithmetic = function() {
+    const handleArithmetic = function () {
       getArithmeticCode().then((res) => {
         data.imgSrc = res.img;
         store.commit('setCodeKey', res.key);
@@ -148,7 +146,7 @@ export default defineComponent({
       router.push('/register');
     };
     const handleVisible = () => {
-      if(data.visible === 'visible'){
+      if (data.visible === 'visible') {
         data.visible = 'invisible';
         data.pwd_type = 'password';
         return;
@@ -166,7 +164,7 @@ export default defineComponent({
       toRegister,
       handleVisible,
     };
-  }
+  },
 });
 </script>
 
@@ -178,7 +176,7 @@ export default defineComponent({
   animation: header-effect 1s;
   margin: -5px 0;
   overflow: hidden;
-  .btn_bg{
+  .btn_bg {
     width: 100%;
     background: #505458;
     border: none;
@@ -193,8 +191,14 @@ export default defineComponent({
   background: #fff;
   border: 1px #eaeaeab6;
   box-shadow: 0 0 25px #a8a6a69f;
-  .el-icon-picture-outline{
+  .el-icon-picture-outline {
     color: #909399;
+  }
+  .code-div {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
 }
 .login_title {
@@ -202,13 +206,12 @@ export default defineComponent({
   text-align: center;
   color: #505458;
 }
-.el-input{
-  &:deep(.el-input__suffix-inner){
+.el-input {
+  &:deep(.el-input__suffix-inner) {
     height: inherit;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 }
-
 </style>

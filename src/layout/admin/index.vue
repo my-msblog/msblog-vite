@@ -60,7 +60,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/constant";
 .ly_top{
   background-color: #e4e7ed;
   margin: 0;

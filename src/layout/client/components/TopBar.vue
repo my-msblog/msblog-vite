@@ -30,7 +30,6 @@
           <el-dropdown
             v-else
             class="drop_down"
-            style="margin-left: 15px"
             @command="handleCommand"
           >
             <el-avatar :src="data.imgsrc" :size="23" />
@@ -150,7 +149,7 @@ export default defineComponent({
   .center_container {
     width: 100%;
     height: 30px;
-
+    
     .left_title {
       float: left;
       font-size: 18px;
@@ -189,6 +188,7 @@ export default defineComponent({
       color: rgba(255, 255, 255, 0.9);
       margin-top: 7px;
       margin: 0 10px;
+      text-decoration: none;
     }
     .router-link-active {
       text-decoration: none;
@@ -206,7 +206,7 @@ export default defineComponent({
       text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.3) !important;
     }
     .drop_down {
-      margin-left: 15px !important;
+      margin: 0 10px;
     }
   }
 }
