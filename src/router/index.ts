@@ -3,10 +3,12 @@ import store from '@/store';
 import { useI18n } from '@/hooks/useI18n';
 import { routes as routeList } from './routes';
 import { authentication } from '@/api/sys';
-import { asyncRouters } from './permission';
+import { asyncRouters, weChartTitle } from './permission';
 import { ElMessage } from 'element-plus';
 
 const { t } = useI18n();
+const globaleTitle = import.meta.env.VITE_GLOB_APP_TITLE as string;
+const adminTitle = import.meta.env.VITE_ADMIN_TITLE as string;
 
 const routes: Array<RouteRecordRaw> = routeList;
 
@@ -16,6 +18,7 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
+  weChartTitle(to, globaleTitle, adminTitle);
   if (to.meta.requireAuth) {
     if (store.getters.getToken) {
       await authentication().then(async () => {

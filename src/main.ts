@@ -7,8 +7,7 @@ import 'element-plus/dist/index.css';
 import '@/styles/ann.css';
 // svg global config
 import 'virtual:svg-icons-register';
-import SvgIcon from '@/components/icon/index.vue'
-//import svgLoader from './plugins/svgIcon/svg-loader';
+import SvgIcon from '@/components/icon/index.vue';
 import router from './router';
 import store from './store';
 import { loadAllPlugins } from '@/plugins/index';

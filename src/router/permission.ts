@@ -1,9 +1,10 @@
 import { getMenu } from '@/api/sys';
-import { Router } from 'vue-router';
+import { RouteLocationNormalized, Router } from 'vue-router';
 import { MenuVO } from '@/api/model/sys-model';
 import { MenuOptions } from '@/constant/StoreOption';
 import AdminLayout from '@/layout/admin/index.vue';
 import store from '@/store';
+import { ElMessage } from 'element-plus';
 
 const modules = import.meta.glob('../views/**/**.vue');
 
@@ -45,3 +46,20 @@ function formatRoutes(menuRouter: Array<MenuVO>): Array<MenuOptions>{
   return resRouters;
 }
 
+export function weChartTitle(to: RouteLocationNormalized, defTitle: string, adminTitle: string) {
+  if(to.path.includes('admin')){
+    document.title = adminTitle;
+  } else {
+    if(to.meta.title === undefined){
+      if(!to.path.includes('home')){
+        ElMessage.error({
+          type: 'error',
+          message: 'error: this page didn`t set title'
+        });
+        document.title = defTitle;
+      }
+      return;
+    }
+    document.title = to.meta.title as string;
+  }
+}
