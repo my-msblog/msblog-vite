@@ -36,6 +36,7 @@ export default {
     tags: '标签',
     archive: '归档文章',
     article_category: '文章分类',
+    all_tags: '所有标签',
   },
   en: {
     back: 'Back',
@@ -75,5 +76,6 @@ export default {
     tags: 'Tags',
     archive: 'Archived Articles',
     article_category: 'Article Categories',
+    all_tags: 'All Tags',
   }
 };

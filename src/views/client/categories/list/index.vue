@@ -50,7 +50,7 @@ export default defineComponent({
       });
     };
     onMounted(() => {
-      data.titleType = getCategory(Number(categoryId));
+      data.titleType = getCategory(Number(categoryId)) as string;
       handleInitCategotyList();
     });
     return {

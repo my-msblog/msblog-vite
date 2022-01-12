@@ -3,36 +3,107 @@
     <div class="a_banner">
       <p class="a_title">{{ $t('bar.tags') }}</p>
     </div>
-    this is categories
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <FlowCard class="tag-flow-card">
+      <h1>{{ $t('pages.all_tags') }}</h1>
+      <el-link
+        v-for="(item, index) in data.tagList"
+        :key="index"
+        class="tag-item"
+        :href="'/tags/' + item.tagId"
+        :style="{ fontSize: handleFontSize() + 'px', color: selectColor() }"
+      >
+        {{ item.nameZh }}
+      </el-link>
+    </FlowCard>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, onMounted, reactive } from 'vue';
+import { TagVO } from '@/api/model/client/home';
+import { getTagList } from '@/api/client/tags';
+import { randomNum, strNonEmpty } from '@/utils';
+import { colors } from './colors';
 export default defineComponent({
   name: 'About',
   setup() {
-    const data = reactive({});
-    return {};
-  }
+    const data = reactive({
+      tagList: [] as TagVO[],
+      currentColor: '',
+    });
+    const handleTagList = () => {
+      getTagList().then((res) => {
+        data.tagList = res;
+      });
+    };
+    const handleType = (index: number): string => {
+      switch (index % 4) {
+        case 0:
+          return 'primary';
+        case 1:
+          return 'success';
+        case 2:
+          return 'warning';
+        case 3:
+          return 'danger';
+        default:
+          return 'info';
+      }
+    };
+    const selectColor = (): string => {
+      const colorList: string[] = colors;
+      let random = Math.floor(Math.random() * (colorList.length - 1));
+      if(strNonEmpty(data.currentColor) && data.currentColor === colorList[random]){
+        if(random === 0 ){
+          random++;
+        } else{
+          random--;
+        }
+      }
+      data.currentColor = colorList[random];
+      return colorList[random];
+    };
+    const handleFontSize = function () {
+      return randomNum(17, 27);
+    };
+    onMounted(() => {
+      handleTagList();
+    });
+    return {
+      data,
+      handleType,
+      handleFontSize,
+      selectColor,
+    };
+  },
 });
 </script>
 
 <style lang="scss" scoped>
-.a_banner{
+.a_banner {
   height: 350px;
   overflow: hidden;
   text-align: center;
   animation: header-effect 1s;
   background: #fff url('@/assets/background/tags.jpeg') no-repeat center/100%;
-  .a_title{
+  .a_title {
     color: #fff;
-    display:block;
+    display: block;
     justify-content: center;
     margin-top: 200px;
     font-size: 24px;
     font-weight: bold;
+  }
+}
+.tag-flow-card {
+  text-align: center;
+  margin: 48px 250px 68px 250px;
+  padding: 15px 10px 10px !important;
+  h1 {
+    margin-top: 2px;
+  }
+  .tag-item {
+    padding: 10px;
   }
 }
 </style>

@@ -13,7 +13,7 @@ enum CategoryState {
   Other = '其他',
 }
 
-export function getCategory(index: number) {
+export function getCategory(index: number): unknown {
   let res ;
   const strIndex = Category[index];
   if (isValidKey(strIndex, CategoryState)){
