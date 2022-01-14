@@ -1,3 +1,4 @@
+import { Ref } from 'vue';
 import { useAppProviderContext } from '../core/useAppContext';
 // import { computed } from 'vue';
 // import { lowerFirst } from 'lodash-es';
@@ -13,6 +14,9 @@ export function useDesign(scope: string) {
   //     style[lowerFirst(k)] = $style[key];
   //   });
   // }
+  if(values.prefixCls === undefined){
+    values.prefixCls = 'i' as unknown as Ref<string>;
+  }
   return {
     // prefixCls: computed(() => `${values.prefixCls}-${scope}`),
     prefixCls: `${values.prefixCls}-${scope}`,
