@@ -4,14 +4,17 @@
       <p class="a_title">{{ $t('bar.about') }}</p>
     </div>
     this is categories
+    <Comments /> 
     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import Comments from '../article/components/Comments.vue';
 export default defineComponent({
   name: 'About',
+  components: { Comments },
   setup() {
     return {};
   }
