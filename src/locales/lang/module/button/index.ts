@@ -6,6 +6,10 @@ export default {
     close: '关闭',
     add_to_tag: '添加到标签',
     loading_failure: '加载失败',
+    remove_item: '移除',
+    add: '添加',
+    change: '修改',
+    edit: '编辑',
   },
   en: {
     reset: 'Reset',
@@ -14,5 +18,9 @@ export default {
     close: 'Close',
     add_to_tag: 'Add to label',
     loading_failure: 'Loading Failure',
+    remove_item: 'Remove',
+    add: 'Add',
+    change: 'Change',
+    edit: 'Edit',
   }
 };

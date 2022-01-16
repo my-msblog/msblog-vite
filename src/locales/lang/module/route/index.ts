@@ -15,6 +15,8 @@ export default {
     system_management: '系统管理',
     tags_management: '标签管理',
     article_categories: '文章分类',
+    menu_manage: '菜单管理',
+    api_list: 'API列表',
   },
   en: {
     dashboard: 'Dashboard',
@@ -31,5 +33,7 @@ export default {
     system_management: 'System Management',
     tags_management: 'Tags Management',
     article_categories: 'Article Categories',
+    menu_manage: 'Menu Manage',
+    api_list: 'API List',
   }
 };
