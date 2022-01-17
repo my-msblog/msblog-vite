@@ -54,14 +54,11 @@ export default defineComponent({
   font-weight: 400 !important;
 }
 
-.app-breadcrumb.el-breadcrumb {
-  display: inline-block;
-  font-size: 14px;
-  line-height: 50px;
-  margin-left: 8px;
-
+.el-breadcrumb {
+  font-size: 13px;
+  line-height: 40px;
   .no-redirect {
-    color: #97a8be;
+    color: #97a8be !important;
     cursor: text;
   }
 }

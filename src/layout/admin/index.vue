@@ -99,6 +99,7 @@ export default defineComponent({
 .ly_left{
   position: fixed;
   padding: 0;
+  box-shadow: 0 0 25px 0 rgb(24 24 25 / 15%);
   width: #{$admin_aside_width} !important;
   top: #{$admin_header_height};
   height: calc(100vh - #{$admin_header_height});
