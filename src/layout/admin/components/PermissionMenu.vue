@@ -4,7 +4,9 @@
       <div v-for="(item,i) in menu" :key="i">
         <el-sub-menu v-if="item.children.length !== 0" :index="(i).toString()" style="text-align: left;">
           <template #title>
-            <i :class="item.icon" />
+            <!-- <ElIcons name="PictureFilled" color="#409EFC" /> -->
+            <ElIcons v-if="!item.icon.includes('svg')" :name="item.icon" />
+            <el-icon v-else><SvgIcon :size="18" :name="item.icon.replace('svg-', '')" /></el-icon>
             <span>
               {{ $t('router.'+item.nameZh) }}
             </span>
@@ -13,8 +15,10 @@
             v-for="child in item.children"
             :key="child.path"
             :index="child.path"
-            @click="handleClick(child)">
-            <i :class="child.icon" />
+            @click="handleClick(child)"
+          >
+            <ElIcons v-if="!child.icon.includes('svg')" :name="child.icon" />
+            <el-icon v-else><SvgIcon :size="18" :name="child.icon.replace('svg-', '')" /></el-icon>
             {{ $t('router.'+child.nameZh) }}
           </el-menu-item>
         </el-sub-menu>
@@ -26,7 +30,8 @@
           :route="item.path"
           @click="handleClick(item)"
         >
-          <i :class="item.icon" />
+          <ElIcons v-if="!item.icon.includes('svg')" :name="item.icon" />
+          <el-icon v-else><SvgIcon :size="18" :name="item.icon.replace('svg-', '')" /></el-icon>
           <template #title> {{ $t('router.'+item.nameZh) }}</template>
         </el-menu-item>
       </div>
