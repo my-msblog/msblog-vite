@@ -1,18 +1,31 @@
 <template>
   <div>
+    <ComentList :list="data.asList" />
     <CommentInput />
-    Template
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, reactive } from 'vue';
 import CommentInput from './CommentInput.vue';
+import ComentList from './ComentList.vue';
 export default defineComponent({
   name: 'Comments',
-  components: { CommentInput },
+  components: { CommentInput, ComentList },
   setup() {
-    return {};
+    const data = reactive({
+      conmmentList: [],
+      asList: [
+        {
+          id: 1,
+          name: 'jack',
+          time: '12-2'
+        }
+      ],
+    });
+    return {
+      data,
+    };
   }
 });
 </script>

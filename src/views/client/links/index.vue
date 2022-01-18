@@ -3,8 +3,9 @@
     <div class="a_banner">
       <p class="a_title">{{ $t('bar.about') }}</p>
     </div>
-    this is categories
-    <Comments /> 
+    <FlowCard class="link-main">
+      <Comments /> 
+    </FlowCard>
     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
   </div>
 </template>
@@ -36,5 +37,11 @@ export default defineComponent({
     font-size: 24px;
     font-weight: bold;
   }
+}
+.link-main{
+  margin: 48px 200px 68px 200px;
+  padding: 15px 10px 10px !important;
+  display: flex;
+  justify-content: center;
 }
 </style>

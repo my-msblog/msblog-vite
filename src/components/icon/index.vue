@@ -1,6 +1,6 @@
 <template>
-  <svg :class="[prefixCls, spin && 'svg-icon-spin']" :style="getStyle" aria-hidden="true">
-    <use :xlink:href="symbolId" />
+  <svg :class="[prefixCls, 'svg-icon-spin']" :style="getStyle" aria-hidden="true">
+    <use :xlink:href="symbolId" :fill="color" />
   </svg>
 </template>
 
@@ -28,6 +28,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+     color: {
+      type: String,
+      default: '#000'
+    }
   },
   setup(props) {
     const { prefixCls } = useDesign('svg-icon');

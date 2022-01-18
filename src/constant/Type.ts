@@ -1,6 +1,9 @@
 export function NullArray<T> (): Array<T>{
   return [];
 }
+export function NullFunctionArry<T> (): () => T[]{
+  return () => [] as T[];
+}
 export function DataArray<T> (data: Array<T>): Array<T>{
   return data;
 }
@@ -12,6 +15,9 @@ export function NullData<T> (t: T ): T{
 }
 export function NullObject<T> (): T{
   return {} as T;
+}
+export function NullFunction (){
+  return () => {};
 }
 export interface FunctionType {
   (): void;

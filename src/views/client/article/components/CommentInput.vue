@@ -1,7 +1,7 @@
 <template>
   <div class="comment-input-wrapper">
     <div style="display: flex">
-      <el-avatar :size="38" :src="data.headImg"></el-avatar>
+      <el-avatar :size="32" :src="data.headImg"></el-avatar>
       <div class="ml-3">
         <div class="comment-input">
           <textarea
@@ -53,7 +53,7 @@ export default defineComponent({
   max-width: 900px;
   width: fit-content;
   background-color: white;
-  border: 1px solid rgba(144, 147, 153, 0.31);
+  //border: 1px solid rgba(144, 147, 153, 0.31);
   border-radius: 4px;
   padding: 10px;
   margin: 0 0 10px;
@@ -70,7 +70,7 @@ export default defineComponent({
         padding: 10px 5px 0 5px;
         min-height: 122px;
         resize: none;
-        min-width: 500px;
+        min-width: 700px;
         border: 1px solid #d9d9d9;
         border-radius: 4px;
       }
