@@ -1,5 +1,8 @@
+import title from './title';
+
 export default {
   zh: {
+    ...title.zh,
     back: '返回',
     account: '账号',
     password: '密码',
@@ -37,8 +40,10 @@ export default {
     archive: '归档文章',
     article_category: '文章分类',
     all_tags: '所有标签',
+
   },
   en: {
+    ...title.en,
     back: 'Back',
     account: 'Account',
     password: 'Password',

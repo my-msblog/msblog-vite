@@ -9,7 +9,6 @@
         v-for="(tag, index) in tags"
         :key="tag.name"
         size="small"
-        type="light"
         :closable="tag.name !== 'dashboard'"
         :disable-transitions="true"
         :hit="true"
