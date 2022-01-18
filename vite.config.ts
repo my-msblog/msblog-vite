@@ -7,6 +7,10 @@ import { createProxy } from './build/proxy';
 import { wrapperEnv } from './build/utils';
 import { htmlPlugin } from './build/plugins';
 
+function pathResolve(dir: string) {
+  return path.resolve(process.cwd(), '.', dir);
+}
+
 // https://vitejs.dev/config/
 export default ({mode }: ConfigEnv): UserConfig => {
   const root = process.cwd();
@@ -29,14 +33,22 @@ export default ({mode }: ConfigEnv): UserConfig => {
       'process.env': {}
     },
     resolve: {
-      alias: {
-          // 配置别名
-          '@': path.resolve(__dirname, './src'),
-          '@assets': path.resolve(__dirname,'./src/assets'),
-          '@components': path.resolve(__dirname,'./src/components'),
-          '@views': path.resolve(__dirname,'./src/views'),
-          '@store': path.resolve(__dirname,'./src/store'),
-        }
+      alias: [
+        {
+          find: 'vue-i18n',
+          replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
+        },
+        // /@/xxxx => src/xxxx
+        {
+          find: /@\//,
+          replacement: pathResolve('src') + '/',
+        },
+        // /#/xxxx => types/xxxx
+        {
+          find: /#\//,
+          replacement: pathResolve('types') + '/',
+        },
+      ],
     },
     server: {
       port: VITE_PORT,

@@ -1,16 +1,14 @@
 <template>
   <el-icon :size="size" :color="color">
-    <component :is="name"></component>
+    <Icon :icon="name" />
   </el-icon>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue';
-import * as Icons from '@element-plus/icons-vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'ElIcons',
-  components: Icons,
   props: {
     name: {
       type: String,

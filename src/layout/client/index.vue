@@ -7,7 +7,7 @@
       <TopBar class="header_main" />
     </el-header>
     <el-main class="c_main">
-      <el-backtop visibility-height="5" />
+      <el-backtop :visibility-height="5" />
       <transition name="el-fade-in-linear" :duration="10000">
         <el-scrollbar>
           <router-view />

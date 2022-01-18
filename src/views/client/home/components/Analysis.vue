@@ -22,8 +22,8 @@ export default defineComponent({
 import { reactive, onMounted } from 'vue';
 import { TrendCharts } from '@element-plus/icons-vue';
 interface AnalysisProps {
-  runtime: string,
-  total: number,
+  runtime?: string,
+  total?: number,
 }
 const props = withDefaults(defineProps<AnalysisProps>(), {
   runtime: '2021-11-02 00:00:00',

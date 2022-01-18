@@ -60,25 +60,42 @@ service.interceptors.response.use(
   }
 );
 
+
 const get: Get = async (opt ) => {
   const data = opt.data;
   const response = await service.get(opt.url, { data, ...opt.config });
-  return response.data;
+  try {
+    return response.data;
+  } catch {
+    throw new Error('Server error');
+  }
 };
 const post: Post = async (option ) => {
   const data = option.data;
   const res = await service.post(option.url, data, { ...option.config });
-  return res.data;
+  try {
+    return res.data;
+  } catch {
+    throw new Error('Server error');
+  }
 };
 const put: Put = async (option ) => {
   const data = option.data;
   const res = await service.post(option.url, data, { ...option.config });
-  return res.data;
+  try {
+    return res.data;
+  } catch {
+    throw new Error('Server error');
+  }
 };
 const deleteRequest: Delete = async (option ) => {
   const data = option.data;
   const res = await service.post(option.url, data, { ...option.config });
-  return res.data;
+  try {
+    return res.data;
+  } catch {
+    throw new Error('Server error');
+  }
 };
 
 const request = { get, post, put, deleteRequest };

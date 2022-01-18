@@ -35,8 +35,8 @@
           <el-icon :size="14"><SvgIcon name="type" size="15" color="#0000008a" /></el-icon>
           &nbsp;{{ item.typeName }}
           <div
-            v-for="( tag, index) in item.tagVOList"
-            :key="index"
+            v-for="( tag, i) in item.tagVOList"
+            :key="i"
             class="article-tag"
           >
             <span v-if="tagsExceeds(index)" class="separator">|</span>
@@ -59,14 +59,15 @@
 import { defineComponent, PropType, reactive } from 'vue';
 import { ArticleCardVO } from '@/api/model/client/home';
 import { Calendar, More, CollectionTag } from '@element-plus/icons-vue';
+import { NullArray } from '@/constant/Type';
 
 export default defineComponent({
   name: 'ArticleCards',
   components: { Calendar, CollectionTag, More },
   props: {
     articleList: {
-      type: [] as PropType<Array<ArticleCardVO>>,
-      default: [],
+      type: Object as PropType<Array<ArticleCardVO>>,
+      default: NullArray<ArticleCardVO>(),
     },
     loading: {
       type: Boolean as PropType<boolean>,
