@@ -1,48 +1,79 @@
 <template>
   <div class="comment-input-wrapper">
     <div style="display: flex">
-      <el-avatar :size="32" :src="data.headImg"></el-avatar>
+      <el-avatar
+        v-if="headShow"
+        style="min-width: 32px"
+        :size="32"
+        :src="data.headImg"
+      />
       <div class="ml-3">
         <div class="comment-input">
           <textarea
             v-model="data.commentContent"
             class="comment-textarea"
-            placeholder="留下点什么吧..."
+            :placeholder="textPlaceholder"
             auto-grow
             dense
-          />
+          ></textarea>
         </div>
       </div>
       <div class="emoji-container">
-        <SvgIcon name="santa-claus" :size="80"></SvgIcon>
-        <el-button
-          class="btn-submit"
-          size="small"
-          type="primary"
-          @click="handleSubmit"
-        >
-          提交
-        </el-button>
+        <SvgIcon name="santa-claus" :size="90"></SvgIcon>
+        <div class="btn-submit">
+          <el-button size="small" type="primary" @click="handleSubmit">
+            {{ $t('button.submit') }}
+          </el-button>
+          <el-button v-if="cancelShow" size="small" @click="handleCancel">
+            {{ $t('button.cancel') }}
+          </el-button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, reactive, PropType } from 'vue';
 export default defineComponent({
   name: 'CommentInput',
-  setup() {
+  props: {
+    cancelShow: {
+      type: Boolean as PropType<boolean>,
+      default: () => {
+        return true;
+      },
+    },
+    headShow: {
+      type: Boolean as PropType<boolean>,
+      default: () => {
+        return false;
+      },
+    },
+    textPlaceholder: {
+      type: String as PropType<string>,
+      default: () => {
+        return '留下点什么吧...';
+      }
+    }
+  },
+  emits: ['cancel'],
+  setup(_, { emit }) {
     const data = reactive({
       headImg: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
       commentContent: '',
     });
     const handleSubmit = () => {
-      // do 
+      // do
+    };
+    const handleCancel = () => {
+      data.commentContent = '';
+      emit('cancel');
     };
     return {
       data,
       handleSubmit,
+      handleCancel,
     };
   },
 });
@@ -84,9 +115,9 @@ export default defineComponent({
     margin-left: 20px;
     position: relative;
     .btn-submit {
-      bottom: 0;
-      position: absolute;
-      left: 0;
+      display: flex;
+      margin-top: 10px;
+      justify-content: center;
     }
   }
 }

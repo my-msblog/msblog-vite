@@ -10,6 +10,7 @@ export default {
     add: '添加',
     change: '修改',
     edit: '编辑',
+    submit: '提交',
   },
   en: {
     reset: 'Reset',
@@ -22,5 +23,6 @@ export default {
     add: 'Add',
     change: 'Change',
     edit: 'Edit',
+    submit: 'Submit',
   }
 };

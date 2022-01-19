@@ -15,10 +15,14 @@
       <div class="comment-action">
         <span @click="handleLike"><SvgIcon name="love" :color="chooseColor()" size="12" /></span>
         <span>12</span>
-        <span>回复</span>
+        <span @click="showReply">回复</span>
+      </div>
+      <div v-for="(childen, i) in item.children" :key="i">
+        ddd
       </div>
     </div>
   </div>
+  <CommentInput v-if="data.showReply" :cancel-show="true" />
 </template>
 
 <script lang="ts">
@@ -28,7 +32,9 @@ export default defineComponent({
 });
 </script>
 <script lang="ts" setup>
+import CommentInput from './CommentInput.vue';
 import { NullFunctionArry } from '@/constant/Type';
+import { CommentItem } from '@/api/model/client/article';
 interface CommentListProps {
   list?: Array<any>;
 }
@@ -37,6 +43,7 @@ const props = withDefaults(defineProps<CommentListProps>(), {
 });
 const data = reactive({
     love: false,
+    showReply: false,
 });
 const imgSrc = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png';
 const handleLike = () => {
@@ -44,6 +51,9 @@ const handleLike = () => {
 };
 const chooseColor = (): string => {
     return data.love ? '#f4364c': '#00000073';
+};
+const showReply = () => {
+  data.showReply = !data.showReply;
 };
 </script>
 

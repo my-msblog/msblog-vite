@@ -19,7 +19,11 @@ export default defineComponent({
         {
           id: 1,
           name: 'jack',
-          time: '12-2'
+          time: '12-2',
+          children: [{
+            id: 2,
+            name:'aa',
+          }]
         }
       ],
     });
