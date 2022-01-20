@@ -43,5 +43,8 @@ export default defineComponent({
   padding: 15px 10px 10px !important;
   display: flex;
   justify-content: center;
+  &:deep(.el-card__body){
+    flex: auto;
+  }
 }
 </style>

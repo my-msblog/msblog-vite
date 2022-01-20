@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="comment-wrapper">
     <ComentList :list="data.asList" />
     <CommentInput />
   </div>
@@ -9,6 +9,7 @@
 import { defineComponent, reactive } from 'vue';
 import CommentInput from './CommentInput.vue';
 import ComentList from './ComentList.vue';
+import { CommentItem } from '@/api/model/client/article';
 export default defineComponent({
   name: 'Comments',
   components: { CommentInput, ComentList },
@@ -17,15 +18,34 @@ export default defineComponent({
       conmmentList: [],
       asList: [
         {
-          id: 1,
-          name: 'jack',
-          time: '12-2',
+          id:1,
+          publisher: 'tom',
+          publishTime: new Date('2021-01-11 12:23'),
+          like: 12,
+          isLike: true,
+          context: 'comment',
           children: [{
-            id: 2,
-            name:'aa',
-          }]
-        }
-      ],
+            id:3,
+            publisher: 'jack',
+            publishTime: new Date('2021-02-11 12:23'),
+            like: 2,
+            isLike: false,
+            context: 'children',
+            children: [] as CommentItem[],
+          },
+          {
+            id:4,
+            publisher: 'jack',
+            publishTime: new Date('2021-02-11 12:23'),
+            like: 2,
+            isLike: false,
+            context: 'children',
+            children: [] as CommentItem[],
+          }
+          ],
+        },
+        
+      ] as CommentItem[],
     });
     return {
       data,
@@ -35,5 +55,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-
+.comment-wrapper{
+  flex: auto;
+}
 </style>

@@ -4,6 +4,6 @@ export interface CommentItem{
     children: CommentItem[];
     context: string;
     like: number;
-    parentId: number;
-    publisherId: number;
+    isLike: boolean;
+    publisher: string;
 }

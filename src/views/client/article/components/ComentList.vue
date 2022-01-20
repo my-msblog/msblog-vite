@@ -3,26 +3,41 @@
     <el-avatar :size="32" class="comment-avatar" :src="imgSrc"></el-avatar>
     <div class="comment-mate">
       <div class="comment-user">
-        <span>name</span>
-        <span class="comment-time">time</span>
+        <span>{{ item.publisher }}</span>
+        <span class="comment-time">{{ item.publishTime }}</span>
       </div>
       <p class="comment-text">
-        commnet textcommnet textcommnet textcommnet textcommnet textcommnet textcommnet textcommnet textcommnet text
-        ccommnet textcommnet textcommnet textcommnet textcommnet t <br>
-        commnet textcommnet textcommnet textcommnet textcommnet textcommnet textcommnet textcommnet textcommnet text
-        ccommnet textcommnet textcommnet textcommnet textcommnet t
+        {{ item.context }}
       </p>
       <div class="comment-action">
-        <span @click="handleLike"><SvgIcon name="love" :color="chooseColor()" size="12" /></span>
-        <span>12</span>
-        <span @click="showReply">回复</span>
+        <span @click="handleLike(item.id)">
+          <SvgIcon name="love" :color="chooseColor(item.isLike)" size="12" />
+        </span>
+        <span>{{ item.like }}</span>
+        <span class="reply-text" @click="showReply(item.publisher)">回复</span>
       </div>
-      <div v-for="(childen, i) in item.children" :key="i">
-        ddd
+      <el-divider class="divider" />
+      <div v-for="(children, i) in item.children" :key="i" class="children-comment">
+        <el-avatar :size="32" class="comment-avatar" :src="imgSrc" />
+        <div class="children-mate">
+          <div class="comment-user">
+            <span>{{ children.publisher }}</span>
+            <span class="comment-time">{{ children.publishTime }}</span>
+          </div>
+          <p class="comment-text">
+            {{ children.context }}
+          </p>
+          <div class="comment-action">
+            <span @click="handleLike(children.id)"><SvgIcon name="love" :color="chooseColor(children.isLike)" size="12" /></span>
+            <span>{{ children.like }}</span>
+            <span class="reply-text" @click="showReply(children.publisher)">回复</span>
+          </div>
+          <!-- <CommentInput v-if="data.showReply" :cancel-show="true" /> -->
+        </div>
       </div>
+      <CommentInput v-if="data.showReply" :cancel-show="true" :text-placeholder="data.placeholder" />
     </div>
   </div>
-  <CommentInput v-if="data.showReply" :cancel-show="true" />
 </template>
 
 <script lang="ts">
@@ -36,7 +51,7 @@ import CommentInput from './CommentInput.vue';
 import { NullFunctionArry } from '@/constant/Type';
 import { CommentItem } from '@/api/model/client/article';
 interface CommentListProps {
-  list?: Array<any>;
+  list?: Array<CommentItem>;
 }
 const props = withDefaults(defineProps<CommentListProps>(), {
   list: NullFunctionArry(),
@@ -44,28 +59,33 @@ const props = withDefaults(defineProps<CommentListProps>(), {
 const data = reactive({
     love: false,
     showReply: false,
+    placeholder: '回复',
 });
 const imgSrc = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png';
-const handleLike = () => {
+const handleLike = (id: number) => {
     data.love = !data.love;
 };
-const chooseColor = (): string => {
-    return data.love ? '#f4364c': '#00000073';
+const chooseColor = (flag: boolean): string => {
+    return flag ? '#f4364c': '#00000073';
 };
-const showReply = () => {
+const showReply = (responder: string) => {
+  data.placeholder = data.placeholder + ' @'+ responder;
   data.showReply = !data.showReply;
 };
+
 </script>
 
 <style lang="scss" scoped>
 .comment-main {
   display: flex;
+  text-align: left;
+  width: 100%;
   .comment-avatar {
     min-width: 32px;
   }
   .comment-mate {
-    margin-left: 15px;
-    text-align: left;
+    margin-left: 10px;
+    width: 100%;
     .comment-user{
       color: #00000073;
       font-size: 12px;
@@ -82,11 +102,26 @@ const showReply = () => {
     }
     .comment-action{
       margin-top: 8px;
+      color: #00000073;
       span{
         padding-right: 8px;
         cursor: pointer;
         font-size: 12px;
       }
+      .reply-text:hover{
+        color: #49b1f5;
+      }
+    }
+  }
+  .divider{
+    margin: 10px 0;
+  }
+  .children-comment{
+    padding: 10px 0;
+    display: flex;
+    .children-mate{
+      margin-left: 10px;
+      width: 100%;
     }
   }
 }

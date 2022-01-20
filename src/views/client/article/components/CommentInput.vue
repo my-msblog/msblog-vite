@@ -3,7 +3,7 @@
     <div style="display: flex">
       <el-avatar
         v-if="headShow"
-        style="min-width: 32px"
+        class="comment-input-avatar"
         :size="32"
         :src="data.headImg"
       />
@@ -82,16 +82,21 @@ export default defineComponent({
 <style lang="scss" scoped>
 .comment-input-wrapper {
   max-width: 900px;
-  width: fit-content;
+  width: 100%;
   background-color: white;
   //border: 1px solid rgba(144, 147, 153, 0.31);
   border-radius: 4px;
-  padding: 10px;
-  margin: 0 0 10px;
+  padding: 10px 10px 10px 0;
+  margin: auto;
+  .comment-input-avatar{
+    margin-right: 10px;
+    min-width: 32px
+  }
   .ml-3 {
-    margin-left: 15px;
+    flex: auto;
     .comment-input {
       position: relative;
+      flex: auto;
       .comment-textarea {
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Lato, Roboto,
           PingFang SC, Microsoft YaHei, sans-serif !important;
@@ -101,7 +106,7 @@ export default defineComponent({
         padding: 10px 5px 0 5px;
         min-height: 122px;
         resize: none;
-        min-width: 700px;
+        width: 100%;
         border: 1px solid #d9d9d9;
         border-radius: 4px;
       }
