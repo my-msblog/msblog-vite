@@ -35,7 +35,7 @@ export default defineComponent({
           },
           {
             id:4,
-            publisher: 'jack',
+            publisher: 'jac',
             publishTime: new Date('2021-02-11 12:23'),
             like: 2,
             isLike: false,

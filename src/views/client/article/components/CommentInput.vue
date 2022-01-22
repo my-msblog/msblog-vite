@@ -35,6 +35,11 @@
 
 <script lang="ts">
 import { defineComponent, reactive, PropType } from 'vue';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+import { useI18n } from 'vue-i18n';
+import { ElMessage } from 'element-plus';
+import { strIsEmpty } from '@/utils';
 export default defineComponent({
   name: 'CommentInput',
   props: {
@@ -57,14 +62,24 @@ export default defineComponent({
       }
     }
   },
-  emits: ['cancel'],
+  emits: ['submitComment','cancel'],
   setup(_, { emit }) {
+    const { t } = useI18n();
+    const router = useRouter();
+    const store = useStore();
     const data = reactive({
       headImg: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
       commentContent: '',
     });
     const handleSubmit = () => {
-      // do
+      if(strIsEmpty(store.getters.getToken)){
+        ElMessage.warning({
+          message:  t('message.must_login'),
+        });
+        return;
+      }
+      emit('submitComment', data.commentContent);
+      handleCancel();
     };
     const handleCancel = () => {
       data.commentContent = '';
