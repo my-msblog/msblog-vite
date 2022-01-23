@@ -63,7 +63,7 @@ export default defineComponent({
     }
   },
   emits: ['submitComment','cancel'],
-  setup(_, { emit }) {
+  setup( _, { emit }) {
     const { t } = useI18n();
     const router = useRouter();
     const store = useStore();
@@ -76,6 +76,7 @@ export default defineComponent({
         ElMessage.warning({
           message:  t('message.must_login'),
         });
+        router.push('/login');
         return;
       }
       emit('submitComment', data.commentContent);

@@ -59,6 +59,7 @@ import CommentInput from './CommentInput.vue';
 import { NullFunctionArry } from '@/constant/Type';
 import { CommentItem } from '@/api/model/client/article';
 import { strIsEmpty } from '@/utils';
+import { commentSubmit } from '@/api/client/article';
 
 const { t } = useI18n();
 interface CommentListProps {
@@ -94,13 +95,19 @@ const handleSubmit = (context: string) => {
     ElMessage.error({
       message: t('message.reply_error'),
     });
+    return;
   }
   const params = {
     commentId: data.currerResponderId,
     context: context,
     replyTime: new Date(),
-
   };
+  commentSubmit(params).then(() => {
+    // 重新渲染评论列表
+  }).catch((error) => {
+    console.log(error);
+    
+  });
 };
 </script>
 

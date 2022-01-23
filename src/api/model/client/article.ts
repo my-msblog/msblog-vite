@@ -7,3 +7,9 @@ export interface CommentItem{
     isLike: boolean;
     publisher: string;
 }
+
+export interface CommentSubmitDTO{
+    commentId: number;
+    context: string;
+    replyTime: Date;
+}
