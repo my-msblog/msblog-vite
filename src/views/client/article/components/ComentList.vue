@@ -21,7 +21,7 @@
         <el-avatar :size="32" class="comment-avatar" :src="imgSrc" />
         <div class="children-mate">
           <div class="comment-user">
-            <span>{{ children.publisher }}</span>
+            <span>{{ children.publisher + strIsEmpty(children.respondent) ? ' 回复 ' + children.respondent : '' }}</span>
             <span class="comment-time">{{ children.publishTime }}</span>
           </div>
           <p class="comment-text">
@@ -32,7 +32,6 @@
             <span>{{ children.like }}</span>
             <span class="reply-text" @click="showReply(children.publisher, children.id)">回复</span>
           </div>
-          <!-- <CommentInput v-if="data.showReply" :cancel-show="true" /> -->
         </div>
       </div>
       <CommentInput
@@ -57,13 +56,13 @@ import { useI18n } from 'vue-i18n';
 import { ElMessage } from 'element-plus';
 import CommentInput from './CommentInput.vue';
 import { NullFunctionArry } from '@/constant/Type';
-import { CommentItem } from '@/api/model/client/article';
+import { CommentItemVO } from '@/api/model/client/article';
 import { strIsEmpty } from '@/utils';
 import { commentSubmit } from '@/api/client/article';
 
 const { t } = useI18n();
 interface CommentListProps {
-  list?: Array<CommentItem>;
+  list?: Array<CommentItemVO>;
 }
 
 const props = withDefaults(defineProps<CommentListProps>(), {
@@ -104,6 +103,7 @@ const handleSubmit = (context: string) => {
   };
   commentSubmit(params).then(() => {
     // 重新渲染评论列表
+
   }).catch((error) => {
     console.log(error);
     

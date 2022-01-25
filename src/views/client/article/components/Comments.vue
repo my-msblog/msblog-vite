@@ -9,7 +9,7 @@
 import { defineComponent, reactive } from 'vue';
 import CommentInput from './CommentInput.vue';
 import ComentList from './ComentList.vue';
-import { CommentItem } from '@/api/model/client/article';
+import { CommentItemVO } from '@/api/model/client/article';
 export default defineComponent({
   name: 'Comments',
   components: { CommentInput, ComentList },
@@ -31,7 +31,7 @@ export default defineComponent({
             like: 2,
             isLike: false,
             context: 'children',
-            children: [] as CommentItem[],
+            children: [] as CommentItemVO[],
           },
           {
             id:4,
@@ -40,12 +40,12 @@ export default defineComponent({
             like: 2,
             isLike: false,
             context: 'children',
-            children: [] as CommentItem[],
+            children: [] as CommentItemVO[],
           }
           ],
         },
         
-      ] as CommentItem[],
+      ] as CommentItemVO[],
     });
     return {
       data,
