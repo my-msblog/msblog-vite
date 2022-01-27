@@ -21,7 +21,9 @@
         <el-avatar :size="32" class="comment-avatar" :src="imgSrc" />
         <div class="children-mate">
           <div class="comment-user">
-            <span>{{ children.publisher + strIsEmpty(children.respondent) ? ' 回复 ' + children.respondent : '' }}</span>
+            <span>
+              {{ !strIsEmpty(children.respondent) ? children.publisher + ' 回复 ' + children.respondent : children.publisher }}
+            </span>
             <span class="comment-time">{{ children.publishTime }}</span>
           </div>
           <p class="comment-text">
@@ -53,6 +55,8 @@ export default defineComponent({
 </script>
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'; 
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 import { ElMessage } from 'element-plus';
 import CommentInput from './CommentInput.vue';
 import { NullFunctionArry } from '@/constant/Type';
@@ -68,6 +72,11 @@ interface CommentListProps {
 const props = withDefaults(defineProps<CommentListProps>(), {
   list: NullFunctionArry(),
 });
+const emit = defineEmits<{
+  (event: 'reload'): void
+}>();
+const router = useRouter();
+const store = useStore();
 const data = reactive({
     love: false,
     showReply: false,
@@ -76,7 +85,13 @@ const data = reactive({
 });
 const imgSrc = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png';
 const handleLike = (id: number) => {
-    data.love = !data.love;
+  if(strIsEmpty(store.getters.getToken)){
+    ElMessage.warning({
+      message:  t('message.must_login'),
+    });
+    router.push('/login');
+    return;
+  }
 };
 const chooseColor = (flag: boolean): string => {
     return flag ? '#f4364c': '#00000073';

@@ -5,7 +5,7 @@ export function randomNum(Min: number, Max: number) {
 }
 
 export function strIsEmpty(str: string): boolean{
-    return str.length === 0 || str === undefined || str === null;
+    return  str === undefined || str === null || str.length === 0;
 }
 
 export function strNonEmpty(str: string): boolean{
