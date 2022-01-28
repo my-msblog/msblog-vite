@@ -1,5 +1,5 @@
 <template>
-  <div v-for="(item, index) in list" :key="index" class="comment-main">
+  <div v-for="(item) in list" :key="item.id" class="comment-main">
     <el-avatar :size="32" class="comment-avatar" :src="imgSrc"></el-avatar>
     <div class="comment-mate">
       <div class="comment-user">
@@ -14,7 +14,7 @@
           <SvgIcon name="love" :color="chooseColor(item.isLike)" size="12" />
         </span>
         <span>{{ item.like }}</span>
-        <span class="reply-text" @click="showReply(item.publisher, item.id, index)">回复</span>
+        <span class="reply-text" @click="showReply(item.publisher, item.id, item.id)">回复</span>
       </div>
       <el-divider class="divider" />
       <div v-for="(children, i) in item.children" :key="i" class="children-comment">
@@ -32,12 +32,12 @@
           <div class="comment-action">
             <span @click="handleLike(children.id)"><SvgIcon name="love" :color="chooseColor(children.isLike)" size="12" /></span>
             <span>{{ children.like }}</span>
-            <span class="reply-text" @click="showReply(children.publisher, children.id, index)">回复</span>
+            <span class="reply-text" @click="showReply(children.publisher, children.id, item.id)">回复</span>
           </div>
         </div>
       </div>
       <CommentInput
-        v-if="data.showReply && index === data.showIndex"
+        v-if="data.showReply && item.id === data.showIndex"
         :cancel-show="true"
         :text-placeholder="data.placeholder"
         @submit-comment="handleSubmit"
