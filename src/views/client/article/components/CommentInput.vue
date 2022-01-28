@@ -10,6 +10,7 @@
       <div class="ml-3">
         <div class="comment-input">
           <textarea
+            ref="textareaRef"
             v-model="data.commentContent"
             class="comment-textarea"
             :placeholder="textPlaceholder"
@@ -34,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, PropType } from 'vue';
+import { defineComponent, reactive, PropType, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { useI18n } from 'vue-i18n';
@@ -46,7 +47,7 @@ export default defineComponent({
     cancelShow: {
       type: Boolean as PropType<boolean>,
       default: () => {
-        return true;
+        return false;
       },
     },
     headShow: {
@@ -63,10 +64,11 @@ export default defineComponent({
     }
   },
   emits: ['submitComment','cancel'],
-  setup( _, { emit }) {
+  setup( props, { emit }) {
     const { t } = useI18n();
     const router = useRouter();
     const store = useStore();
+    const textareaRef = ref<HTMLElement>();
     const data = reactive({
       headImg: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
       commentContent: '',
@@ -86,8 +88,16 @@ export default defineComponent({
       data.commentContent = '';
       emit('cancel');
     };
+    onMounted(() => {
+      if(props.cancelShow){
+        console.log(textareaRef.value);
+        
+        textareaRef.value?.focus();
+      }
+    });
     return {
       data,
+      textareaRef,
       handleSubmit,
       handleCancel,
     };

@@ -14,7 +14,7 @@
           <SvgIcon name="love" :color="chooseColor(item.isLike)" size="12" />
         </span>
         <span>{{ item.like }}</span>
-        <span class="reply-text" @click="showReply(item.publisher, item.id)">回复</span>
+        <span class="reply-text" @click="showReply(item.publisher, item.id, index)">回复</span>
       </div>
       <el-divider class="divider" />
       <div v-for="(children, i) in item.children" :key="i" class="children-comment">
@@ -32,12 +32,12 @@
           <div class="comment-action">
             <span @click="handleLike(children.id)"><SvgIcon name="love" :color="chooseColor(children.isLike)" size="12" /></span>
             <span>{{ children.like }}</span>
-            <span class="reply-text" @click="showReply(children.publisher, children.id)">回复</span>
+            <span class="reply-text" @click="showReply(children.publisher, children.id, index)">回复</span>
           </div>
         </div>
       </div>
       <CommentInput
-        v-if="data.showReply"
+        v-if="data.showReply && index === data.showIndex"
         :cancel-show="true"
         :text-placeholder="data.placeholder"
         @submit-comment="handleSubmit"
@@ -80,6 +80,7 @@ const store = useStore();
 const data = reactive({
     love: false,
     showReply: false,
+    showIndex: -1,
     placeholder: t('message.reply'),
     currerResponderId: 0, 
 });
@@ -89,20 +90,22 @@ const handleLike = (id: number) => {
     ElMessage.warning({
       message:  t('message.must_login'),
     });
-    router.push('/login');
     return;
   }
 };
 const chooseColor = (flag: boolean): string => {
     return flag ? '#f4364c': '#00000073';
 };
-const showReply = (responder: string, responderId: number) => {
+const showReply = (responder: string, responderId: number, index: number) => {
   data.placeholder =  t('message.reply') + ' @'+ responder;
+  data.showIndex = index;
   data.showReply = true;
-  data.currerResponderId = 0;
+  data.currerResponderId = responderId;
 };
 const handleReplyCancel = () => {
   data.showReply = false;
+  data.currerResponderId = 0;
+  data.showIndex = -1;
 };
 const handleSubmit = (context: string) => {
   if (data.currerResponderId === 0){
