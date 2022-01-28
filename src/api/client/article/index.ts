@@ -6,6 +6,7 @@ import { PageInfo } from '@/api/model/core';
 enum API {
     commentSubmit = '',
     getCommentList = '/article/comment',
+    like = '',
 }
 
 export function commentSubmit(dto: CommentSubmitDTO){
@@ -18,5 +19,10 @@ export function getCommentList(dto: IdDTO){
     return request.post<PageInfo<CommentItemVO>>({
         url: API.getCommentList,
         data: dto,
+    });
+}
+export function giveLikes(){
+    return request.post<string>({
+        url: API.like,
     });
 }

@@ -92,6 +92,7 @@ const handleLike = (id: number) => {
     });
     return;
   }
+  
 };
 const chooseColor = (flag: boolean): string => {
     return flag ? '#f4364c': '#00000073';

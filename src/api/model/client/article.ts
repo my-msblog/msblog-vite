@@ -16,3 +16,10 @@ export interface CommentSubmitDTO{
     context: string;
     replyTime: Date;
 }
+
+export interface GiveLikesDTO{
+    userId: number;
+    commentId: number;
+    is: boolean;
+    time: Date;
+}
