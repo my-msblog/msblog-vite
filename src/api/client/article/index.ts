@@ -1,5 +1,5 @@
 import request from '@/utils/axios/request';
-import { CommentItemVO, CommentSubmitDTO }  from '@/api/model/client/article';
+import { CommentItemVO, CommentSubmitDTO, GiveLikesDTO }  from '@/api/model/client/article';
 import { IdDTO } from '@/api/model/custom';
 import { PageInfo } from '@/api/model/core';
 
@@ -21,8 +21,9 @@ export function getCommentList(dto: IdDTO){
         data: dto,
     });
 }
-export function giveLikes(){
+export function giveLikes(dto: GiveLikesDTO){
     return request.post<string>({
         url: API.like,
+        data: dto,
     });
 }
