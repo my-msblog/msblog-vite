@@ -6,7 +6,7 @@ import { PageInfo } from '@/api/model/core';
 enum API {
     commentSubmit = '',
     getCommentList = '/article/comment',
-    like = '',
+    like = '/article/comment/like',
 }
 
 export function commentSubmit(dto: CommentSubmitDTO){
