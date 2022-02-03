@@ -6,6 +6,7 @@ export interface CommentItemVO{
     children: CommentItemVO[];
     context: string;
     like: number;
+    commenterId: number;
     isLike: boolean;
     publisher: string;
     respondent: string;

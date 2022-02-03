@@ -10,7 +10,7 @@
         {{ item.context }}
       </p>
       <div class="comment-action">
-        <span @click="handleLike(item.id)">
+        <span @click="handleLike(item.id, item.commenterId, item.isLike)">
           <SvgIcon name="love" :color="chooseColor(item.isLike)" size="12" />
         </span>
         <span>{{ item.like }}</span>
@@ -30,7 +30,9 @@
             {{ children.context }}
           </p>
           <div class="comment-action">
-            <span @click="handleLike(children.id)"><SvgIcon name="love" :color="chooseColor(children.isLike)" size="12" /></span>
+            <span @click="handleLike(children.id, children.commenterId, children.isLike)">
+              <SvgIcon name="love" :color="chooseColor(children.isLike)" size="12" />
+            </span>
             <span>{{ children.like }}</span>
             <span class="reply-text" @click="showReply(children.publisher, children.id, item.id)">回复</span>
           </div>
@@ -60,9 +62,9 @@ import { useStore } from 'vuex';
 import { ElMessage } from 'element-plus';
 import CommentInput from './CommentInput.vue';
 import { NullFunctionArry } from '@/constant/Type';
-import { CommentItemVO } from '@/api/model/client/article';
+import { CommentItemVO, GiveLikesDTO } from '@/api/model/client/article';
 import { strIsEmpty } from '@/utils';
-import { commentSubmit } from '@/api/client/article';
+import { commentSubmit, giveLikes } from '@/api/client/article';
 
 const { t } = useI18n();
 interface CommentListProps {
@@ -85,13 +87,20 @@ const data = reactive({
     currerResponderId: 0, 
 });
 const imgSrc = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png';
-const handleLike = (id: number) => {
+const handleLike = (id: number, cId: number, is: boolean) => {
   if(strIsEmpty(store.getters.getToken)){
     ElMessage.warning({
       message:  t('message.must_login'),
     });
     return;
   }
+  const params: GiveLikesDTO = {
+    userId: cId,
+    commentId: id,
+    time: new Date,
+    is: is,
+  };
+  giveLikes(params).then();
   
 };
 const chooseColor = (flag: boolean): string => {
