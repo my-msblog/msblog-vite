@@ -10,8 +10,8 @@
         {{ item.context }}
       </p>
       <div class="comment-action">
-        <span @click="handleLike(item.id, item.commenterId, item.isLike)">
-          <SvgIcon name="love" :color="chooseColor(item.isLike)" size="12" />
+        <span @click="handleLike(item.id, item.commenterId)">
+          <SvgIcon name="love" :color="chooseColor(item.id)" size="12" />
         </span>
         <span>{{ item.like }}</span>
         <span class="reply-text" @click="showReply(item.publisher, item.id, item.id)">回复</span>
@@ -30,8 +30,8 @@
             {{ children.context }}
           </p>
           <div class="comment-action">
-            <span @click="handleLike(children.id, children.commenterId, children.isLike)">
-              <SvgIcon name="love" :color="chooseColor(children.isLike)" size="12" />
+            <span @click="handleLike(children.id, children.commenterId)">
+              <SvgIcon name="love" :color="chooseColor(children.id)" size="12" />
             </span>
             <span>{{ children.like }}</span>
             <span class="reply-text" @click="showReply(children.publisher, children.id, item.id)">回复</span>
@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, reactive, onMounted} from 'vue';
 export default defineComponent({
   name: 'CommentList',
 });
@@ -63,31 +63,41 @@ import { ElMessage } from 'element-plus';
 import CommentInput from './CommentInput.vue';
 import { NullFunctionArry } from '@/constant/Type';
 import { CommentItemVO, GiveLikesDTO } from '@/api/model/client/article';
-import { strIsEmpty } from '@/utils';
-import { commentSubmit, giveLikes } from '@/api/client/article';
+import { strIsEmpty, arryRemove } from '@/utils';
+import { commentSubmit, giveLikes, getLikeList } from '@/api/client/article';
 
-const { t } = useI18n();
-interface CommentListProps {
+interface IProps {
   list?: Array<CommentItemVO>;
 }
+interface IData{
+  love: boolean;
+  showReply: boolean;
+  showIndex: number;
+  placeholder: string;
+  currerResponderId: number;
+  isLikeList: number[];
+}
+const { t } = useI18n();
 
-const props = withDefaults(defineProps<CommentListProps>(), {
+const props = withDefaults(defineProps<IProps>(), {
   list: NullFunctionArry(),
 });
 const emit = defineEmits<{
-  (event: 'reload'): void
+  (event: 'reload'): void,
+  (event: 'changeLike', id: number, state: number): void,
 }>();
 const router = useRouter();
 const store = useStore();
-const data = reactive({
+const data = reactive<IData>({
     love: false,
     showReply: false,
     showIndex: -1,
     placeholder: t('message.reply'),
     currerResponderId: 0, 
+    isLikeList: [],
 });
 const imgSrc = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png';
-const handleLike = (id: number, cId: number, is: boolean) => {
+const handleLike = (id: number, uId: number) => {
   if(strIsEmpty(store.getters.getToken)){
     ElMessage.warning({
       message:  t('message.must_login'),
@@ -95,16 +105,30 @@ const handleLike = (id: number, cId: number, is: boolean) => {
     return;
   }
   const params: GiveLikesDTO = {
-    userId: cId,
+    userId: uId,
     commentId: id,
     time: new Date,
-    is: is,
+    is: isInLikeList(id),
   };
-  giveLikes(params).then();
-  
+  giveLikes(params).then(() => {
+    if (params.is){
+      arryRemove(data.isLikeList, id);
+      emit('changeLike', id, -1); 
+    } else{
+      data.isLikeList.push(id);
+      emit('changeLike', id, 1); 
+    }
+  });
 };
-const chooseColor = (flag: boolean): string => {
-    return flag ? '#f4364c': '#00000073';
+const isInLikeList = (id: number) => {
+  return data.isLikeList.some((item) => {
+      if(item === id){
+        return true;
+      }
+    });
+};
+const chooseColor = (id: number): string => {
+    return isInLikeList(id) ? '#f4364c': '#00000073';
 };
 const showReply = (responder: string, responderId: number, index: number) => {
   data.placeholder =  t('message.reply') + ' @'+ responder;
@@ -137,6 +161,11 @@ const handleSubmit = (context: string) => {
     
   });
 };
+onMounted(() => {
+  getLikeList({id: 1}).then((res) => {
+    data.isLikeList = res;
+  });
+});
 </script>
 
 <style lang="scss" scoped>

@@ -7,6 +7,7 @@ enum API {
     commentSubmit = '',
     getCommentList = '/article/comment',
     like = '/article/comment/like',
+    likeList = '/article/comment/like/list',
 }
 
 export function commentSubmit(dto: CommentSubmitDTO){
@@ -25,5 +26,11 @@ export function giveLikes(dto: GiveLikesDTO){
     return request.post<string>({
         url: API.like,
         data: dto,
+    });
+}
+export function getLikeList(data: IdDTO){
+    return request.post<Array<number>>({
+        url: API.likeList,
+        data: data,
     });
 }

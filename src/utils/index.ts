@@ -15,3 +15,12 @@ export function strNonEmpty(str: string): boolean{
 export function arryIsEmpty(arr: []): boolean{
     return arr.length === 0 || arr === undefined || arr === null;
 }
+
+export function arryRemove<T>(arr: T[], el: T): void{
+    const index: number = arr.indexOf(el);
+    if (index > -1) {
+        arr.splice(index, 1);
+        return;
+    }
+    throw new Error('no find element in Arry');
+}

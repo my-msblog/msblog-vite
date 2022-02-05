@@ -1,6 +1,6 @@
 <template>
   <div class="comment-wrapper">
-    <ComentList :list="data.conmmentList" />
+    <ComentList :list="data.conmmentList" @change-like="handleChangeLike" />
     <CommentInput />
   </div>
 </template>
@@ -18,49 +18,35 @@ export default defineComponent({
   setup() {
     const data = reactive({
       conmmentList: [] as CommentItemVO[],
-      asList: [
-        {
-          id:1,
-          publisher: 'tom',
-          publishTime: new Date('2021-01-11 12:23'),
-          like: 12,
-          isLike: true,
-          context: 'comment',
-          children: [{
-            id:3,
-            publisher: 'jack',
-            publishTime: new Date('2021-02-11 12:23'),
-            like: 2,
-            isLike: false,
-            context: 'children',
-            children: [] as CommentItemVO[],
-          },
-          {
-            id:4,
-            publisher: 'jac',
-            publishTime: new Date('2021-02-11 12:23'),
-            like: 2,
-            isLike: false,
-            context: 'children',
-            children: [] as CommentItemVO[],
-          }
-          ],
-        },
-        
-      ] as CommentItemVO[],
     });
     const handleInit = () => {
       getCommentList({id: 1}).then(res => {
         data.conmmentList = res.list;
-        console.log(data.conmmentList);
-        
       });
+    };
+    const handleChangeLike = (id: number, state: number) => {
+      try{
+          data.conmmentList.forEach((item) => {
+            if(item.id === id){
+              item.like += state;
+              throw new Error();
+            }
+            item.children.forEach((iChilden) => {
+              if(iChilden.id === id){
+                iChilden.like += state;
+                throw new Error();
+              }
+            });
+        });
+      }catch(e){//
+      }
     };
     onMounted(() => {
       handleInit();
     });
     return {
       data,
+      handleChangeLike,
     };
   }
 });
