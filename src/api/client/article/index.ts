@@ -4,12 +4,19 @@ import { IdDTO } from '@/api/model/custom';
 import { PageInfo } from '@/api/model/core';
 
 enum API {
+    getArticle = '',
     commentSubmit = '',
     getCommentList = '/article/comment',
     like = '/article/comment/like',
     likeList = '/article/comment/like/list',
 }
 
+export function getArticle(dto: IdDTO){
+    return request.post({
+        url: API.getArticle,
+        data: dto
+    });
+}
 export function commentSubmit(dto: CommentSubmitDTO){
     return request.post<string>({
         url: API.commentSubmit,

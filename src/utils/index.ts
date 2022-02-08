@@ -13,7 +13,7 @@ export function strNonEmpty(str: string): boolean{
 }
 
 export function arryIsEmpty(arr: []): boolean{
-    return arr.length === 0 || arr === undefined || arr === null;
+    return arr === undefined || arr === null || arr.length === 0;
 }
 
 export function arryRemove<T>(arr: T[], el: T): void{

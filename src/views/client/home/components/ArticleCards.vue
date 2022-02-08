@@ -4,6 +4,7 @@
       v-for="(item, index) in articleList"
       :key="item"
       class="card_main"
+      @click="handleArticle(item.id)"
     >
       <div class="article-cover" :class="isRight(index)">
         <el-skeleton
@@ -30,7 +31,7 @@
         </div>
         <div class="article-info">
           <el-icon :size="13"><Calendar /></el-icon>
-          &nbsp;{{ +item.createTime }}
+          &nbsp;{{ item.createTime }}
           <span class="separator">|</span>
           <el-icon :size="14"><SvgIcon name="type" size="15" color="#0000008a" /></el-icon>
           &nbsp;{{ item.typeName }}
@@ -57,8 +58,9 @@
 </template>
 <script lang="ts">
 import { defineComponent, PropType, reactive } from 'vue';
-import { ArticleCardVO } from '@/api/model/client/home';
+import { useRouter } from 'vue-router';
 import { Calendar, More, CollectionTag } from '@element-plus/icons-vue';
+import { ArticleCardVO } from '@/api/model/client/home';
 import { NullArray } from '@/constant/Type';
 
 export default defineComponent({
@@ -75,6 +77,7 @@ export default defineComponent({
     }
   },
   setup() {
+    const router = useRouter();
     const data = reactive({
       loading: true,
       tagsLengths: 2,
@@ -88,11 +91,15 @@ export default defineComponent({
     const showMore = (index: number): boolean => {
       return index > data.tagsLengths;
     };
+    const handleArticle = (id: number) => {
+      router.push('/article/'+ id);
+    };
     return {
       data,
       isRight,
       tagsExceeds,
       showMore,
+      handleArticle,
     };
   },
 });
@@ -120,6 +127,7 @@ export default defineComponent({
     height: 100%;
     display: flex;
     width: 45%;
+    cursor: pointer;
     .empty_div{
       display: flex;
       align-items: center;
