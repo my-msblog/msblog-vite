@@ -5,6 +5,7 @@ import 'element-plus/theme-chalk/display.css';
 import 'element-plus/dist/index.css';
 // custom animations
 import '@/styles/ann.css';
+import '@/styles/index.css';
 // svg global config
 import 'virtual:svg-icons-register';
 import SvgIcon from '@/components/icon/index.vue';

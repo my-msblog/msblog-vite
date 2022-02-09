@@ -11,7 +11,9 @@
           :sm="{span:20, offset:2}"
           :xs="24"
         >
-          <ArticleCards v-loading="data.loading" :article-list="data.articleList" :loading="data.loading" />
+          <keep-alive>
+            <ArticleCards v-loading="data.loading" :article-list="data.articleList" :loading="data.loading" />
+          </keep-alive>
           <RefreshRight
             v-if="data.showFailed"
             class="btn-reload"

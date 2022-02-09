@@ -4,9 +4,8 @@
       v-for="(item, index) in articleList"
       :key="item"
       class="card_main"
-      @click="handleArticle(item.id)"
     >
-      <div class="article-cover" :class="isRight(index)">
+      <div class="article-cover" :class="isRight(index)" @click="handleArticle(item.id)">
         <el-skeleton
           style="width: 100%"
           :loading="loading"
@@ -21,28 +20,33 @@
             </div>
           </template>
           <template #default>
-            <el-image class="on-hover" fit="fill" :src="item.cover" />
+            <el-image
+              class="on-hover"
+              fit="fill"
+              :src="item.cover"
+            />
           </template>
         </el-skeleton>
       </div>
       <div class="article-wrapper">
         <div>
-          <router-link to="" class="article-title">{{ item.title }}</router-link>
+          <router-link :to="'/article/'+ item.id" class="article-title">{{ item.title }}</router-link>
         </div>
         <div class="article-info">
-          <el-icon :size="13"><Calendar /></el-icon>
+          <el-icon><Calendar /></el-icon>
           &nbsp;{{ item.createTime }}
           <span class="separator">|</span>
-          <el-icon :size="14"><SvgIcon name="type" size="15" color="#0000008a" /></el-icon>
+          <SvgIcon name="type" :size="14" color="#0000008a" />
           &nbsp;{{ item.typeName }}
+          <span v-if="item.tagVOList.length > 0" class="separator">|</span>
           <div
             v-for="( tag, i) in item.tagVOList"
             :key="i"
             class="article-tag"
           >
-            <span v-if="tagsExceeds(index)" class="separator">|</span>
-            <el-icon v-if="tagsExceeds(index)"><CollectionTag /></el-icon>
-            <span v-if="tagsExceeds(index)">{{ tag.nameZh }}</span>
+            <el-icon v-if="tagsExceeds(i)"><CollectionTag /></el-icon>
+            <span v-if="tagsExceeds(i)">{{ tag.nameZh }}</span>
+            &nbsp;
           </div>
           <div v-if="showMore(item.tagVOList.length)" class="article-tag">
             <span class="separator">|</span>
@@ -161,10 +165,8 @@ export default defineComponent({
       display: flex;
       align-items: center;
       padding: 7px 0;
+      font-size: 12px;
       color: rgba(0,0,0,.54);
-      .separator{
-          margin: 0 6px;
-      }
       .article-tag{
         display: flex;
         align-items: center;

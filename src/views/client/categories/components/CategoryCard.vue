@@ -41,7 +41,6 @@
             name="clock"
             size="15"
             color="rgba(0,0,0,.54)"
-            style="position:relative; top:3px;"
           />
           {{ item.createTime }}
           <div class="info-tag">
@@ -49,7 +48,6 @@
               name="tag"
               size="15"
               color="rgba(0,0,0,.54)"
-              style="position:relative; top:3px;"
             />
             &nbsp;{{ item.typeName }}
           </div>
@@ -119,6 +117,7 @@ export default defineComponent({
       .info-tag{
         display: flex;
         float: right;
+        align-items: center;
         font-weight: bold;
       }
     }
