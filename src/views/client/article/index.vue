@@ -29,15 +29,27 @@
           </span>
         </div>
         <div class="second-line content-center">
+          <span class="item-center">
+            <el-icon>
+              <SvgIcon name="comment_line" :size="14" color="#fff" />
+            </el-icon>
+            &nbsp;
+            评论数：{{ data.article.likes }}
+          </span>
+          <span class="separator">|</span>
+          <span class="item-center">
+            <SvgIcon name="read" :size="14" color="#fff" />
+            &nbsp;
+            阅读数：
+          </span>
+        </div>
+        <div class="third-line content-center">
           <span v-for="(item, index) in data.article.tags" :key="index" class="item-center">
-            <SvgIcon name="tag" :size="12" color="#fff" />
+            <SvgIcon name="tag" :size="14" color="#fff" />
             &nbsp;
             {{ item.nameZh }}
             <span v-if="index !== data.article.tags.length -1" class="separator">|</span>
           </span>
-        </div>
-        <div class="third-line">
-          <span></span>
         </div>
       </div>
     </div>
@@ -68,6 +80,7 @@ export default defineComponent({
           cover: '../src/assets/background/archive.jpg',
           title: '文章标题',
           typeName: '类别',
+          likes: 12,
           tags: [
             {
               name: 'aaa',
@@ -118,15 +131,15 @@ export default defineComponent({
       margin: 20px 0 8px;
     }
     .article-info-main{
-      font-size: 14px;
+      font-size: 12px;
       .frist-line{
-        font-size: 90%;
+       
       }
       .second-line{
-        font-size: 90%;
+        
       }
       .third-line{
-        font-size: 90%;
+        
       }
     }
   }

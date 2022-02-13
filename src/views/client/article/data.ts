@@ -12,6 +12,7 @@ export interface IArticle{
     writer: string;
     contextMd: string;
     likes: number;
+    read: number;
     cover: string;
     tags: Array<TagVO>;
     type:  number;
