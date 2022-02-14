@@ -27,16 +27,17 @@ import {
   
     const state = reactive(context);
     const provideData = readonly ? defineReadonly(state) : state;
-    !createProvider && provide(key, native ? context : provideData);
-  
+      !createProvider && provide(key, native ? context : provideData);
     return {
       state,
     };
   }
   
   export function useContext<T>(key: InjectionKey<T>, native?: boolean): T;
+  // eslint-disable-next-line no-redeclare
   export function useContext<T>(key: InjectionKey<T>, defaultValue?: any, native?: boolean): T;
   
+  // eslint-disable-next-line no-redeclare
   export function useContext<T>(
     key: InjectionKey<T> = Symbol(),
     defaultValue?: any,
