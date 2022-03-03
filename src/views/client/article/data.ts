@@ -13,6 +13,7 @@ export interface IArticle{
     contextMd: string;
     likes: number;
     read: number;
+    wordCount: number;
     cover: string;
     tags: Array<TagVO>;
     type:  number;

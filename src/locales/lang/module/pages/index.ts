@@ -40,7 +40,11 @@ export default {
     archive: '归档文章',
     article_category: '文章分类',
     all_tags: '所有标签',
-
+    publish_time: '发表时间',
+    update_time: '更新时间',
+    word_count: '字数统计',
+    read_count: '阅读量',
+    comment_count: '评论数',
   },
   en: {
     ...title.en,
@@ -82,5 +86,10 @@ export default {
     archive: 'Archived Articles',
     article_category: 'Article Categories',
     all_tags: 'All Tags',
+    publish_time: 'Publish time',
+    update_time: 'Update time',
+    word_count: 'Word count',
+    read_count: 'Readings',
+    comment_count: 'Comments',
   }
 };

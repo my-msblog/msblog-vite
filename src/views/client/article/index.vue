@@ -3,13 +3,13 @@
     <div class="article-info">
       <div class="article-title">{{ data.article.title }}</div>
       <div class="article-info-main">
-        <div class="frist-line item-center">
+        <div class="frist-line all-center">
           <span class="item-center">
             <el-icon color="#fff">
               <Calendar />
             </el-icon>
             &nbsp;
-            {{ data.article.createTime }}
+            {{ $t('pages.publish_time') + ': ' + data.article.createTime }}
           </span>
           <span class="separator">|</span>
           <span class="item-center">
@@ -17,7 +17,7 @@
               <Refresh />
             </el-icon>
             &nbsp;
-            {{ data.article.updateTime }}
+            {{ $t('pages.update_time') + ': ' + data.article.updateTime }}
           </span>
           <span class="separator">|</span>
           <span class="item-center">
@@ -30,17 +30,27 @@
         </div>
         <div class="second-line content-center">
           <span class="item-center">
-            <el-icon>
-              <SvgIcon name="comment_line" :size="14" color="#fff" />
-            </el-icon>
+            <SvgIcon name="word_count" :size="14" color="#fff" />
             &nbsp;
-            评论数：{{ data.article.likes }}
+            {{ $t('pages.word_count') + ': ' + data.article.context.length }}
+          </span>
+          <span class="separator">|</span>
+          <span class="item-center">
+            <SvgIcon name="comment_line" :size="14" color="#fff" />
+            &nbsp;
+            {{ $t('pages.comment_count') + ': ' + data.article.likes }}
           </span>
           <span class="separator">|</span>
           <span class="item-center">
             <SvgIcon name="read" :size="14" color="#fff" />
             &nbsp;
-            阅读数：
+            {{ $t('pages.read_count') + ': ' + data.article.read }}
+          </span>
+          <span class="separator">|</span>
+          <span class="item-center">
+            <SvgIcon name="comment_line" :size="14" color="#fff" />
+            &nbsp;
+            {{ $t('pages.comment_count') + ': ' + data.article.writer }}
           </span>
         </div>
         <div class="third-line content-center">
@@ -54,13 +64,40 @@
       </div>
     </div>
   </div>
-  <div class="article-container"></div>
+  <div class="article-container">
+    <el-row :gutter="10">
+      <el-col 
+        :xl="18"
+        :md="18"
+        :sm="24"
+        :xs="24"
+      >
+        <FlowCard>
+          <MarkDown 
+            ref="markDownRef"
+            v-model:value="markDownValueRef"
+            @changed="handleChange"
+          />
+          <Viewer />
+        </FlowCard>
+      </el-col>
+      <el-col 
+        :xs="0"
+        :md="6"
+        :xl="6"
+        hidden-md-and-down
+      >
+        <FlowCard>dasdas</FlowCard>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script lang="ts">
 import { 
   defineComponent,
   onMounted, 
+  ref,
   reactive,
   computed,
 } from 'vue';
@@ -68,19 +105,30 @@ import { useRouter } from 'vue-router';
 import { Calendar, Refresh, CopyDocument } from '@element-plus/icons-vue';
 import { getArticle } from '@/api/client/article';
 import { IData, IArticle } from './data';
+import { MarkDownActionType } from '@/components/markdown';
 export default defineComponent({
   name: 'Article',
   components: { Calendar, Refresh,CopyDocument },
   setup() {
     const router = useRouter();
     const articleId = Number(router.currentRoute.value.params.id);
+    const markDownValueRef = ref<string>(`
+    # title
+
+    # content
+    `);
+    const markDownRef = ref<Nullable<MarkDownActionType>>(null);
     const data = reactive<IData>({
         commentList: [],
         article: {
           cover: '../src/assets/background/archive.jpg',
           title: '文章标题',
+          writer: 'ms',
           typeName: '类别',
           likes: 12,
+          read: 200,
+          context: '23123123123123123123',
+          contextMd: '# hello',
           tags: [
             {
               name: 'aaa',
@@ -100,22 +148,36 @@ export default defineComponent({
           
         });
     };
+  
     const wapperBackground = computed(() => {
         return 'background: url(' + data.article.cover +') center center / cover no-repeat';
     });
-
+    function handleChange(v: string) {
+      markDownValueRef.value = v;
+    }
+    function clearValue() {
+      markDownValueRef.value = '';
+    }
     onMounted(() => {
       document.title = data.article.title ? data.article.title : document.title;
     });
     return {
       data,
       wapperBackground,
+      markDownValueRef,
+      markDownRef,
+      handleChange,
+      clearValue,
     };
   }
 });
 </script>
 
 <style lang="scss" scoped>
+.el-row{
+  height: auto;
+  width: 100%;
+}
 .article-wapper{
   color: aliceblue;
   height: 350px;
@@ -133,12 +195,14 @@ export default defineComponent({
     .article-info-main{
       font-size: 12px;
       .frist-line{
-       
+       padding: 5px 0;
       }
       .second-line{
+        padding: auto;
         
       }
       .third-line{
+        padding: 5px 0;
         
       }
     }
