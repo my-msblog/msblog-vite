@@ -18,8 +18,12 @@ const props = withDefaults(defineProps<IProps>(),{
   context: '# title # content',
 });
 const rander = (md: string) => {
-  Vditor.preview(document.getElementById('preview') as HTMLDivElement,md);
+  Vditor.preview(document.getElementById('preview') as HTMLDivElement, md, {
+    hljs: { style: 'github' },
+    mode: 'light',
+  });
 };
+
 onMounted(() => {
   rander(props.context);
 });

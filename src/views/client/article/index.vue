@@ -76,9 +76,10 @@
           <MarkDown 
             ref="markDownRef"
             v-model:value="markDownValueRef"
+            placeholder="这是占位文本"
             @changed="handleChange"
           />
-          <Viewer :context="data.article.contextMd" />
+          <Viewer />
         </FlowCard>
       </el-col>
       <el-col 
