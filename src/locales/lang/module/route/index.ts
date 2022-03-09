@@ -17,6 +17,7 @@ export default {
     article_categories: '文章分类',
     menu_manage: '菜单管理',
     api_list: 'API列表',
+    write: '文章创作',
   },
   en: {
     dashboard: 'Dashboard',
@@ -35,5 +36,6 @@ export default {
     article_categories: 'Article Categories',
     menu_manage: 'Menu Manage',
     api_list: 'API List',
+    write: 'Create new article',
   }
 };

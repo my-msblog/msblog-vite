@@ -12,9 +12,7 @@
         style="width: 1.3em; height: 1.3em;"
       >
         <div @click="backHome">
-          <el-icon>
-            <monitor style="width: 1.3em; height: 1.3em; margin-right: 7px" />
-          </el-icon>
+          <ElIcons name="Monitor" />
         </div>
       </el-tooltip>
       <Language class="ah_change" />
@@ -40,12 +38,10 @@ import { ElMessage } from 'element-plus';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import { Monitor } from '@element-plus/icons-vue';
 import { openFullScreen } from '@/components/loading';
 
 export default defineComponent({
   name: 'AdminHeader',
-  components: { Monitor },
   setup() {
     const { t } = useI18n();
     const router = useRouter();

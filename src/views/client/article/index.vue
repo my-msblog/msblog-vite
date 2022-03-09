@@ -78,7 +78,7 @@
             v-model:value="markDownValueRef"
             @changed="handleChange"
           />
-          <Viewer />
+          <Viewer :context="data.article.contextMd" />
         </FlowCard>
       </el-col>
       <el-col 
@@ -142,6 +142,7 @@ export default defineComponent({
           createTime: new Date().toLocaleDateString(),
           updateTime: new Date().toLocaleDateString(),
         } as IArticle,
+
     });
     const handleArticle = () =>{
         getArticle({id: articleId}).then(res => {
