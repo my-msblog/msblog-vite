@@ -65,5 +65,8 @@ export default ({mode }: ConfigEnv): UserConfig => {
         }
       }
     },
+    optimizeDeps: {
+      include: ['@kangc/v-md-editor/lib/theme/github.js'],
+    },
   };
 };

@@ -1,5 +1,5 @@
 <template>
-  <div id="preview"></div>
+  <v-md-preview :text="context"></v-md-preview>
 </template>
 <script lang="ts" >
 import { defineComponent } from 'vue';
@@ -8,23 +8,12 @@ export default defineComponent({
 });
 </script>
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import Vditor from 'vditor';
-import 'vditor/dist/index.css';
+
 interface IProps {
   context: string;
 }
 const props = withDefaults(defineProps<IProps>(),{
   context: '# title # content',
 });
-const rander = (md: string) => {
-  Vditor.preview(document.getElementById('preview') as HTMLDivElement, md, {
-    hljs: { style: 'github' },
-    mode: 'light',
-  });
-};
 
-onMounted(() => {
-  rander(props.context);
-});
 </script>
