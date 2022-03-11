@@ -29,7 +29,6 @@ import { defineComponent, onMounted, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { getArticleByCategoryId } from '@/api/client/category';
 import { ArticleCategoryVO } from '@/api/model/client/category';
-import { getCategory } from '@/constant/enums/category';
 import CategoryCard from '../components/CategoryCard.vue';
 
 export default defineComponent({
@@ -50,7 +49,7 @@ export default defineComponent({
       });
     };
     onMounted(() => {
-      data.titleType = getCategory(Number(categoryId)) as string;
+      data.titleType = 'fen lei';
       handleInitCategotyList();
     });
     return {

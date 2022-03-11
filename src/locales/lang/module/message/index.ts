@@ -6,7 +6,9 @@ export default {
     announcement: '公告',
     website_situation: '网站情况',
     reply: '回复',
-    reply_error: '回复异常，请刷新重试'
+    reply_error: '回复异常，请刷新重试',
+    input_title: '请输入标题',
+    category_no_null: '文章分类不能为空',
   },
   en: {
     click_to_refresh: 'Click to refresh',
@@ -15,6 +17,8 @@ export default {
     announcement: 'Announcement',
     website_situation: 'Website situation',
     reply: 'Reply to',
-    reply_error: 'Reply Error: Plese refresh to try'
+    reply_error: 'Reply Error: Plese refresh to try',
+    input_title: 'Please input title',
+    category_no_null: 'The aritcle`s category is null',
   }
 };

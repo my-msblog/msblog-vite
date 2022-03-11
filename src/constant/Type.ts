@@ -35,7 +35,7 @@ export interface functionTypeBase<T>{
   (): T;
 }
 
-export interface BaseOptions<T>{
+export interface BaseOptions<T = string>{
   value?: string | number | T;
   label?: string | number | T;
   [key: string]: any;

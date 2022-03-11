@@ -74,10 +74,7 @@
       >
         <FlowCard>
           <MarkDown 
-            ref="markDownRef"
-            v-model:value="markDownValueRef"
             placeholder="这是占位文本"
-            @changed="handleChange"
           />
           <Viewer />
         </FlowCard>
@@ -106,19 +103,13 @@ import { useRouter } from 'vue-router';
 import { Calendar, Refresh, CopyDocument } from '@element-plus/icons-vue';
 import { getArticle } from '@/api/client/article';
 import { IData, IArticle } from './data';
-import { MarkDownActionType } from '@/components/markdown';
 export default defineComponent({
   name: 'Article',
   components: { Calendar, Refresh,CopyDocument },
   setup() {
     const router = useRouter();
     const articleId = Number(router.currentRoute.value.params.id);
-    const markDownValueRef = ref<string>(`
-    # title
 
-    # content
-    `);
-    const markDownRef = ref<Nullable<MarkDownActionType>>(null);
     const data = reactive<IData>({
         commentList: [],
         article: {
@@ -154,22 +145,13 @@ export default defineComponent({
     const wapperBackground = computed(() => {
         return 'background: url(' + data.article.cover +') center center / cover no-repeat';
     });
-    function handleChange(v: string) {
-      markDownValueRef.value = v;
-    }
-    function clearValue() {
-      markDownValueRef.value = '';
-    }
+
     onMounted(() => {
       document.title = data.article.title ? data.article.title : document.title;
     });
     return {
       data,
       wapperBackground,
-      markDownValueRef,
-      markDownRef,
-      handleChange,
-      clearValue,
     };
   }
 });
