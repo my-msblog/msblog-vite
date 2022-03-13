@@ -35,8 +35,13 @@ export interface functionTypeBase<T>{
   (): T;
 }
 
-export interface BaseOptions<T = string>{
+/**
+ * T value 值
+ * R lable 值
+ * 
+ */
+export interface BaseOptions<T = string, R = string>{
   value?: string | number | T;
-  label?: string | number | T;
+  label?: string | number | R;
   [key: string]: any;
 }

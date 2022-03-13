@@ -12,6 +12,7 @@ export default {
     edit: '编辑',
     submit: '提交',
     select_category: '选择分类',
+    select_tags: '选择标签',
   },
   en: {
     reset: 'Reset',
@@ -26,5 +27,6 @@ export default {
     edit: 'Edit',
     submit: 'Submit',
     select_category: 'Category',
+    select_tags: 'Tags',
   }
 };

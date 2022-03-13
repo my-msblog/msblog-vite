@@ -40,11 +40,11 @@
     <div class="md-tabs">
       <el-select
         v-model="data.tagValues"
+        class="tag-select"
         multiple
-        collapse-tags
-        collapse-tags-tooltip
-        placeholder="Select"
-        style="width: 240px"
+        
+        size="small"
+        :placeholder="$t('button.select_tags')"
       >
         <el-option
           v-for="(item,index) in data.tags"
@@ -60,11 +60,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, onMounted, reactive, watch } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import { useI18n } from 'vue-i18n';
 import { strIsEmpty } from '@/utils';
 import { BaseOptions } from '@/constant/Type';
+import { categoryList, tagsList } from '@/api/admin/context/write';
 export default defineComponent({
   name: 'ArticleWrite',
   setup() {
@@ -73,18 +74,9 @@ export default defineComponent({
       input: '',
       category: '',
       md: '# text',
-      categoryList: [
-        {
-          label: 'das',
-          value: 'ada'
-        },
-        {
-          label: 'q',
-          value: 'q'
-        },
-      ] as Array<BaseOptions>,
+      categoryList: [] as Array<BaseOptions<number, string>>,
       tagValues: [],
-      tags: [] as Array<BaseOptions>,
+      tags: [] as Array<BaseOptions<number, string>>,
     });
     const handleSubmit = () => {
       if (strIsEmpty(data.category)){
@@ -106,6 +98,25 @@ export default defineComponent({
       //   }
       // ).then();
     };
+    watch(
+      () => data.tagValues,
+      () =>{
+        if(data.tagValues.length > 3){
+          ElMessage.warning({
+            message: t('message.max_tags')
+          });
+          data.tagValues.pop();
+        }
+      } 
+    );
+    onMounted(()=> {
+      categoryList().then(res => {
+        data.categoryList = res;
+      });
+      tagsList().then(res => {
+        data.tags = res;
+      });
+    });
     return {
       data,
       handleSubmit,
@@ -116,7 +127,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .md-top {
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   height: 35px;
 }
 .submit {
@@ -124,5 +135,8 @@ export default defineComponent({
 }
 .md-tabs{
   padding: 3px;
+  .tag-select{
+    width: 100%;
+  }
 }
 </style>

@@ -9,6 +9,7 @@ export default {
     reply_error: '回复异常，请刷新重试',
     input_title: '请输入标题',
     category_no_null: '文章分类不能为空',
+    max_tags: '标签数量不能超过三个',
   },
   en: {
     click_to_refresh: 'Click to refresh',
@@ -20,5 +21,6 @@ export default {
     reply_error: 'Reply Error: Plese refresh to try',
     input_title: 'Please input title',
     category_no_null: 'The aritcle`s category is null',
+    max_tags: 'The number of tags can`t exceed three!',
   }
 };
