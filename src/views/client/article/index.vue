@@ -72,11 +72,8 @@
         :sm="24"
         :xs="24"
       >
-        <FlowCard>
-          <MarkDown 
-            placeholder="这是占位文本"
-          />
-          <Viewer />
+        <FlowCard class="md-card">
+          <Viewer class="md-view" :text="data.article.contextMd" />
         </FlowCard>
       </el-col>
       <el-col 
@@ -85,7 +82,9 @@
         :xl="6"
         hidden-md-and-down
       >
-        <FlowCard>dasdas</FlowCard>
+        <FlowCard id="noun-card" class="noun-card">
+         
+        </FlowCard>
       </el-col>
     </el-row>
   </div>
@@ -95,21 +94,22 @@
 import { 
   defineComponent,
   onMounted, 
-  ref,
   reactive,
   computed,
+  onUnmounted,
+  onBeforeUpdate,
 } from 'vue';
 import { useRouter } from 'vue-router';
 import { Calendar, Refresh, CopyDocument } from '@element-plus/icons-vue';
+
 import { getArticle } from '@/api/client/article';
 import { IData, IArticle } from './data';
 export default defineComponent({
   name: 'Article',
-  components: { Calendar, Refresh,CopyDocument },
+  components: { Calendar, Refresh, CopyDocument },
   setup() {
     const router = useRouter();
     const articleId = Number(router.currentRoute.value.params.id);
-
     const data = reactive<IData>({
         commentList: [],
         article: {
@@ -120,7 +120,8 @@ export default defineComponent({
           likes: 12,
           read: 200,
           context: '23123123123123123123',
-          contextMd: '# hello',
+          contextMd: `## hello  
+          ## t`,
           tags: [
             {
               name: 'aaa',
@@ -145,9 +146,19 @@ export default defineComponent({
     const wapperBackground = computed(() => {
         return 'background: url(' + data.article.cover +') center center / cover no-repeat';
     });
+    const init = ()=> {
 
+    };
+    
     onMounted(() => {
+
       document.title = data.article.title ? data.article.title : document.title;
+    });
+    onBeforeUpdate(() => {
+
+    });
+    onUnmounted(() => {
+      // tocbot.destroy();
     });
     return {
       data,
@@ -197,5 +208,8 @@ export default defineComponent({
   max-width: 1100px;
   margin: 48px auto 28px;
   display: flex;
+  .md-card{
+    text-align: left;
+  }
 }
 </style>
