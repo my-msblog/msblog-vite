@@ -45,6 +45,8 @@ export default {
     word_count: '字数统计',
     read_count: '阅读量',
     comment_count: '评论数',
+    dir:'目录',
+
   },
   en: {
     ...title.en,
@@ -91,5 +93,6 @@ export default {
     word_count: 'Word count',
     read_count: 'Readings',
     comment_count: 'Comments',
+    dir:'Dir',
   }
 };

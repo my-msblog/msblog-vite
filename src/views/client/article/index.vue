@@ -73,7 +73,12 @@
         :xs="24"
       >
         <FlowCard class="md-card">
-          <Viewer class="md-view" :text="data.article.contextMd" />
+          <Viewer 
+            class="md-view" 
+            :text="data.article.contextMd" 
+            ref="viewerRef"
+            @load-title="loadTitle"
+          />
         </FlowCard>
       </el-col>
       <el-col 
@@ -83,7 +88,19 @@
         hidden-md-and-down
       >
         <FlowCard id="noun-card" class="noun-card">
-         
+          <div class="item-center">
+            <ElIcons name="List" :size="18" style="font-size: 18px"/>
+            {{ $t('pages.dir') }}
+          </div>
+          <div
+            v-for="(anchor, index) in data.nouns"
+            :key="index"
+            :style="{ padding: `7px 0 7px ${anchor.indent * 20}px` }"
+             class="noun-title"
+            @click="handleAnchorClick(anchor)"
+          >
+            <a class="a-title" style="cursor: pointer">{{ anchor.title }}</a>
+          </div>
         </FlowCard>
       </el-col>
     </el-row>
@@ -93,76 +110,49 @@
 <script lang="ts">
 import { 
   defineComponent,
+  ref,
   onMounted, 
   reactive,
   computed,
-  onUnmounted,
-  onBeforeUpdate,
 } from 'vue';
 import { useRouter } from 'vue-router';
 import { Calendar, Refresh, CopyDocument } from '@element-plus/icons-vue';
-
 import { getArticle } from '@/api/client/article';
-import { IData, IArticle } from './data';
+import { IData, data as aData, TitleElement, } from './data';
 export default defineComponent({
   name: 'Article',
   components: { Calendar, Refresh, CopyDocument },
   setup() {
     const router = useRouter();
     const articleId = Number(router.currentRoute.value.params.id);
+    const viewerRef = ref();
     const data = reactive<IData>({
         commentList: [],
-        article: {
-          cover: '../src/assets/background/archive.jpg',
-          title: '文章标题',
-          writer: 'ms',
-          typeName: '类别',
-          likes: 12,
-          read: 200,
-          context: '23123123123123123123',
-          contextMd: `## hello  
-          ## t`,
-          tags: [
-            {
-              name: 'aaa',
-              nameZh: 'aaa',
-            },
-            {
-              name: 'aaa',
-              nameZh: 'aaa',
-            },
-          ],
-          createTime: new Date().toLocaleDateString(),
-          updateTime: new Date().toLocaleDateString(),
-        } as IArticle,
-
+        article: aData, 
+        nouns: [],
     });
     const handleArticle = () =>{
-        getArticle({id: articleId}).then(res => {
-          
-        });
+      getArticle({id: articleId}).then(res => { 
+      });
     };
-  
     const wapperBackground = computed(() => {
-        return 'background: url(' + data.article.cover +') center center / cover no-repeat';
+      return 'background: url(' + data.article.cover +') center center / cover no-repeat';
     });
-    const init = ()=> {
-
+    const loadTitle = (titles: TitleElement[]) => {
+      data.nouns = titles;
     };
-    
+    const handleAnchorClick = (params: TitleElement) => {
+        viewerRef.value.handleAnchorClick(params);
+    };
     onMounted(() => {
-
       document.title = data.article.title ? data.article.title : document.title;
-    });
-    onBeforeUpdate(() => {
-
-    });
-    onUnmounted(() => {
-      // tocbot.destroy();
     });
     return {
       data,
       wapperBackground,
+      viewerRef,
+      loadTitle,
+      handleAnchorClick,
     };
   }
 });
@@ -194,11 +184,9 @@ export default defineComponent({
       }
       .second-line{
         padding: auto;
-        
       }
       .third-line{
         padding: 5px 0;
-        
       }
     }
   }
@@ -211,5 +199,26 @@ export default defineComponent({
   .md-card{
     text-align: left;
   }
+  .noun-card{
+    position: sticky;
+    top: 57px;
+    text-align: left;
+    .noun-title{
+      width: 100%;
+      .a-title{
+        margin-left: 1em;
+      }
+    }
+    .noun-title:hover{
+      background:#00c4b6;
+      color: white;
+    }
+  }
+}
+.el-card{
+  overflow: auto;
+}
+.el-card__body{
+  padding: 10px;
 }
 </style>
