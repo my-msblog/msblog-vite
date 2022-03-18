@@ -20,3 +20,21 @@
 .text-right{
     text-align: right;
 }
+.affix-item{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 57px;
+}
+.mt5{
+    margin-top: 5px;
+}
+.mb5{
+    margin-bottom: 5px;
+}
+.m5{
+    margin: 5px;
+}
+.dashed-hr{
+    margin: 20px auto;
+    border: 2px dashed #d2ebfd;
+}

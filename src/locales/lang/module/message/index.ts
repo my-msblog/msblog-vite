@@ -10,6 +10,8 @@ export default {
     input_title: '请输入标题',
     category_no_null: '文章分类不能为空',
     max_tags: '标签数量不能超过三个',
+    claims_msg_one: '本博客所有文章除特别声明外，均采用',
+    claims_msg_two: '许可协议。转载请注明文章出处',
   },
   en: {
     click_to_refresh: 'Click to refresh',
@@ -22,5 +24,7 @@ export default {
     input_title: 'Please input title',
     category_no_null: 'The aritcle`s category is null',
     max_tags: 'The number of tags can`t exceed three!',
+    claims_msg_one: 'All posts on this blog, unless otherwise stated, are made using',
+    claims_msg_two: 'license Agreement. Please indicate the source of the article when reprinting',
   }
 };

@@ -1,7 +1,9 @@
 import title from './title';
+import card from './card';
 
 export default {
   zh: {
+    ...card.zh,
     ...title.zh,
     back: '返回',
     account: '账号',
@@ -49,6 +51,7 @@ export default {
 
   },
   en: {
+    ...card.en,
     ...title.en,
     back: 'Back',
     account: 'Account',

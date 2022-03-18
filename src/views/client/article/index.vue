@@ -65,10 +65,10 @@
     </div>
   </div>
   <div class="article-container">
-    <el-row :gutter="10">
+    <el-row :gutter="12">
       <el-col 
-        :xl="18"
-        :md="18"
+        :xl="19"
+        :md="19"
         :sm="24"
         :xs="24"
       >
@@ -79,29 +79,47 @@
             ref="viewerRef"
             @load-title="loadTitle"
           />
+          <el-descriptions 
+            class="copyright"
+            :column="1"
+            >
+            <el-descriptions-item :label="$t('pages.article_writer')">{{ data.article.writer }}</el-descriptions-item>
+            <el-descriptions-item :label="$t('pages.article_link')">{{ data.article.writer }}</el-descriptions-item>
+            <el-descriptions-item :label="$t('pages.copyright_claims')">
+              {{ $t('message.claims_msg_one') }}
+              <el-link/>
+            </el-descriptions-item>
+          </el-descriptions>
+          <hr class="dashed-hr"/>
+          <Comments class="comment" />
         </FlowCard>
       </el-col>
       <el-col 
         :xs="0"
-        :md="6"
-        :xl="6"
+        :md="5"
+        :xl="5"
         hidden-md-and-down
       >
-        <FlowCard id="noun-card" class="noun-card">
-          <div class="item-center">
-            <ElIcons name="List" :size="18" style="font-size: 18px"/>
-            {{ $t('pages.dir') }}
-          </div>
-          <div
-            v-for="(anchor, index) in data.nouns"
-            :key="index"
-            :style="{ padding: `7px 0 7px ${anchor.indent * 20}px` }"
-             class="noun-title"
-            @click="handleAnchorClick(anchor)"
-          >
-            <a class="a-title" style="cursor: pointer">{{ anchor.title }}</a>
-          </div>
-        </FlowCard>
+        <div class="affix-item">
+          <FlowCard class="noun-card">
+            <div class="item-center mb5">
+              <ElIcons name="List" :size="18" style="font-size: 18px"/>
+              {{ $t('pages.dir') }}
+            </div>
+            <div
+              v-for="(anchor, index) in data.nouns"
+              :key="index"
+              :style="{ padding: `7px 0 7px ${anchor.indent * 20}px` }"
+              class="noun-title"
+              @click="handleAnchorClick(anchor)"
+            >
+              <a class="a-title" style="cursor: pointer">{{ anchor.title }}</a>
+            </div>
+          </FlowCard>
+          <FlowCard class="recommend-card">
+
+          </FlowCard>
+        </div>
       </el-col>
     </el-row>
   </div>
@@ -118,10 +136,11 @@ import {
 import { useRouter } from 'vue-router';
 import { Calendar, Refresh, CopyDocument } from '@element-plus/icons-vue';
 import { getArticle } from '@/api/client/article';
+import Comments from './components/Comments.vue';
 import { IData, data as aData, TitleElement, } from './data';
 export default defineComponent({
   name: 'Article',
-  components: { Calendar, Refresh, CopyDocument },
+  components: { Calendar, Refresh, CopyDocument, Comments },
   setup() {
     const router = useRouter();
     const articleId = Number(router.currentRoute.value.params.id);
@@ -198,13 +217,19 @@ export default defineComponent({
   display: flex;
   .md-card{
     text-align: left;
+    .comment{
+      margin-top: 20px;
+      padding: 10px;
+    }
+    .copyright{
+      border: 1px solid #eee;
+      padding: 0.625rem 1rem;
+    }
   }
   .noun-card{
-    position: sticky;
-    top: 57px;
     text-align: left;
+    
     .noun-title{
-      width: 100%;
       .a-title{
         margin-left: 1em;
       }
@@ -214,11 +239,15 @@ export default defineComponent({
       color: white;
     }
   }
+  .recommend-card{
+    margin-top: 10px;
+  }
 }
 .el-card{
   overflow: auto;
-}
-.el-card__body{
+  &:deep(.el-card__body){
   padding: 10px;
 }
+}
+
 </style>
