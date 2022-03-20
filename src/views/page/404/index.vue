@@ -1,348 +1,147 @@
 <template>
-  <body class="bg-purple">
-    <div class="stars">
-      <div class="custom-navbar">
-        <div class="brand-logo">
-          <img src="http://salehriaz.com/404Page/img/logo.svg" width="80px">
-        </div>
-        <div class="navbar-links">
-          <ul>
-            <li><a href="http://salehriaz.com/404Page/404.html" target="_blank">Home</a></li>
-            <li><a href="http://salehriaz.com/404Page/404.html" target="_blank">About</a></li>
-            <li><a href="http://salehriaz.com/404Page/404.html" target="_blank">Features</a></li>
-            <li><a href="http://salehriaz.com/404Page/404.html" class="btn-request" target="_blank">Request A Demo</a></li>
-          </ul>
-        </div>
+<div class="top">
+  <TopBar style="font-color:black"/>
+  </div>
+
+<div class="bg">
+      <p class="p404">404</p>
+      <div class="frame">
+        <div class="frame-glass"></div>
+        <p class="p1">{{ t('message.no_find') }}</p>
+        <button class="return_home" @click="backHome">{{ t('message.go_home') }}<span></span></button>
+        <button class="return_home" @click="handleGoBack">{{ t('message.return') }}<span></span></button>
       </div>
-      <div class="central-body">
-        <img class="image-404" src="http://salehriaz.com/404Page/img/404.svg" width="300px">
-        <!-- <a href="http://salehriaz.com/404Page/404.html" class="btn-go-home" target="_blank">GO BACK HOME</a> -->
-        <div>
-          <router-link to="/home"  class="btn-go-home">{{ $t('message.go_blog_home_back') }}</router-link>
-          <button @click="handleGoBack" class="btn-go-home">{{ $t('message.go_back') }}</button>
-        </div>
-      </div>
-      <div>
-        <!-- <router-link to="/home"  class="btn-go-home">{{ $t('message.go_blog_home_back') }}</router-link>
-        <el-button @click="handleGoBack" class="btn-go-home">{{ $t('message.go_back') }}</el-button> -->
-        <!-- <router-link @click="handleGoBack" class="btn-go-home">{{ $t('message.go_back') }}</router-link> -->
-      </div>
-      <div class="objects">
-        <img class="object_rocket" src="http://salehriaz.com/404Page/img/rocket.svg" width="40px">
-        <div class="earth-moon">
-          <img class="object_earth" src="http://salehriaz.com/404Page/img/earth.svg" width="100px">
-          <moon class="object_moon" width="80px" />
-        </div>
-        <div class="box_astronaut">
-          <astronaut class="object_astronaut" width="100px" />
-        </div>
-      </div>
-      <div class="glowing_stars">
-        <div class="star" />
-        <div class="star" />
-        <div class="star" />
-        <div class="star" />
-        <div class="star" />
-      </div>
-    </div>
-  </body>
+</div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useRouter } from 'vue-router';
-
+import { useI18n } from 'vue-i18n';
+import TopBar from '@/layout/client/components/TopBar.vue';
 export default defineComponent({
-  name: 'Page404',
+  name: 'Page404', 
+  components:{ TopBar},
   setup() {
+    const { t } = useI18n();
     const router = useRouter();
-    const handleGoBack = function() {
+    const handleGoBack = () =>{
       router.back();
     };
+    const backHome=()=>{
+      router.push('/home');
+    }
     return {
+      t,
       router,
       handleGoBack,
+      backHome,
     };
   }
 });
 </script>
-
-<style scoped>
-@import "../../../styles/fonts.css";
-@-moz-keyframes rocket-movement { 100% {-moz-transform: translate(1200px,-600px);} }
-@-webkit-keyframes rocket-movement {100% {-webkit-transform: translate(1200px,-600px); } }
-@keyframes rocket-movement { 100% {transform: translate(1200px,-600px);} }
-@-moz-keyframes spin-earth { 100% { -moz-transform: rotate(-360deg); transition: transform 20s;  } }
-@-webkit-keyframes spin-earth { 100% { -webkit-transform: rotate(-360deg); transition: transform 20s;  } }
-@keyframes spin-earth{ 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); transition: transform 20s; } }
-
-@-moz-keyframes move-astronaut {
-  100% { -moz-transform: translate(-160px, -160px);}
-}
-@-webkit-keyframes move-astronaut {
-  100% { -webkit-transform: translate(-160px, -160px);}
-}
-@keyframes move-astronaut{
-  100% { -webkit-transform: translate(-160px, -160px); transform:translate(-160px, -160px); }
-}
-@-moz-keyframes rotate-astronaut {
-  100% { -moz-transform: rotate(-720deg);}
-}
-@-webkit-keyframes rotate-astronaut {
-  100% { -webkit-transform: rotate(-720deg);}
-}
-@keyframes rotate-astronaut{
-  100% { -webkit-transform: rotate(-720deg); transform:rotate(-720deg); }
-}
-
-@-moz-keyframes glow-star {
-  40% { -moz-opacity: 0.3;}
-  90%,100% { -moz-opacity: 1; -moz-transform: scale(1.2);}
-}
-@-webkit-keyframes glow-star {
-  40% { -webkit-opacity: 0.3;}
-  90%,100% { -webkit-opacity: 1; -webkit-transform: scale(1.2);}
-}
-@keyframes glow-star{
-  40% { -webkit-opacity: 0.3; opacity: 0.3;  }
-  90%,100% { -webkit-opacity: 1; opacity: 1; -webkit-transform: scale(1.2); transform: scale(1.2); border-radius: 999999px;}
-}
-
-.spin-earth-on-hover{
-
-  transition: ease 200s !important;
-  transform: rotate(-3600deg) !important;
-}
-
-html, body{
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  font-family: 'Dosis', sans-serif;
-  font-weight: 300;
-  -webkit-user-select: none; /* Safari 3.1+ */
-  -moz-user-select: none; /* Firefox 2+ */
-  -ms-user-select: none; /* IE 10+ */
-  user-select: none; /* Standard syntax */
-}
-
-.bg-purple{
-  background-size: cover;
-  background: url(http://salehriaz.com/404Page/img/bg_purple.png) repeat-x left top;
-  height: 100%;
-  background-color: #473462;
-  overflow: hidden;
-
-}
-
-.custom-navbar{
-  padding-top: 15px;
-}
-
-.brand-logo{
-  margin-left: 25px;
-  margin-top: 5px;
-  display: inline-block;
-}
-
-.navbar-links{
-  display: inline-block;
-  float: right;
-  margin-right: 15px;
-  text-transform: uppercase;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
-
-li {
-  float: left;
-  padding: 0px 15px;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  letter-spacing : 2px;
-  font-size: 12px;
-
-  -webkit-transition: all 0.3s ease-in;
-  -moz-transition: all 0.3s ease-in;
-  -ms-transition: all 0.3s ease-in;
-  -o-transition: all 0.3s ease-in;
-  transition: all 0.3s ease-in;
-}
-
-li a:hover {
-  color: #ffcb39;
-}
-
-.btn-request{
-  padding: 10px 25px;
-  border: 1px solid #FFCB39;
-  border-radius: 100px;
-  font-weight: 400;
-}
-
-.btn-request:hover{
-  background-color: #FFCB39;
-  color: #fff;
-  transform: scale(1.05);
-  box-shadow: 0px 20px 20px rgba(0,0,0,0.1);
-}
-
-.btn-go-home{
-  position: relative;
-  z-index: 200;
-  margin: 15px auto;
-  width: 100px;
-  padding: 10px 15px;
-  border: 1px solid #FFCB39;
-  border-radius: 100px;
-  font-weight: 400;
-  display: block;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  letter-spacing : 2px;
-  font-size: 11px;
-
-  -webkit-transition: all 0.3s ease-in;
-  -moz-transition: all 0.3s ease-in;
-  -ms-transition: all 0.3s ease-in;
-  -o-transition: all 0.3s ease-in;
-  transition: all 0.3s ease-in;
-}
-
-.btn-go-home:hover{
-  background-color: #FFCB39;
-  color: #fff;
-  transform: scale(1.05);
-  box-shadow: 0px 20px 20px rgba(0,0,0,0.1);
-}
-
-.central-body{
-  padding: 17% 5% 10% 5%;
-  text-align: center;
-}
-
-.objects img{
-  z-index: 90;
-  pointer-events: none;
-}
-
-.object_rocket{
-  z-index: 95;
-  position: absolute;
-  transform: translateX(-50px);
-  top: 75%;
-  pointer-events: none;
-  animation: rocket-movement 200s linear infinite both running;
-}
-
-.object_earth{
-  position: absolute;
-  top: 20%;
-  left: 15%;
-  z-index: 90;
-}
-
-.object_moon{
-  position: absolute;
-  top: 12%;
-  left: 25%;
-}
-
-.earth-moon{
-
-}
-
-.object_astronaut{
-  animation: rotate-astronaut 200s infinite linear both alternate;
-}
-
-.box_astronaut{
-  z-index: 110 !important;
-  position: absolute;
-  top: 60%;
-  right: 20%;
-  will-change: transform;
-  animation: move-astronaut 50s infinite linear both alternate;
-}
-
-.image-404{
-  position: relative;
-  z-index: 100;
-  pointer-events: none;
-}
-
-.stars{
-  background-size: contain;
-  background: url(http://salehriaz.com/404Page/img/overlay_stars.svg) repeat left top;
-}
-
-.glowing_stars .star{
-  position: absolute;
-  border-radius: 100%;
-  background-color: #fff;
-  width: 3px;
-  height: 3px;
-  opacity: 0.3;
-  will-change: opacity;
-}
-
-.glowing_stars .star:nth-child(1){
-  top: 80%;
-  left: 25%;
-  animation: glow-star 2s infinite ease-in-out alternate 1s;
-}
-.glowing_stars .star:nth-child(2){
-  top: 20%;
-  left: 40%;
-  animation: glow-star 2s infinite ease-in-out alternate 3s;
-}
-.glowing_stars .star:nth-child(3){
-  top: 25%;
-  left: 25%;
-  animation: glow-star 2s infinite ease-in-out alternate 5s;
-}
-.glowing_stars .star:nth-child(4){
-  top: 75%;
-  left: 80%;
-  animation: glow-star 2s infinite ease-in-out alternate 7s;
-}
-.glowing_stars .star:nth-child(5){
-  top: 90%;
-  left: 50%;
-  animation: glow-star 2s infinite ease-in-out alternate 9s;
-}
-
-@media only screen and (max-width: 600px){
-  .navbar-links{
-    display: none;
+<style lang="scss" scoped>
+// ::v-deep .text{
+//   color:black !important; 
+// }
+  .top{
+    width: 100%;
+    height: 54px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding: 0;
   }
-
-  .custom-navbar{
-    text-align: center;
+  .bg{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    background:url(/src/assets/background/404bg.jpg) no-repeat fixed center center;
+        .p404{
+          width: 100%;
+          font-size:300px;
+          margin: auto;
+          color: white;
+        }
+        .frame{
+          height: 250px;
+          border-radius:40px;
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          box-shadow: 0 10px 20px rgb(0 0 0 / 50%);
+          overflow: hidden;
+          z-index: 1;
+          position: relative;
+          .frame-glass{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            filter: blur(5px);
+            z-index: -1;
+            margin: -30px;
+            background-image: url(/src/assets/background/404bg.jpg);
+            background-position: center top;
+            background-size: cover;
+            background-attachment: fixed;
+          }
+          .p1{
+            font-size:30px;
+            width: 100%;
+            margin: auto;
+            color: white;
+          }
+          .return_home{
+            margin: auto;
+            margin-top:35px;
+            border:none;
+            display:block;
+            position: relative;
+            padding:0.5em 2.2em;
+            font-size:25px;
+            background: transparent;
+            cursor:pointer;
+            user-select:none;
+            color:white;
+            overflow:hidden;
+            z-index: 0;
+            border-radius:30px;
+          }
+          .return_home span{
+            position:absolute;
+            left:0;
+            top:0;
+            width:95%;
+            height:80%;
+            background: transparent;
+            z-index:-1;
+            border:4px solid white;
+            border-radius:30px;
+          }
+          .return_home span::before{
+            content:"";
+            position:absolute;
+            width:8%;
+            height:500%;
+            // background: rgba(255, 255, 255, 0); box-shadow: 0px 0px 0px 0px;
+            top: 50%;
+            left: 50%;
+            transform:translate(-50%,-50%) rotate(-60deg);
+            transition: all .3s;
+          }
+          .return_home:hover span::before,.return_home:focus span::before{
+            transform:translate(-50%,-50%) rotate(-90deg);
+            width:100%;
+            background: linear-gradient(#845EC2,#2C73D2,#0081CF,#0089BA,#008E9B,#008F7A);
+          }
+          .return_home:hover,.return_home:focus{
+            color:white;
+          }
+        }
   }
-
-  .brand-logo img{
-    width: 120px;
-  }
-
-  .box_astronaut{
-    top: 70%;
-  }
-
-  .central-body{
-    padding-top: 25%;
-  }
-}
 </style>

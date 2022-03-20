@@ -12,6 +12,9 @@ export default {
     max_tags: '标签数量不能超过三个',
     claims_msg_one: '本博客所有文章除特别声明外，均采用',
     claims_msg_two: '许可协议。转载请注明文章出处',
+    no_find:'抱歉，您所访问的页面出现了问题！',
+    go_home:'回到主页',
+    return:'回到上一级',
   },
   en: {
     click_to_refresh: 'Click to refresh',
@@ -26,5 +29,8 @@ export default {
     max_tags: 'The number of tags can`t exceed three!',
     claims_msg_one: 'All posts on this blog, unless otherwise stated, are made using',
     claims_msg_two: 'license Agreement. Please indicate the source of the article when reprinting',
+    no_find:'Sorry, there is a problem with the page you are visiting!',
+    go_home:'HOME',
+    return:'RETURN',
   }
 };
