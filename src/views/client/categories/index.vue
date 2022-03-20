@@ -67,7 +67,6 @@ export default defineComponent({
   }
 });
 </script>
-// 123
 <style lang="scss" scoped>
 .a_banner{
   height: 350px;
