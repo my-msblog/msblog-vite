@@ -1,4 +1,4 @@
-import { BaseOptions } from '@/constant/Type';
+import { BaseOptions, CustomOptions } from '@/constant/Type';
 import request from '@/utils/axios/request';
 
 enum API {
@@ -7,13 +7,13 @@ enum API {
 }
 
 export function categoryList(){
-    return request.get<Array<BaseOptions<number, string>>>({
+    return request.get<Array<CustomOptions>>({
         url: API.categoryList
     });
 }
 
 export function tagsList(){
-    return request.get<Array<BaseOptions<number, string>>>({
+    return request.get<Array<CustomOptions>>({
         url: API.tags
     });
 }

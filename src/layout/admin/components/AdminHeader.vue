@@ -6,7 +6,6 @@
     </div>
     <div class="ah_right">
       <el-tooltip
-        effect="dark"
         :content="$t('message.blog_home')"
         placement="bottom-start"
         style="width: 1.3em; height: 1.3em;"
@@ -38,7 +37,7 @@ import { ElMessage } from 'element-plus';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import { openFullScreen } from '@/components/loading';
+import { openFullScreen } from '@/hooks/loading';
 
 export default defineComponent({
   name: 'AdminHeader',

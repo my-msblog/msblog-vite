@@ -13,6 +13,8 @@ export default {
     submit: '提交',
     select_category: '选择分类',
     select_tags: '选择标签',
+    like: '点赞',
+    reward: '打赏'
   },
   en: {
     reset: 'Reset',
@@ -28,5 +30,7 @@ export default {
     submit: 'Submit',
     select_category: 'Category',
     select_tags: 'Tags',
+    like: 'Like',
+    reward: 'Reward'
   }
 };

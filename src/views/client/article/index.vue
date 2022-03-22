@@ -67,10 +67,8 @@
   <div class="article-container">
     <el-row :gutter="12">
       <el-col 
-        :xl="19"
-        :md="19"
-        :sm="24"
         :xs="24"
+        :sm="19" 
       >
         <FlowCard class="md-card">
           <Viewer 
@@ -83,22 +81,46 @@
             class="copyright"
             :column="1"
             >
-            <el-descriptions-item :label="$t('pages.article_writer')">{{ data.article.writer }}</el-descriptions-item>
-            <el-descriptions-item :label="$t('pages.article_link')">{{ data.article.writer }}</el-descriptions-item>
-            <el-descriptions-item :label="$t('pages.copyright_claims')">
+            <el-descriptions-item label-class-name="lable" :label="$t('pages.article_writer') + '：'">
+              {{ data.article.writer }}
+            </el-descriptions-item>
+            <el-descriptions-item label-class-name="lable" :label="$t('pages.article_link') + '：'">
+              <el-link 
+                type="info" 
+                :href="articleUrl()" 
+                target="_blank">
+                {{ articleUrl() }}
+              </el-link>
+            </el-descriptions-item>
+            <el-descriptions-item label-class-name="lable" :label="$t('pages.copyright_claims') + '：'">
               {{ $t('message.claims_msg_one') }}
-              <el-link/>
+              <el-link  
+                type="info" 
+                href="https://creativecommons.org/licenses/by-nc-sa/4.0/" 
+                target="_blank">
+                CC BY-NC-SA 4.0
+              </el-link>
+              {{ $t('message.claims_msg_two') }}
             </el-descriptions-item>
           </el-descriptions>
+          <div class="article-bottom content-center">
+            <el-button type="info">{{ $t('button.like')+ '  ' + data.like }}</el-button>
+            <el-button 
+              type="primary" 
+              style="margin-left: 30px"
+              
+            >
+            {{ $t('button.reward') }}
+            </el-button>
+          </div>
           <hr class="dashed-hr"/>
           <Comments class="comment" />
         </FlowCard>
       </el-col>
       <el-col 
         :xs="0"
-        :md="5"
-        :xl="5"
-        hidden-md-and-down
+        :sm="5"
+        hidden-sm-and-down
       >
         <div class="affix-item">
           <FlowCard class="noun-card">
@@ -149,6 +171,7 @@ export default defineComponent({
         commentList: [],
         article: aData, 
         nouns: [],
+        like: 15,
     });
     const handleArticle = () =>{
       getArticle({id: articleId}).then(res => { 
@@ -163,6 +186,9 @@ export default defineComponent({
     const handleAnchorClick = (params: TitleElement) => {
         viewerRef.value.handleAnchorClick(params);
     };
+    const articleUrl = (): string => {
+      return import.meta.env.VITE_APP_PUBLIC_PATH + router.currentRoute.value.fullPath;
+    }
     onMounted(() => {
       document.title = data.article.title ? data.article.title : document.title;
     });
@@ -172,6 +198,7 @@ export default defineComponent({
       viewerRef,
       loadTitle,
       handleAnchorClick,
+      articleUrl,
     };
   }
 });
@@ -224,6 +251,16 @@ export default defineComponent({
     .copyright{
       border: 1px solid #eee;
       padding: 0.625rem 1rem;
+      &:deep(.el-descriptions__label:not(.is-bordered-label)){
+        margin-right: 0px;
+      }
+      &:deep(.lable){
+        color: #49b1f5;
+        font-weight: 700;
+      }
+    }
+    .article-bottom{
+      margin: 15px 0;
     }
   }
   .noun-card{
@@ -247,7 +284,7 @@ export default defineComponent({
   overflow: auto;
   &:deep(.el-card__body){
   padding: 10px;
-}
+  }
 }
 
 </style>

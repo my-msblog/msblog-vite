@@ -5,8 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-
+import { defineComponent, PropType } from 'vue';
 export default defineComponent({
   name: 'ElIcons',
   props: {
@@ -15,8 +14,8 @@ export default defineComponent({
       required: true,
     },
     size: {
-      type: String,
-      default: '',
+      type: Number,
+      default: 16,
     },
     color: {
       type: String,

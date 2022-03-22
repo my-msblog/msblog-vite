@@ -17,6 +17,16 @@
         "src/*"
       ]
     },
+    "types": ["element-plus/global"],
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "build/**/*.ts", "types/**/*.d.ts"]
+  "include": [
+    "src/*.ts",
+    "src/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "build/**/*.ts",
+    "types/**/*.d.ts"
+  ]
 }

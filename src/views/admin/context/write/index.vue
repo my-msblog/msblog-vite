@@ -18,8 +18,8 @@
                 <el-option
                   v-for="(item, index) in data.categoryList"
                   :key="index"
-                  :label="item.label"
                   :value="item.value"
+                  :label="item.label"
                 />
               </el-select>
             </template>
@@ -64,8 +64,9 @@ import { defineComponent, onMounted, reactive, watch } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import { useI18n } from 'vue-i18n';
 import { strIsEmpty } from '@/utils';
-import { BaseOptions } from '@/constant/Type';
+import { CustomOptions } from '@/constant/Type';
 import { categoryList, tagsList } from '@/api/admin/context/write';
+
 export default defineComponent({
   name: 'ArticleWrite',
   setup() {
@@ -74,9 +75,9 @@ export default defineComponent({
       input: '',
       category: '',
       md: '# text',
-      categoryList: [] as Array<BaseOptions<number, string>>,
+      categoryList: [] as Array<CustomOptions>,
       tagValues: [],
-      tags: [] as Array<BaseOptions<number, string>>,
+      tags: [] as Array<CustomOptions>,
     });
     const handleSubmit = () => {
       if (strIsEmpty(data.category)){

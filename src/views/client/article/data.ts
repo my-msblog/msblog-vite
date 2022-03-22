@@ -4,6 +4,7 @@ export interface IData{
     commentList: Array<any>;
     article: IArticle;
     nouns: Array<TitleElement>;
+    like: number;
 }
 export interface TitleElement{
     title: any,

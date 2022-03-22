@@ -1,3 +1,5 @@
+import { number } from "echarts";
+
 export function NullArray<T> (): Array<T>{
   return [];
 }
@@ -40,8 +42,13 @@ export interface functionTypeBase<T>{
  * R lable 值
  * 
  */
-export interface BaseOptions<T = string, R = string>{
+export interface BaseOptions<T = unknown, R = unknown>{
   value?: string | number | T;
   label?: string | number | R;
   [key: string]: any;
+}
+
+export interface CustomOptions extends BaseOptions{
+  value: string | number;
+  label: string | number;
 }
