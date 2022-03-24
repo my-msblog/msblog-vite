@@ -32,7 +32,7 @@
           <span class="item-center">
             <SvgIcon name="word_count" :size="14" color="#fff" />
             &nbsp;
-            {{ $t('pages.word_count') + ': ' + data.article.context.length }}
+            {{ $t('pages.word_count') + ': ' + data.article.content.length }}
           </span>
           <span class="separator">|</span>
           <span class="item-center">
@@ -73,7 +73,7 @@
         <FlowCard class="md-card">
           <Viewer 
             class="md-view" 
-            :text="data.article.contextMd" 
+            :text="data.article.contentMd" 
             ref="viewerRef"
             @load-title="loadTitle"
           />
@@ -87,9 +87,9 @@
             <el-descriptions-item label-class-name="lable" :label="$t('pages.article_link') + '：'">
               <el-link 
                 type="info" 
-                :href="articleUrl()" 
+                :href="articleUrl" 
                 target="_blank">
-                {{ articleUrl() }}
+                {{ articleUrl }}
               </el-link>
             </el-descriptions-item>
             <el-descriptions-item label-class-name="lable" :label="$t('pages.copyright_claims') + '：'">
@@ -173,22 +173,19 @@ export default defineComponent({
         nouns: [],
         like: 15,
     });
+    const wapperBackground = computed(() => 'background: url(' + data.article.cover +') center center / cover no-repeat');
+    const articleUrl = computed(()=> import.meta.env.VITE_APP_PUBLIC_PATH + router.currentRoute.value.fullPath);
     const handleArticle = () =>{
       getArticle({id: articleId}).then(res => { 
+        data.article = res;
       });
     };
-    const wapperBackground = computed(() => {
-      return 'background: url(' + data.article.cover +') center center / cover no-repeat';
-    });
     const loadTitle = (titles: TitleElement[]) => {
       data.nouns = titles;
     };
     const handleAnchorClick = (params: TitleElement) => {
         viewerRef.value.handleAnchorClick(params);
     };
-    const articleUrl = (): string => {
-      return import.meta.env.VITE_APP_PUBLIC_PATH + router.currentRoute.value.fullPath;
-    }
     onMounted(() => {
       document.title = data.article.title ? data.article.title : document.title;
     });

@@ -1,5 +1,10 @@
 import request from '@/utils/axios/request';
-import { CommentItemVO, CommentSubmitDTO, GiveLikesDTO }  from '@/api/model/client/article';
+import { 
+    CommentItemVO,
+    CommentSubmitDTO,
+    GiveLikesDTO,
+    ArticleVO,
+} from '@/api/model/client/article';
 import { IdDTO } from '@/api/model/custom';
 import { PageInfo } from '@/api/model/core';
 
@@ -12,7 +17,7 @@ enum API {
 }
 
 export function getArticle(dto: IdDTO){
-    return request.post({
+    return request.post<ArticleVO>({
         url: API.getArticle,
         data: dto
     });
