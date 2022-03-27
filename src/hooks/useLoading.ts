@@ -67,3 +67,13 @@ export function openFullScreenBase(text: string, icon: string, bg: string, domai
   }, time);
 }
 /*---------------Directive---------------*/
+
+
+export const useLoading = () => {
+  return {
+    openFullScreen,
+    openFullScreenTime,
+    openFullScreenIcon,
+    openFullScreenBase,
+  }
+} 
