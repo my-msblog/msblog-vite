@@ -48,7 +48,7 @@ export default {
     read_count: '阅读量',
     comment_count: '评论数',
     dir:'目录',
-
+    writer: '作者'
   },
   en: {
     ...card.en,
@@ -97,5 +97,6 @@ export default {
     read_count: 'Readings',
     comment_count: 'Comments',
     dir:'Dir',
+    writer: 'Writer',
   }
 };

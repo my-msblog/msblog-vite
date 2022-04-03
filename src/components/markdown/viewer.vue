@@ -42,6 +42,8 @@ const handleAnchorClick =(anchor: any) => {
 onMounted(()=> {
   const anchors = previewRef.value.$el.querySelectorAll('h1,h2,h3,h4,h5,h6');
   const titles: any[] = Array.from(anchors).filter((title: any) => !!title.innerText.trim());
+  console.log(titles);
+  
   if (!titles.length) {
     data.titles = [];
     return;

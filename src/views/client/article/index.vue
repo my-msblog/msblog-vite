@@ -44,13 +44,13 @@
           <span class="item-center">
             <SvgIcon name="read" :size="14" color="#fff" />
             &nbsp;
-            {{ $t('pages.read_count') + ': ' + data.article.read }}
+            {{ $t('pages.read_count') + ': ' + data.article.reading }}
           </span>
           <span class="separator">|</span>
           <span class="item-center">
             <SvgIcon name="comment_line" :size="14" color="#fff" />
             &nbsp;
-            {{ $t('pages.comment_count') + ': ' + data.article.writer }}
+            {{ $t('pages.writer') + ': ' + data.article.writer }}
           </span>
         </div>
         <div class="third-line content-center">
@@ -72,6 +72,7 @@
       >
         <FlowCard class="md-card">
           <Viewer 
+            v-if="data.article.contentMd.length > 0"
             class="md-view" 
             :text="data.article.contentMd" 
             ref="viewerRef"
@@ -178,6 +179,8 @@ export default defineComponent({
     const handleArticle = () =>{
       getArticle({id: articleId}).then(res => { 
         data.article = res;
+        console.log(data.article);
+        
       });
     };
     const loadTitle = (titles: TitleElement[]) => {
@@ -187,6 +190,7 @@ export default defineComponent({
         viewerRef.value.handleAnchorClick(params);
     };
     onMounted(() => {
+      handleArticle();
       document.title = data.article.title ? data.article.title : document.title;
     });
     return {
@@ -264,6 +268,9 @@ export default defineComponent({
     text-align: left;
     
     .noun-title{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       .a-title{
         margin-left: 1em;
       }

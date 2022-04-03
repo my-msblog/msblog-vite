@@ -21,7 +21,7 @@ export interface ArticleVO{
     writer: string;
     contentMd: string;
     likes: number;
-    read: number;
+    reading: number;
     wordCount: number;
     cover: string;
     tags: Array<TagVO>;

@@ -9,7 +9,7 @@ import { IdDTO } from '@/api/model/custom';
 import { PageInfo } from '@/api/model/core';
 
 enum API {
-    getArticle = '',
+    getArticle = '/article/get',
     commentSubmit = '',
     getCommentList = '/article/comment',
     like = '/article/comment/like',
