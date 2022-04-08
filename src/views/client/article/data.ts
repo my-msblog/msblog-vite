@@ -1,3 +1,4 @@
+import { RecommendVO } from '@/api/model/client/article';
 import { TagVO } from '@/api/model/client/home';
 
 export interface IData{
@@ -5,6 +6,7 @@ export interface IData{
     article: IArticle;
     nouns: Array<TitleElement>;
     like: number;
+    recommendList: Array<RecommendVO>;
 }
 export interface TitleElement{
     title: any,

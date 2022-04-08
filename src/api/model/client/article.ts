@@ -43,3 +43,10 @@ export interface GiveLikesDTO{
     is: boolean;
     time: Date;
 }
+
+export interface RecommendVO{
+    id: number;
+    title: string;
+    cover: string;
+    createTime: string;
+}

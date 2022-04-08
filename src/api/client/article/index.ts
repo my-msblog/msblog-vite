@@ -4,6 +4,7 @@ import {
     CommentSubmitDTO,
     GiveLikesDTO,
     ArticleVO,
+    RecommendVO,
 } from '@/api/model/client/article';
 import { IdDTO } from '@/api/model/custom';
 import { PageInfo } from '@/api/model/core';
@@ -14,6 +15,7 @@ enum API {
     getCommentList = '/article/comment',
     like = '/article/comment/like',
     likeList = '/article/comment/like/list',
+    recommend = '/article/recommend',
 }
 
 export function getArticle(dto: IdDTO){
@@ -44,5 +46,10 @@ export function getLikeList(data: IdDTO){
     return request.post<Array<number>>({
         url: API.likeList,
         data: data,
+    });
+}
+export function getRecomend(){
+    return request.get<Array<RecommendVO>>({
+        url: API.recommend,
     });
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="comment-wrapper">
-    <ComentList :list="data.conmmentList" @change-like="handleChangeLike" />
     <CommentInput />
+    <ComentList :list="data.conmmentList" @change-like="handleChangeLike" />
   </div>
 </template>
 

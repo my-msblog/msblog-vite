@@ -105,11 +105,10 @@
             </el-descriptions-item>
           </el-descriptions>
           <div class="article-bottom content-center">
-            <el-button type="info">{{ $t('button.like')+ '  ' + data.like }}</el-button>
+            <el-button type="info" @click="handleArticleLike">{{ $t('button.like')+ '  ' + data.like }}</el-button>
             <el-button 
               type="primary" 
-              style="margin-left: 30px"
-              
+              style="margin-left: 30px"        
             >
             {{ $t('button.reward') }}
             </el-button>
@@ -126,13 +125,13 @@
         <div class="affix-item">
           <FlowCard class="noun-card">
             <div class="item-center mb5">
-              <ElIcons name="List" :size="18" style="font-size: 18px"/>
+              <ElIcons name="List" :size="18" style="font-size: 18px" class="mr5"/>
               {{ $t('pages.dir') }}
             </div>
             <div
               v-for="(anchor, index) in data.nouns"
               :key="index"
-              :style="{ padding: `7px 0 7px ${anchor.indent * 20}px` }"
+              :style="{ padding: `7px 0 7px ${anchor.indent * 10}px` }"
               class="noun-title"
               @click="handleAnchorClick(anchor)"
             >
@@ -140,7 +139,19 @@
             </div>
           </FlowCard>
           <FlowCard class="recommend-card">
-
+            <div class="item-center mb5">
+              <ElIcons name="MagicStick" :size="18" class="mr5"/>
+              {{ $t('pages.recommend') }}
+            </div>
+            <div v-for="(item) in data.recommendList" :key="item.id" class="recommend" @click="handleClickRecommend(item.id)">
+               <el-image style="width: 58px; height: 58px" :src="item.cover" fit="cover" />
+               <div class="recommend-text item-center">
+                 <div>
+                  <div>{{ item.title }}</div>
+                  <div class="rec-time mt5">{{ item.createTime }}</div>
+                 </div>
+               </div>
+            </div>
           </FlowCard>
         </div>
       </el-col>
@@ -158,7 +169,7 @@ import {
 } from 'vue';
 import { useRouter } from 'vue-router';
 import { Calendar, Refresh, CopyDocument } from '@element-plus/icons-vue';
-import { getArticle } from '@/api/client/article';
+import { getArticle, getRecomend } from '@/api/client/article';
 import Comments from './components/Comments.vue';
 import { IData, data as aData, TitleElement, } from './data';
 export default defineComponent({
@@ -173,6 +184,7 @@ export default defineComponent({
         article: aData, 
         nouns: [],
         like: 15,
+        recommendList: [],
     });
     const wapperBackground = computed(() => 'background: url(' + data.article.cover +') center center / cover no-repeat');
     const articleUrl = computed(()=> import.meta.env.VITE_APP_PUBLIC_PATH + router.currentRoute.value.fullPath);
@@ -189,8 +201,20 @@ export default defineComponent({
     const handleAnchorClick = (params: TitleElement) => {
         viewerRef.value.handleAnchorClick(params);
     };
+    const handleRecommend = () => {
+      getRecomend().then((res) => {
+        data.recommendList = res;
+      });
+    };
+    const handleClickRecommend = (id: number) => {
+      router.push(`/article/${id}`);
+    };
+    const handleArticleLike = () => {
+      
+    }
     onMounted(() => {
       handleArticle();
+      handleRecommend();
       document.title = data.article.title ? data.article.title : document.title;
     });
     return {
@@ -200,6 +224,8 @@ export default defineComponent({
       loadTitle,
       handleAnchorClick,
       articleUrl,
+      handleClickRecommend,
+      handleArticleLike,
     };
   }
 });
@@ -282,6 +308,20 @@ export default defineComponent({
   }
   .recommend-card{
     margin-top: 10px;
+    .recommend{
+      display: flex;
+      padding: 6px 0;
+      text-align: left;
+      .recommend-text{
+        margin-left: 10px;
+        font-size: 14px;
+
+        .rec-time{
+          color: #858585;
+          font-size: 85%;
+        }
+      }
+    }
   }
 }
 .el-card{
