@@ -33,6 +33,8 @@ export default defineComponent({
     });
     const handleTagList = () => {
       getTagList().then((res) => {
+        console.log(res);
+        
         data.tagList = res;
       });
     };

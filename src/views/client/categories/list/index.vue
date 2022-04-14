@@ -14,8 +14,8 @@
           :key="index"
           :xs="{span:19, offset: 3 }"
           :sm="{span: 12}"
-          :md="{span: 10, offset:1,push:1}"
-          :lg="{span: 8, offset: 0, push:0}"
+          :md="{span: 10, offset:1}"
+          :lg="{span: 8, offset: 0}"
         >
           <CategoryCard :item="item" :loading="data.loading" />
         </el-col>
