@@ -114,7 +114,7 @@
             </el-button>
           </div>
           <hr class="dashed-hr"/>
-          <Comments class="comment" />
+          <Comments :id="articleId" class="comment" />
         </FlowCard>
       </el-col>
       <el-col 
@@ -177,7 +177,7 @@ export default defineComponent({
   components: { Calendar, Refresh, CopyDocument, Comments },
   setup() {
     const router = useRouter();
-    const articleId = Number(router.currentRoute.value.params.id);
+    const articleId = computed(() => Number(router.currentRoute.value.params.id));
     const viewerRef = ref();
     const data = reactive<IData>({
         commentList: [],
@@ -189,7 +189,7 @@ export default defineComponent({
     const wapperBackground = computed(() => 'background: url(' + data.article.cover +') center center / cover no-repeat');
     const articleUrl = computed(()=> import.meta.env.VITE_APP_PUBLIC_PATH + router.currentRoute.value.fullPath);
     const handleArticle = () =>{
-      getArticle({id: articleId}).then(res => { 
+      getArticle({id: articleId.value}).then(res => { 
         data.article = res;
         console.log(data.article);
         
@@ -219,6 +219,7 @@ export default defineComponent({
     });
     return {
       data,
+      articleId,
       wapperBackground,
       viewerRef,
       loadTitle,

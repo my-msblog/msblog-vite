@@ -11,6 +11,7 @@
         class="tag-item"
         :href="'/tags/' + item.tagId"
         :style="{ fontSize: handleFontSize() + 'px', color: selectColor() }"
+        @click="saveTag(item.nameZh)"
       >
         {{ item.nameZh }}
       </el-link>
@@ -24,32 +25,27 @@ import { TagVO } from '@/api/model/client/home';
 import { getTagList } from '@/api/client/tags';
 import { randomNum, strNonEmpty } from '@/utils';
 import { colors } from './colors';
+import { useStore } from 'vuex';
 export default defineComponent({
-  name: 'About',
+  name: 'Tags',
   setup() {
+    const { commit } = useStore();
     const data = reactive({
       tagList: [] as TagVO[],
       currentColor: '',
     });
     const handleTagList = () => {
       getTagList().then((res) => {
-        console.log(res);
-        
         data.tagList = res;
       });
     };
     const handleType = (index: number): string => {
       switch (index % 4) {
-        case 0:
-          return 'primary';
-        case 1:
-          return 'success';
-        case 2:
-          return 'warning';
-        case 3:
-          return 'danger';
-        default:
-          return 'info';
+        case 0: return 'primary';
+        case 1: return 'success';
+        case 2: return 'warning';
+        case 3: return 'danger';
+        default: return 'info';
       }
     };
     const selectColor = (): string => {
@@ -68,6 +64,9 @@ export default defineComponent({
     const handleFontSize = function () {
       return randomNum(17, 27);
     };
+    const saveTag = (tag: string) => {
+      commit('setTag', tag);
+    };
     onMounted(() => {
       handleTagList();
     });
@@ -76,6 +75,7 @@ export default defineComponent({
       handleType,
       handleFontSize,
       selectColor,
+      saveTag,
     };
   },
 });

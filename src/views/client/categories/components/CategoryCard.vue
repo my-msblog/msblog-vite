@@ -2,7 +2,7 @@
   <div class="item-card">
     <FlowCard>
       <div class="article-item-cover">
-        <router-link :to="'/articles/' + item.id">
+        <router-link :to="'/article/' + item.id">
           <el-skeleton
             style="width: 100%"
             :loading="loading"

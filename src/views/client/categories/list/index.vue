@@ -4,7 +4,7 @@
       <p class="a_title">
         {{ $t('bar.categories') }}
         &nbsp;-&nbsp;
-        {{ data.titleType }}
+        {{ title }}
       </p>
     </div>
     <div class="card-list">
@@ -25,8 +25,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive } from 'vue';
+import { computed, defineComponent, onMounted, reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 import { getArticleByCategoryId } from '@/api/client/category';
 import { ArticleCategoryVO } from '@/api/model/client/category';
 import CategoryCard from '../components/CategoryCard.vue';
@@ -36,24 +37,26 @@ export default defineComponent({
   components: { CategoryCard },
   setup() {
     const router = useRouter();
-    const categoryId = router.currentRoute.value.params.id as string;
+    const store = useStore();
+    const categoryId = computed(() => router.currentRoute.value.params.id as string);
+    
+    const title = computed(() => store.getters.getCategory);
     const data = reactive({
-      titleType: '',
       articleList: [] as ArticleCategoryVO[],
       loading: true,
     });
     const handleInitCategotyList = function() {
-      getArticleByCategoryId(categoryId).then((res) =>{
+      getArticleByCategoryId(categoryId.value).then((res) =>{
         data.articleList = res;
         data.loading = false;
       });
     };
     onMounted(() => {
-      data.titleType = 'fen lei';
       handleInitCategotyList();
     });
     return {
       data,
+      title,
     };
   }
 });

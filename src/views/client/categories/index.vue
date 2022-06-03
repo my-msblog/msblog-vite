@@ -10,6 +10,7 @@
           v-for="(item, index ) in data.list"
           :key="item.categoryId"
           class="category-list-item"
+          @click="saveCategory(item.category)"
         >
           <el-link
             :href="'/categories/' + item.categoryId"
@@ -27,11 +28,13 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from 'vue';
+import { useStore } from 'vuex';
 import { getCategoryList } from '@/api/client/category';
 import { CategoryVO } from '@/api/model/client/category';
 export default defineComponent({
   name: 'Category',
   setup() {
+    const store = useStore();
     const data = reactive({
       category_count: 0,
       list: [] as CategoryVO[],
@@ -45,17 +48,16 @@ export default defineComponent({
     const handleType = (index: number): string =>{
       const type = index % 4;
       switch (type){
-        case 0:
-          return 'primary';
-        case 1:
-          return 'success';
-        case 2:
-          return 'warning';
-        case 3:
-          return 'danger';
-        default:
-          return 'info';
+        case 0: return 'primary';
+        case 1: return 'success';
+        case 2: return 'warning';
+        case 3: return 'danger';
+        default: return 'info';
       }
+    };
+    const saveCategory = (id: string) => {
+      store.commit('setCategory', id)
+     
     };
     onMounted(() => {
       handleInit();
@@ -63,6 +65,7 @@ export default defineComponent({
     return {
       data,
       handleType,
+      saveCategory,
     };
   }
 });

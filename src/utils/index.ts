@@ -4,7 +4,7 @@ export function randomNum(Min: number, Max: number) {
     return (Min + Math.round(Rand * Range));
 }
 
-export function strIsEmpty(str: string): boolean{
+export function strIsEmpty(str: string | null): boolean{
     return  str === undefined || str === null || str.length === 0;
 }
 
@@ -12,7 +12,7 @@ export function strNonEmpty(str: string): boolean{
     return !strIsEmpty(str);
 }
 
-export function arryIsEmpty(arr: []): boolean{
+export function arryIsEmpty(arr: any[]): boolean{
     return arr === undefined || arr === null || arr.length === 0;
 }
 

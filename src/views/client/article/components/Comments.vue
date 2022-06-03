@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive } from 'vue';
+import { defineComponent, onMounted, reactive, PropType } from 'vue';
 import CommentInput from './CommentInput.vue';
 import ComentList from './ComentList.vue';
 import { CommentItemVO } from '@/api/model/client/article';
@@ -15,12 +15,18 @@ import { getCommentList } from '@/api/client/article';
 export default defineComponent({
   name: 'Comments',
   components: { CommentInput, ComentList },
-  setup() {
+  props: {
+    id: {
+      type: Number as PropType<number>,
+      default: -1,
+    },
+  },
+  setup(props) {
     const data = reactive({
       conmmentList: [] as CommentItemVO[],
     });
     const handleInit = () => {
-      getCommentList({id: 1}).then(res => {
+      getCommentList({id: props.id}).then(res => {
         data.conmmentList = res.list;
       });
     };
