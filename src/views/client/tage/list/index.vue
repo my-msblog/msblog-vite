@@ -7,20 +7,51 @@
         {{ title }}
       </p>
     </div>
+    <div class="card-list">
+      <el-row :gutter="20" justify="start">
+        <el-col
+          v-for="(item, index) in data.tagList"
+          :key="index"
+          :xs="{span:19, offset: 3 }"
+          :sm="{span: 12}"
+          :md="{span: 10, offset:1}"
+          :lg="{span: 8, offset: 0}"
+        >
+          <CategoryCard :item="item" :loading="data.loading" />
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, reactive } from 'vue';
+import { computed, defineComponent, onMounted, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
+import { getTagListById } from '@/api/client/tags';
+import { ArticleCategoryVO } from '@/api/model/client/category';
+import CategoryCard from '@/views/client/categories/components/CategoryCard.vue';
 export default defineComponent({
   name:'ArticleTagsList',
+  components: { CategoryCard },
   setup() {
     const store = useStore();
     const router = useRouter();
     const title = computed(() => store.getters.getTag );
     const categoryId = computed(() => router.currentRoute.value.params.id as string);
     const data = reactive({
+      tagList: [] as ArticleCategoryVO[],
+      loading: false,
+    });
+    const handleInit = () => {
+      data.loading = true
+      getTagListById(categoryId.value).then(res => {
+        data.tagList = res;
+      }).finally(() => {
+        data.loading = false;
+      });
+    };
+    onMounted(() => {
+     handleInit();
     });
     return {
       data,

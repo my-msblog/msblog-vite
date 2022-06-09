@@ -45,18 +45,18 @@ service.interceptors.response.use(
   }, error => {
     const response = error.response;
     let info = response ? response.data : 'error';
+    
     if (!response){
       info = t('message.server_error');
     }else {
-      if(response.data.msg) {
-        info = response.data.msg;
-      }
+      info = response.data.msg ? response.data.msg :t('message.server_error');
     }
     ElMessage({
       message: info,
       type: 'error',
       duration: 2 * 1000,
     });
+    console.error(info);
   }
 );
 

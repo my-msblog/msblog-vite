@@ -3,8 +3,19 @@
     <div class="a_banner">
       <p class="a_title">{{ $t('bar.about') }}</p>
     </div>
-    this is categories
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <FlowCard class="about-card">
+      <el-avatar
+        :size="70"
+        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+      />
+      <div class="introduce item-center">
+        <ElIcons name="Avatar" class="icon"/>
+        <span>个人简介</span>
+      </div>
+      <p class="desc">
+        感谢关注！
+      </p>
+    </FlowCard>
   </div>
 </template>
 
@@ -34,6 +45,27 @@ export default defineComponent({
     margin-top: 200px;
     font-size: 24px;
     font-weight: bold;
+  }
+}
+.about-card{
+  text-align: center;
+  margin: 48px 250px 68px 250px;
+  padding: 15px 10px 10px !important;
+  .introduce{
+    height: 20px;
+    line-height: 20px;
+    text-align: left;
+    font-size: 15px;
+    .icon{
+      margin: 0 5px;
+    }
+    span{
+      font-weight: 600;
+    }
+  }
+  .desc{
+    text-align: left;
+    font-size: .875em;
   }
 }
 </style>

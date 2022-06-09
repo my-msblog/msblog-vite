@@ -34,7 +34,6 @@
           />
         </el-col>
         <el-col
-          id="affix-max"
           class="col-pd  hidden-md-and-down"
           :lg="6"
           :sm="0"

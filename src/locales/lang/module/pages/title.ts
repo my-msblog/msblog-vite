@@ -9,6 +9,7 @@ export default {
         annotationValue: '接口说明',
         return_name: '返回类型',
         return_value_map: '返回体',
+        link_title: '友情链接',
 
     },
     en: {
@@ -21,5 +22,6 @@ export default {
         return_name: 'Return Name',
         annotationValue: 'Interface Specification',
         return_value_map: 'Return Body',
+        link_title: 'Links',
     }
 };

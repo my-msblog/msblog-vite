@@ -19,7 +19,7 @@
         size="mini"
         @selection-change="handleSelectChange"
       >
-        <el-table-column type="selection" width="35" />
+        <el-table-column type="selection" width="40" />
         <el-table-column
           type="index"
           width="50"
@@ -108,6 +108,7 @@ import {
 } from 'vue';
 import { ElMessage } from 'element-plus';
 import { RefreshRight } from '@element-plus/icons-vue';
+import { ElTable } from 'element-plus'
 import AddUser from './AddUser.vue';
 import { deleteList, userStatusChange } from '@/api/admin/user-profile';
 import { NullArray } from '@/constant/Type';
@@ -148,7 +149,7 @@ export default defineComponent({
       },
       addFormShow: false,
     });
-    const tableRef = ref();
+    const tableRef = ref<InstanceType<typeof ElTable>>();
     const handleSizeChange = function(size: number) {
       data.pagination.size = size;
       emit('currentPage', data.pagination);
@@ -164,7 +165,7 @@ export default defineComponent({
       emit('deleted', params.id);
     };
     const handleDeselect = function () {
-      tableRef.value.clearSelection();
+      tableRef.value!.clearSelection();
     };
     const handleDeleteList = function () {
       if (data.selection.idList.length === 0) {

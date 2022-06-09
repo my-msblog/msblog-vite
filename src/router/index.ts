@@ -17,13 +17,13 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach( (to, from, next) => {
   weChartTitle(to, globaleTitle, adminTitle);
   if (to.meta.requireAuth) {
     if (store.getters.getToken) {
-      await authentication().then(async () => {
+      authentication().then( () => {
         if(store.getters.getPermissionMenu.length === 0) {
-          await asyncRouters(router);
+          asyncRouters(router);
           next({ ...to, replace: true });
         } else {
           next();
@@ -41,7 +41,7 @@ router.beforeEach(async (to, from, next) => {
   }else {
     // 解决刷新空白，跳转admin主页
     if (to.path.includes('/admin/')) {
-      await asyncRouters(router);
+      asyncRouters(router);
       next({ path: '/admin' });
       return;
     }

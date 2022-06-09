@@ -8,8 +8,8 @@ import { ElMessage } from 'element-plus';
 
 const modules = import.meta.glob('../views/**/**.vue');
 
-export async function asyncRouters (router: Router) {
-  await getMenu().then(res => {
+export function asyncRouters (router: Router) {
+  getMenu().then(res => {
     const fmtRouter = formatRoutes(res);
     fmtRouter.forEach(item => {
       if (item.children.length !== 0) {

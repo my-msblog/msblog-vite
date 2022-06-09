@@ -4,7 +4,7 @@ import { ArticleCategoryVO } from '@/api/model/client/category';
 
 enum Api {
   getTagList = '/article/list/tag',
-  byId = '/artcle/tag/'
+  byId = '/article/tag/'
 }
 
 export function getTagList(){
@@ -13,7 +13,7 @@ export function getTagList(){
   });
 }
 
-export function getTagListById(id: number){
+export function getTagListById(id: string){
   return request.get<Array<ArticleCategoryVO>>({
     url: Api.byId + id,
   });

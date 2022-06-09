@@ -55,7 +55,7 @@
         </el-option>
       </el-select>
     </div>
-    <MarkDown :text="data.md" :height="600" />
+    <Markdown :text="data.md" :height="600" />
   </div>
 </template>
 

@@ -120,6 +120,10 @@ export default defineComponent({
       .is-active {
         background-color: #f9f9fc;
       }
+      .el-tabs__nav{
+      height:580px;
+      overflow: auto;
+    }
     }
     .request-body {
       text-align: left;

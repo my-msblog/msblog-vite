@@ -39,15 +39,6 @@ export default defineComponent({
         data.tagList = res;
       });
     };
-    const handleType = (index: number): string => {
-      switch (index % 4) {
-        case 0: return 'primary';
-        case 1: return 'success';
-        case 2: return 'warning';
-        case 3: return 'danger';
-        default: return 'info';
-      }
-    };
     const selectColor = (): string => {
       const colorList: string[] = colors;
       let random = Math.floor(Math.random() * (colorList.length - 1));
@@ -72,7 +63,6 @@ export default defineComponent({
     });
     return {
       data,
-      handleType,
       handleFontSize,
       selectColor,
       saveTag,

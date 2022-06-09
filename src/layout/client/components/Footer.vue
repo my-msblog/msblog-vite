@@ -1,7 +1,7 @@
 <template>
   <div class="gradient_body">
     <div class="bottom_text">
-      Copyright @2020-2021 by MS
+      Copyright ©2020-2021 by MS
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default defineComponent({
 }
 
 .bottom_text{
-  font-size: 15px;
+  font-size: 13px;
   text-decoration: none;
   text-align: center;
   margin-top: auto;

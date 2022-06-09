@@ -8,6 +8,7 @@
 import { computed, defineComponent, PropType } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { DataArray } from '@/constant/Type';
+import { EChartsOption } from 'echarts';
 export default defineComponent({
   name: 'FlowAnalysis',
   props: {
@@ -26,7 +27,7 @@ export default defineComponent({
   },
   setup(props) {
     const { t } = useI18n();
-    const options = computed(() => {
+    const options = computed<EChartsOption>(() => {
       return {
         title: {
           text: t('pages.flow_statistics'),

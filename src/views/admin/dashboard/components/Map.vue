@@ -1,5 +1,5 @@
 <template>
-  <BaseEcharts :options="options" />
+  <BaseEcharts/>
 </template>
 
 <script lang="ts">
