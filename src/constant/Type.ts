@@ -1,4 +1,3 @@
-import { number } from "echarts";
 
 export function NullArray<T> (): Array<T>{
   return [];

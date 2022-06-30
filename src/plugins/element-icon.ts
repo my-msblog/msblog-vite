@@ -6,6 +6,5 @@ export default (app: any) => {
     const { icon } = props;
     return createVNode(Icons[icon as keyof typeof Icons]);
   };
-
   app.component('Icon', Icon);
 };

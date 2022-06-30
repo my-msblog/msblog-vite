@@ -19,7 +19,7 @@ import { setupI18n } from '@/locales';
    // Multilingual configuration
    setupI18n(app);
    // Load plugins
-   loadAllPlugins(app);
+   await loadAllPlugins(app);
    // router ready https://next.router.vuejs.org/api/#isready
    app.use(router);
    // await router.isReady();

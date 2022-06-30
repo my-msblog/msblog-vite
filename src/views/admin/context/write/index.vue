@@ -65,7 +65,7 @@ import { ElMessage, ElMessageBox } from 'element-plus';
 import { useI18n } from 'vue-i18n';
 import { strIsEmpty } from '@/utils';
 import { CustomOptions } from '@/constant/Type';
-import { categoryList, tagsList } from '@/api/admin/context/write';
+import { categoryList, tagsList, commit } from '@/api/admin/context/write';
 
 export default defineComponent({
   name: 'ArticleWrite',
@@ -86,18 +86,15 @@ export default defineComponent({
         });
         return;
       }
-      ElMessage.success({
-        message: data.category
-      });
-      // ElMessageBox.confirm(
-      //   t('message.confirm_submit'), 
-      //   t('message.confirm_submit'),
-      //   {
-      //     confirmButtonText: t('button.confirm'),
-      //     cancelButtonText: t('button.cancel'),
-      //     type: 'success',
-      //   }
-      // ).then();
+      ElMessageBox.confirm(
+        t('message.confirm_submit'), 
+        t('message.confirm_submit'),
+        {
+          confirmButtonText: t('button.confirm'),
+          cancelButtonText: t('button.cancel'),
+          type: 'success',
+        }
+      ).then();
     };
     watch(
       () => data.tagValues,
