@@ -53,15 +53,15 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/@braintree/sanitize-url/-/sanitize-url-3.1.0.tgz"
   "version" "3.1.0"
 
-"@element-plus/icons-vue@^0.2.2":
-  "integrity" "sha512-S8kDbfVaWkQvbUYQE1ui448tzaHfUvyESCep9J6uPRlViyQPXjdIfwLBhV6AmQSOfFS8rL+xehJGhvzPXLrSBg=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/@element-plus/icons-vue/-/icons-vue-0.2.7.tgz"
-  "version" "0.2.7"
+"@ctrl/tinycolor@^3.4.1":
+  "integrity" "sha512-ej5oVy6lykXsvieQtqZxCOaLT+xD4+QNarq78cIYISHmZXshCvROLudpQN3lfL8G0NL7plMSSK+zlyvCaIJ4Iw=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/@ctrl/tinycolor/-/tinycolor-3.4.1.tgz"
+  "version" "3.4.1"
 
-"@element-plus/icons-vue@^1.1.1":
-  "integrity" "sha512-kRL/cWwaynmwi/6ounJxwnj316EHqAqKrl2WTCmcwiDPVqT+Wt1pSK6nAI0zUeLfe/y8NhYMB97+NDEWgNBCqA=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/@element-plus/icons-vue/-/icons-vue-1.1.1.tgz"
-  "version" "1.1.1"
+"@element-plus/icons-vue@^2.0.5", "@element-plus/icons-vue@^2.0.6":
+  "integrity" "sha512-lPpG8hYkjL/Z97DH5Ei6w6o22Z4YdNglWCNYOPcB33JCF2A4wye6HFgSI7hEt9zdLyxlSpiqtgf9XcYU+m5mew=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/@element-plus/icons-vue/-/icons-vue-2.0.6.tgz"
+  "version" "2.0.6"
 
 "@emmetio/abbreviation@^2.2.2":
   "integrity" "sha512-TtE/dBnkTCct8+LntkqVrwqQao6EnPAs1YN3cUgxOxTaBlesBCY37ROUAVZrRlG64GNnVShdl/b70RfAI3w5lw=="
@@ -96,6 +96,18 @@
     "js-yaml" "^3.13.1"
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
+
+"@floating-ui/core@^0.7.3":
+  "integrity" "sha512-buc8BXHmG9l82+OQXOFU3Kr2XQx9ys01U/Q9HMIrZ300iLc8HLMgh7dcCqgYzAzf4BkoQvDcXf5Y+CuEZ5JBYg=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/@floating-ui/core/-/core-0.7.3.tgz"
+  "version" "0.7.3"
+
+"@floating-ui/dom@^0.5.3":
+  "integrity" "sha512-419BMceRLq0RrmTSDxn8hf9R3VCJv2K9PUfugh5JyEFmdjzDo+e8U5EdR8nzKq8Yj1htzLm3b6eQEEam3/rrtg=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/@floating-ui/dom/-/dom-0.5.4.tgz"
+  "version" "0.5.4"
+  dependencies:
+    "@floating-ui/core" "^0.7.3"
 
 "@humanwhocodes/config-array@^0.5.0":
   "integrity" "sha512-FagtKFz74XrTl7y6HCzQpwDfXP0yhxe9lHLD1UZxjvZIcbyRz8zTFF/yYNfSfzU414eDwZ1SrO0Qvtyf+wFMQg=="
@@ -204,10 +216,15 @@
     "@nodelib/fs.scandir" "2.1.5"
     "fastq" "^1.6.0"
 
-"@popperjs/core@^2.10.2", "@popperjs/core@^2.9.2":
+"@popperjs/core@^2.9.2":
   "integrity" "sha512-zrsUxjLOKAzdewIDRWy9nsV1GQsKBCWaGwsZQlCgr6/q+vjyZhFgqedLfFBuI9anTPEUT4APq9Mu0SZBTzIcGQ=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/@popperjs/core/-/core-2.11.0.tgz"
   "version" "2.11.0"
+
+"@popperjs/core@npm:@sxzz/popperjs-es@^2.11.7":
+  "integrity" "sha512-Ccy0NlLkzr0Ex2FKvh2X+OyERHXJ88XJ1MXtsI9y9fGexlaXaVTPzBCRBwIxFkORuOb+uBqeu+RqnpgYTEZRUQ=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/@sxzz/popperjs-es/-/popperjs-es-2.11.7.tgz"
+  "version" "2.11.7"
 
 "@rollup/pluginutils@^4.1.2", "@rollup/pluginutils@^4.2.0":
   "integrity" "sha512-2WUyJNRkyH5p487pGnn4tWAsxhEFKN/pT8CMgHshd5H+IXkOnKvKZwsz5ZWz+YCXkleZRAU5kwbfgF8CPfDRqA=="
@@ -240,6 +257,18 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/@types/json-schema/-/json-schema-7.0.9.tgz"
   "version" "7.0.9"
 
+"@types/lodash-es@*", "@types/lodash-es@^4.17.6":
+  "integrity" "sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/@types/lodash-es/-/lodash-es-4.17.6.tgz"
+  "version" "4.17.6"
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*", "@types/lodash@^4.14.182":
+  "integrity" "sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/@types/lodash/-/lodash-4.14.182.tgz"
+  "version" "4.14.182"
+
 "@types/minimatch@*":
   "integrity" "sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/@types/minimatch/-/minimatch-3.0.5.tgz"
@@ -256,6 +285,11 @@
   "version" "2.6.2"
   dependencies:
     "@types/node" "*"
+
+"@types/web-bluetooth@^0.0.14":
+  "integrity" "sha512-5d2RhCard1nQUC3aHcq/gHzWYO6K0WJmAbjO7mQJgCQKtZpgXxv1rOM6O/dBDhDYYVutk1sciOgNSe+5YyfM8A=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/@types/web-bluetooth/-/web-bluetooth-0.0.14.tgz"
+  "version" "0.0.14"
 
 "@typescript-eslint/eslint-plugin@^5.8.0":
   "integrity" "sha512-spu1UW7QuBn0nJ6+psnfCc3iVoQAifjKORgBngKOmC8U/1tbe2YJMzYQqDGYB4JCss7L8+RM2kKLb1B1Aw9BNA=="
@@ -539,20 +573,32 @@
     "toml" "^3.0.0"
     "upath" "^1.1.0"
 
-"@vueuse/core@*", "@vueuse/core@^7.0.0":
-  "integrity" "sha512-8UeLPCAieeQLXFHF1/28SIEK6ILLPb/4hp03hR+xkXF00gB/YUp0CEVcRAL9uQ8HTZa3S2T/jTISMc1ZjilM0A=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/@vueuse/core/-/core-7.4.1.tgz"
-  "version" "7.4.1"
+"@vueuse/core@*", "@vueuse/core@^8.6.0":
+  "integrity" "sha512-tqgzeZGoZcXzoit4kOGLWJibDMLp0vdm6ZO41SSUQhkhtrPhAg6dbIEPiahhUu6sZAmSYvVrZgEr5aKD51nrLA=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/@vueuse/core/-/core-8.7.5.tgz"
+  "version" "8.7.5"
   dependencies:
-    "@vueuse/shared" "7.4.1"
+    "@types/web-bluetooth" "^0.0.14"
+    "@vueuse/metadata" "8.7.5"
+    "@vueuse/shared" "8.7.5"
     "vue-demi" "*"
 
-"@vueuse/shared@7.4.1":
-  "integrity" "sha512-Pzb7XoHIcgPwwBJ5Ow9lZb0HTDyaLDV3pgxKauPGTMN9qvEylG06kUG+VTjJXkPsRtiGu46di8XyFeMw2dongA=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/@vueuse/shared/-/shared-7.4.1.tgz"
-  "version" "7.4.1"
+"@vueuse/metadata@8.7.5":
+  "integrity" "sha512-emJZKRQSaEnVqmlu39NpNp8iaW+bPC2kWykWoWOZMSlO/0QVEmO/rt8A5VhOEJTKLX3vwTevqbiRy9WJRwVOQg=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/@vueuse/metadata/-/metadata-8.7.5.tgz"
+  "version" "8.7.5"
+
+"@vueuse/shared@8.7.5":
+  "integrity" "sha512-THXPvMBFmg6Gf6AwRn/EdTh2mhqwjGsB2Yfp374LNQSQVKRHtnJ0I42bsZTn7nuEliBxqUrGQm/lN6qUHmhJLw=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/@vueuse/shared/-/shared-8.7.5.tgz"
+  "version" "8.7.5"
   dependencies:
     "vue-demi" "*"
+
+"@xmldom/xmldom@^0.8.2":
+  "integrity" "sha512-+R0juSseERyoPvnBQ/cZih6bpF7IpCXlWbHRoCRzYzqpz6gWHOgf8o4MOEf6KBVuOyqU+gCNLkCWVIJAro8XyQ=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/@xmldom/xmldom/-/xmldom-0.8.2.tgz"
+  "version" "0.8.2"
 
 "acorn-jsx@^5.3.1":
   "integrity" "sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ=="
@@ -700,10 +746,10 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/astral-regex/-/astral-regex-2.0.0.tgz"
   "version" "2.0.0"
 
-"async-validator@^4.0.7":
-  "integrity" "sha512-Pj2IR7u8hmUEDOwB++su6baaRi+QvsgajuFB9j95foM1N2gy5HM4z60hfusIO0fBPG5uLAEl6yCJr1jNSVugEQ=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/async-validator/-/async-validator-4.0.7.tgz"
-  "version" "4.0.7"
+"async-validator@^4.1.1":
+  "integrity" "sha512-7HhHjtERjqlNbZtqNqy2rckN/SpOOlmDliet+lP7k+eKZEjPk3DgyeU9lIXLdeLz0uBbbVp+9Qdow9wJWgwwfg=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/async-validator/-/async-validator-4.2.5.tgz"
+  "version" "4.2.5"
 
 "atob@^2.1.2":
   "integrity" "sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg=="
@@ -777,7 +823,7 @@
   dependencies:
     "balanced-match" "^1.0.0"
 
-"braces@^2.2.2":
+"braces@^2.2.2", "braces@^2.3.1":
   "integrity" "sha512-aNdbnj9P8PjdXU4ybaWLK2IF3jc/EoDYbC7AazW6to3TRsfXxscC9UXOB5iDiEQrkyIbWp2SLQda4+QAa7nc3w=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/braces/-/braces-2.3.2.tgz"
   "version" "2.3.2"
@@ -793,23 +839,14 @@
     "split-string" "^3.0.2"
     "to-regex" "^3.0.1"
 
-"braces@^2.3.1":
-  "integrity" "sha512-aNdbnj9P8PjdXU4ybaWLK2IF3jc/EoDYbC7AazW6to3TRsfXxscC9UXOB5iDiEQrkyIbWp2SLQda4+QAa7nc3w=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/braces/-/braces-2.3.2.tgz"
-  "version" "2.3.2"
+"braces@^3.0.1":
+  "integrity" "sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/braces/-/braces-3.0.2.tgz"
+  "version" "3.0.2"
   dependencies:
-    "arr-flatten" "^1.1.0"
-    "array-unique" "^0.3.2"
-    "extend-shallow" "^2.0.1"
-    "fill-range" "^4.0.0"
-    "isobject" "^3.0.1"
-    "repeat-element" "^1.1.2"
-    "snapdragon" "^0.8.1"
-    "snapdragon-node" "^2.0.1"
-    "split-string" "^3.0.2"
-    "to-regex" "^3.0.1"
+    "fill-range" "^7.0.1"
 
-"braces@^3.0.1", "braces@~3.0.2":
+"braces@~3.0.2":
   "integrity" "sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/braces/-/braces-3.0.2.tgz"
   "version" "3.0.2"
@@ -860,16 +897,7 @@
     "strip-ansi" "^3.0.0"
     "supports-color" "^2.0.0"
 
-"chalk@^2.0.0":
-  "integrity" "sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/chalk/-/chalk-2.4.2.tgz"
-  "version" "2.4.2"
-  dependencies:
-    "ansi-styles" "^3.2.1"
-    "escape-string-regexp" "^1.0.5"
-    "supports-color" "^5.3.0"
-
-"chalk@^2.3.2":
+"chalk@^2.0.0", "chalk@^2.3.2":
   "integrity" "sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/chalk/-/chalk-2.4.2.tgz"
   "version" "2.4.2"
@@ -960,12 +988,12 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/color-name/-/color-name-1.1.3.tgz"
   "version" "1.1.3"
 
-"commander@^2.20.3":
+"commander@^2.20.3", "commander@2":
   "integrity" "sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/commander/-/commander-2.20.3.tgz"
   "version" "2.20.3"
 
-"commander@^7.2.0", "commander@7":
+"commander@^7.2.0":
   "integrity" "sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/commander/-/commander-7.2.0.tgz"
   "version" "7.2.0"
@@ -975,10 +1003,10 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/commander/-/commander-8.3.0.tgz"
   "version" "8.3.0"
 
-"commander@2":
-  "integrity" "sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/commander/-/commander-2.20.3.tgz"
-  "version" "2.20.3"
+"commander@7":
+  "integrity" "sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/commander/-/commander-7.2.0.tgz"
+  "version" "7.2.0"
 
 "component-emitter@^1.2.1":
   "integrity" "sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg=="
@@ -1017,6 +1045,13 @@
   dependencies:
     "object-assign" "^4"
     "vary" "^1"
+
+"cos-js-sdk-v5@^1.3.9":
+  "integrity" "sha512-oJ8NYGx8GVvz6HI2OIY/Zp6rBnhJQmRD1lm0DgkwV03z/UA2NbkoGzdRbdNnB6LXvPYHApWllaRlrLBZJBspNA=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/cos-js-sdk-v5/-/cos-js-sdk-v5-1.3.9.tgz"
+  "version" "1.3.9"
+  dependencies:
+    "@xmldom/xmldom" "^0.8.2"
 
 "cross-env@^7.0.3":
   "integrity" "sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw=="
@@ -1085,7 +1120,14 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-array/-/d3-array-1.2.4.tgz"
   "version" "1.2.4"
 
-"d3-array@2 - 3", "d3-array@2.10.0 - 3", "d3-array@2.5.0 - 3", "d3-array@3":
+"d3-array@2 - 3", "d3-array@2.10.0 - 3", "d3-array@3":
+  "integrity" "sha512-33qQ+ZoZlli19IFiQx4QEpf2CBEayMRzhlisJHSCsSUbDXv6ZishqS1x7uFVClKG4Wr7rZVHvaAttoLow6GqdQ=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/d3-array/-/d3-array-3.1.1.tgz"
+  "version" "3.1.1"
+  dependencies:
+    "internmap" "1 - 2"
+
+"d3-array@2.5.0 - 3":
   "integrity" "sha512-33qQ+ZoZlli19IFiQx4QEpf2CBEayMRzhlisJHSCsSUbDXv6ZishqS1x7uFVClKG4Wr7rZVHvaAttoLow6GqdQ=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-array/-/d3-array-3.1.1.tgz"
   "version" "3.1.1"
@@ -1193,7 +1235,7 @@
     "d3-dispatch" "1"
     "d3-selection" "1"
 
-"d3-drag@2 - 3", "d3-drag@3":
+"d3-drag@2 - 3":
   "integrity" "sha512-pWbUJLdETVA8lQNJecMxoXfH6x+mO2UQo8rSmZ+QqxcbyA3hfeprFgIT//HW2nlHChWeIIMwS2Fq+gEARkhTkg=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-drag/-/d3-drag-3.0.0.tgz"
   "version" "3.0.0"
@@ -1201,7 +1243,15 @@
     "d3-dispatch" "1 - 3"
     "d3-selection" "3"
 
-"d3-dsv@1 - 3", "d3-dsv@3":
+"d3-drag@3":
+  "integrity" "sha512-pWbUJLdETVA8lQNJecMxoXfH6x+mO2UQo8rSmZ+QqxcbyA3hfeprFgIT//HW2nlHChWeIIMwS2Fq+gEARkhTkg=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/d3-drag/-/d3-drag-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "d3-dispatch" "1 - 3"
+    "d3-selection" "3"
+
+"d3-dsv@1 - 3":
   "integrity" "sha512-UG6OvdI5afDIFP9w4G0mNq50dSOsXHJaRE8arAS5o9ApWnIElp8GZw1Dun8vP8OyHOZ/QJUKUJwxiiCCnUwm+Q=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-dsv/-/d3-dsv-3.0.1.tgz"
   "version" "3.0.1"
@@ -1217,6 +1267,15 @@
   dependencies:
     "commander" "2"
     "iconv-lite" "0.4"
+    "rw" "1"
+
+"d3-dsv@3":
+  "integrity" "sha512-UG6OvdI5afDIFP9w4G0mNq50dSOsXHJaRE8arAS5o9ApWnIElp8GZw1Dun8vP8OyHOZ/QJUKUJwxiiCCnUwm+Q=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/d3-dsv/-/d3-dsv-3.0.1.tgz"
+  "version" "3.0.1"
+  dependencies:
+    "commander" "7"
+    "iconv-lite" "0.6"
     "rw" "1"
 
 "d3-ease@1 - 3", "d3-ease@3":
@@ -1262,7 +1321,7 @@
     "d3-quadtree" "1 - 3"
     "d3-timer" "1 - 3"
 
-"d3-format@1 - 3", "d3-format@3":
+"d3-format@1 - 3":
   "integrity" "sha512-YyUI6AEuY/Wpt8KWLgZHsIU86atmikuoOmCfommt0LYHiQSPjvX2AcFc38PX0CBpr2RCyZhjex+NS/LPOv6YqA=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-format/-/d3-format-3.1.0.tgz"
   "version" "3.1.0"
@@ -1271,6 +1330,11 @@
   "integrity" "sha512-J0piedu6Z8iB6TbIGfZgDzfXxUFN3qQRMofy2oPdXzQibYGqPB/9iMcxr/TGalU+2RsyDO+U4f33id8tbnSRMQ=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-format/-/d3-format-1.4.5.tgz"
   "version" "1.4.5"
+
+"d3-format@3":
+  "integrity" "sha512-YyUI6AEuY/Wpt8KWLgZHsIU86atmikuoOmCfommt0LYHiQSPjvX2AcFc38PX0CBpr2RCyZhjex+NS/LPOv6YqA=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/d3-format/-/d3-format-3.1.0.tgz"
+  "version" "3.1.0"
 
 "d3-geo@1":
   "integrity" "sha512-XG4d1c/UJSEX9NfU02KwBL6BYPj8YKHxgBEw5om2ZnTRSbIcego6dhHwcxuSR3clxh0EpE38os1DVPOmnYtTPg=="
@@ -1296,7 +1360,14 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-hierarchy/-/d3-hierarchy-3.1.1.tgz"
   "version" "3.1.1"
 
-"d3-interpolate@1 - 3", "d3-interpolate@1.2.0 - 3", "d3-interpolate@3":
+"d3-interpolate@1 - 3", "d3-interpolate@3":
+  "integrity" "sha512-3bYs1rOD33uo8aqJfKP3JWPAibgw8Zm2+L9vBKEHJ2Rg+viTR7o5Mmv5mZcieN+FRYaAOWX5SJATX6k1PWz72g=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/d3-interpolate/-/d3-interpolate-3.0.1.tgz"
+  "version" "3.0.1"
+  dependencies:
+    "d3-color" "1 - 3"
+
+"d3-interpolate@1.2.0 - 3":
   "integrity" "sha512-3bYs1rOD33uo8aqJfKP3JWPAibgw8Zm2+L9vBKEHJ2Rg+viTR7o5Mmv5mZcieN+FRYaAOWX5SJATX6k1PWz72g=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-interpolate/-/d3-interpolate-3.0.1.tgz"
   "version" "3.0.1"
@@ -1310,7 +1381,7 @@
   dependencies:
     "d3-color" "1"
 
-"d3-path@1 - 3", "d3-path@3":
+"d3-path@1 - 3":
   "integrity" "sha512-gq6gZom9AFZby0YLduxT1qmrp4xpBA1YZr19OI717WIdKE2OM5ETq5qrHLb301IgxhLwcuxvGZVLeeWc/k1I6w=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-path/-/d3-path-3.0.1.tgz"
   "version" "3.0.1"
@@ -1319,6 +1390,11 @@
   "integrity" "sha512-VLaYcn81dtHVTjEHd8B+pbe9yHWpXKZUC87PzoFmsFrJqgFwDe/qxfp5MlfsfM1V5E/iVt0MmEbWQ7FVIXh/bg=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-path/-/d3-path-1.0.9.tgz"
   "version" "1.0.9"
+
+"d3-path@3":
+  "integrity" "sha512-gq6gZom9AFZby0YLduxT1qmrp4xpBA1YZr19OI717WIdKE2OM5ETq5qrHLb301IgxhLwcuxvGZVLeeWc/k1I6w=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/d3-path/-/d3-path-3.0.1.tgz"
+  "version" "3.0.1"
 
 "d3-polygon@1":
   "integrity" "sha512-k+RF7WvI08PC8reEoXa/w2nSg5AUMTi+peBD9cmFc+0ixHfbs4QmxxkarVal1IkVkgxVuk9JSHhJURHiyHKAuQ=="
@@ -1330,7 +1406,7 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-polygon/-/d3-polygon-3.0.1.tgz"
   "version" "3.0.1"
 
-"d3-quadtree@1 - 3", "d3-quadtree@3":
+"d3-quadtree@1 - 3":
   "integrity" "sha512-04xDrxQTDTCFwP5H6hRhsRcb9xxv2RzkcsygFzmkSIOJy3PeRJP7sNk3VRIbKXcog561P9oU0/rVH6vDROAgUw=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-quadtree/-/d3-quadtree-3.0.1.tgz"
   "version" "3.0.1"
@@ -1339,6 +1415,11 @@
   "integrity" "sha512-RKPAeXnkC59IDGD0Wu5mANy0Q2V28L+fNe65pOCXVdVuTJS3WPKaJlFHer32Rbh9gIo9qMuJXio8ra4+YmIymA=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-quadtree/-/d3-quadtree-1.0.7.tgz"
   "version" "1.0.7"
+
+"d3-quadtree@3":
+  "integrity" "sha512-04xDrxQTDTCFwP5H6hRhsRcb9xxv2RzkcsygFzmkSIOJy3PeRJP7sNk3VRIbKXcog561P9oU0/rVH6vDROAgUw=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/d3-quadtree/-/d3-quadtree-3.0.1.tgz"
+  "version" "3.0.1"
 
 "d3-random@1":
   "integrity" "sha512-6AK5BNpIFqP+cx/sreKzNjWbwZQCSUatxq+pPRmFIQaWuoD+NrbVWw7YWpHiXpCQ/NanKdtGDuB+VQcZDaEmYQ=="
@@ -1413,7 +1494,7 @@
   dependencies:
     "d3-path" "1 - 3"
 
-"d3-time-format@2 - 4", "d3-time-format@4":
+"d3-time-format@2 - 4":
   "integrity" "sha512-dJxPBlzC7NugB2PDLwo9Q8JiTR3M3e4/XANkreKSUxF8vvXKqm1Yfq4Q5dl8budlunRVlUUaDUgFt7eA8D6NLg=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-time-format/-/d3-time-format-4.1.0.tgz"
   "version" "4.1.0"
@@ -1426,6 +1507,13 @@
   "version" "2.3.0"
   dependencies:
     "d3-time" "1"
+
+"d3-time-format@4":
+  "integrity" "sha512-dJxPBlzC7NugB2PDLwo9Q8JiTR3M3e4/XANkreKSUxF8vvXKqm1Yfq4Q5dl8budlunRVlUUaDUgFt7eA8D6NLg=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/d3-time-format/-/d3-time-format-4.1.0.tgz"
+  "version" "4.1.0"
+  dependencies:
+    "d3-time" "1 - 3"
 
 "d3-time@1 - 3", "d3-time@2.1.1 - 3", "d3-time@3":
   "integrity" "sha512-zmV3lRnlaLI08y9IMRXSDshQb5Nj77smnfpnd2LrBa/2K281Jijactokeak14QacHs/kKq0AQ121nidNYlarbQ=="
@@ -1461,7 +1549,18 @@
     "d3-selection" "^1.1.0"
     "d3-timer" "1"
 
-"d3-transition@2 - 3", "d3-transition@3":
+"d3-transition@2 - 3":
+  "integrity" "sha512-ApKvfjsSR6tg06xrL434C0WydLr7JewBB3V+/39RMHsaXTOG0zmt/OAXeng5M5LBm0ojmxJrpomQVZ1aPvBL4w=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/d3-transition/-/d3-transition-3.0.1.tgz"
+  "version" "3.0.1"
+  dependencies:
+    "d3-color" "1 - 3"
+    "d3-dispatch" "1 - 3"
+    "d3-ease" "1 - 3"
+    "d3-interpolate" "1 - 3"
+    "d3-timer" "1 - 3"
+
+"d3-transition@3":
   "integrity" "sha512-ApKvfjsSR6tg06xrL434C0WydLr7JewBB3V+/39RMHsaXTOG0zmt/OAXeng5M5LBm0ojmxJrpomQVZ1aPvBL4w=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/d3-transition/-/d3-transition-3.0.1.tgz"
   "version" "3.0.1"
@@ -1590,10 +1689,10 @@
     "graphlib" "^2.1.8"
     "lodash" "^4.17.15"
 
-"dayjs@^1.10.7":
-  "integrity" "sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/dayjs/-/dayjs-1.10.7.tgz"
-  "version" "1.10.7"
+"dayjs@^1.11.3":
+  "integrity" "sha512-xxwlswWOlGhzgQ4TKzASQkUhqERI3egRNqgV4ScR8wlANA/A9tZ7miXa44vTTKEq5l7vWoL5G57bG3zA+Kow0A=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/dayjs/-/dayjs-1.11.3.tgz"
+  "version" "1.11.3"
 
 "debug@^2.2.0":
   "integrity" "sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA=="
@@ -1757,19 +1856,26 @@
     "tslib" "2.3.0"
     "zrender" "5.2.1"
 
-"element-plus@^1.2.0-beta.6":
-  "integrity" "sha512-8EdSIR/5/FHcSB8w1diAh+gJMHgxIvxuZoayY99k6taAR1QyEFHuPTgFccZLopJ1+iP4UEsZFz49l57qS08Utw=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/element-plus/-/element-plus-1.2.0-beta.6.tgz"
-  "version" "1.2.0-beta.6"
+"element-plus@2.2.6":
+  "integrity" "sha512-N9G4yWSxDt1YtreCJgt7UaSsXKuR4Fzb3ThzlBjbGDYDhcHijsrLL3qkdLZgeoSB13LRyr9pgP1ljNXdaYGa+g=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/element-plus/-/element-plus-2.2.6.tgz"
+  "version" "2.2.6"
   dependencies:
-    "@element-plus/icons-vue" "^0.2.2"
-    "@popperjs/core" "^2.10.2"
-    "@vueuse/core" "^7.0.0"
-    "async-validator" "^4.0.7"
-    "dayjs" "^1.10.7"
+    "@ctrl/tinycolor" "^3.4.1"
+    "@element-plus/icons-vue" "^2.0.5"
+    "@floating-ui/dom" "^0.5.3"
+    "@popperjs/core" "npm:@sxzz/popperjs-es@^2.11.7"
+    "@types/lodash" "^4.14.182"
+    "@types/lodash-es" "^4.17.6"
+    "@vueuse/core" "^8.6.0"
+    "async-validator" "^4.1.1"
+    "dayjs" "^1.11.3"
+    "escape-html" "^1.0.3"
     "lodash" "^4.17.21"
+    "lodash-es" "^4.17.21"
+    "lodash-unified" "^1.0.2"
     "memoize-one" "^6.0.0"
-    "normalize-wheel-es" "^1.1.1"
+    "normalize-wheel-es" "^1.1.2"
 
 "emmet@^2.3.0":
   "integrity" "sha512-LcWfTamJnXIdMfLvJEC5Ld3hY5/KHXgv1L1bp6I7eEvB0ZhacHZ1kX0BYovJ8FroEsreLcq7n7kZhRMsf6jkXQ=="
@@ -1796,7 +1902,7 @@
   dependencies:
     "ansi-colors" "^4.1.1"
 
-"entities@^1.1.1":
+"entities@^1.1.1", "entities@~1.1.1":
   "integrity" "sha512-f2LZMYl1Fzu7YSBKg+RoROelpOaNrcGmE9AZubeDfrCEia483oW4MI4VyFd5VNHIgQ/7qm1I0wUHK1eJnn2y2w=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/entities/-/entities-1.1.2.tgz"
   "version" "1.1.2"
@@ -1810,11 +1916,6 @@
   "integrity" "sha512-WiyBqoomrwMdFG1e0kqvASYfnlb0lp8M5o5Fw2OFq1hNZxxcNk8Ik0Xm7LxzBhuidnZB/UtBqVCgUz3kBOP51Q=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/entities/-/entities-3.0.1.tgz"
   "version" "3.0.1"
-
-"entities@~1.1.1":
-  "integrity" "sha512-f2LZMYl1Fzu7YSBKg+RoROelpOaNrcGmE9AZubeDfrCEia483oW4MI4VyFd5VNHIgQ/7qm1I0wUHK1eJnn2y2w=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/entities/-/entities-1.1.2.tgz"
-  "version" "1.1.2"
 
 "entities@~2.1.0":
   "integrity" "sha512-hCx1oky9PFrJ611mf0ifBLBRW8lUUVRlFolb5gWRfIELabBlbp9xZvrqZLZAs+NxFnbfQoeGd8wDkygjg7U85w=="
@@ -2460,17 +2561,17 @@
   dependencies:
     "safer-buffer" ">= 2.1.2 < 3.0.0"
 
-"ignore@^4.0.3":
+"ignore@^4.0.3", "ignore@^4.0.6":
   "integrity" "sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/ignore/-/ignore-4.0.6.tgz"
   "version" "4.0.6"
 
-"ignore@^4.0.6":
-  "integrity" "sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/ignore/-/ignore-4.0.6.tgz"
-  "version" "4.0.6"
+"ignore@^5.1.4":
+  "integrity" "sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/ignore/-/ignore-5.2.0.tgz"
+  "version" "5.2.0"
 
-"ignore@^5.1.4", "ignore@^5.1.8":
+"ignore@^5.1.8":
   "integrity" "sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/ignore/-/ignore-5.2.0.tgz"
   "version" "5.2.0"
@@ -2797,7 +2898,21 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/khroma/-/khroma-1.4.1.tgz"
   "version" "1.4.1"
 
-"kind-of@^3.0.2", "kind-of@^3.0.3", "kind-of@^3.2.0":
+"kind-of@^3.0.2":
+  "integrity" "sha1-MeohpzS6ubuw8yRm2JOupR5KPGQ="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/kind-of/-/kind-of-3.2.2.tgz"
+  "version" "3.2.2"
+  dependencies:
+    "is-buffer" "^1.1.5"
+
+"kind-of@^3.0.3":
+  "integrity" "sha1-MeohpzS6ubuw8yRm2JOupR5KPGQ="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/kind-of/-/kind-of-3.2.2.tgz"
+  "version" "3.2.2"
+  dependencies:
+    "is-buffer" "^1.1.5"
+
+"kind-of@^3.2.0":
   "integrity" "sha1-MeohpzS6ubuw8yRm2JOupR5KPGQ="
   "resolved" "https://repo.huaweicloud.com/repository/npm/kind-of/-/kind-of-3.2.2.tgz"
   "version" "3.2.2"
@@ -2821,12 +2936,7 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/kind-of/-/kind-of-5.1.0.tgz"
   "version" "5.1.0"
 
-"kind-of@^6.0.0":
-  "integrity" "sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/kind-of/-/kind-of-6.0.3.tgz"
-  "version" "6.0.3"
-
-"kind-of@^6.0.2":
+"kind-of@^6.0.0", "kind-of@^6.0.2":
   "integrity" "sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/kind-of/-/kind-of-6.0.3.tgz"
   "version" "6.0.3"
@@ -2867,6 +2977,16 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/local-pkg/-/local-pkg-0.4.1.tgz"
   "version" "0.4.1"
 
+"lodash-es@*", "lodash-es@^4.17.21":
+  "integrity" "sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/lodash-es/-/lodash-es-4.17.21.tgz"
+  "version" "4.17.21"
+
+"lodash-unified@^1.0.2":
+  "integrity" "sha512-OGbEy+1P+UT26CYi4opY4gebD8cWRDxAT6MAObIVQMiqYdxZr1g3QHWCToVsm31x2NkLS4K3+MC2qInaRMa39g=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/lodash-unified/-/lodash-unified-1.0.2.tgz"
+  "version" "1.0.2"
+
 "lodash.merge@^4.6.2":
   "integrity" "sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/lodash.merge/-/lodash.merge-4.6.2.tgz"
@@ -2877,7 +2997,7 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/lodash.truncate/-/lodash.truncate-4.4.2.tgz"
   "version" "4.4.2"
 
-"lodash@^4.17.15", "lodash@^4.17.21":
+"lodash@*", "lodash@^4.17.15", "lodash@^4.17.21":
   "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/lodash/-/lodash-4.17.21.tgz"
   "version" "4.17.21"
@@ -2947,18 +3067,7 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/markdown-it-table-of-contents/-/markdown-it-table-of-contents-0.4.4.tgz"
   "version" "0.4.4"
 
-"markdown-it@*", "markdown-it@^12.3.2", "markdown-it@>= 9.0.0 < 13.0.0", "markdown-it@>=5.0.0":
-  "integrity" "sha512-TchMembfxfNVpHkbtriWltGWc+m3xszaRD0CZup7GFFhzIgQqxIfn3eGj1yZpfuflzPvfkt611B2Q/Bsk1YnGg=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/markdown-it/-/markdown-it-12.3.2.tgz"
-  "version" "12.3.2"
-  dependencies:
-    "argparse" "^2.0.1"
-    "entities" "~2.1.0"
-    "linkify-it" "^3.0.1"
-    "mdurl" "^1.0.1"
-    "uc.micro" "^1.0.5"
-
-"markdown-it@^8.4.1":
+"markdown-it@*", "markdown-it@^8.4.1", "markdown-it@>=5.0.0":
   "integrity" "sha512-GcRz3AWTqSUphY3vsUqQSFMbgR38a4Lh3GWlHRh/7MRwz8mcu9n2IO7HOh+bXHrR9kOPDl5RNCaEsrneb+xhHQ=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/markdown-it/-/markdown-it-8.4.2.tgz"
   "version" "8.4.2"
@@ -2966,6 +3075,17 @@
     "argparse" "^1.0.7"
     "entities" "~1.1.1"
     "linkify-it" "^2.0.0"
+    "mdurl" "^1.0.1"
+    "uc.micro" "^1.0.5"
+
+"markdown-it@^12.3.2", "markdown-it@>= 9.0.0 < 13.0.0":
+  "integrity" "sha512-TchMembfxfNVpHkbtriWltGWc+m3xszaRD0CZup7GFFhzIgQqxIfn3eGj1yZpfuflzPvfkt611B2Q/Bsk1YnGg=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/markdown-it/-/markdown-it-12.3.2.tgz"
+  "version" "12.3.2"
+  dependencies:
+    "argparse" "^2.0.1"
+    "entities" "~2.1.0"
+    "linkify-it" "^3.0.1"
     "mdurl" "^1.0.1"
     "uc.micro" "^1.0.5"
 
@@ -3131,10 +3251,10 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/normalize-path/-/normalize-path-3.0.0.tgz"
   "version" "3.0.0"
 
-"normalize-wheel-es@^1.1.1":
-  "integrity" "sha512-157VNH4CngrcsvF8xOVOe22cwniIR3nxSltdctvQeHZj8JttEeOXffK28jucWfWBXs0QNetAumjc1GiInnwX4w=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/normalize-wheel-es/-/normalize-wheel-es-1.1.1.tgz"
-  "version" "1.1.1"
+"normalize-wheel-es@^1.1.2":
+  "integrity" "sha512-scX83plWJXYH1J4+BhAuIHadROzxX0UBF3+HuZNY2Ks8BciE7tSTQ+5JhTsvzjaO0/EJdm4JBGrfObKxFf3Png=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/normalize-wheel-es/-/normalize-wheel-es-1.1.2.tgz"
+  "version" "1.1.2"
 
 "nth-check@^2.0.1":
   "integrity" "sha512-it1vE95zF6dTT9lBsYbxvqh0Soy4SPowchj0UBGj/V6cTPnXXtQOPUbhZ6CmGzAD/rW22LQK6E96pcdJXk4A4w=="

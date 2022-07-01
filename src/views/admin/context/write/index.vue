@@ -56,21 +56,28 @@
       </el-select>
     </div>
     <Markdown :text="data.md" :height="600" />
+    <CommitForm :show="show" @on-show="onShow" @on-commit="onCommit"/>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive, watch } from 'vue';
+import { defineComponent, onMounted, reactive, ref, watch } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import { useI18n } from 'vue-i18n';
 import { strIsEmpty } from '@/utils';
 import { CustomOptions } from '@/constant/Type';
 import { categoryList, tagsList, commit } from '@/api/admin/context/write';
-
+import CommitForm from './components/CommitForm.vue';
+interface Form{
+  desc: string;
+  cover: string;
+}
 export default defineComponent({
   name: 'ArticleWrite',
+  components: { CommitForm },
   setup() {
     const { t } = useI18n();
+    const show = ref<boolean>(false);
     const data = reactive({
       input: '',
       category: '',
@@ -79,6 +86,15 @@ export default defineComponent({
       tagValues: [],
       tags: [] as Array<CustomOptions>,
     });
+    const formEvent = {
+      onShow() {
+        show.value = !show.value;
+      },
+      onCommit(form: Form) {
+        console.log(form);
+        this.onShow();
+      }
+    };
     const handleSubmit = () => {
       if (strIsEmpty(data.category)){
         ElMessage.warning({
@@ -86,15 +102,7 @@ export default defineComponent({
         });
         return;
       }
-      ElMessageBox.confirm(
-        t('message.confirm_submit'), 
-        t('message.confirm_submit'),
-        {
-          confirmButtonText: t('button.confirm'),
-          cancelButtonText: t('button.cancel'),
-          type: 'success',
-        }
-      ).then();
+      formEvent.onShow();
     };
     watch(
       () => data.tagValues,
@@ -118,6 +126,8 @@ export default defineComponent({
     return {
       data,
       handleSubmit,
+      show,
+      ...formEvent,
     };
   },
 });

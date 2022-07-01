@@ -10,7 +10,9 @@ export default {
         return_name: '返回类型',
         return_value_map: '返回体',
         link_title: '友情链接',
-
+        article_commit: '文章提交',
+        cover: '背景图',
+        desc: '描述',
     },
     en: {
         api_descriptions_title: 'Interface Description',
@@ -23,5 +25,8 @@ export default {
         annotationValue: 'Interface Specification',
         return_value_map: 'Return Body',
         link_title: 'Links',
+        article_commit: 'Article Commit',
+        cover: 'Cover',
+        desc: 'Desc',
     }
 };

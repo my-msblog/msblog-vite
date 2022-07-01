@@ -33,11 +33,12 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
+import { useStore } from 'vuex';
 import TagView from './components/tag-views/index.vue';
 import PermissionMenu from './components/PermissionMenu.vue';
 import BreadCrumb from './components/BreadCrumb.vue';
 import AdminHeader from './components/AdminHeader.vue';
-import { useStore } from 'vuex';
+
 export default defineComponent({
   name: 'AdminLayout',
   components: { TagView, AdminHeader, PermissionMenu, BreadCrumb },
