@@ -42,6 +42,7 @@ declare module 'vue' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTag: typeof import('element-plus/es')['ElTag']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
+    ElUpload: typeof import('element-plus/es')['ElUpload']
     FlowCard: typeof import('./../src/components/flow-card/index.vue')['default']
     Language: typeof import('./../src/components/language/index.vue')['default']
     Loading: typeof import('element-plus/es')['ElLoadingDirective']

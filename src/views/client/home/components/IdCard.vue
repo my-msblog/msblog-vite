@@ -17,7 +17,7 @@
       <el-button
         class="btn-add"
         type="success"
-        size="medium"
+        size="default"
         plain
         round
         @click="handleClickLabel"
@@ -28,11 +28,11 @@
         <SvgIcon
           name="qq-circle"
           size="28"
-          class="svg-icon"
+          class="svg-icon current"
           @click="handleQQ"
         />
-        <SvgIcon name="github" size="28" class="svg-icon" />
-        <SvgIcon name="gitee" size="28" class="svg-icon" />
+        <SvgIcon name="github" size="28" class="svg-icon current" />
+        <SvgIcon name="gitee" size="28" class="svg-icon current" />
       </div>
     </div>
   </el-card>

@@ -2,7 +2,6 @@
   <div style="overflow: hidden">
     <div id="paper">
       <el-form
-        v-loading="data.loading"
         class="login-container"
         label-position="left"
         label-width="0px"
@@ -37,27 +36,35 @@
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-row justify="space-around">
+          <el-row justify="space-between" class="fill-w">
             <el-col :span="14">
               <el-input
                 v-model="data.form.code"
-                autocomplete="off"
+                size="large"
                 :placeholder="$t('pages.verificationCode')"
               />
             </el-col>
-            <el-col :span="10">
-              <el-image :src="data.imgSrc" style="height: 40px" @click="handleArithmetic">
-                <template #error>
-                  <div class="code-div">
-                    <ElIcons name="PictureFilled" color="#409EFC" />
-                  </div>
-                </template>
-              </el-image>
+            <el-col :span="10" class="current">
+              <el-image 
+                v-if="data.imgSrc" 
+                v-loading="data.loading"
+                :src="data.imgSrc" 
+                style="height: 40px" 
+                @click="handleArithmetic"
+              ></el-image>
+              <div 
+                v-else
+                v-loading="data.loading"
+                class="code-div all-center" 
+                @click="handleArithmetic"
+              >
+                <ElIcons name="PictureFilled" color="#409EFC" :size="30" />
+              </div>
             </el-col>
           </el-row>
         </el-form-item>
         <el-form-item>
-          <el-row :gutter="24" justify="space-around">
+          <el-row justify="space-between" class="fill-w">
             <el-col :span="11">
               <el-button type="primary" class="btn_bg" @click="handleLogin">
                 {{ $t('pages.login') }}
@@ -73,8 +80,8 @@
           </el-row>
         </el-form-item>
         <el-form-item>
-          <router-link to="/home">
-            <el-button icon="el-icon-back" type="text">{{ $t('pages.back') }}</el-button>
+          <router-link to="/home" style="text-decoration: none;" class="fill-w">
+            <el-button link :icon="Back">{{ $t('pages.back') }}</el-button>
           </router-link>
         </el-form-item>
       </el-form>
@@ -87,6 +94,7 @@ import { defineComponent, reactive, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
+import { Back } from '@element-plus/icons-vue';
 import { getArithmeticCode, loginByPwd } from '@/api/client/login';
 import { ElMessage } from 'element-plus';
 import { Encrypt } from '@/utils/Secret';
@@ -114,33 +122,28 @@ export default defineComponent({
       pwd_type: 'password',
     });
     const handleLogin = function () {
-      // data.form.key = store.getters.getCodeKey;
-      // data.form.password = Encrypt(data.form.password);
       const request = {
         username: data.form.username,
         password: Encrypt(data.form.password),
         code: data.form.code,
         key: store.getters.getCodeKey,
       };
-      loginByPwd(request)
-        .then((res) => {
+      loginByPwd(request).then((res) => {
           store.dispatch('setUserInfo', res);
-          ElMessage({
-            message: t('message.login_success'),
-            type: 'success',
-            duration: 2 * 1000,
-          });
+          ElMessage({message: t('message.login_success'), type: 'success', duration: 2 * 1000});
           router.push('/userInfo');
-        })
-        .catch(() => {
+        }).catch(() => {
           handleArithmetic();
         });
     };
     const handleArithmetic = function () {
+      data.loading = true;
       getArithmeticCode().then((res) => {
         data.imgSrc = res.img;
         store.commit('setCodeKey', res.key);
-      });
+      }).catch(() => {
+        data.imgSrc = '';
+      }).finally(() => data.loading = false);
     };
     const toRegister = function () {
       router.push('/register');
@@ -163,6 +166,7 @@ export default defineComponent({
       handleArithmetic,
       toRegister,
       handleVisible,
+      Back,
     };
   },
 });
