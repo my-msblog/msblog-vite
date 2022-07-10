@@ -42,8 +42,6 @@
         v-model="data.tagValues"
         class="tag-select"
         multiple
-        
-        size="small"
         :placeholder="$t('button.select_tags')"
       >
         <el-option
@@ -61,11 +59,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive, ref, watch } from 'vue';
-import { ElMessage, ElMessageBox } from 'element-plus';
+import { computed, defineComponent, onMounted, reactive, ref, watch } from 'vue';
+import { ElMessage } from 'element-plus';
 import { useI18n } from 'vue-i18n';
+import { useStore } from 'vuex';
 import { strIsEmpty } from '@/utils';
-import { CustomOptions } from '@/constant/Type';
+import { CustomOptions, SelectOptions } from '@/constant/Type';
 import { categoryList, tagsList, commit } from '@/api/admin/context/write';
 import CommitForm from './components/CommitForm.vue';
 interface Form{
@@ -77,22 +76,34 @@ export default defineComponent({
   components: { CommitForm },
   setup() {
     const { t } = useI18n();
+    const store = useStore();
     const show = ref<boolean>(false);
     const data = reactive({
       input: '',
       category: '',
       md: '# text',
-      categoryList: [] as Array<CustomOptions>,
+      categoryList: [] as Array<SelectOptions>,
       tagValues: [],
       tags: [] as Array<CustomOptions>,
     });
+    const userId = computed(() => store.getters.getUserId);
     const formEvent = {
       onShow() {
         show.value = !show.value;
       },
       onCommit(form: Form) {
-        console.log(form);
-        this.onShow();
+        console.log(data.category);
+        commit({
+          title: data.input,
+          text: data.md,
+          tagList: data.tagValues,
+          context: form.desc,
+          category: Number(data.category),
+          writerId: Number(userId),
+          cover: form.cover,
+        }).then(() => {
+          formEvent.onShow();
+        });
       }
     };
     const handleSubmit = () => {
@@ -113,7 +124,7 @@ export default defineComponent({
           });
           data.tagValues.pop();
         }
-      } 
+      }
     );
     onMounted(()=> {
       categoryList().then(res => {
