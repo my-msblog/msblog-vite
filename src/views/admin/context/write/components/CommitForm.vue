@@ -11,8 +11,8 @@
           action="#"
           multiple
           :show-file-list="false"
-          :on-success="handleAvatarSuccess"
-          :before-upload="beforeAvatarUpload"
+          :on-success="handleSuccess"
+          :before-upload="beforeUpload"
           :on-progress="upload"
         >
           <img v-if="imageUrl" :src="imageUrl" class="avatar" />
@@ -41,9 +41,9 @@ export default defineComponent({
 </script>
 <script setup lang="ts">
 import { UploadFilled } from '@element-plus/icons-vue';
-import { UploadProps } from 'element-plus';
+import { ElMessage, UploadProps } from 'element-plus';
 import COS from 'cos-js-sdk-v5';
-import { cos as setting_cos } from '@/setting.json';
+import { cos as setting_cos } from '@/setting';
 interface IProps{
   show: boolean;
 }
@@ -80,14 +80,21 @@ const handleShow = () => {
 const handleSubmit = () => {
   emits('onCommit', data.form);
 };
-const handleAvatarSuccess: UploadProps['onSuccess'] = (res, file) => {
+const handleSuccess: UploadProps['onSuccess'] = (res, file) => {
 
 };
 const upload = () => {
 
 };
-const beforeAvatarUpload = () => {
-
+const beforeUpload: UploadProps['beforeUpload'] = (rawFile) => {
+  if (rawFile.type !== 'image/jpeg') {
+    ElMessage.error('Avatar picture must be JPG format!');
+    return false;
+  } else if (rawFile.size / 1024 / 1024 > 2) {
+    ElMessage.error('Avatar picture size can not exceed 2MB!');
+    return false;
+  }
+  return true;
 };
 </script>
 

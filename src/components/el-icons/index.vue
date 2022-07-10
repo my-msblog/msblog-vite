@@ -1,5 +1,5 @@
 <template>
-  <el-icon :size="size" :color="color">
+  <el-icon :style="{ fontSize: size + 'px' }" :color="color">
     <Icon :icon="name" />
   </el-icon>
 </template>
