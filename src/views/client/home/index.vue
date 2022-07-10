@@ -22,7 +22,7 @@
           <el-pagination
             v-if="!data.showFailed && !data.loading"
             background
-            class="page"
+            class="page all-center"
             layout="prev, pager, next"
             :pager-count="5"
             :page-count="data.page.count"
