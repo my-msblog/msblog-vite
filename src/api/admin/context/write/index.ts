@@ -1,4 +1,4 @@
-import { BaseOptions, CustomOptions } from '@/constant/Type';
+import { SelectOptions, CustomOptions } from '@/constant/Type';
 import request from '@/utils/axios/request';
 import { ArticleCommitDTO } from './model';
 
@@ -9,13 +9,13 @@ enum API {
 }
 
 export function categoryList(){
-    return request.get<Array<CustomOptions>>({
+    return request.get<Array<SelectOptions>>({
         url: API.categoryList,
     });
 }
 
 export function tagsList(){
-    return request.get<Array<CustomOptions>>({
+    return request.get<Array<SelectOptions>>({
         url: API.tags,
     });
 }
