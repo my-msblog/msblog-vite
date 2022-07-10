@@ -178,6 +178,7 @@ export default defineComponent({
       margin-left: 10px;
       margin-right: 10px;
       font-size: 14px;
+      
       .item-center {
         display: inline-flex;
         align-items: center;

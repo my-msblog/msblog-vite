@@ -1,9 +1,8 @@
-
 import CryptoJS from 'crypto-js';
-
+import { secret } from '@/setting';
 // 默认的 KEY 与 iv
-const KEY = '1234567890123456';
-const IV = '1234567890123456';
+const KEY = secret.key;
+const IV = secret.id;
 
 export const Encrypt = function (word: string): string{
   return EncryptBase(word, KEY, IV);

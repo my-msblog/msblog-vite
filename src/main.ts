@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import App from '@/App.vue';
 // element plus style introduction
 import 'element-plus/theme-chalk/display.css';
-import "element-plus/theme-chalk/src/message.scss"
+import 'element-plus/theme-chalk/src/message.scss';
 // custom animations
 import '@/styles/ann.css';
 import '@/styles/index.css';

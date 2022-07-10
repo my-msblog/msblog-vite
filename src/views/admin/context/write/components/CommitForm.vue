@@ -1,18 +1,18 @@
 <template>
-  <el-dialog v-model="data.display" :title="$t('pages.article_commit')">
+  <el-dialog v-model="display" :title="$t('pages.article_commit')">
     <el-form :model="data.form">
-      <el-form-item :label="$t('pages_desc')">
-        <el-input v-model="data.form.desc" autocomplete="off" />
+      <el-form-item :label="$t('pages.desc')+'：'">
+        <el-input v-model="data.form.desc" autocomplete="off" type="textarea" />
       </el-form-item>
-      <el-form-item label="Zones">
+      <el-form-item :label="$t('pages.cover')+'：'">
         <el-upload
           class="upload-demo"
           drag
-          action="#"
+          action=""
           multiple
           :show-file-list="false"
-          :on-success="handleAvatarSuccess"
-          :before-upload="beforeAvatarUpload"
+          :on-success="handleSuccess"
+          :before-upload="beforeUpload"
           :on-progress="upload"
         >
           <img v-if="imageUrl" :src="imageUrl" class="avatar" />
@@ -34,16 +34,16 @@
   </el-dialog>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, ref } from 'vue';
+import { computed, defineComponent, reactive, ref } from 'vue';
 export default defineComponent({
   name: 'CommitForm',
 });
 </script>
 <script setup lang="ts">
 import { UploadFilled } from '@element-plus/icons-vue';
-import { UploadProps } from 'element-plus';
+import { ElMessage, UploadProps, UploadRawFile } from 'element-plus';
 import COS from 'cos-js-sdk-v5';
-import { cos as setting_cos } from '@/setting.json';
+import { cos as setting_cos } from '@/setting';
 interface IProps{
   show: boolean;
 }
@@ -54,6 +54,7 @@ interface Form{
 interface IData{
   form: Form;
   display: boolean;
+  uploadFile: UploadRawFile;
 }
 const props = withDefaults(defineProps<IProps>(), {
   show: false,
@@ -73,21 +74,42 @@ const data = reactive<IData>({
     cover: '',
   },
   display: props.show,
+  uploadFile: {} as UploadRawFile,
 });
+const display = computed(() => props.show);
 const handleShow = () => {
   emits('onShow');
 };
 const handleSubmit = () => {
   emits('onCommit', data.form);
 };
-const handleAvatarSuccess: UploadProps['onSuccess'] = (res, file) => {
-
+const handleSuccess: UploadProps['onSuccess'] = (_, file) => {
+  imageUrl.value = URL.createObjectURL(file.raw as UploadRawFile);
 };
 const upload = () => {
-
+  const res = data.uploadFile;
+  cos.putObject({
+    Bucket: setting_cos.bucket,
+    Region: setting_cos.region,
+    Key: res.name,
+    StorageClass: 'STANDARD',
+    Body: res,
+  }, (_, res) => {
+    if (res.statusCode === 200) {
+      imageUrl.value = `https:${res.Location}`;
+      data.form.cover = imageUrl.value;
+    } else {
+      ElMessage.error('上传失败!');
+    }
+  });
 };
-const beforeAvatarUpload = () => {
-
+const beforeUpload: UploadProps['beforeUpload'] = (rawFile) => {
+  if (rawFile.size / 1024 / 1024 > 2) {
+    ElMessage.error('Picture size can not exceed 2MB!');
+    return false;
+  }
+  data.uploadFile = rawFile;
+  return true;
 };
 </script>
 

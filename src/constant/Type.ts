@@ -51,3 +51,8 @@ export interface CustomOptions extends BaseOptions{
   value: string | number;
   label: string | number;
 }
+
+export interface SelectOptions extends BaseOptions{
+  value: number;
+  label: string;
+}
