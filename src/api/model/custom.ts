@@ -1,7 +1,7 @@
 
 export interface IdDTO{
-  id?: number;
-  idList?: Array<number>;
+  id?: IdType;
+  idList?: Array<IdType>;
 }
 
 export interface UserVO {

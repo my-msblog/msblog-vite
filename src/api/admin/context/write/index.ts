@@ -1,10 +1,10 @@
-import { SelectOptions, CustomOptions } from '@/constant/Type';
+import { SelectOptions, CustomOptions } from '@/constant/type';
 import request from '@/utils/axios/request';
 import { ArticleCommitDTO } from './model';
 
 enum API {
     categoryList = '/context/category/list',
-    tags = '/context/tag/list', 
+    tags = '/context/tag/list',
     commit = '/context/article/commit',
 }
 

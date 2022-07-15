@@ -65,7 +65,7 @@ import { defineComponent, PropType, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { Calendar, More, CollectionTag } from '@element-plus/icons-vue';
 import { ArticleCardVO } from '@/api/model/client/home';
-import { NullArray } from '@/constant/Type';
+import { NullArray } from '@/constant/type';
 
 export default defineComponent({
   name: 'ArticleCards',

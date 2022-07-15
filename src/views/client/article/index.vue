@@ -66,39 +66,41 @@
   </div>
   <div class="article-container">
     <el-row :gutter="12">
-      <el-col 
+      <el-col
         :xs="24"
-        :sm="19" 
+        :sm="19"
       >
         <FlowCard class="md-card">
-          <Viewer 
+          <Viewer
             v-if="data.article.contentMd.length > 0"
-            class="md-view" 
-            :text="data.article.contentMd" 
             ref="viewerRef"
+            class="md-view"
+            :text="data.article.contentMd"
             @load-title="loadTitle"
           />
-          <el-descriptions 
+          <el-descriptions
             class="copyright"
             :column="1"
-            >
+          >
             <el-descriptions-item label-class-name="lable" :label="$t('pages.article_writer') + '：'">
               {{ data.article.writer }}
             </el-descriptions-item>
             <el-descriptions-item label-class-name="lable" :label="$t('pages.article_link') + '：'">
-              <el-link 
-                type="info" 
-                :href="articleUrl" 
-                target="_blank">
+              <el-link
+                type="info"
+                :href="articleUrl"
+                target="_blank"
+              >
                 {{ articleUrl }}
               </el-link>
             </el-descriptions-item>
             <el-descriptions-item label-class-name="lable" :label="$t('pages.copyright_claims') + '：'">
               {{ $t('message.claims_msg_one') }}
-              <el-link  
-                type="info" 
-                href="https://creativecommons.org/licenses/by-nc-sa/4.0/" 
-                target="_blank">
+              <el-link
+                type="info"
+                href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                target="_blank"
+              >
                 CC BY-NC-SA 4.0
               </el-link>
               {{ $t('message.claims_msg_two') }}
@@ -106,18 +108,18 @@
           </el-descriptions>
           <div class="article-bottom content-center">
             <el-button type="info" @click="handleArticleLike">{{ $t('button.like')+ '  ' + data.like }}</el-button>
-            <el-button 
-              type="primary" 
-              style="margin-left: 30px"        
+            <el-button
+              type="primary"
+              style="margin-left: 30px"
             >
-            {{ $t('button.reward') }}
+              {{ $t('button.reward') }}
             </el-button>
           </div>
-          <hr class="dashed-hr"/>
+          <hr class="dashed-hr" />
           <Comments :id="articleId" class="comment" />
         </FlowCard>
       </el-col>
-      <el-col 
+      <el-col
         :xs="0"
         :sm="5"
         hidden-sm-and-down
@@ -125,7 +127,12 @@
         <div class="affix-item">
           <FlowCard class="noun-card">
             <div class="item-center mb5">
-              <ElIcons name="List" :size="18" style="font-size: 18px" class="mr5"/>
+              <ElIcons
+                name="List"
+                :size="18"
+                style="font-size: 18px"
+                class="mr5"
+              />
               {{ $t('pages.dir') }}
             </div>
             <div
@@ -140,17 +147,22 @@
           </FlowCard>
           <FlowCard class="recommend-card">
             <div class="item-center mb5">
-              <ElIcons name="MagicStick" :size="18" class="mr5"/>
+              <ElIcons name="MagicStick" :size="18" class="mr5" />
               {{ $t('pages.recommend') }}
             </div>
-            <div v-for="(item) in data.recommendList" :key="item.id" class="recommend" @click="handleClickRecommend(item.id)">
-               <el-image style="width: 58px; height: 58px" :src="item.cover" fit="cover" />
-               <div class="recommend-text item-center">
-                 <div>
+            <div
+              v-for="(item) in data.recommendList"
+              :key="item.id"
+              class="recommend"
+              @click="handleClickRecommend(item.id)"
+            >
+              <el-image style="width: 58px; height: 58px" :src="item.cover" fit="cover" />
+              <div class="recommend-text item-center">
+                <div>
                   <div>{{ item.title }}</div>
                   <div class="rec-time mt5">{{ item.createTime }}</div>
-                 </div>
-               </div>
+                </div>
+              </div>
             </div>
           </FlowCard>
         </div>
@@ -160,10 +172,10 @@
 </template>
 
 <script lang="ts">
-import { 
+import {
   defineComponent,
   ref,
-  onMounted, 
+  onMounted,
   reactive,
   computed,
 } from 'vue';
@@ -177,11 +189,11 @@ export default defineComponent({
   components: { Calendar, Refresh, CopyDocument, Comments },
   setup() {
     const router = useRouter();
-    const articleId = computed(() => Number(router.currentRoute.value.params.id));
+    const articleId = computed<string>(() => router.currentRoute.value.params.id as unknown as string);
     const viewerRef = ref();
     const data = reactive<IData>({
         commentList: [],
-        article: aData, 
+        article: aData,
         nouns: [],
         like: 15,
         recommendList: [],
@@ -189,10 +201,10 @@ export default defineComponent({
     const wapperBackground = computed(() => 'background: url(' + data.article.cover +') center center / cover no-repeat');
     const articleUrl = computed(()=> import.meta.env.VITE_APP_PUBLIC_PATH + router.currentRoute.value.fullPath);
     const handleArticle = () =>{
-      getArticle({id: articleId.value}).then(res => { 
+      getArticle({id: articleId.value}).then(res => {
         data.article = res;
         console.log(data.article);
-        
+
       });
     };
     const loadTitle = (titles: TitleElement[]) => {
@@ -210,8 +222,8 @@ export default defineComponent({
       router.push(`/article/${id}`);
     };
     const handleArticleLike = () => {
-      
-    }
+
+    };
     onMounted(() => {
       handleArticle();
       handleRecommend();
@@ -257,7 +269,7 @@ export default defineComponent({
        padding: 5px 0;
       }
       .second-line{
-        padding: auto;
+        padding: 1px;
       }
       .third-line{
         padding: 5px 0;
@@ -280,7 +292,7 @@ export default defineComponent({
       border: 1px solid #eee;
       padding: 0.625rem 1rem;
       &:deep(.el-descriptions__label:not(.is-bordered-label)){
-        margin-right: 0px;
+        margin-right: 0;
       }
       &:deep(.lable){
         color: #49b1f5;
@@ -293,7 +305,7 @@ export default defineComponent({
   }
   .noun-card{
     text-align: left;
-    
+
     .noun-title{
       overflow: hidden;
       text-overflow: ellipsis;

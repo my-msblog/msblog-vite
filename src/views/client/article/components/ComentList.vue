@@ -56,12 +56,12 @@ export default defineComponent({
 });
 </script>
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n'; 
+import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { ElMessage } from 'element-plus';
 import CommentInput from './CommentInput.vue';
-import { NullFunctionArry } from '@/constant/Type';
+import { NullFunctionArray } from '@/constant/type';
 import { CommentItemVO, GiveLikesDTO } from '@/api/model/client/article';
 import { strIsEmpty, arryRemove } from '@/utils';
 import { commentSubmit, giveLikes, getLikeList } from '@/api/client/article';
@@ -80,7 +80,7 @@ interface IData{
 const { t } = useI18n();
 
 const props = withDefaults(defineProps<IProps>(), {
-  list: NullFunctionArry(),
+  list: NullFunctionArray(),
 });
 const emit = defineEmits<{
   (event: 'reload'): void,
@@ -93,7 +93,7 @@ const data = reactive<IData>({
     showReply: false,
     showIndex: -1,
     placeholder: t('message.reply'),
-    currerResponderId: 0, 
+    currerResponderId: 0,
     isLikeList: [],
 });
 const imgSrc = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png';
@@ -113,10 +113,10 @@ const handleLike = (id: number, uId: number) => {
   giveLikes(params).then(() => {
     if (params.is){
       arryRemove(data.isLikeList, id);
-      emit('changeLike', id, -1); 
+      emit('changeLike', id, -1);
     } else{
       data.isLikeList.push(id);
-      emit('changeLike', id, 1); 
+      emit('changeLike', id, 1);
     }
   });
 };
@@ -158,7 +158,7 @@ const handleSubmit = (context: string) => {
 
   }).catch((error) => {
     console.log(error);
-    
+
   });
 };
 onMounted(() => {

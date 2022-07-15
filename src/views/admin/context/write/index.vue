@@ -64,7 +64,7 @@ import { ElMessage } from 'element-plus';
 import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
 import { strIsEmpty } from '@/utils';
-import { CustomOptions, SelectOptions } from '@/constant/Type';
+import { CustomOptions, SelectOptions } from '@/constant/type';
 import { categoryList, tagsList, commit } from '@/api/admin/context/write';
 import CommitForm from './components/CommitForm.vue';
 interface Form{
@@ -86,7 +86,7 @@ export default defineComponent({
       tagValues: [],
       tags: [] as Array<CustomOptions>,
     });
-    const userId = computed(() => store.getters.getUserId);
+    const userId = computed<number>(() => store.getters.getUserId);
     const formEvent = {
       onShow() {
         show.value = !show.value;
@@ -99,7 +99,7 @@ export default defineComponent({
           tagList: data.tagValues,
           context: form.desc,
           category: Number(data.category),
-          writerId: Number(userId),
+          writerId: Number(userId.value),
           cover: form.cover,
         }).then(() => {
           formEvent.onShow();

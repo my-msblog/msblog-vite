@@ -1,4 +1,4 @@
-import { TagVO } from "./home";
+import { TagVO } from './home';
 
 export interface CommentItemVO{
     id: number;
@@ -15,7 +15,7 @@ export interface CommentItemVO{
 }
 
 export interface ArticleVO{
-    id: number;
+    id: bigint;
     title: string;
     content: string;
     writer: string;
@@ -36,7 +36,7 @@ export interface CommentSubmitDTO{
     context: string;
     replyTime: Date;
 }
-            
+
 export interface GiveLikesDTO{
     userId: number;
     commentId: number;

@@ -2,7 +2,7 @@
 export function NullArray<T> (): Array<T>{
   return [];
 }
-export function NullFunctionArry<T> (): () => T[]{
+export function NullFunctionArray<T> (): () => T[]{
   return () => [] as T[];
 }
 export function DataArray<T> (data: Array<T>): Array<T>{
@@ -39,7 +39,7 @@ export interface functionTypeBase<T>{
 /**
  * T value 值
  * R lable 值
- * 
+ *
  */
 export interface BaseOptions<T = unknown, R = unknown>{
   value?: string | number | T;

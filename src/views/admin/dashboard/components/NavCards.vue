@@ -37,7 +37,7 @@ import {
   watchEffect, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { GrowCardItem, CardValue } from './data';
-import { NullData } from '@/constant/Type';
+import { NullData } from '@/constant/type';
 const defaultCardValue: CardValue = {
   visit: 0,
   user: 0,

@@ -14,7 +14,7 @@ export interface TitleElement{
     indent: number,
 }
 export interface IArticle{
-    id: number;
+    id: bigint;
     title: string;
     content: string;
     writer: string;

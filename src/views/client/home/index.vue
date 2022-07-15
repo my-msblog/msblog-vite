@@ -69,7 +69,6 @@ import RefreshRight from './components/RefreshRight.vue';
 import Announcement from './components/Announcement.vue';
 import Analysis from './components/Analysis.vue';
 
-
 export default defineComponent({
   name: 'Home',
   components: {

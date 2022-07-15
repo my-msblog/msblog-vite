@@ -46,7 +46,7 @@ import {
   watchEffect } from 'vue';
 import { ElMessage } from 'element-plus';
 import { useI18n } from 'vue-i18n';
-import { NullData } from '@/constant/Type';
+import { NullData } from '@/constant/type';
 
 export default defineComponent({
   name: 'IdCard',

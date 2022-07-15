@@ -7,7 +7,7 @@
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { DataArray } from '@/constant/Type';
+import { DataArray } from '@/constant/type';
 import { EChartsOption } from 'echarts';
 export default defineComponent({
   name: 'FlowAnalysis',

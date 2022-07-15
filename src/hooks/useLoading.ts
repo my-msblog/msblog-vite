@@ -1,5 +1,5 @@
 import { ElLoading } from 'element-plus';
-import { functionTypeBase } from '@/constant/Type';
+import { functionTypeBase } from '@/constant/type';
 
 const TIME = 1000;
 const BACKGROUND = 'rgba(0, 0, 0, 0.4)';
@@ -75,5 +75,5 @@ export const useLoading = () => {
     openFullScreenTime,
     openFullScreenIcon,
     openFullScreenBase,
-  }
-} 
+  };
+};

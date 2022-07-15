@@ -108,10 +108,10 @@ import {
 } from 'vue';
 import { ElMessage } from 'element-plus';
 import { RefreshRight } from '@element-plus/icons-vue';
-import { ElTable } from 'element-plus'
+import { ElTable } from 'element-plus';
 import AddUser from './AddUser.vue';
 import { deleteList, userStatusChange } from '@/api/admin/user-profile';
-import { NullArray } from '@/constant/Type';
+import { NullArray } from '@/constant/type';
 import { useI18n } from 'vue-i18n';
 import { getSex } from '@/constant/enums/sex';
 import { StatusDTO, UserProfileVO } from '@/api/model/admin/user-profile';

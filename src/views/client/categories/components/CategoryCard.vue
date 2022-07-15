@@ -64,7 +64,7 @@
 </template>
 <script lang="ts">
 import { ArticleCategoryVO } from '@/api/model/client/category';
-import { NullObject } from '@/constant/Type';
+import { NullObject } from '@/constant/type';
 import { defineComponent, PropType } from 'vue';
 export default defineComponent({
   name: 'CategoryCard',
