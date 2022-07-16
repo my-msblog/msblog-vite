@@ -1,7 +1,7 @@
 // cos 密钥验证
 export const cos = {
-  ID: 'AKIDPdbJkunQmrfCTTCepjMinb8OM4VfYAsJ',
-  KEY: 'A4h37uQfdKlvnOilX2FCtIQHr9BwRfcI',
+  ID: 'AKID7FYfXAY2KPFsKdkRFqFQTItFLCpHIED0',
+  KEY: 'byDJDuQmvrcDaXI5kEXggU6VhgSfgU5S',
   bucket: 'ms-1258904389',
   region: 'ap-nanjing',
 };

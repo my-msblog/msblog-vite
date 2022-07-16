@@ -24,12 +24,12 @@ export const i18nOption = createI18n({
 });
 
 export function setupI18n(app: App) {
-  let locale = '';
+  let locale;
   // 控制 element-plus 组件语言
   if(i18nOption.global.fallbackLocale == 'zh') {
-    locale = ZhLocale as unknown as string;
+    locale = ZhLocale ;
   } else {
-    locale = EhLocale as unknown as string;
+    locale = EhLocale;
   }
   app.use(i18nOption);
   app.use(ElementPlus, { locale });

@@ -34,7 +34,6 @@ import {
 import { adminUserPage, deletedUser } from '@/api/admin/user-profile';
 import { ElMessage } from 'element-plus';
 import { useI18n } from 'vue-i18n';
-import { BaseDTO } from '@/api/model/core';
 import { UserProfileVO, UserProfileVOImpl } from '@/api/model/admin/user-profile';
 import EditForm from './components/EditForm.vue';
 import UserTable from './components/UserTable.vue';
@@ -50,10 +49,10 @@ export default defineComponent({
       currentPage: 1,
       pagination: {
         page: 1,
-        size: 5,
+        size: 10,
       } as BaseDTO,
       total: 10,
-      pageSize: 5,
+      pageSize: 10,
     });
     let editData = ref(new UserProfileVOImpl);
 

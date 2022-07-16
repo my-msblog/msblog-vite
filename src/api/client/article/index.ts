@@ -1,5 +1,5 @@
 import request from '@/utils/axios/request';
-import { 
+import {
     CommentItemVO,
     CommentSubmitDTO,
     GiveLikesDTO,
@@ -7,7 +7,6 @@ import {
     RecommendVO,
 } from '@/api/model/client/article';
 import { IdDTO } from '@/api/model/custom';
-import { PageInfo } from '@/api/model/core';
 
 enum API {
     getArticle = '/article/get',

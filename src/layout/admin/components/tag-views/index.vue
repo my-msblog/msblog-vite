@@ -13,6 +13,7 @@
         :disable-transitions="true"
         :hit="true"
         :effect="handleEffect(tag)"
+        class="current"
         @close="handleClose(tag, index)"
         @click="changeMenu(tag)"
       >

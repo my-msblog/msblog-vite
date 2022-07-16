@@ -1,6 +1,5 @@
 import request from '@/utils/axios/request';
 import { IdDTO } from '@/api/model/custom';
-import { BaseDTO, PageInfo } from '@/api/model/core';
 import { UserProfileVO, StatusDTO } from '@/api/model/admin/user-profile';
 import { UserTableChangeDTO } from '@/api/model/user-info-model';
 enum Api {

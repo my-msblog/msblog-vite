@@ -1,4 +1,4 @@
-import { SelectOptions, CustomOptions } from '@/constant/type';
+import { SelectOptions } from '@/constant/type';
 import request from '@/utils/axios/request';
 import { ArticleCommitDTO } from './model';
 

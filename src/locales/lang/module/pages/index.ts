@@ -50,6 +50,8 @@ export default {
     dir:'目录',
     writer: '作者',
     recommend: '推荐',
+    title: '标题',
+    description: '描述',
   },
   en: {
     ...card.en,
@@ -87,7 +89,7 @@ export default {
     articles_num: 'Number of articles',
     comments_num: 'Number of comments',
     article: 'Article',
-    category: 'Categroy',
+    category: 'Category',
     tags: 'Tags',
     archive: 'Archived Articles',
     article_category: 'Article Categories',
@@ -100,5 +102,7 @@ export default {
     dir:'Dir',
     writer: 'Writer',
     recommend: 'Recommend',
+    title: 'title',
+    description: 'description',
   }
 };

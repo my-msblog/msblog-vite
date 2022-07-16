@@ -4,6 +4,13 @@ export interface IdDTO{
   idList?: Array<IdType>;
 }
 
+export interface KeyDTO extends BaseDTO{
+  key?: string;
+  dateKey?: Date;
+  idKey?: IdType;
+  arrKey?: Array<any>;
+}
+
 export interface UserVO {
   id: number;
   username: string;

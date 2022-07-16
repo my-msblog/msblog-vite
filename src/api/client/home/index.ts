@@ -1,5 +1,4 @@
 import { ArticleCardVO, HomeCardVO, AnnouncementVO } from '../../model/client/home';
-import { BaseDTO, PageInfo } from '@/api/model/core';
 import request from '@/utils/axios/request';
 
 enum Api {

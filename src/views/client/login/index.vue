@@ -45,17 +45,17 @@
               />
             </el-col>
             <el-col :span="10" class="current">
-              <el-image 
-                v-if="data.imgSrc" 
+              <el-image
+                v-if="data.imgSrc"
                 v-loading="data.loading"
-                :src="data.imgSrc" 
-                style="height: 40px" 
+                :src="data.imgSrc"
+                style="height: 40px"
                 @click="handleArithmetic"
               ></el-image>
-              <div 
+              <div
                 v-else
                 v-loading="data.loading"
-                class="code-div all-center" 
+                class="code-div all-center"
                 @click="handleArithmetic"
               >
                 <ElIcons name="PictureFilled" color="#409EFC" :size="30" />
@@ -66,7 +66,12 @@
         <el-form-item>
           <el-row justify="space-between" class="fill-w">
             <el-col :span="11">
-              <el-button type="primary" class="btn_bg" @click="handleLogin">
+              <el-button
+                :loading="data.spinner"
+                type="primary"
+                class="btn_bg"
+                @click="handleLogin"
+              >
                 {{ $t('pages.login') }}
               </el-button>
             </el-col>
@@ -120,6 +125,7 @@ export default defineComponent({
       imgSrc: '',
       visible: 'invisible',
       pwd_type: 'password',
+      spinner: false,
     });
     const handleLogin = function () {
       const request = {
@@ -128,13 +134,14 @@ export default defineComponent({
         code: data.form.code,
         key: store.getters.getCodeKey,
       };
+      data.spinner = true;
       loginByPwd(request).then((res) => {
           store.dispatch('setUserInfo', res);
           ElMessage({message: t('message.login_success'), type: 'success', duration: 2 * 1000});
           router.push('/userInfo');
         }).catch(() => {
           handleArithmetic();
-        });
+        }).finally(() => { data.spinner = false; });
     };
     const handleArithmetic = function () {
       data.loading = true;

@@ -44,7 +44,6 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from 'vue';
 import { getArchivePage } from '@/api/client/acrhive';
-import { BaseDTO } from '@/api/model/core';
 import { AcrhiveVO } from '@/api/model/client/acrhive';
 import { dateFormat } from '@/utils/DateUtils';
 

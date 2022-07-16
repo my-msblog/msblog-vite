@@ -19,10 +19,11 @@
         size="mini"
         @selection-change="handleSelectChange"
       >
-        <el-table-column type="selection" width="40" />
+        <el-table-column type="selection" width="50" />
         <el-table-column
           type="index"
-          width="50"
+          :index="handleIndex"
+          width="80"
           :label="$t('pages.No')"
           align="center"
         />
@@ -55,14 +56,14 @@
               @change="handleStatusChange(scope.row)"
             />
             <el-button
-              type="text"
+              link
               size="small"
               @click="editUser(scope.row)"
             >
               {{ $t('pages.edit') }}
             </el-button>
             <el-button
-              type="text"
+              link
               size="small"
               @click="deleteUser(scope.row)"
             >
@@ -73,8 +74,8 @@
       </el-table>
       <div class="form_bottom">
         <div class="bot_btn">
-          <el-button size="small" @click="handleDeselect">{{ $t('pages.deselect') }}</el-button>
-          <el-button size="small" @click="handleDeleteList">{{ $t('pages.batch_delete') }}</el-button>
+          <el-button @click="handleDeselect">{{ $t('pages.deselect') }}</el-button>
+          <el-button @click="handleDeleteList">{{ $t('pages.batch_delete') }}</el-button>
         </div>
         <el-pagination
           class="bot_page"
@@ -127,7 +128,7 @@ export default defineComponent({
       request: true,
     },
     currentPage: { type: Number, default: 1 },
-    pageSize: { type: Number, default: 5 },
+    pageSize: { type: Number, default: 10 },
     total: Number,
   },
   emits: [
@@ -141,8 +142,8 @@ export default defineComponent({
     const { t } = useI18n();
     const data = reactive({
       pagination: {
-        size: 5 as number,
-        page: 1 as number,
+        size: 10,
+        page: 1,
       },
       selection: {
         idList: [] as Array<number>,
@@ -214,6 +215,9 @@ export default defineComponent({
     const handleRefresh =() =>{
 
     };
+    const handleIndex = (index: number) =>{
+      return index + (data.pagination.page - 1) * 10 + 1;
+    };
     return {
       data,
       handleSizeChange,
@@ -230,6 +234,7 @@ export default defineComponent({
       getStatusEnum,
       handleStatusChange,
       handleRefresh,
+      handleIndex,
     };
   }
 });

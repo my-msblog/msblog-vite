@@ -1,17 +1,17 @@
 <template>
-<div class="top">
-  <TopBar style="font-color:black"/>
+  <div class="top">
+    <TopBar style="font-color:black" />
   </div>
 
-<div class="bg">
-      <p class="p404">404</p>
-      <div class="frame">
-        <div class="frame-glass"></div>
-        <p class="p1">{{ t('message.no_find') }}</p>
-        <button class="return_home" @click="backHome">{{ t('message.go_home') }}<span></span></button>
-        <button class="return_home" @click="handleGoBack">{{ t('message.return') }}<span></span></button>
-      </div>
-</div>
+  <div class="bg">
+    <p class="p404">404</p>
+    <div class="frame">
+      <div class="frame-glass"></div>
+      <p class="p1">{{ t('message.no_find') }}</p>
+      <button class="return_home" @click="backHome">{{ t('message.go_home') }}<span></span></button>
+      <button class="return_home" @click="handleGoBack">{{ t('message.return') }}<span></span></button>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -20,7 +20,7 @@ import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import TopBar from '@/layout/client/components/TopBar.vue';
 export default defineComponent({
-  name: 'Page404', 
+  name: 'Page404',
   components:{ TopBar},
   setup() {
     const { t } = useI18n();
@@ -30,7 +30,7 @@ export default defineComponent({
     };
     const backHome=()=>{
       router.push('/home');
-    }
+    };
     return {
       t,
       router,
@@ -42,7 +42,7 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 // ::v-deep .text{
-//   color:black !important; 
+//   color:black !important;
 // }
   .top{
     width: 100%;
