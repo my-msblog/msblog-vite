@@ -11,7 +11,7 @@ import 'virtual:svg-icons-register';
 
 import router from './router';
 import store from './store';
-import { loadAllPlugins } from '@/plugins/index';
+import { loadAllPlugins } from '@/plugins';
 import { setupI18n } from '@/locales';
 
 (async()=>{
