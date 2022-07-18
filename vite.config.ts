@@ -1,14 +1,11 @@
-import { UserConfig, ConfigEnv} from 'vite';
+import { loadEnv, UserConfig, ConfigEnv} from 'vite';
 import vue from '@vitejs/plugin-vue';
 import * as path from 'path';
 import viteSvgIcons from 'vite-plugin-svg-icons';
-import { loadEnv } from 'vite';
 // auto import
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
+import Components from 'unplugin-vue-components/vite';
 // element plus auto import loader
-import ElementPlus from 'unplugin-element-plus/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 import { createProxy } from './build/proxy';
 import { wrapperEnv } from './build/utils';
@@ -19,7 +16,7 @@ function pathResolve(dir: string) {
 }
 
 // https://vitejs.dev/config/
-export default ({mode }: ConfigEnv): UserConfig => {
+export default ({ mode }: ConfigEnv): UserConfig => {
   const root = process.cwd();
 
   const env = loadEnv(mode, root);
@@ -35,23 +32,10 @@ export default ({mode }: ConfigEnv): UserConfig => {
         symbolId: 'icon-[dir]-[name]',
       }),
       htmlPlugin( VITE_GLOB_APP_TITLE),
-      // 自动导入
-      // ElementPlus({
-      //   useSource: true
-      // }),
-      // AutoImport({
-      //   resolvers: [ElementPlusResolver()],
-      //   //imports: ['vue'],
-      //   dts: 'types/auto-import.d.ts'
-      // }),
       Components({
         extensions: ['vue', 'md'],
-        // allow auto import and register components used in markdown
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
         dirs: ['src/components'],
-        //组件名称包含目录，防止同名组件冲突
-        // directoryAsNamespace: true,
-        //指定类型声明文件，为true时在项目根目录创建
         dts: 'types/components.d.ts',
         resolvers: [ElementPlusResolver({
           importStyle: 'sass',
@@ -67,15 +51,13 @@ export default ({mode }: ConfigEnv): UserConfig => {
           find: 'vue-i18n',
           replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
         },
-        // /@/xxxx => src/xxxx
         {
-          find: /@\//,
-          replacement: pathResolve('src') + '/',
+          find: '@',
+          replacement: pathResolve('src'),
         },
-        // /#/xxxx => types/xxxx
         {
-          find: /#\//,
-          replacement: pathResolve('types') + '/',
+          find: '#',
+          replacement: pathResolve('types'),
         },
       ],
     },
@@ -88,7 +70,7 @@ export default ({mode }: ConfigEnv): UserConfig => {
       }
     },
     css: {
-      preprocessorOptions: { 
+      preprocessorOptions: {
         scss: {
           additionalData: '@use "@/styles/constant.scss" as *;',
         }

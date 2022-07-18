@@ -3,7 +3,7 @@ import ClientLayout from '@/layout/client/index.vue';
 import Page404 from '@/views/page/404/index.vue';
 import { RouteRecordRaw } from 'vue-router';
 
-export const routes: Array<RouteRecordRaw> = [
+export const routeList: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',

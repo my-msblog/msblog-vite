@@ -1,8 +1,9 @@
 export default {
   zh: {
+    time: '时间',
     year: '年',
     month: '月',
-    day: '日',
+    day: '天',
     week: '周',
     hour: '时',
     minute: '分',
@@ -10,6 +11,7 @@ export default {
     all: '全部',
   },
   en: {
+    time: 'Time',
     year: 'Year',
     month: 'Month',
     day: 'Day',

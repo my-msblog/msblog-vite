@@ -31,8 +31,18 @@
           class="svg-icon current"
           @click="handleQQ"
         />
-        <SvgIcon name="github" size="28" class="svg-icon current" />
-        <SvgIcon name="gitee" size="28" class="svg-icon current" />
+        <SvgIcon
+          name="github"
+          size="28"
+          class="svg-icon current"
+          @click="handleGitHub"
+        />
+        <SvgIcon
+          name="gitee"
+          size="28"
+          class="svg-icon current"
+          @click="handleGitee"
+        />
       </div>
     </div>
   </el-card>
@@ -88,6 +98,12 @@ export default defineComponent({
         message: t('message.add_to_label'),
       });
     };
+    const handleGitHub =() =>{
+      window.open('https://github.com/maosheng5478', '_blank');
+    };
+    const handleGitee =() =>{
+      window.open('https://gitee.com/honghao5478', '_blank');
+    };
     const handleQQ =() =>{
       window.open('https:www.baidu.com', '_blank');
     };
@@ -102,6 +118,8 @@ export default defineComponent({
       data,
       handleClickLabel,
       handleQQ,
+      handleGitHub,
+      handleGitee,
     };
   }
 });

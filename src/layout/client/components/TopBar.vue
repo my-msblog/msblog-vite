@@ -7,7 +7,7 @@
         </router-link>
       </div>
       <div class="menu-title">
-        <div v-for="(item, index) in menuBarItem" :key="index">
+        <div v-for="(item, index) in menuBarItem" :key="index" >
           <router-link :to="item.route" class="text" :style="data.style">
             <span class="item-center">
               <ElIcons :name="item.icon" />
@@ -15,14 +15,14 @@
             </span>
           </router-link>
         </div>
-        <div>
+        <div class="all-center">
           <router-link
             v-if="online()"
             to="/login"
             class="text"
             :style="data.style"
           >
-            <span class="item-center"> 
+            <span class="item-center">
               <ElIcons name="UserFilled" />
               {{ $t('bar.login') }}
             </span>
@@ -49,7 +49,7 @@
             </template>
           </el-dropdown>
         </div>
-        <div>
+        <div class="all-center">
           <language
             class="change_text"
             style="text-shadow: rgba(0, 0, 0, 0.3) 0.05rem 0.05rem 0.1rem"
@@ -149,7 +149,7 @@ export default defineComponent({
   .center_container {
     width: 100%;
     height: 30px;
-    
+
     .left_title {
       float: left;
       font-size: 18px;
@@ -178,7 +178,7 @@ export default defineComponent({
       margin-left: 10px;
       margin-right: 10px;
       font-size: 14px;
-      
+
       .item-center {
         display: inline-flex;
         align-items: center;
@@ -187,7 +187,6 @@ export default defineComponent({
     .title {
       text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.3);
       color: rgba(255, 255, 255, 0.9);
-      margin-top: 7px;
       margin: 0 10px;
       text-decoration: none;
     }

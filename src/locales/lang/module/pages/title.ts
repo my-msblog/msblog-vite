@@ -5,7 +5,7 @@ export default {
         method_name: '方法名',
         request_type: '请求类型',
         request_url: 'url',
-        methed_parma_types: '请求参数',
+        method_parma_types: '请求参数',
         annotationValue: '接口说明',
         return_name: '返回类型',
         return_value_map: '返回体',
@@ -13,6 +13,8 @@ export default {
         article_commit: '文章提交',
         cover: '背景图',
         desc: '描述',
+        run_time: '运行时间',
+
     },
     en: {
         api_descriptions_title: 'Interface Description',
@@ -20,7 +22,7 @@ export default {
         method_name: 'Method Name',
         request_type: 'Request Type',
         request_url: 'Url',
-        methed_parma_types: 'Request params',
+        method_parma_types: 'Request params',
         return_name: 'Return Name',
         annotationValue: 'Interface Specification',
         return_value_map: 'Return Body',
@@ -28,5 +30,6 @@ export default {
         article_commit: 'Article Commit',
         cover: 'Cover',
         desc: 'Desc',
+        run_time: 'Runtime',
     }
 };

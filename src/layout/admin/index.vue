@@ -25,7 +25,7 @@
             </router-view>
           </div>
         </el-main>
-        <el-footer class="ly_footer"> Copyright@2020-2021 by MS </el-footer>
+        <el-footer class="ly_footer"> Copyright©2020-2021 by MS </el-footer>
       </el-container>
     </el-container>
   </el-container>

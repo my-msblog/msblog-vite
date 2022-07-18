@@ -7,8 +7,14 @@
       {{ $t('message.website_situation') }}
     </div>
     <div class="run-main-info">
-      <div>time</div>
-      <div>{{ data.timer }}</div>
+      <div class="flex-between run-item">
+        <div class="">{{ $t('pages.run_time') }}：</div>
+        <div class="item-de">{{ data.timer }}</div>
+      </div>
+      <div class="flex-between run-item">
+        <div class="">{{ $t('pages.visit_num') }}：</div>
+        <div class="item-de">{{ total }}</div>
+      </div>
     </div>
   </el-card>
 </template>
@@ -21,16 +27,18 @@ export default defineComponent({
 <script lang="ts" setup>
 import { reactive, onMounted } from 'vue';
 import { TrendCharts } from '@element-plus/icons-vue';
+import { useI18n } from 'vue-i18n';
 interface AnalysisProps {
   runtime?: string,
   total?: number,
 }
+const { t } = useI18n();
 const props = withDefaults(defineProps<AnalysisProps>(), {
-  runtime: '2021-11-02 00:00:00',
+  runtime: '2022-07-02 00:00:00',
   total: 0,
 });
 const data = reactive({
-  timer: '' as string,
+  timer: '',
 });
 function setTime() {
   const createTime = new Date(props.runtime);
@@ -38,10 +46,10 @@ function setTime() {
   const differ = (nowTime.getTime() - createTime.getTime());
   const msPerDay = 24 * 60 * 60 * 1000;
   const diffDay = Math.floor(differ/msPerDay );
-  const diffHour = nowTime.getHours();
-  const diffMinutes = nowTime.getMinutes();
-  const diffSeconds = nowTime.getSeconds();
-  data.timer = diffDay + '天' + diffHour + '小时'+diffMinutes + '分' + diffSeconds + '秒';
+  data.timer = diffDay + t('constants.day')
+      + ' ' + nowTime.getHours() + t('constants.hour')
+      + ' ' + nowTime.getMinutes() + t('constants.minute')
+      + ' ' + nowTime.getSeconds() + t('constants.seconds');
 }
 onMounted(() =>{
   setInterval(setTime, 1000);
@@ -62,5 +70,12 @@ onMounted(() =>{
   font-size: var(--el-font-size-base);
   word-wrap: break-word;
   word-break: normal;
+  text-align: left;
+  .run-item{
+    margin: 10px 0;
+    .item-de{
+      overflow: hidden;
+    }
+  }
 }
 </style>

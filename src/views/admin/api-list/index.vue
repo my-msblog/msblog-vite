@@ -34,7 +34,7 @@
             <el-descriptions-item :label="$t('pages.request_url')">
               {{ item.requestUrl }}
             </el-descriptions-item>
-            <el-descriptions-item :label="$t('pages.methed_parma_types')">
+            <el-descriptions-item :label="$t('pages.method_parma_types')">
               {{ item.methodParmaTypes }}
             </el-descriptions-item>
             <el-descriptions-item :label="$t('pages.return_name')">

@@ -6,6 +6,11 @@ a{ text-decoration: none; }
 .separator{
     margin: 0 6px;
 }
+.flex{ display: flex; }
+.flex-between{
+    display: flex;
+    justify-content: space-between;
+}
 .all-center{
     display: flex;
     align-items: center;
@@ -28,6 +33,7 @@ a{ text-decoration: none; }
 .mr5{ margin-right: 5px; }
 .mb5{ margin-bottom: 5px; }
 .m5{ margin: 5px; }
+.m10{ margin: 10px; }
 .dashed-hr{
     margin: 20px auto;
     border: 2px dashed #d2ebfd;
@@ -36,3 +42,5 @@ a{ text-decoration: none; }
     width: 100%;
 }
 .current{ cursor: pointer; }
+.fr{ float: right; }
+.fl{ float: left; }
