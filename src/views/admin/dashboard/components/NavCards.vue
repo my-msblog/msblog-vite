@@ -13,7 +13,7 @@
             <div class="card-title">
               <span>{{ item.title }}</span>
             </div>
-            <el-tag size="mini" :type="item.color">{{ item.action }}</el-tag>
+            <el-tag size="small" :type="item.color">{{ item.action }}</el-tag>
           </div>
         </template>
         <div class="p-4 div-flex justify-between">

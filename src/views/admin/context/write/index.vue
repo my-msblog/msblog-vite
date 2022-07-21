@@ -37,7 +37,7 @@
         </el-col>
       </el-row>
     </div>
-    <div class="md-tabs">
+    <div ref="selectRef" class="md-tabs">
       <el-select
         v-model="data.tagValues"
         class="tag-select"
@@ -59,10 +59,11 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, reactive, ref, watch } from 'vue';
+import { computed, defineComponent, onMounted, reactive, Ref, ref, watch } from 'vue';
 import { ElMessage } from 'element-plus';
 import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
+import autoAnimate from '@formkit/auto-animate';
 import { strIsEmpty } from '@/utils';
 import { CustomOptions, SelectOptions } from '@/constant/type';
 import { categoryList, tagsList, commit } from '@/api/admin/context/write';
@@ -78,6 +79,7 @@ export default defineComponent({
     const { t } = useI18n();
     const store = useStore();
     const show = ref<boolean>(false);
+    const selectRef = ref() as Ref<HTMLDivElement>;
     const data = reactive({
       input: '',
       category: '',
@@ -127,6 +129,7 @@ export default defineComponent({
       }
     );
     onMounted(()=> {
+      autoAnimate(selectRef.value);
       categoryList().then(res => {
         data.categoryList = res;
       });
@@ -138,6 +141,7 @@ export default defineComponent({
       data,
       handleSubmit,
       show,
+      selectRef,
       ...formEvent,
     };
   },

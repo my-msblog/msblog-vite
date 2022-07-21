@@ -3,6 +3,7 @@
     <el-card
       v-for="(item, index) in articleList"
       :key="index"
+      v-auto-animate
       class="card_main"
     >
       <div class="article-cover" :class="isRight(index)" @click="handleArticle(item.id)">

@@ -1,5 +1,6 @@
 <template>
   <el-card
+    v-auto-animate
     class="card"
     :style="{ 'border-radius': props.radius + 'px',
               'padding': props.padding + 'px',

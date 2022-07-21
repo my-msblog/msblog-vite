@@ -2,31 +2,35 @@
   <div>
     <ScrollPane
       ref="scrollPaneRef"
+      v-auto-animate
       class="tags-view-wrapper"
       @scroll="handleScroll"
     >
-      <el-tag
-        v-for="(tag, index) in tags"
-        :key="tag.name"
-        size="small"
-        :closable="tag.name !== 'dashboard'"
-        :disable-transitions="true"
-        :hit="true"
-        :effect="handleEffect(tag)"
-        class="current"
-        @close="handleClose(tag, index)"
-        @click="changeMenu(tag)"
-      >
-        {{ $t('router.'+ tag.name) }}
-      </el-tag>
+      <div ref="viewRef">
+        <el-tag
+          v-for="(tag, index) in tags"
+          :key="tag.name"
+          size="small"
+          :closable="tag.name !== 'dashboard'"
+          :disable-transitions="true"
+          :hit="true"
+          :effect="handleEffect(tag)"
+          class="current"
+          @close="handleClose(tag, index)"
+          @click="changeMenu(tag)"
+        >
+          {{ $t('router.'+ tag.name) }}
+        </el-tag>
+      </div>
     </ScrollPane>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, toRefs } from 'vue';
+import {defineComponent, onMounted, reactive, Ref, ref, toRefs} from 'vue';
 import { useStore } from 'vuex';
 import { useRouter, useRoute } from 'vue-router';
+import autoAnimate from '@formkit/auto-animate';
 import { TabOption } from '@/constant/StoreOption';
 import ScrollPane from './ScrollPane.vue';
 export default defineComponent({
@@ -36,7 +40,8 @@ export default defineComponent({
     const store = useStore();
     const router = useRouter();
     const route =useRoute();
-    const scrollPaneRef = ref(null);
+    const scrollPaneRef = ref();
+    const viewRef = ref<HTMLDivElement>() as Ref<HTMLDivElement>;
     const state = reactive({
       handleScroll() {},
       handleClose(tag: TabOption, index: number) {
@@ -65,9 +70,13 @@ export default defineComponent({
       }
     });
     const tags = store.state.tagView.tabsList;
+    onMounted(() => {
+      autoAnimate(viewRef.value);
+    });
     return {
       tags,
       scrollPaneRef,
+      viewRef,
       ...toRefs(state),
     };
   }

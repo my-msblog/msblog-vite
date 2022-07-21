@@ -1,10 +1,14 @@
 <template>
   <div>
-    <el-menu router mode="vertical" :collapse="isCollapse">
+    <el-menu
+      router
+      default-active="/admin"
+      mode="vertical"
+      :collapse="isCollapse"
+    >
       <div v-for="(item,i) in menu" :key="i">
         <el-sub-menu v-if="item.children.length !== 0" :index="(i).toString()" style="text-align: left;">
           <template #title>
-            <!-- <ElIcons name="PictureFilled" color="#409EFC" /> -->
             <ElIcons v-if="!item.icon.includes('svg')" :name="item.icon" />
             <el-icon v-else><SvgIcon :size="18" :name="item.icon.replace('svg-', '')" /></el-icon>
             <span>

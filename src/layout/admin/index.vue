@@ -15,9 +15,9 @@
           <BreadCrumb class="c_crumb" />
           <TagView class="c_tag_view" />
           <el-divider />
-          <div style="padding: 10px">
+          <div ref="mainRef" v-auto-animate style="padding: 10px">
             <router-view v-slot="{ Component }">
-              <transition name="el-fade-in" :duration="1500">
+              <transition>
                 <keep-alive>
                   <component :is="Component" />
                 </keep-alive>
@@ -32,8 +32,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import {defineComponent, onMounted, reactive, Ref, ref} from 'vue';
 import { useStore } from 'vuex';
+import autoAnimate from '@formkit/auto-animate';
 import TagView from './components/tag-views/index.vue';
 import PermissionMenu from './components/PermissionMenu.vue';
 import BreadCrumb from './components/BreadCrumb.vue';
@@ -44,13 +45,20 @@ export default defineComponent({
   components: { TagView, AdminHeader, PermissionMenu, BreadCrumb },
   setup() {
     const store = useStore();
+    const mainRef = ref() as Ref<HTMLDivElement>;
     const data = reactive({
       folded: false,
       menu: [],
     });
-    data.menu = store.getters.getPermissionMenu;
+    onMounted(() => {
+      if (mainRef.value) {
+        autoAnimate(mainRef.value);
+      }
+      data.menu = store.getters.getPermissionMenu;
+    });
     return {
       data,
+      mainRef,
     };
   },
 });

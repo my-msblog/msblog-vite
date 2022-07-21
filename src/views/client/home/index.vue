@@ -38,7 +38,7 @@
           :lg="6"
           :sm="0"
         >
-          <div class="card-main">
+          <div v-auto-animate class="card-main">
             <IdCard
               :article="data.idCardValue.article"
               :category="data.idCardValue.category"
