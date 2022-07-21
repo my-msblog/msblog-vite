@@ -1,4 +1,5 @@
 import { TabOption } from '@/constant/StoreOption';
+import { GetterTree } from 'vuex';
 
 const state = {
   currentMenu: null,
@@ -31,10 +32,17 @@ const mutations = {
   },
 };
 
+const getters: GetterTree<any, any> = {
+  getTagList(state) {
+    return state.tabsList;
+  },
+};
+
 const actions = {};
 
 export default {
   state,
   mutations,
   actions,
+  getters,
 };

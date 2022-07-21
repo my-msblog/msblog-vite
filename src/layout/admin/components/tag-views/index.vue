@@ -27,7 +27,15 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, reactive, Ref, ref, toRefs} from 'vue';
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  reactive,
+  Ref,
+  ref,
+  toRefs
+} from 'vue';
 import { useStore } from 'vuex';
 import { useRouter, useRoute } from 'vue-router';
 import autoAnimate from '@formkit/auto-animate';
@@ -42,19 +50,20 @@ export default defineComponent({
     const route =useRoute();
     const scrollPaneRef = ref();
     const viewRef = ref<HTMLDivElement>() as Ref<HTMLDivElement>;
+    const tags = computed(() => store.getters.getTagList);
     const state = reactive({
       handleScroll() {},
       handleClose(tag: TabOption, index: number) {
-        const length = tags.length - 1;
+        const length = tags.value.length - 1;
         store.commit('closeTab', tag);
         if (tag.name !== router.currentRoute.value.meta.title) {
           return;
         }
         if (index === length) {
-          router.push(tags[index - 1].path);
+          router.push(tags.value[index - 1].path);
         } else {
           // 否则往右边跳转
-          router.push(tags[index].path);
+          router.push(tags.value[index].path);
         }
       },
       changeMenu(item: TabOption) {
@@ -69,7 +78,6 @@ export default defineComponent({
         return path === tag.path ? 'dark' : 'plain';
       }
     });
-    const tags = store.state.tagView.tabsList;
     onMounted(() => {
       autoAnimate(viewRef.value);
     });

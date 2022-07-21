@@ -36,11 +36,15 @@
 
 <script lang="ts">
 import {defineComponent, onMounted, reactive} from 'vue';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 import { getList } from '@/api/admin/context/article';
 
 export default defineComponent({
   name: 'ArticleManagement',
   setup() {
+    const router = useRouter();
+    const store = useStore();
     const data = reactive({
       list: [] as any[],
       pagination: { size: 5, page: 1 },
@@ -50,7 +54,9 @@ export default defineComponent({
       sizes: [5,10,15,20,25,50],
     });
     const event = {
-      handleEdit(id: IdType) {},
+      handleEdit(id: IdType) {
+        router.push('admin/context/write');
+      },
       handleDelete(id: IdType) {},
       handleSizeChange(size: number) {
         data.pagination.size = size;

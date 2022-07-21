@@ -2,7 +2,8 @@
   <div style="padding: 0.5rem">
     <NavCards
       :total="data.cardTotal"
-      :value="data.cardValue"  />
+      :value="data.cardValue"
+    />
     <div class="pie-echart">
       <FlowAnalysis />
     </div>
@@ -10,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, ref } from 'vue';
+import { defineComponent, ref } from 'vue';
 import NavCards from './components/NavCards.vue';
 import FlowAnalysis from './components/FlowAnalysis.vue';
 import { CardValue } from './components/data';
@@ -34,7 +35,6 @@ export default defineComponent({
     handleCard();
     return {
       data,
-      ...toRefs(data),
     };
   }
 });

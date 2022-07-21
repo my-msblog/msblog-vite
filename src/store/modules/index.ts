@@ -1,11 +1,16 @@
 import { ModuleTree } from 'vuex';
-import tagView from './members/tag-views';
-import user from '@/store/modules/members/user';
-import permission from '@/store/modules/members/permission';
-import list from './members/list';
-export const modules: ModuleTree<any> = {
-  tagView,
-  user,
-  permission,
-  list,
-};
+
+const importModules = import.meta.globEager('./*.ts');
+
+let modules: ModuleTree<any> = {};
+for (const module in importModules) {
+    modules = {
+        ...modules,
+        [module.replaceAll('ts','')
+            .replaceAll('.','')
+            .replaceAll('/','')]: importModules[module].default,
+    };
+}
+
+export default modules;
+

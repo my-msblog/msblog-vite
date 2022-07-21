@@ -15,6 +15,9 @@ export default {
     no_find:'抱歉，您所访问的页面出现了问题！',
     go_home:'回到主页',
     return:'回到上一级',
+    blog_home: '博客主页',
+    logout: '登出',
+    change_password: '修改密码',
   },
   en: {
     click_to_refresh: 'Click to refresh',
@@ -32,5 +35,8 @@ export default {
     no_find:'Sorry, there is a problem with the page you are visiting!',
     go_home:'HOME',
     return:'RETURN',
+    blog_home: 'Blog Home',
+    logout: 'Logout',
+    change_password: 'Change Password'
   }
 };

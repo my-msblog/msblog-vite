@@ -78,15 +78,9 @@
     </el-card>
     <UserEditForm
       v-model="data.dialogFormVisible"
-      :title="t('page.edit_info')"
+      :title="t('pages.edit_info')"
       :form-data="data.formData"
       @close-form="data.dialogFormVisible = false"
-    />
-    <el-pagination
-      background
-      layout="prev, pager, next"
-      :current-page="2"
-      :total="1000"
     />
   </div>
 </template>
