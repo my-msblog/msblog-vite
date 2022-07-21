@@ -1,5 +1,5 @@
 import { CategoryVO } from '@/api/model/client/category';
-import { ActionTree, GetterTree } from 'vuex';
+import {ActionTree, GetterTree, MutationTree } from 'vuex';
 import { arryIsEmpty, strIsEmpty } from '@/utils';
 interface ListState{
   categoryList: Array<CategoryVO>;
@@ -14,8 +14,8 @@ const state: ListState = {
 
 const getters: GetterTree<ListState, any> = {
   getCategoryList(state: ListState){
-    return  arryIsEmpty(state.categoryList) 
-    ? JSON.parse(sessionStorage.getItem('categoryList') as string) 
+    return  arryIsEmpty(state.categoryList)
+    ? JSON.parse(sessionStorage.getItem('categoryList') as string)
     : state.categoryList;
   },
   getCategory(state: ListState) {
@@ -26,7 +26,7 @@ const getters: GetterTree<ListState, any> = {
   }
 };
 
-const mutations = {
+const mutations: MutationTree<ListState> = {
   setCategoryList(state: ListState, list: Array<CategoryVO>){
     state.categoryList = list;
     sessionStorage.setItem('categoryList', JSON.stringify(list));
