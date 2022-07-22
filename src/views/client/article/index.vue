@@ -3,7 +3,7 @@
     <div class="article-info">
       <div class="article-title">{{ data.article.title }}</div>
       <div class="article-info-main">
-        <div class="frist-line all-center">
+        <div class="first-line all-center">
           <span class="item-center">
             <el-icon color="#fff">
               <Calendar />
@@ -201,9 +201,9 @@ export default defineComponent({
     const wapperBackground = computed(() => 'background: url(' + data.article.cover +') center center / cover no-repeat');
     const articleUrl = computed(()=> import.meta.env.VITE_APP_PUBLIC_PATH + router.currentRoute.value.fullPath);
     const handleArticle = () =>{
-      getArticle({id: articleId.value}).then(res => {
+      getArticle({ id: articleId.value }).then(res => {
         data.article = res;
-        console.log(data.article);
+        console.log(res);
 
       });
     };
@@ -265,7 +265,7 @@ export default defineComponent({
     }
     .article-info-main{
       font-size: 12px;
-      .frist-line{
+      .first-line{
        padding: 5px 0;
       }
       .second-line{

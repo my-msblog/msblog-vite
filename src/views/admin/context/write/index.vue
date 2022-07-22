@@ -54,12 +54,20 @@
       </el-select>
     </div>
     <Markdown :text="data.md" :height="600" />
-    <CommitForm :show="show" @on-show="onShow" @on-commit="onCommit"/>
+    <CommitForm :show="show" @on-show="onShow" @on-commit="onCommit" />
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, reactive, Ref, ref, watch } from 'vue';
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  reactive,
+  Ref,
+  ref,
+  watch
+} from 'vue';
 import { ElMessage } from 'element-plus';
 import { useI18n } from 'vue-i18n';
 import { useStore } from 'vuex';
@@ -67,6 +75,7 @@ import autoAnimate from '@formkit/auto-animate';
 import { strIsEmpty } from '@/utils';
 import { CustomOptions, SelectOptions } from '@/constant/type';
 import { categoryList, tagsList, commit } from '@/api/admin/context/write';
+import { getArticle } from '@/api/client/article';
 import CommitForm from './components/CommitForm.vue';
 interface Form{
   desc: string;
@@ -87,14 +96,16 @@ export default defineComponent({
       categoryList: [] as Array<SelectOptions>,
       tagValues: [],
       tags: [] as Array<CustomOptions>,
+      cover: '',
+      desc: '',
     });
     const userId = computed<number>(() => store.getters.getUserId);
+    const articleId = computed<IdType>(() => store.getters.getArticleEditId);
     const formEvent = {
       onShow() {
         show.value = !show.value;
       },
       onCommit(form: Form) {
-        console.log(data.category);
         commit({
           title: data.input,
           text: data.md,
@@ -136,6 +147,14 @@ export default defineComponent({
       tagsList().then(res => {
         data.tags = res;
       });
+      if (articleId.value) {
+        getArticle({ id: articleId.value }).then(res => {
+          data.input = res.title;
+          data.md = res.contentMd;
+          data.desc = res.content;
+
+        });
+      }
     });
     return {
       data,

@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, reactive} from 'vue';
+import { defineComponent, onMounted, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { getList } from '@/api/admin/context/article';
@@ -55,6 +55,7 @@ export default defineComponent({
     });
     const event = {
       handleEdit(id: IdType) {
+        store.commit('setArticleEditId', id);
         router.push('admin/context/write');
       },
       handleDelete(id: IdType) {},

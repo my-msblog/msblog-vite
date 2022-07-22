@@ -46,6 +46,8 @@ import COS from 'cos-js-sdk-v5';
 import { cos as setting_cos } from '@/setting';
 interface IProps{
   show: boolean;
+  desc: string;
+  cover: string;
 }
 interface Form{
   desc: string;
@@ -58,6 +60,8 @@ interface IData{
 }
 const props = withDefaults(defineProps<IProps>(), {
   show: false,
+  desc: '',
+  cover: '',
 });
 const emits = defineEmits<{
   (e: 'onShow'): void,
@@ -70,7 +74,7 @@ const cos = new COS({
 const imageUrl = ref<string>('');
 const data = reactive<IData>({
   form: {
-    desc:'',
+    desc: '',
     cover: '',
   },
   display: props.show,

@@ -46,18 +46,7 @@ module.exports = {
         multiline: 1,
       },
     ],
-    'space-before-function-paren': 'off',
     quotes: ['error', 'single'],
-    // 'comma-dangle': [
-    //   'error',
-    //   {
-    //     arrays: 'never',
-    //     objects: 'never',
-    //     imports: 'always',
-    //     exports: 'always',
-    //     functions: 'always'
-    //   },
-    // ],
     'vue/require-default-prop': 'off',
     'vue/custom-event-name-casing': 'off',
     'no-use-before-define': 'off',
@@ -67,6 +56,7 @@ module.exports = {
     'vue/html-self-closing': 'off',
     'complexity': [2, 15],
     'semi': [2, 'always'],
-    'key-spacing': [0, { beforeColon: false, afterColon: true }],
+    'object-curly-spacing': ['error', 'always', { 'objectsInObjects': true }],
+    'key-spacing': [2, { beforeColon: false, afterColon: true }],
   },
 };
