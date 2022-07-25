@@ -99,7 +99,7 @@ export default {
     word_count: 'Word count',
     read_count: 'Readings',
     comment_count: 'Comments',
-    dir:'Dir',
+    dir: 'Dir',
     writer: 'Writer',
     recommend: 'Recommend',
     title: 'title',

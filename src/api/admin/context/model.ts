@@ -8,3 +8,12 @@ export interface ArticleEditVO{
     type: number;
     tags: Array<TagVO>;
 }
+
+export interface ManageArticleVO {
+    id: IdType;
+    title: string;
+    writer: string;
+    description: string;
+    category: string;
+    createTime: Date;
+}

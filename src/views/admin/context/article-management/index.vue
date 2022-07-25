@@ -6,6 +6,7 @@
       <el-table-column :label="$t('pages.writer')" prop="writer" />
       <el-table-column :label="$t('pages.category')" prop="category" />
       <el-table-column :label="$t('pages.description')" prop="description" />
+      <el-table-column :label="$t('pages.description')" prop="createTime" />
       <el-table-column
         :label="$t('pages.operation')"
         fixed="right"
@@ -75,7 +76,8 @@ export default defineComponent({
         writer: 'ms',
         description: 'ss',
         category: 'scoped',
-      },];
+        createTime: new Date('2020-01-01 12:12'),
+      }];
     };
     onMounted(() => {
       handleInit(data.pagination);

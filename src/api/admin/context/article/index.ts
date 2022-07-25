@@ -1,6 +1,6 @@
 import request from '@/utils/axios/request';
 import { IdDTO, KeyDTO } from '@/api/model/custom';
-import { ArticleEditVO } from '@/api/admin/context/model';
+import { ArticleEditVO, ManageArticleVO } from '@/api/admin/context/model';
 
 
 enum API {
@@ -9,7 +9,7 @@ enum API {
 }
 
 export function getList(data: KeyDTO) {
-  return request.post<string>({
+  return request.post<ManageArticleVO>({
     url: API.list,
     data,
   });
