@@ -5,7 +5,7 @@ import { ArticleEditVO, ManageArticleVO } from '@/api/admin/context/model';
 
 enum API {
   list = '',
-  get = '/context/get/edit/article'
+  get = '/context/get/edit/article',
 }
 
 export function getList(data: KeyDTO) {
@@ -21,3 +21,4 @@ export function getEditArticle(data: IdDTO) {
     data,
   });
 }
+

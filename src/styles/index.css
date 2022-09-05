@@ -32,6 +32,10 @@ a{ text-decoration: none; }
 .ml5{ margin-left: 5px; }
 .mr5{ margin-right: 5px; }
 .mb5{ margin-bottom: 5px; }
+.mt10{ margin-top: 10px; }
+.ml10{ margin-left: 10px; }
+.mr10{ margin-right: 10px; }
+.mb10{ margin-bottom: 10px; }
 .m5{ margin: 5px; }
 .m10{ margin: 10px; }
 .dashed-hr{
@@ -44,3 +48,7 @@ a{ text-decoration: none; }
 .current{ cursor: pointer; }
 .fr{ float: right; }
 .fl{ float: left; }
+.table-bg{
+    background-color: white;
+    padding: 25px 15px 15px;
+}

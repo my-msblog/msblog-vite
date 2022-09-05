@@ -98,10 +98,6 @@ export default defineComponent({
     }
   }
 }
-.table-bg{
-  background-color: white;
-  padding: 25px 15px 15px;
-}
 .form_bottom{
   overflow:hidden;
   padding: 10px 0 0;

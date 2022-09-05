@@ -47,11 +47,12 @@ export default {
     word_count: '字数统计',
     read_count: '阅读量',
     comment_count: '评论数',
-    dir:'目录',
+    dir: '目录',
     writer: '作者',
     recommend: '推荐',
     title: '标题',
     description: '描述',
+    add: '添加',
   },
   en: {
     ...card.en,
@@ -104,5 +105,6 @@ export default {
     recommend: 'Recommend',
     title: 'title',
     description: 'description',
+    add: 'Add',
   }
 };
