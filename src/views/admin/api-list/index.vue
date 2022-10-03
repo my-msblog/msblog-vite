@@ -9,7 +9,7 @@
       <el-tab-pane v-for="(item, index) in data.list" :key="index">
         <template #label>
           <span>
-            <el-tag size="small" :type="handleRequestType(item.requestType)">
+            <el-tag size="small" :type="(handleRequestType(item.requestType) as any)">
               {{ item.requestType === '' ? 'ALL' : item.requestType }}
             </el-tag>
             &nbsp;&nbsp;{{ item.requestUrl }}

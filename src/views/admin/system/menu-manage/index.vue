@@ -6,7 +6,7 @@
     </div>
 
     <el-tree
-      :data="data"
+      :data="data.treeData "
       :props="defaultProps"
       show-checkbox
       accordion

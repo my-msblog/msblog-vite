@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :title="title" :v-model="dialogFormVisible">
+  <el-dialog v-model="data.visible" :title="title">
     <el-form
       ref="formRef"
       :model="formData"
@@ -20,7 +20,7 @@
           </el-col>
           <el-col :span="10">
             <el-form-item :label="t('pages.sex')+':'">
-              <el-radio-group v-model="data.formData.sex" size="medium">
+              <el-radio-group v-model="data.formData.sex">
                 <el-radio
                   v-for="(item, index) in data.sexOptions"
                   :key="index"
@@ -65,7 +65,6 @@
             <el-form-item label-width="0" prop="sendSMS">
               <el-button
                 :type="data.show ? 'primary' : 'info'"
-                size="medium"
                 :disabled="!data.show"
                 @click="getCode"
               >
@@ -129,6 +128,7 @@ export default defineComponent({
       rules: rules,
       show: true,
       count: 0,
+      visible: props.dialogFormVisible,
       formData: props.formData,
       sexOptions: [{
         label: 1,

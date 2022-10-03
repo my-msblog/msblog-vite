@@ -1,10 +1,10 @@
-import { FormRulesMap} from 'element-plus/es/components/form/src/form.type';
 import { BaseOptions } from '@/constant/type';
 import { useI18n } from '@/hooks/useI18n';
 import { RoleString } from '@/constant/enums/role';
 
+
 const { t } = useI18n();
-export const editFormRule: FormRulesMap = {
+export const editFormRule: Partial<Record<string, any>> = {
   id: [{
     required: true,
     message: '',

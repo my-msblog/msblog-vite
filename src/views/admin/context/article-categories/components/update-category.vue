@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    :v-model="show"
+    v-model="data"
     :title="$t('pages.add')"
     width="30%"
     :before-close="handleClose"
@@ -15,19 +15,20 @@
 </template>
 
 <script lang="ts" setup>
-const props = withDefaults(defineProps<{
-  value: boolean,
-}>(), {
-  value: false,
-});
+import { ref } from 'vue';
 
+const props = withDefaults(defineProps<{
+  show: boolean,
+}>(), {
+  show: false,
+});
+const data = ref<boolean>(props.show);
 const emit = defineEmits<{
   (e: 'close'): void
 }>();
 
-const handleClose = (done: () => void) => {
+const handleClose = () => {
   emit('close');
-  done();
 };
 const handleSubmit = () => {
   handleClose();

@@ -1,11 +1,10 @@
 <template>
-  <el-dialog :title="title" :v-model="dialogFormVisible">
+  <el-dialog v-model="dialogFormVisible" :title="title">
     <el-form
       ref="formRef"
-      :rules="data.rule"
+      :rules="(data.rule as any)"
       inline-message
       :status-icon="true"
-      size="medium"
       label-width="100px"
     >
       <el-row :gutter="14">
@@ -31,11 +30,11 @@
         </el-col>
         <el-col :span="24">
           <el-form-item label="性别：" prop="sex">
-            <el-radio-group v-model="data.form.sex" size="medium">
+            <el-radio-group v-model="data.form.sex">
               <el-radio
                 v-for="(item, index) in data.sexOptions"
                 :key="index"
-                :label="item.label"
+                :label="(item.label as any)"
               >
                 {{ item.value }}
               </el-radio>
@@ -142,7 +141,7 @@ export default defineComponent({
         type: 'warning',
       }).then(() => {
         const params: UserTableChangeDTO = {
-          username:data.form.username,
+          username: data.form.username,
           sex: data.form.sex,
           pwd: data.form.pwd,
           phone: data.form.phone,

@@ -79,7 +79,7 @@ export default defineComponent({
       }
       handleArchivePage(data.pagination);
     };
-    const handleColor = function(index: number): string {
+    const handleColor = function(index: number) {
       const type = index % 4;
       switch (type){
         case 0:
@@ -130,7 +130,9 @@ export default defineComponent({
   }
 }
 .archive-card{
-  margin: 48px 250px 68px 250px;
+  margin: auto;
+  margin-top: 48px;
+  margin-bottom: 58px;
   padding: 15px 10px 10px !important;
   text-align: center;
   .time-line{

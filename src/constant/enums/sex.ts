@@ -9,6 +9,6 @@ export enum Sex {
   MALE = 1,
 }
 
-export function getSex(id: number):string {
-  return sexEnum[id];
+export function getSex(id: number): string {
+  return id === 0 ? '女' : '男';
 }

@@ -89,7 +89,9 @@ export default defineComponent({
 }
 .tag-flow-card {
   text-align: center;
-  margin: 48px 250px 68px 250px;
+  margin: auto;
+  margin-top: 48px;
+  margin-bottom: 58px;
   padding: 15px 10px 10px !important;
   h1 {
     margin-top: 2px;

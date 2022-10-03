@@ -96,7 +96,7 @@ export default defineComponent({
     const showMore = (index: number): boolean => {
       return index > data.tagsLengths;
     };
-    const handleArticle = (id: number) => {
+    const handleArticle = (id: number | string) => {
       router.push('/article/'+ id);
     };
     return {

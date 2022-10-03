@@ -1,5 +1,6 @@
 <template>
-  <BaseEcharts/>
+  <div></div>
+  <!-- <BaseEcharts /> -->
 </template>
 
 <script lang="ts">
@@ -9,7 +10,7 @@ export default defineComponent({
   props: {},
   setup() {
     onMounted(async () => {
-      const json = (await (await import('./china.json')).default) as any;
+      // const json = (await (await import('./china.json')).default) as any;
     });
   },
 });

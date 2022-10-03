@@ -4,7 +4,7 @@
       <div class="table_top">
         <span class="u_table_title">{{ $t('pages.user_list') }}</span>
         <div class="u_table_toolbar">
-          <el-button type="success" size="mini" @click="handleAddUser">{{ $t('pages.add_user') }}</el-button>
+          <el-button type="success" @click="handleAddUser">{{ $t('pages.add_user') }}</el-button>
           <el-divider direction="vertical" />
           <el-icon :size="18" @click="handleRefresh">
             <refresh-right />

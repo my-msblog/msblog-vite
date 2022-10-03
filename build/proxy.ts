@@ -1,7 +1,7 @@
 /**
  * Used to parse the .env.development proxy configuration
  */
-import type {ProxyOptions} from 'vite';
+import type { ProxyOptions } from 'vite';
 
 type ProxyItem = [string, string];
 

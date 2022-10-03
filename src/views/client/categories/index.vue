@@ -45,7 +45,7 @@ export default defineComponent({
         data.category_count = res.length;
       });
     };
-    const handleType = (index: number): string =>{
+    const handleType = (index: number) =>{
       const type = index % 4;
       switch (type){
         case 0: return 'primary';
@@ -56,8 +56,8 @@ export default defineComponent({
       }
     };
     const saveCategory = (id: string) => {
-      store.commit('setCategory', id)
-     
+      store.commit('setCategory', id);
+
     };
     onMounted(() => {
       handleInit();
@@ -76,7 +76,8 @@ export default defineComponent({
   overflow: hidden;
   text-align: center;
   animation: header-effect 1s;
-  background: #fff url('src/assets/background/categories.png') no-repeat center/100%;
+  background-size: cover !important;
+  background: #fff url('../../../assets/background/categories.png') no-repeat center/100%;
 
   .a_title{
     color: #fff;
@@ -88,7 +89,9 @@ export default defineComponent({
   }
 }
 .categories-card{
-  margin: 48px 250px 68px 250px;
+  margin: auto;
+  margin-top: 48px;
+  margin-bottom: 58px;
   padding: 15px 10px 10px !important;
   text-align: center;
   .category-list {

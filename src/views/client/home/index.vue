@@ -171,6 +171,7 @@ export default defineComponent({
   left: 0;
   right: 0;
   height: 100vh;
+  background-size: cover !important;
   background: #fff url("../../../assets/background/home.jpg") no-repeat fixed center center;
   text-align: center;
   color: #fff !important;

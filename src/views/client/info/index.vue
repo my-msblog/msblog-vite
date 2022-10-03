@@ -143,6 +143,7 @@ export default defineComponent({
   overflow: hidden;
   text-align: center;
   animation: header-effect 1s;
+  background-size: cover !important;
   background: #fff url('../../../assets/background/info.jpeg') no-repeat fixed center center;
   .ui_title{
     color: #fff;
@@ -155,7 +156,9 @@ export default defineComponent({
 }
 .user_info_m{
   max-width: $client_user_info_card_width;
-  margin: 48px auto 28px auto;
+  margin: auto;
+  margin-top: 48px;
+  margin-bottom: 58px;
   padding: 30px;
   background-color: #fff;
   border-radius: 8px;

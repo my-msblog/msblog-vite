@@ -110,13 +110,13 @@
             <el-button type="info" @click="handleArticleLike">{{ $t('button.like')+ '  ' + data.like }}</el-button>
             <el-button
               type="primary"
-              style="margin-left: 30px"
+              style="margin-left: 30px;"
             >
               {{ $t('button.reward') }}
             </el-button>
           </div>
           <hr class="dashed-hr" />
-          <Comments :id="articleId" class="comment" />
+          <Comments :id="parseInt(articleId)" class="comment" />
         </FlowCard>
       </el-col>
       <el-col

@@ -2,7 +2,7 @@
   <el-scrollbar
     ref="scrollContainerRef"
     class="scroll-container"
-    @scroll="handleScroll"
+    @scroll="(handleScroll as any)"
   >
     <slot />
   </el-scrollbar>

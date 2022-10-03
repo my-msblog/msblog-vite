@@ -6,7 +6,6 @@
       :rules="data.rule"
       inline-message
       :status-icon="true"
-      size="medium"
       label-width="100px"
     >
       <el-row :gutter="14">
@@ -32,11 +31,11 @@
         </el-col>
         <el-col :span="24">
           <el-form-item label="性别：" prop="sex">
-            <el-radio-group v-model="data.formData.sex" size="medium">
+            <el-radio-group v-model="data.formData.sex">
               <el-radio
                 v-for="(item, index) in data.sexOptions"
                 :key="index"
-                :label="item.label"
+                :label="(item.label as any)"
               >
                 {{ item.value }}
               </el-radio>

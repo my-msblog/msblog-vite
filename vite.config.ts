@@ -1,4 +1,4 @@
-import { loadEnv, UserConfig, ConfigEnv} from 'vite';
+import { loadEnv, UserConfig, ConfigEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import * as path from 'path';
 import viteSvgIcons from 'vite-plugin-svg-icons';
