@@ -1,11 +1,17 @@
 <template>
   <div class="text-left">
-    <v-md-editor :model-value="text" :height="height + 'px'" />
+    <v-md-editor
+      v-model="text"
+      :height="height + 'px'"
+      @change="onValue"
+      @copy-code-success="handleCopyCodeSuccess"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, toRefs } from 'vue';
+import { ElMessage } from 'element-plus';
 
 export default defineComponent({
   name: 'MarkDown',
@@ -18,7 +24,21 @@ interface IProps {
 }
 const props = withDefaults(defineProps<IProps>(), {
   text: '# hellow',
-  height: 500,
+  height: 600,
 });
+
+const emits = defineEmits<{
+  (event: 'change', text: string): void
+}>();
+
+const { text } = toRefs(props);
+
+const onValue = (text: string) => {
+  emits('change', text);
+  
+};
+const handleCopyCodeSuccess = () => {
+  ElMessage.success('复制成功');
+};
 </script>
 

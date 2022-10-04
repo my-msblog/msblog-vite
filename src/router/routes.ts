@@ -119,8 +119,9 @@ export const routeList: Array<RouteRecordRaw> = [
     ]
   },
   {
-    path: '/:pathMatch(.*)*',
+    path: '/:pathMatch(.*)',
     name: '404',
+    redirect: '/404',
     component: Page404,
   }
 ];

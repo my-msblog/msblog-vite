@@ -89,9 +89,7 @@ export default defineComponent({
   }
 }
 .categories-card{
-  margin: auto;
-  margin-top: 48px;
-  margin-bottom: 58px;
+  margin: 48px auto 58px;
   padding: 15px 10px 10px !important;
   text-align: center;
   .category-list {

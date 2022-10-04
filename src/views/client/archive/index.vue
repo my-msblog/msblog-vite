@@ -118,7 +118,7 @@ export default defineComponent({
     text-align: center;
     background-color: #49b1f5 !important;
     animation: header-effect 1s;
-    background: url("src/assets/background/archive.jpg") center center / cover no-repeat
+    background: url("../../../assets/background/archive.jpg") center center / cover no-repeat
   }
   .a_title{
     color: #fff;
@@ -130,9 +130,7 @@ export default defineComponent({
   }
 }
 .archive-card{
-  margin: auto;
-  margin-top: 48px;
-  margin-bottom: 58px;
+  margin: 48px auto 58px;
   padding: 15px 10px 10px !important;
   text-align: center;
   .time-line{

@@ -1,5 +1,5 @@
 <template>
-  <v-md-preview :text="text" ref="previewRef"></v-md-preview>
+  <v-md-preview ref="previewRef" :text="text"></v-md-preview>
 </template>
 <script lang="ts" >
 import { defineComponent, onMounted, reactive, ref } from 'vue';
@@ -42,8 +42,6 @@ const handleAnchorClick =(anchor: any) => {
 onMounted(()=> {
   const anchors = previewRef.value.$el.querySelectorAll('h1,h2,h3,h4,h5,h6');
   const titles: any[] = Array.from(anchors).filter((title: any) => !!title.innerText.trim());
-  console.log(titles);
-  
   if (!titles.length) {
     data.titles = [];
     return;

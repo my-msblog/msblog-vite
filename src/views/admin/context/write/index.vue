@@ -53,7 +53,7 @@
         </el-option>
       </el-select>
     </div>
-    <Markdown :text="data.md" :height="600" />
+    <Markdown v-model:text="data.md" :height="600" @change="handleMdChange" />
     <CommitForm :show="show" @on-show="onShow" @on-commit="onCommit" />
   </div>
 </template>
@@ -117,6 +117,9 @@ export default defineComponent({
         }).then(() => {
           formEvent.onShow();
         });
+      },
+      handleMdChange(text: string) {
+        data.md = text;
       }
     };
     const handleSubmit = () => {

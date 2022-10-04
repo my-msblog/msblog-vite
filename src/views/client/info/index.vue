@@ -156,9 +156,7 @@ export default defineComponent({
 }
 .user_info_m{
   max-width: $client_user_info_card_width;
-  margin: auto;
-  margin-top: 48px;
-  margin-bottom: 58px;
+  margin: 48px auto 58px;
   padding: 30px;
   background-color: #fff;
   border-radius: 8px;
