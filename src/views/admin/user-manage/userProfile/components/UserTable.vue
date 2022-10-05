@@ -16,7 +16,6 @@
         :data="tableData"
         stripe
         border
-        size="mini"
         @selection-change="handleSelectChange"
       >
         <el-table-column type="selection" width="50" />

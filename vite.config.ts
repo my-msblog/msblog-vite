@@ -6,6 +6,7 @@ import viteSvgIcons from 'vite-plugin-svg-icons';
 import Components from 'unplugin-vue-components/vite';
 // element plus auto import loader
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import viteCompression from 'vite-plugin-compression';
 
 import { createProxy } from './build/proxy';
 import { wrapperEnv } from './build/utils';
@@ -41,6 +42,13 @@ export default ({ mode }: ConfigEnv): UserConfig => {
           importStyle: 'sass',
         })],
       }),
+      viteCompression({
+        verbose: true,
+        disable: false,
+        threshold: 10240,
+        algorithm: 'gzip',
+        ext: '.gz',
+      })
     ],
     define: {
       'process.env': {}
@@ -79,5 +87,20 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     optimizeDeps: {
       include: ['@kangc/v-md-editor/lib/theme/github.js'],
     },
+    build: {
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        },
+      },
+      rollupOptions: {
+        output: {
+          chunkFileNames: 'static/js/[name]-[hash].js',
+          entryFileNames: 'static/js/[name]-[hash].js',
+          assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
+        }
+      }
+    }
   };
 };

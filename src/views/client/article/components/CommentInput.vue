@@ -76,7 +76,7 @@ export default defineComponent({
     const handleSubmit = () => {
       if(strIsEmpty(store.getters.getToken)){
         ElMessage.warning({
-          message:  t('message.must_login'),
+          message: t('message.must_login'),
         });
         router.push('/login');
         return;
@@ -90,8 +90,6 @@ export default defineComponent({
     };
     onMounted(() => {
       if(props.cancelShow){
-        console.log(textareaRef.value);
-        
         textareaRef.value?.focus();
       }
     });

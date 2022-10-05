@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, onMounted} from 'vue';
+import { defineComponent, reactive, onMounted } from 'vue';
 export default defineComponent({
   name: 'CommentList',
 });
@@ -100,7 +100,7 @@ const imgSrc = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.
 const handleLike = (id: number, uId: number) => {
   if(strIsEmpty(store.getters.getToken)){
     ElMessage.warning({
-      message:  t('message.must_login'),
+      message: t('message.must_login'),
     });
     return;
   }
@@ -162,7 +162,7 @@ const handleSubmit = (context: string) => {
   });
 };
 onMounted(() => {
-  getLikeList({id: 1}).then((res) => {
+  getLikeList({ id: 1 }).then((res) => {
     data.isLikeList = res;
   });
 });

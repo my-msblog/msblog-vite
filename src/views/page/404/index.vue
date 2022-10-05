@@ -1,6 +1,6 @@
 <template>
   <div class="top">
-    <TopBar style="font-color:black" />
+    <!-- <TopBar style="font-color:black" /> -->
   </div>
 
   <div class="bg">
@@ -15,25 +15,32 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, unref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import TopBar from '@/layout/client/components/TopBar.vue';
 export default defineComponent({
   name: 'Page404',
-  components:{ TopBar},
+  components: {  },
   setup() {
     const { t } = useI18n();
     const router = useRouter();
-    const handleGoBack = () =>{
+    const handleGoBack = () => {
       router.back();
     };
-    const backHome=()=>{
+    const backHome = () => {
       router.push('/home');
     };
+    const { currentRoute, replace, getRoutes } = router;
+    const { fullPath } = unref(currentRoute);
+    getRoutes().forEach(i => {
+        if (i.path === fullPath){
+          replace(fullPath);
+        }
+      });
+    
     return {
       t,
-      router,
       handleGoBack,
       backHome,
     };

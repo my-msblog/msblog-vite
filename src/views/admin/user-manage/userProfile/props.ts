@@ -1,6 +1,6 @@
 import { PropType } from 'vue';
 
 export default {
-  title: { type: Object as PropType<string>, default: 'Form' },
-  dialogFormVisible: { type: Object as PropType<boolean>, default: false },
+  title: { type: String as PropType<string>, default: 'Form' },
+  dialogFormVisible: { type: Boolean as PropType<boolean>, default: false },
 };

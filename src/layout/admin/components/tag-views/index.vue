@@ -10,7 +10,7 @@
         <el-tag
           v-for="(tag, index) in tags"
           :key="tag.name"
-          size="small"
+          size="large"
           :closable="tag.name !== 'dashboard'"
           :disable-transitions="true"
           :hit="true"
@@ -37,6 +37,7 @@ import {
   toRefs
 } from 'vue';
 import { useStore } from 'vuex';
+import { useI18n } from 'vue-i18n';
 import { useRouter, useRoute } from 'vue-router';
 import autoAnimate from '@formkit/auto-animate';
 import { TabOption } from '@/constant/StoreOption';
@@ -45,9 +46,10 @@ export default defineComponent({
   name: 'TagView',
   components: { ScrollPane },
   setup() {
+    const { t } = useI18n();
     const store = useStore();
     const router = useRouter();
-    const route =useRoute();
+    const route = useRoute();
     const scrollPaneRef = ref();
     const viewRef = ref<HTMLDivElement>() as Ref<HTMLDivElement>;
     const tags = computed(() => store.getters.getTagList);
@@ -80,6 +82,18 @@ export default defineComponent({
     });
     onMounted(() => {
       autoAnimate(viewRef.value);
+      if (route.fullPath !== '/admin/dashboard'){
+        const currentItem = (): TabOption => {
+          const name = route.meta.tag as string;
+          return {
+            path: route.fullPath,
+            name,
+            label: t('router.' + name),
+          };
+        } ;
+        const select = currentItem();
+        store.commit('selectMenu', select);
+      }
     });
     return {
       tags,

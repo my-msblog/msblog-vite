@@ -203,7 +203,6 @@ export default defineComponent({
     const handleArticle = () =>{
       getArticle({ id: articleId.value }).then(res => {
         data.article = res;
-        console.log(res);
 
       });
     };

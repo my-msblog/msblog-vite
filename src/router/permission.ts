@@ -5,38 +5,40 @@ import { MenuOptions } from '@/constant/StoreOption';
 import AdminLayout from '@/layout/admin/index.vue';
 import store from '@/store';
 import { ElMessage } from 'element-plus';
+import { NotFoundView } from './routes';
 
 const modules = import.meta.glob('../views/**/**.vue');
 
-export function asyncRouters (router: Router) {
-  getMenu().then(res => {
-    const fmtRouter = formatRoutes(res);
-    fmtRouter.forEach(item => {
-      if (item.children.length !== 0) {
-        router.addRoute(item);
-      } else {
-        router.addRoute('Admin', item);
-      }
-    });
-    store.commit('setPermissionMenu', fmtRouter);
+export function buildRouters(router: Router, res: Array<MenuVO>) {
+  if (router.hasRoute('404')) {
+    router.removeRoute('404');
+  }
+  const fmtRouter = formatRoutes(res);
+  fmtRouter.forEach(item => {
+    if (item.children.length !== 0) {
+      router.addRoute(item);
+    } else {
+      router.addRoute('Admin', item);
+    }
   });
+  
+  store.commit('setPermissionMenu', fmtRouter);
 }
 
-function formatRoutes(menuRouter: Array<MenuVO>): Array<MenuOptions>{
+export function formatRoutes(menuRouter: Array<MenuVO>): Array<MenuOptions> {
   const resRouters: Array<MenuOptions> = [];
   menuRouter.forEach(route => {
-    if (route.children){
+    if (route.children) {
       route.children = formatRoutes(route.children);
     }
     const fmtRoute = {
       path: route.path,
       component: route.component === 'layout' ? AdminLayout
-          : modules[`../views/admin${route.component}/index.vue`],
+        : modules[`../views/admin${route.component}/index.vue`],
       nameZh: route.nameZh,
       icon: route.icon,
       children: route.children,
       meta: {
-        requireAuth: true,
         title: route.nameZh,
         tag: route.component === 'layout' ? 'dashboard' : route.nameZh,
       }
@@ -47,11 +49,11 @@ function formatRoutes(menuRouter: Array<MenuVO>): Array<MenuOptions>{
 }
 
 export function weChartTitle(to: RouteLocationNormalized, defTitle: string, adminTitle: string) {
-  if(to.path.includes('admin')){
+  if (to.path.includes('admin')) {
     document.title = adminTitle;
   } else {
-    if(to.meta.title === undefined){
-      if(!to.path.includes('home')){
+    if (to.meta.title === undefined) {
+      if (!to.path.includes('home')) {
         ElMessage.error({
           type: 'error',
           message: 'error: this page didn`t set title'

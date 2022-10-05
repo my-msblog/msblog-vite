@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, reactive, Ref, ref} from 'vue';
+import { defineComponent, onMounted, reactive, Ref, ref } from 'vue';
 import { useStore } from 'vuex';
 import autoAnimate from '@formkit/auto-animate';
 import TagView from './components/tag-views/index.vue';

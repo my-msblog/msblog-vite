@@ -7,6 +7,7 @@ import mutations from '@/store/mutations';
 export default createStore({
   state: {
     code_key: '',
+    current_path: ''
   },
   mutations,
   actions,

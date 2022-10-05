@@ -1,18 +1,17 @@
 <template>
-  <div>
-    <UserTable
-      :table-data="data.tableData"
-      :current-page="data.currentPage"
-      :page-size="data.pageSize"
-      :total="data.total"
-      class="u_form"
-      @currentPage="handleCurrentPage"
-      @sizeChange="handleCurrentPage"
-      @edit="handleEdit"
-      @deleted="handleDelete"
-      @deletedList="handleDeleteList"
-    />
-  </div>
+  <UserTable
+    :table-data="data.tableData"
+    :current-page="data.currentPage"
+    :page-size="data.pageSize"
+    :total="data.total"
+    class="u_form"
+    @currentPage="handleCurrentPage"
+    @sizeChange="handleCurrentPage"
+    @edit="handleEdit"
+    @deleted="handleDelete"
+    @deletedList="handleDeleteList"
+  />
+
 
   <EditForm
     v-if="data.editFormShow"
@@ -100,7 +99,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss" scoped>
 .u_form{
   margin-top: 15px;
 }

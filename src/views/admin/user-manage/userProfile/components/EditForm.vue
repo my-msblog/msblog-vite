@@ -143,7 +143,6 @@ export default defineComponent({
         cancelButtonText: t('message.cancel'),
         type: 'warning',
       }).then(() => {
-        console.log(data.formData);
         const params: UserTableChangeDTO = {
           id: data.formData.id,
           username: data.formData.username,

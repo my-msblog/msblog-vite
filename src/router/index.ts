@@ -1,13 +1,13 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { ElMessage } from 'element-plus';
 import store from '@/store';
 import { useI18n } from '@/hooks/useI18n';
-import { routeList } from './routes';
+import { routeList, NotFoundView, whiteList } from './routes';
 import { authentication } from '@/api/sys';
-import { asyncRouters, weChartTitle } from './permission';
-
+import { buildRouters, weChartTitle } from './permission';
+import { ref } from 'vue';
 
 const { t } = useI18n();
 const globaleTitle = import.meta.env.VITE_GLOB_APP_TITLE as string;
@@ -25,54 +25,51 @@ NProgress.configure({
   minimum: 0.3
 });
 
-const routes: Array<RouteRecordRaw> = routeList;
+const routes: Array<RouteRecordRaw> = [...routeList, NotFoundView];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.VITE_PUBLIC_PATH as string),
-  routes
+  history: createWebHistory(),
+  routes,
+  scrollBehavior() {
+    return { top: 0 };
+  }
 });
+const refresh = ref<boolean>(true);
 
-router.beforeEach( (to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   NProgress.start();
   weChartTitle(to, globaleTitle, adminTitle);
-  if (to.meta.requireAuth) {
-    if (store.getters.getToken) {
-      authentication().then( () => {
-        if(store.getters.getPermissionMenu.length === 0) {
-          asyncRouters(router);
-          next({ ...to, replace: true });
-        } else {
-          next();
-        }
-      });
-    }else {
+  if (store.getters.getToken) {
+    await authentication();
+    if (refresh.value && store.getters.getPermissionMenu.length === 0) {
+      const asyncRouter = await store.dispatch('fetchMenu');
+      buildRouters(router, asyncRouter);
+        refresh.value = false;
+        next({ path: `${to.path}` , replace: true });
+    } else {
+      router.addRoute(NotFoundView);
+      next();
+    }
+
+  } else {
+    if (whiteList.indexOf(to.path) !== -1) {
+      next();
+    } else {
       ElMessage({
         showClose: true,
         message: t('message.must_login'),
         type: 'error',
         duration: 2 * 1000,
       });
-      next({ path: 'login', query: { redirect: to.fullPath } });
+      next(`/login?redirect=${to.path}`);
     }
-  }else {
-    // 解决刷新空白，跳转admin主页
-    if (to.path.includes('/admin/')) {
-      asyncRouters(router);
-      next({ path: '/admin' });
-      NProgress.done();
-      return;
-    }
-    next();
   }
+  store.commit('setPath', to.fullPath);
   NProgress.done();
 });
 
 router.afterEach(() => {
-  // eslint-disable-next-line
-  // @ts-ignore
-  document.querySelector('body').setAttribute('style', 'overflow: auto !important;');
   NProgress.done();
-  window.scrollTo(0, 0);
 });
 
 router.onError((handler) => {

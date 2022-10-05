@@ -13,4 +13,8 @@ export default {
     state.permission.permission_menu = [];
     state.user.user_role = '';
   },
+  setPath(state: any, path: string) {
+    state.current_path = path;
+    localStorage.setItem('redirct', path);
+  }
 };
