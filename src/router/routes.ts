@@ -129,7 +129,7 @@ export const NotFoundView =  {
 };
 
 export const  whiteList: string[] = [
-  '/', '/home', '/tags', '/tags/:id', '/links', '/about', 
-  '/about', '/categories', '/categories/:id', '/login', 
-  '/userInfo', '/archive', '/article/:id',
+  'Home', 'home', 'Article', 'Archive', 'UserInfo', 'Login', 
+  'CategoryList', 'Categories', 'About', 'Links', 
+  'TagsList', 'Tags', '404',
 ];

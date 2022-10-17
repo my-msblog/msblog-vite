@@ -18,6 +18,7 @@ export interface HomeCardVO {
   article: number,
   category: number,
   tag: number,
+  flow: number
 }
 export interface AnnouncementVO{
   announcement: string,

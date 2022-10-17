@@ -50,7 +50,7 @@
               :user="data.ann_user"
               :time="data.ann_time"
             />
-            <Analysis class="analysis-card" />
+            <Analysis :total="data.flow" class="analysis-card" />
           </div>
         </el-col>
       </el-row>
@@ -85,13 +85,14 @@ export default defineComponent({
         size: 5,
         page: 1,
       },
-      idCardValue:{
+      idCardValue: {
         article: 0,
         category: 0,
         tag: 0,
       },
+      flow: 0,
       articleList: [] as ArticleCardVO[],
-      loading: true,
+      loading: false,
       showFailed: false,
       announcement: t('message.null_announcement'),
       ann_user: '',
@@ -117,16 +118,18 @@ export default defineComponent({
         data.showFailed = false;
       }).catch(() => {
         window.setTimeout(() =>{
+          data.showFailed = true;
           if(data.loading){
-            data.showFailed = true;
+            
             data.loading = false;
           }
         }, 3000);
-      });
+      }).finally(() => data.loading = false);
     };
     const handleHomeCard = () => {
       getMainInfo().then(res => {
         data.idCardValue = res;
+        data.flow = res.flow;
       });
     };
     const handleAnnouncement = () => {

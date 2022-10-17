@@ -111,8 +111,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-@media(min-width: 715px){
-  .banner {
+ .banner {
     height: 350px;
     overflow: hidden;
     text-align: center;
@@ -120,6 +119,7 @@ export default defineComponent({
     animation: header-effect 1s;
     background: url("../../../assets/background/archive.jpg") center center / cover no-repeat
   }
+@media(min-width: 715px){
   .a_title{
     color: #fff;
     display:block;

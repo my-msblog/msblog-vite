@@ -105,7 +105,11 @@ export default defineComponent({
       window.open('https://gitee.com/honghao5478', '_blank');
     };
     const handleQQ =() =>{
-      window.open('https:www.baidu.com', '_blank');
+      // window.open('https:www.baidu.com', '_blank');
+      ElMessage({
+        showClose: true,
+        message: '如有需要请+QQ：361193645',
+      });
     };
     watchEffect(() => {
       const watchProp = props;

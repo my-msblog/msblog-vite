@@ -78,7 +78,7 @@
               <el-input
                 v-model="data.formData.introduction"
                 type="textarea"
-                :placeholder="t('pages.introduce_yourself_briefly')"
+                :placeholder="t('message.introduce_yourself_briefly')"
                 :autosize="{minRows: 4, maxRows: 4}"
                 :style="{width: '100%'}"
               />

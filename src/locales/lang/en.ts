@@ -5,6 +5,7 @@ export default {
     successful_logout: 'Successful logout',
     login_success: 'Login success',
     enter_email: 'Please enter your email',
+    enter_password: 'Please enter your password',
     enter_username: 'Please enter your username',
     input_phone: 'Please enter the correct cell phone number ',
     sms_send_success: 'Captcha sent successfully',

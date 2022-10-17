@@ -6,6 +6,7 @@ export default {
     login_success: '登录成功',
     input_phone: '请输入手机号',
     enter_email: '请输入邮箱',
+    enter_password: '请输入密码',
     enter_username: '请输入用户名',
     sms_send_success: '验证码发送成功',
     modified_successfully: '修改成功',
@@ -23,10 +24,10 @@ export default {
     add_to_label: '加入收藏失败，请使用Ctrl+D进行添加',
     ...module.message.zh,
   },
-  pages:{
+  pages: {
     ...module.pages.zh,
   },
-  bar:{
+  bar: {
     title: 'MS BLOG',
     categories: '分类',
     homepage: '首页',

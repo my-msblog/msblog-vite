@@ -36,20 +36,15 @@ export default defineComponent({
     });
     const handleTagList = () => {
       getTagList().then((res) => {
+        
+        
         data.tagList = res;
+        console.log(data.tagList);
       });
     };
     const selectColor = (): string => {
       const colorList: string[] = colors;
       let random = Math.floor(Math.random() * (colorList.length - 1));
-      if(strNonEmpty(data.currentColor) && data.currentColor === colorList[random]){
-        if(random === 0 ){
-          random++;
-        } else{
-          random--;
-        }
-      }
-      data.currentColor = colorList[random];
       return colorList[random];
     };
     const handleFontSize = function () {
@@ -77,6 +72,7 @@ export default defineComponent({
   overflow: hidden;
   text-align: center;
   animation: header-effect 1s;
+  background-size: cover !important;
   background: #fff url('../../../assets/background/tags.jpeg') no-repeat center/100%;
   .a_title {
     color: #fff;

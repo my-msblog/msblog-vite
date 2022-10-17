@@ -25,7 +25,7 @@
             </router-view>
           </div>
         </el-main>
-        <el-footer class="ly_footer"> Copyright©2020-2021 by MS </el-footer>
+        <el-footer class="ly_footer"> {{ copyright }} </el-footer>
       </el-container>
     </el-container>
   </el-container>
@@ -39,6 +39,7 @@ import TagView from './components/tag-views/index.vue';
 import PermissionMenu from './components/PermissionMenu.vue';
 import BreadCrumb from './components/BreadCrumb.vue';
 import AdminHeader from './components/AdminHeader.vue';
+import { copyright } from '@/constant/web-info';
 
 export default defineComponent({
   name: 'AdminLayout',
@@ -59,6 +60,7 @@ export default defineComponent({
     return {
       data,
       mainRef,
+      copyright,
     };
   },
 });

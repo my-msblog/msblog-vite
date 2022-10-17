@@ -76,11 +76,9 @@
               </el-button>
             </el-col>
             <el-col :span="11">
-              <router-link to="register">
-                <el-button type="primary" class="btn_bg" @click="toRegister">
-                  {{ $t('pages.register') }}
-                </el-button>
-              </router-link>
+              <el-button type="primary" class="btn_bg" @click="toRegister">
+                {{ $t('pages.register') }}
+              </el-button>
             </el-col>
           </el-row>
         </el-form-item>
@@ -91,11 +89,12 @@
         </el-form-item>
       </el-form>
     </div>
+    <Register :show="showRegister" @close="showRegister = false"></Register>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, onMounted } from 'vue';
+import { defineComponent, reactive, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
@@ -103,13 +102,16 @@ import { Back } from '@element-plus/icons-vue';
 import { getArithmeticCode, loginByPwd } from '@/api/client/login';
 import { ElMessage } from 'element-plus';
 import { Encrypt } from '@/utils/Secret';
+import Register from './register/index.vue';
 
 export default defineComponent({
   name: 'Login',
+  components: { Register },
   setup() {
     const { t } = useI18n();
     const store = useStore();
     const router = useRouter();
+    const showRegister = ref<boolean>(false);
     const data = reactive({
       rules: {
         username: [{ required: true, message: '用户名不能为空', trigger: 'blur' }],
@@ -137,7 +139,7 @@ export default defineComponent({
       data.spinner = true;
       loginByPwd(request).then((res) => {
           store.dispatch('setUserInfo', res);
-          ElMessage({message: t('message.login_success'), type: 'success', duration: 2 * 1000});
+          ElMessage({ message: t('message.login_success'), type: 'success', duration: 2 * 1000 });
           router.push('/userInfo');
         }).catch(() => {
           handleArithmetic();
@@ -153,7 +155,7 @@ export default defineComponent({
       }).finally(() => data.loading = false);
     };
     const toRegister = function () {
-      router.push('/register');
+      showRegister.value = true;
     };
     const handleVisible = () => {
       if (data.visible === 'visible') {
@@ -169,6 +171,7 @@ export default defineComponent({
     });
     return {
       data,
+      showRegister,
       handleLogin,
       handleArithmetic,
       toRegister,

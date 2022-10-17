@@ -22,3 +22,13 @@ export const isName = (text: string) => {
   const reg = /^[a-zA-Z0-9_-]{4,16}$/;
   return reg.test(text);
 };
+
+export const isPhone = (phone: string) => {
+  const reg = /^(?:(?:\+|00)86)?1(?:(?:3[\d])|(?:4[5-79])|(?:5[0-35-9])|(?:6[5-7])|(?:7[0-8])|(?:8[\d])|(?:9[189]))\d{8}$/;
+  return reg.test(phone);
+};
+
+export const isEmail = (s: string) => {
+  const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return reg.test(s);
+};

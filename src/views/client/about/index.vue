@@ -37,6 +37,7 @@ export default defineComponent({
   overflow: hidden;
   text-align: center;
   animation: header-effect 1s;
+  background-size: cover !important;
   background: #fff url('../../../assets/background/street.jpg') no-repeat center/100%;
   .a_title{
     color: #fff;

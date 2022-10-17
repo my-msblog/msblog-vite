@@ -1,17 +1,22 @@
 <template>
   <div class="gradient_body">
     <div class="bottom_text">
-      Copyright ©2020-2021 by MS
+      {{ copyright }}<br />
+      {{ mps_code }}<br />
+      {{ icp_code }}
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import webInfo from '@/constant/web-info';
 export default defineComponent({
   name: 'Footer',
   setup() {
-    return {};
+    return {
+      ...webInfo,
+    };
   }
 });
 </script>

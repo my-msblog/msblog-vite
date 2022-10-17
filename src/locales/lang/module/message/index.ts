@@ -18,6 +18,9 @@ export default {
     blog_home: '博客主页',
     logout: '登出',
     change_password: '修改密码',
+    phone_error: '请输入正确的手机号！',
+    email_error: '邮箱格式错误',
+    pwd_error: '密码必须大于6小于12位'
   },
   en: {
     click_to_refresh: 'Click to refresh',
@@ -37,6 +40,9 @@ export default {
     return: 'RETURN',
     blog_home: 'Blog Home',
     logout: 'Logout',
-    change_password: 'Change Password'
+    change_password: 'Change Password',
+    phone_error: 'Plese enter right phone number',
+    email_error: 'The mailbox format is incorrect',
+    pwd_error: 'Password must be greater than 6 and less than 12 digits'
   }
 };

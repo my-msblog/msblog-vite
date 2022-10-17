@@ -34,7 +34,7 @@ interface AnalysisProps {
 }
 const { t } = useI18n();
 const props = withDefaults(defineProps<AnalysisProps>(), {
-  runtime: '2022-07-02 00:00:00',
+  runtime: '2022-09-02 00:00:00',
   total: 0,
 });
 const data = reactive({

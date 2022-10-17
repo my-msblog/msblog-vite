@@ -6,28 +6,34 @@
     <div class="page">
       <FlowCard class="link-main">
         <div class="link-title item-center">
-          <SvgIcon name="windmill" class="mr5"/>
+          <SvgIcon name="windmill" class="mr5" />
           {{ $t('pages.link_title') }}
         </div>
         <div class="flink">
           <div class="flink-list">
-            <div class="flink-list-item" v-for="(item, index) in data.linkList" :key="index">
-              <a href="https://crazywong.com/" rel="external nofollow noreferrer" title="MYW" target="_blank">
+            <div v-for="(item, index) in data.linkList" :key="index" class="flink-list-item">
+              <a
+                href="https://crazywong.com/"
+                rel="external nofollow noreferrer"
+                title="MYW"
+                target="_blank"
+              >
                 <div class="flink-item-icon">
                   <img 
                     class="no-lightbox entered loaded" 
                     :src="item.url" 
-                    alt="MYW">
-                  </div>
-                  <div class="flink-item-name">{{ item.name }}</div>
-                  <div class="flink-item-desc" :title="item.desc">{{ item.desc }}</div>
-                </a>
+                    alt="MYW"
+                  >
+                </div>
+                <div class="flink-item-name">{{ item.name }}</div>
+                <div class="flink-item-desc" :title="item.desc">{{ item.desc }}</div>
+              </a>
             </div>
           </div>
         </div>
+        <Comments />
       </FlowCard>
     </div>
-    
   </div>
 </template>
 
@@ -61,6 +67,7 @@ export default defineComponent({
   overflow: hidden;
   text-align: center;
   animation: header-effect 1s;
+  background-size: cover !important;
   background: #fff url('@/assets/background/links.jpeg') no-repeat center/100%;
   .a_title{
     color: #fff;
