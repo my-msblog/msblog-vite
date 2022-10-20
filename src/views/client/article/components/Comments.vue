@@ -1,7 +1,6 @@
 <template>
   <div class="comment-wrapper">
-    <CommentInput />
-    <ComentList :list="data.conmmentList" @change-like="handleChangeLike" />
+    <Comment :id="id" />
   </div>
 </template>
 
@@ -9,12 +8,13 @@
 import { defineComponent, onMounted, reactive, PropType } from 'vue';
 import CommentInput from './CommentInput.vue';
 import ComentList from './ComentList.vue';
+import Comment from './Comment.vue';
 import { CommentItemVO } from '@/api/model/client/article';
 import { getCommentList } from '@/api/client/article';
 
 export default defineComponent({
   name: 'Comments',
-  components: { CommentInput, ComentList },
+  components: { Comment },
   props: {
     id: {
       type: Number as PropType<number>,
@@ -26,7 +26,7 @@ export default defineComponent({
       conmmentList: [] as CommentItemVO[],
     });
     const handleInit = () => {
-      getCommentList({id: props.id}).then(res => {
+      getCommentList({ id: props.id }).then(res => {
         data.conmmentList = res.list;
       });
     };
@@ -53,6 +53,7 @@ export default defineComponent({
     return {
       data,
       handleChangeLike,
+      handleInit,
     };
   }
 });

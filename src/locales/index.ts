@@ -8,6 +8,7 @@ import EhLocale from 'element-plus/lib/locale/lang/en'; // 英文
 
 export const i18nOption = createI18n({
   //fallbackLocale: 'zh',
+  legacy: false,
   locale: localStorage.getItem('lang') || 'zh', //默认显示的语言
   //globalInjection: true,
   //legacy: true, // you must specify 'legacy: false' option

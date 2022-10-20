@@ -57,7 +57,6 @@ export default defineComponent({
 </script>
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
-import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { ElMessage } from 'element-plus';
 import CommentInput from './CommentInput.vue';
@@ -86,7 +85,6 @@ const emit = defineEmits<{
   (event: 'reload'): void,
   (event: 'changeLike', id: number, state: number): void,
 }>();
-const router = useRouter();
 const store = useStore();
 const data = reactive<IData>({
     love: false,
@@ -155,6 +153,7 @@ const handleSubmit = (context: string) => {
   };
   commentSubmit(params).then(() => {
     // 重新渲染评论列表
+    emit('reload');
 
   }).catch((error) => {
     console.log(error);
