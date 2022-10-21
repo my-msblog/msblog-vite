@@ -2,16 +2,16 @@ import { TagVO } from './home';
 
 export interface CommentItemVO{
     id: number;
-    articleId: number;
     parentId: number;
-    publishTime: Date;
-    children: CommentItemVO[];
-    context: string;
+    uid: number;
+    username: string;
+    avatar: string;
+    level: number;
+    link: string;
+    address: string;
+    createTime: Date | string;
+    content: string;
     like: number;
-    commenterId: number;
-    isLike: boolean;
-    publisher: string;
-    respondent: string;
 }
 
 export interface ArticleVO{
@@ -32,9 +32,9 @@ export interface ArticleVO{
 }
 
 export interface CommentSubmitDTO{
-    commentId: number;
+    parentId: number;
     context: string;
-    replyTime: Date;
+    articleId: number;
 }
 
 export interface GiveLikesDTO{

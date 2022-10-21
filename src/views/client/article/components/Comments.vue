@@ -31,21 +31,21 @@ export default defineComponent({
       });
     };
     const handleChangeLike = (id: number, state: number) => {
-      try{
-          data.conmmentList.forEach((item) => {
-            if(item.id === id){
-              item.like += state;
-              throw new Error();
-            }
-            item.children.forEach((iChilden) => {
-              if(iChilden.id === id){
-                iChilden.like += state;
-                throw new Error();
-              }
-            });
-        });
-      }catch(e){//
-      }
+      // try{
+      //     data.conmmentList.forEach((item) => {
+      //       if(item.id === id){
+      //         item.like += state;
+      //         throw new Error();
+      //       }
+      //       item.children.forEach((iChilden) => {
+      //         if(iChilden.id === id){
+      //           iChilden.like += state;
+      //           throw new Error();
+      //         }
+      //       });
+      //   });
+      // }catch(e){//
+      // }
     };
     onMounted(() => {
       handleInit();

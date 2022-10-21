@@ -10,11 +10,12 @@ import { IdDTO } from '@/api/model/custom';
 
 enum API {
     getArticle = '/article/get',
-    commentSubmit = '',
+    commentSubmit = '/article/comment/submit',
     getCommentList = '/article/comment',
     like = '/article/comment/like',
     likeList = '/article/comment/like/list',
     recommend = '/article/recommend',
+    delComment = '/article/comment/remove',
 }
 
 export function getArticle(dto: IdDTO){
@@ -50,5 +51,11 @@ export function getLikeList(data: IdDTO){
 export function getRecomend(){
     return request.get<Array<RecommendVO>>({
         url: API.recommend,
+    });
+}
+export function removeComment(id: number) {
+    return request.post<string>({
+        url: API.delComment,
+        data: { id },
     });
 }

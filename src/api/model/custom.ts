@@ -1,5 +1,5 @@
 
-export interface IdDTO{
+export interface IdDTO extends BaseDTO{
   id?: IdType;
   idList?: Array<IdType>;
 }

@@ -4,6 +4,7 @@
       :config="config"
       @submit="submit"
       @like="like"
+      @remove="remove"
       @report="report"
       @reply-more="replyMore"
       @reply-page="replyPage"
@@ -13,18 +14,27 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, PropType, reactive } from 'vue';
+import { onMounted, reactive } from 'vue';
 import { useStore } from 'vuex';
 import { UToast, ConfigApi, CommentApi, UComment } from 'undraw-ui';
-import { getCommentList } from '@/api/client/article';
+import { 
+  getCommentList, 
+  getLikeList, 
+  commentSubmit,
+  giveLikes,
+  removeComment,
+} from '@/api/client/article';
+import { strIsEmpty } from '@/utils';
+import { toCommentTree } from '../data';
 import emoji from './emoji';
+import { ElMessage } from 'element-plus';
+import { useI18n } from 'vue-i18n';
 
-const props = defineProps({
-  id: {
-    type: Number as PropType<number>,
-    require: true,
-  }
-});
+interface IProps {
+  id: number;
+}
+const { t } = useI18n();
+const props = defineProps<IProps>();
 const store = useStore();
 const config = reactive<ConfigApi>({
   user: {
@@ -38,23 +48,51 @@ const config = reactive<ConfigApi>({
 } as ConfigApi);
 const loadComment = () => {
   getCommentList({ id: props.id }).then((res) => {
-    console.log(res);
-    
+    config.comments =  toCommentTree(res.list);
+  });
+  getLikeList({ id: props.id }).then(res => {
+    config.user.likes = res;
   });
 };
 const submit = (content: string, parentId: number, finish: Fn<CommentApi, void>) => {
-    console.log(content);
+    console.log(content, parentId);
+    commentSubmit({ context: content, articleId: props.id, parentId }).then(() => {
+      finish({} as CommentApi);
+      loadComment();
+      UToast({ message: '评论成功!' });
+    });
 };
-
+const remove = (id: number, finish: () => void) => {
+  removeComment(id).then(() => {
+    finish();
+    UToast({ message: '删除成功!' });
+  });
+};
 //举报用户
-const report = (id: number, finish: () => void) => {
-  console.log(id);
+const report = (uid: number, finish: () => void) => {
+  console.log(uid);
+  finish();
+  UToast({ message: '举报成功!' });
 };
 const like = (id: number, finish: () => void) => {
-  console.log(id);
+  const userToken = store.getters.getToken;
+  if (strIsEmpty(userToken)){
+    ElMessage({ message: t('message.must_login'), type: 'error' });
+  }
+  const isExist = config.user.likes.includes(id);
+  const userId = store.getters.getUserId;
+  giveLikes({
+    commentId: id,
+    userId: userId,
+    is: !isExist,
+    time: new Date(),
+}).then(() => {
+    finish();
+  });
 };
 //加载更多回复
 const replyMore = (parentId: number, closeLoad: Function) => {
+  closeLoad();
   replyPage(parentId, 1, 4);
 };
 

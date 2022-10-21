@@ -1,5 +1,6 @@
-import { RecommendVO } from '@/api/model/client/article';
+import { CommentItemVO, RecommendVO } from '@/api/model/client/article';
 import { TagVO } from '@/api/model/client/home';
+import { CommentApi, ReplyApi } from 'undraw-ui';
 
 export interface IData{
     commentList: Array<any>;
@@ -42,3 +43,26 @@ export const data = {
     createTime: new Date().toLocaleDateString(),
     updateTime: new Date().toLocaleDateString(),
 } as IArticle;
+
+export function toCommentTree(list: CommentItemVO[], parentId?: number): CommentApi[]{
+    const rootList = list.filter(i => i.parentId === null);
+    const root: CommentApi[] = rootList.map(i => ({
+        ...i,
+        createTime: i.createTime.toString(),
+        reply: {
+            total: 0,
+            list: []
+        },
+    }));
+    root.forEach(i=> {
+        let total = 0;
+        list.forEach(item => {
+            if (item.parentId === i.id){
+                total++;
+                i.reply?.list.push(item as CommentApi);
+            }
+        });
+        i.reply!.total = total;
+    });
+    return root;
+}
