@@ -31,7 +31,7 @@ import { ElMessage } from 'element-plus';
 import { useI18n } from 'vue-i18n';
 
 interface IProps {
-  id: number;
+  id: IdType;
 }
 const { t } = useI18n();
 const props = defineProps<IProps>();
@@ -48,21 +48,21 @@ const config = reactive<ConfigApi>({
 } as ConfigApi);
 const loadComment = () => {
   getCommentList({ id: props.id }).then((res) => {
-    config.comments =  toCommentTree(res.list);
+    config.comments = toCommentTree(res.list);
   });
   getLikeList({ id: props.id }).then(res => {
     config.user.likes = res;
   });
 };
-const submit = (content: string, parentId: number, finish: Fn<CommentApi, void>) => {
+const submit = (content: string, parentId: IdType, finish: Fn<CommentApi, void>) => {
     console.log(content, parentId);
     commentSubmit({ context: content, articleId: props.id, parentId }).then(() => {
       finish({} as CommentApi);
       loadComment();
-      UToast({ message: '评论成功!' });
+      UToast({ message: '评论提交成功!' });
     });
 };
-const remove = (id: number, finish: () => void) => {
+const remove = (id: IdType, finish: () => void) => {
   removeComment(id).then(() => {
     finish();
     UToast({ message: '删除成功!' });

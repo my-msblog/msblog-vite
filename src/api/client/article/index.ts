@@ -53,7 +53,7 @@ export function getRecomend(){
         url: API.recommend,
     });
 }
-export function removeComment(id: number) {
+export function removeComment(id: IdType) {
     return request.post<string>({
         url: API.delComment,
         data: { id },

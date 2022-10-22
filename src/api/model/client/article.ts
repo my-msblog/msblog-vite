@@ -15,7 +15,7 @@ export interface CommentItemVO{
 }
 
 export interface ArticleVO{
-    id: bigint;
+    id: IdType;
     title: string;
     content: string;
     writer: string;
@@ -32,20 +32,20 @@ export interface ArticleVO{
 }
 
 export interface CommentSubmitDTO{
-    parentId: number;
+    parentId: IdType;
     context: string;
-    articleId: number;
+    articleId: IdType;
 }
 
 export interface GiveLikesDTO{
-    userId: number;
-    commentId: number;
+    userId: IdType;
+    commentId: IdType;
     is: boolean;
     time: Date;
 }
 
 export interface RecommendVO{
-    id: number;
+    id: IdType;
     title: string;
     cover: string;
     createTime: string;

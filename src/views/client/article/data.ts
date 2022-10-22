@@ -44,7 +44,7 @@ export const data = {
     updateTime: new Date().toLocaleDateString(),
 } as IArticle;
 
-export function toCommentTree(list: CommentItemVO[], parentId?: number): CommentApi[]{
+export function toCommentTree(list: CommentItemVO[]): CommentApi[]{
     const rootList = list.filter(i => i.parentId === null);
     const root: CommentApi[] = rootList.map(i => ({
         ...i,
@@ -64,5 +64,6 @@ export function toCommentTree(list: CommentItemVO[], parentId?: number): Comment
         });
         i.reply!.total = total;
     });
+    
     return root;
 }

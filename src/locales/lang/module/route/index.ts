@@ -18,6 +18,7 @@ export default {
     menu_manage: '菜单管理',
     api_list: 'API列表',
     write: '文章创作',
+    audit_comment: '评论审核',
   },
   en: {
     dashboard: 'Dashboard',
@@ -37,5 +38,6 @@ export default {
     menu_manage: 'Menu Manage',
     api_list: 'API List',
     write: 'Create new article',
+    audit_comment: 'Audit Comment'
   }
 };

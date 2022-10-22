@@ -17,3 +17,15 @@ export interface ManageArticleVO {
     category: string;
     createTime: Date;
 }
+
+export interface AuditCommentVO{
+    id: IdType;
+    status: number;
+    content: string;
+    articleId: IdType;
+    articleTitle: string;
+    uid: IdType;
+    username: string;
+    link: string;
+    createTime: Date | string;
+}
