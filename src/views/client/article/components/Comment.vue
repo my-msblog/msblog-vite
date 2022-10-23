@@ -25,7 +25,7 @@ import {
   removeComment,
 } from '@/api/client/article';
 import { strIsEmpty } from '@/utils';
-import { toCommentTree } from '../data';
+import { toCommentTree, commentData } from '../data';
 import emoji from './emoji';
 import { ElMessage } from 'element-plus';
 import { useI18n } from 'vue-i18n';
@@ -55,11 +55,10 @@ const loadComment = () => {
   });
 };
 const submit = (content: string, parentId: IdType, finish: Fn<CommentApi, void>) => {
-    console.log(content, parentId);
     commentSubmit({ context: content, articleId: props.id, parentId }).then(() => {
-      finish({} as CommentApi);
+      UToast({ message: '评论提交成功!', duration: 3000 });
+      finish(commentData);
       loadComment();
-      UToast({ message: '评论提交成功!' });
     });
 };
 const remove = (id: IdType, finish: () => void) => {

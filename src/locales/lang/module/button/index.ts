@@ -14,7 +14,9 @@ export default {
     select_category: '选择分类',
     select_tags: '选择标签',
     like: '点赞',
-    reward: '打赏'
+    reward: '打赏',
+    deleted: '删除',
+    audit: '审核',
   },
   en: {
     reset: 'Reset',
@@ -31,6 +33,8 @@ export default {
     select_category: 'Category',
     select_tags: 'Tags',
     like: 'Like',
-    reward: 'Reward'
+    reward: 'Reward',
+    deleted: 'Deleted',
+    audit: 'Audit',
   }
 };

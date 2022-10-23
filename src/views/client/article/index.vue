@@ -152,7 +152,7 @@
             </div>
             <div
               v-for="(item) in data.recommendList"
-              :key="item.id"
+              :key="(item.id as any)"
               class="recommend"
               @click="handleClickRecommend(item.id)"
             >
@@ -202,7 +202,7 @@ export default defineComponent({
     const articleUrl = computed(()=> import.meta.env.VITE_APP_PUBLIC_PATH + router.currentRoute.value.fullPath);
     const handleArticle = () =>{
       getArticle({ id: articleId.value }).then(res => {
-        data.article = res;
+        data.article = res as any;
 
       });
     };
@@ -217,7 +217,7 @@ export default defineComponent({
         data.recommendList = res;
       });
     };
-    const handleClickRecommend = (id: number) => {
+    const handleClickRecommend = (id: IdType) => {
       router.push(`/article/${id}`);
     };
     const handleArticleLike = () => {

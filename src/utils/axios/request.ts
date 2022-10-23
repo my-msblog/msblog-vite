@@ -33,9 +33,9 @@ service.interceptors.response.use(
           type: 'error',
           duration: 2 * 1000,
         });
-        if (data.code === 401) {
-          store.commit('clearUser');
-          router.replace('/login').then();
+        if (data.code === 401) {          
+          store.dispatch('clearUser');
+          router.replace('/login');
         }
         return reject(data.msg || 'error');
       } else {

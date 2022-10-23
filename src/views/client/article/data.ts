@@ -67,3 +67,17 @@ export function toCommentTree(list: CommentItemVO[]): CommentApi[]{
     
     return root;
 }
+
+export const commentData: CommentApi = {
+    id: 0,
+    parentId: 0,
+    uid: 0,
+    username: '',
+    avatar: '',
+    level: 1,
+    link: '',
+    address: '',
+    content: '',
+    like: 0,
+    createTime: '',
+};

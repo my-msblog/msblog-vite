@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { ElMessage } from 'element-plus';
@@ -35,11 +35,11 @@ const router = createRouter({
   }
 });
 const refresh = ref<boolean>(true);
-
 router.beforeEach(async (to, from, next) => {
   NProgress.start();
   weChartTitle(to, globaleTitle, adminTitle);
-  if (store.getters.getToken) {
+  const token = sessionStorage.getItem('token');
+  if (token) {
     await authentication();
     if (refresh.value && store.getters.getPermissionMenu.length === 0) {
       const asyncRouter = await store.dispatch('fetchMenu');
@@ -50,11 +50,11 @@ router.beforeEach(async (to, from, next) => {
       router.addRoute(NotFoundView);
       next();
     }
-
+    
   } else {
     if (whiteList.indexOf(to.name as string) !== -1) {
       next();
-    } else {
+    }else{
       ElMessage({
         showClose: true,
         message: t('message.must_login'),
@@ -63,8 +63,7 @@ router.beforeEach(async (to, from, next) => {
       });
       next(`/login?redirect=${to.path}`);
     }
-  }
-  store.commit('setPath', to.fullPath);
+  }  
   NProgress.done();
 });
 

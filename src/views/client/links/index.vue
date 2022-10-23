@@ -31,7 +31,7 @@
             </div>
           </div>
         </div>
-        <Comments />
+        <!-- <Comments /> -->
       </FlowCard>
     </div>
   </div>
@@ -46,13 +46,13 @@ interface IData {
 }
 export default defineComponent({
   name: 'About',
-  components: { Comments },
+  components: { },
   setup() {
     const data = reactive<IData>({
       linkList: [],
     });
     onMounted(() => {
-      data.linkList = mock;
+      //data.linkList = mock;
     });
     return {
       data,

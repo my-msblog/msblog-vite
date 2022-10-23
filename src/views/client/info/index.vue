@@ -18,7 +18,7 @@
             </el-tag>
           </span>
         </el-col>
-        <el-col :span="2"> <el-tag effect="dark">{{ data.roleName }}</el-tag></el-col>
+        <el-col :span="2"> <el-tag effect="dark" type="primary">{{ data.roleName }}</el-tag></el-col>
       </el-row>
     </el-card>
     <el-card class="user_info_o">
@@ -28,7 +28,7 @@
         </el-col>
         <el-col :span="18" class="text_el-col name-font" />
         <el-col :span="2" class="text_el-col name-font">
-          <el-button type="text" icon="el-icon-edit" @click="data.dialogFormVisible = true">
+          <el-button link icon="el-icon-edit" @click="data.dialogFormVisible = true">
             {{ $t('pages.edit') }}
           </el-button>
         </el-col>

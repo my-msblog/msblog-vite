@@ -45,10 +45,13 @@ a{ text-decoration: none; }
 .fill-w{
     width: 100%;
 }
+.grow-auto{
+    flex-grow: 1;
+}
 .current{ cursor: pointer; }
 .fr{ float: right; }
 .fl{ float: left; }
 .table-bg{
     background-color: white;
-    padding: 25px 15px 15px;
+    padding: 15px 15px;
 }

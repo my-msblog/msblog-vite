@@ -42,6 +42,7 @@
                 v-model="data.form.code"
                 size="large"
                 :placeholder="$t('pages.verificationCode')"
+                @keyup.enter="handleLogin"
               />
             </el-col>
             <el-col :span="10" class="current">

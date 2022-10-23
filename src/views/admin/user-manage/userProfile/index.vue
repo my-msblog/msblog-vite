@@ -11,8 +11,6 @@
     @deleted="handleDelete"
     @deletedList="handleDeleteList"
   />
-
-
   <EditForm
     v-if="data.editFormShow"
     v-model="data.editFormShow"

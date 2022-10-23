@@ -1,4 +1,4 @@
-declare type IdType = number | bigint | string;
+declare type IdType = number | string;
 
 declare interface BaseDTO{
     page?: number;

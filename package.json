@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "serve": "cross-env vite --mode development",
-    "build": "cross-env vue-tsc --noEmit && vite build --mode production",
+    "build": "cross-env vite build --mode production",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -128,7 +128,7 @@ export default defineComponent({
           store.commit('clearUser');
           break;
         case 'toAdmin':
-          await router.push('/admin');
+          router.push('/admin/dashboard').then();
           break;
       }
     };

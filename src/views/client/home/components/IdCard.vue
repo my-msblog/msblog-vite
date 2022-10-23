@@ -4,7 +4,8 @@
       <el-avatar
         shape="square"
         :size="70"
-        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+        style="background-color: white"
+        src="src/assets/icon2.png"
       />
       <div class="wapper-name">MS</div>
       <div class="wapper-motto">这个人很懒，什么都没有留下</div>

@@ -72,6 +72,17 @@ const actions: ActionTree<UserState, any> = {
     context.commit('setUserIntroduction', res.introduction);
     context.commit('setCreateTime', res.createTime);
   },
+  clearUser(context: any,) {
+    sessionStorage.clear();
+    context.commit('setUserId', 0);
+    context.commit('setUserPhone', '');
+    context.commit('setUsername', '');
+    context.commit('setUserEmail', '');
+    context.commit('setUserToken', '');
+    context.commit('setUserSex', '');
+    context.commit('setUserIntroduction', '');
+    context.commit('setPermissionMenu', []);
+  },
 };
 const getters: GetterTree<UserState, any> = {
   getUserId(state: UserState) {

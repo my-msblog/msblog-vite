@@ -22,38 +22,10 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const data = reactive({
-      conmmentList: [] as CommentItemVO[],
-    });
-    const handleInit = () => {
-      getCommentList({ id: props.id }).then(res => {
-        data.conmmentList = res.list;
-      });
-    };
-    const handleChangeLike = (id: number, state: number) => {
-      // try{
-      //     data.conmmentList.forEach((item) => {
-      //       if(item.id === id){
-      //         item.like += state;
-      //         throw new Error();
-      //       }
-      //       item.children.forEach((iChilden) => {
-      //         if(iChilden.id === id){
-      //           iChilden.like += state;
-      //           throw new Error();
-      //         }
-      //       });
-      //   });
-      // }catch(e){//
-      // }
-    };
-    onMounted(() => {
-      handleInit();
-    });
+  
+  
     return {
-      data,
-      handleChangeLike,
-      handleInit,
+      
     };
   }
 });
