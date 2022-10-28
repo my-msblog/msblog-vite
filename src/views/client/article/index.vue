@@ -156,7 +156,7 @@
               class="recommend"
               @click="handleClickRecommend(item.id)"
             >
-              <el-image style="width: 58px; height: 58px" :src="item.cover" fit="cover" />
+              <el-image style="width: 58px; height: 58px" :src="item.cover" fit="fill" />
               <div class="recommend-text item-center">
                 <div>
                   <div>{{ item.title }}</div>

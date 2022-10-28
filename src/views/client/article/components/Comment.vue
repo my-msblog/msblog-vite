@@ -94,6 +94,9 @@ const replyMore = (parentId: number, closeLoad: Function) => {
   closeLoad();
   replyPage(parentId, 1, 4);
 };
+const page = () => {
+
+};
 
 const replyPage = (parentId: number, pageNum: number, pageSize: number) => {
   console.log(parentId);

@@ -5,7 +5,7 @@
         shape="square"
         :size="70"
         style="background-color: white"
-        src="src/assets/icon2.png"
+        :src="getImageUrl('icon2.png')"
       />
       <div class="wapper-name">MS</div>
       <div class="wapper-motto">这个人很懒，什么都没有留下</div>
@@ -58,6 +58,7 @@ import {
 import { ElMessage } from 'element-plus';
 import { useI18n } from 'vue-i18n';
 import { NullData } from '@/constant/type';
+import { getImageUrl } from '@/utils';
 
 export default defineComponent({
   name: 'IdCard',
@@ -125,6 +126,7 @@ export default defineComponent({
       handleQQ,
       handleGitHub,
       handleGitee,
+      getImageUrl,
     };
   }
 });

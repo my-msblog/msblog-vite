@@ -15,7 +15,7 @@
           :before-upload="beforeUpload"
           :on-progress="upload"
         >
-          <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+          <el-image v-if="imageUrl" :src="imageUrl" fit="full" />
           <div v-else>
             <el-icon class="el-icon--upload"><upload-filled /></el-icon>
             <div class="el-upload__text">
@@ -27,8 +27,8 @@
     </el-form>
     <template #footer>
       <span class="dialog-footer">
-        <el-button @click="handleShow">Cancel</el-button>
-        <el-button type="primary" @click="handleSubmit">Confirm</el-button>
+        <el-button @click="handleShow">{{ $t('button.confirm') }}</el-button>
+        <el-button type="primary" @click="handleSubmit">{{ $t('button.cancel') }}</el-button>
       </span>
     </template>
   </el-dialog>
@@ -100,7 +100,7 @@ const upload = () => {
     Body: res,
   }, (_, res) => {
     if (res.statusCode === 200) {
-      imageUrl.value = `https:${res.Location}`;
+      imageUrl.value = `https://${res.Location}`;
       data.form.cover = imageUrl.value;
     } else {
       ElMessage.error('上传失败!');

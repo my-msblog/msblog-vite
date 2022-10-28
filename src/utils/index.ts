@@ -24,3 +24,7 @@ export function arryRemove<T>(arr: T[], el: T): void{
     }
     throw new Error('no find element in Arry');
 }
+
+export function getImageUrl(name: string) {
+    return new URL(`../assets/${name}`, import.meta.url).href;
+}

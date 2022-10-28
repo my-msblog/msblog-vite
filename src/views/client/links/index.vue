@@ -53,6 +53,7 @@ export default defineComponent({
     });
     onMounted(() => {
       //data.linkList = mock;
+      
     });
     return {
       data,
