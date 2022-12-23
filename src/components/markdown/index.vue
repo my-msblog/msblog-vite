@@ -23,7 +23,7 @@ interface IProps {
   height: number;
 }
 const props = withDefaults(defineProps<IProps>(), {
-  text: '# hellow',
+  text: '# hello',
   height: 600,
 });
 

@@ -8,8 +8,7 @@ import '@/styles/ann.css';
 import '@/styles/index.css';
 // svg global config
 import 'virtual:svg-icons-register';
-import UndrawUi from 'undraw-ui';
-import 'undraw-ui/dist/style.css';
+
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 
@@ -25,7 +24,6 @@ import { setupI18n } from '@/locales';
    // Load plugins
    await loadAllPlugins(app);
    app.use(ElementPlus);
-   app.use(UndrawUi);
    // router ready https://next.router.vuejs.org/api/#isready
    app.use(router);
    // await router.isReady();

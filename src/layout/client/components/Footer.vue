@@ -2,8 +2,21 @@
   <div class="gradient_body">
     <div class="bottom_text">
       {{ copyright }}<br />
-      {{ mps_code }}<br />
-      {{ icp_code }}
+      <div style="line-height:20px;display:inline-block;">
+        <a 
+          target="_blank" 
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=35010202001614" 
+          style="text-decoration:none;"
+        >
+          <img :src="getImageUrl('baian.png')" style="float:left;" />
+          <p style="float:left;height:20px;margin: 0px 10px 0px 5px;">闽公网安备 35010202001614号</p>
+        </a>
+        <a
+          target="_blank" 
+          :href="icp_url" 
+          style="text-decoration:none;"
+        >{{ icp_code }}</a>
+      </div>
     </div>
   </div>
 </template>
@@ -11,11 +24,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import webInfo from '@/constant/web-info';
+import { getImageUrl } from '@/utils';
+
 export default defineComponent({
   name: 'Footer',
   setup() {
     return {
       ...webInfo,
+      getImageUrl
     };
   }
 });

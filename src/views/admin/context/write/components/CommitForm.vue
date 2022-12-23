@@ -15,7 +15,7 @@
           :before-upload="beforeUpload"
           :on-progress="upload"
         >
-          <el-image v-if="imageUrl" :src="imageUrl" fit="full" />
+          <el-image v-if="imageUrl" :src="imageUrl" fit="fill" />
           <div v-else>
             <el-icon class="el-icon--upload"><upload-filled /></el-icon>
             <div class="el-upload__text">
@@ -27,8 +27,8 @@
     </el-form>
     <template #footer>
       <span class="dialog-footer">
-        <el-button @click="handleShow">{{ $t('button.confirm') }}</el-button>
-        <el-button type="primary" @click="handleSubmit">{{ $t('button.cancel') }}</el-button>
+        <el-button @click="handleShow">{{ $t('button.cancel') }}</el-button>
+        <el-button type="primary" @click="handleSubmit">{{ $t('button.confirm') }}</el-button>
       </span>
     </template>
   </el-dialog>
@@ -46,8 +46,8 @@ import COS from 'cos-js-sdk-v5';
 import { cos as setting_cos } from '@/setting';
 interface IProps{
   show: boolean;
-  desc: string;
-  cover: string;
+  desc?: string;
+  cover?: string;
 }
 interface Form{
   desc: string;
@@ -55,18 +55,20 @@ interface Form{
 }
 interface IData{
   form: Form;
-  display: boolean;
   uploadFile: UploadRawFile;
 }
 const props = withDefaults(defineProps<IProps>(), {
   show: false,
-  desc: '',
-  cover: '',
 });
 const emits = defineEmits<{
   (e: 'onShow'): void,
   (e: 'onCommit', data: Form): void,
+  (e: 'update:show', show: boolean): void,
 }>();
+const display = computed({
+  get: () => props.show,
+  set: (val) => emits('update:show', val),
+});
 const cos = new COS({
   SecretId: setting_cos.ID,
   SecretKey: setting_cos.KEY,
@@ -77,10 +79,8 @@ const data = reactive<IData>({
     desc: '',
     cover: '',
   },
-  display: props.show,
   uploadFile: {} as UploadRawFile,
 });
-const display = computed(() => props.show);
 const handleShow = () => {
   emits('onShow');
 };

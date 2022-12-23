@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive } from 'vue';
+import { computed, onMounted, reactive } from 'vue';
 import { useStore } from 'vuex';
 import { UToast, ConfigApi, CommentApi, UComment } from 'undraw-ui';
 import { 
@@ -36,16 +36,19 @@ interface IProps {
 const { t } = useI18n();
 const props = defineProps<IProps>();
 const store = useStore();
+const userId = computed<number>(() => store.getters.getUserId);
+const username = computed<string>(() => store.getters.getUserName);
+
 const config = reactive<ConfigApi>({
   user: {
-    id: store.getters.getUserId,
-    username: store.getters.getUsername,
+    id: userId.value,
+    username: username.value,
     avatar: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
-    likes: [] as number[],
+    likeIds: [] as number[],
   },
   emoji,
   comments: []
-} as ConfigApi);
+});
 const loadComment = () => {
   getCommentList({ id: props.id }).then((res) => {
     config.comments = toCommentTree(res.list);

@@ -85,7 +85,10 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       }
     },
     optimizeDeps: {
-      include: ['@kangc/v-md-editor/lib/theme/github.js'],
+      include: [
+        '@kangc/v-md-editor/lib/theme/github.js',
+        '@kangc/v-md-editor/lib/theme/vuepress.js'
+      ],
     },
     build: {
       terserOptions: {

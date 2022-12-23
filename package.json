@@ -9,7 +9,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",
     "@formkit/auto-animate": "^1.0.0-beta.1",
-    "@kangc/v-md-editor": "^2.3.14",
+    "@kangc/v-md-editor": "^2.3.15",
     "@types/crypto-js": "^4.0.2",
     "axios": "^0.21.4",
     "cos-js-sdk-v5": "^1.3.9",
@@ -19,7 +19,7 @@
     "element-plus": "^2.2.18",
     "nprogress": "^0.2.0",
     "sass": "^1.45.1",
-    "undraw-ui": "^0.6.9",
+    "undraw-ui": "^0.7.2",
     "vue": "^3.2.37",
     "vue-i18n": "^9.2.0-beta.25",
     "vue-router": "^4.0.12",

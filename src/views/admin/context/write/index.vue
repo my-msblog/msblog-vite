@@ -54,7 +54,7 @@
       </el-select>
     </div>
     <Markdown v-model:text="data.md" :height="600" @change="handleMdChange" />
-    <CommitForm :show="show" @on-show="onShow" @on-commit="onCommit" />
+    <CommitForm v-model:show="show" @on-show="onShow" @on-commit="onCommit" />
   </div>
 </template>
 
@@ -106,6 +106,8 @@ export default defineComponent({
         show.value = !show.value;
       },
       onCommit(form: Form) {
+        console.log('form', form);
+
         commit({
           title: data.input,
           text: data.md,

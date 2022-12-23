@@ -6,7 +6,7 @@ import { useI18n } from '@/hooks/useI18n';
 import { Delete, Get, Post, Put } from './type';
 const service = axios.create({
   baseURL: '/api',
-  timeout: 5 * 1000,
+  timeout: 60 * 1000,
 });
 const { t } = useI18n();
 service.interceptors.request.use(
