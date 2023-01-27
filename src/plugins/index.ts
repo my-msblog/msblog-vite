@@ -9,7 +9,7 @@ import.meta.globEager('./module/*.js');
 export async function loadAllPlugins(app: ReturnType<typeof createApp>) {
   const files = import.meta.glob('./*.ts') ;
   for(const file in files){
-    await files[file]().then((mod)=>{
+    await files[file]().then((mod: any)=>{
       if( typeof mod.default === 'function'){
         mod.default(app);
       }

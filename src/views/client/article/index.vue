@@ -245,6 +245,9 @@ export default defineComponent({
     watch(
       articleId,
       () =>  {
+        if (articleId.value === undefined) {
+          return;
+        }
         handleArticle();
         handleRecommend();
         document.title = data.article.title ? data.article.title : document.title;

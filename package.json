@@ -1,6 +1,6 @@
 {
   "name": "msblog-vite",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "scripts": {
     "serve": "cross-env vite --mode development",
     "build": "cross-env vite build --mode production",
