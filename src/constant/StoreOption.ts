@@ -1,3 +1,5 @@
+import { RouteMeta } from 'vue-router';
+
 export interface TabOption {
   label: string;
   name: string;
@@ -5,8 +7,7 @@ export interface TabOption {
 }
 export interface MenuOptions{
   path: string;
-  nameZh: string;
   component: any;
-  icon: string;
-  children: Array<MenuOptions>;
+  children: Array<MenuOptions>
+  meta?: RouteMeta;
 }

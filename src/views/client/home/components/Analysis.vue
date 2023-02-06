@@ -30,7 +30,7 @@ import { TrendCharts } from '@element-plus/icons-vue';
 import { useI18n } from 'vue-i18n';
 interface AnalysisProps {
   runtime?: string,
-  total?: number,
+  total?: number | string,
 }
 const { t } = useI18n();
 const props = withDefaults(defineProps<AnalysisProps>(), {

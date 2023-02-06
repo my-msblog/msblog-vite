@@ -9,10 +9,10 @@
       <div v-for="(item,i) in menu" :key="i">
         <el-sub-menu v-if="item.children.length !== 0" :index="(i).toString()" style="text-align: left;">
           <template #title>
-            <ElIcons v-if="!item.icon.includes('svg')" :name="item.icon" />
-            <el-icon v-else><SvgIcon :size="18" :name="item.icon.replace('svg-', '')" /></el-icon>
+            <ElIcons v-if="!(item.meta as any).icon.includes('svg')" :name="(item.meta as any).icon" />
+            <el-icon v-else><SvgIcon :size="18" :name="(item.meta as any).icon.replace('svg-', '')" /></el-icon>
             <span>
-              {{ $t('router.'+item.nameZh) }}
+              {{ $t('router.'+(item.meta as any).nameZh) }}
             </span>
           </template>
           <el-menu-item
@@ -21,9 +21,9 @@
             :index="child.path"
             @click="handleClick(child)"
           >
-            <ElIcons v-if="!child.icon.includes('svg')" :name="child.icon" />
-            <el-icon v-else><SvgIcon :size="18" :name="child.icon.replace('svg-', '')" /></el-icon>
-            {{ $t('router.'+child.nameZh) }}
+            <ElIcons v-if="!(child.meta as any).icon.includes('svg')" :name="(child.meta as any).icon" />
+            <el-icon v-else><SvgIcon :size="18" :name="(child.meta as any).icon.replace('svg-', '')" /></el-icon>
+            {{ $t('router.'+(child.meta as any).nameZh) }}
           </el-menu-item>
         </el-sub-menu>
         <el-menu-item
@@ -34,9 +34,9 @@
           :route="item.path"
           @click="handleClick(item)"
         >
-          <ElIcons v-if="!item.icon.includes('svg')" :name="item.icon" />
-          <el-icon v-else><SvgIcon :size="18" :name="item.icon.replace('svg-', '')" /></el-icon>
-          <template #title> {{ $t('router.'+item.nameZh) }}</template>
+          <ElIcons v-if="!(item.meta as any).icon.includes('svg')" :name="(item.meta as any).icon" />
+          <el-icon v-else><SvgIcon :size="18" :name="(item.meta as any).icon.replace('svg-', '')" /></el-icon>
+          <template #title> {{ $t('router.'+(item.meta as any).nameZh) }}</template>
         </el-menu-item>
       </div>
     </el-menu>
@@ -73,8 +73,8 @@ const currentPath = function () {
 function handleClick(item: MenuOptions) {
   const tabs: TabOption = {
     path: item.path,
-    name: item.nameZh,
-    label: t('router.' + item.nameZh),
+    name: (item.meta as any).nameZh,
+    label: t('router.' + (item.meta as any).nameZh),
   };
   store.commit('selectMenu', tabs);
 }

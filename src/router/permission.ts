@@ -1,11 +1,8 @@
-import { getMenu } from '@/api/sys';
 import { RouteLocationNormalized, Router } from 'vue-router';
 import { MenuVO } from '@/api/model/sys-model';
 import { MenuOptions } from '@/constant/StoreOption';
-import AdminLayout from '@/layout/admin/index.vue';
 import store from '@/store';
 import { ElMessage } from 'element-plus';
-import { NotFoundView } from './routes';
 
 const modules = import.meta.glob('../views/**/**.vue');
 
@@ -15,30 +12,26 @@ export function buildRouters(router: Router, res: Array<MenuVO>) {
   }
   const fmtRouter = formatRoutes(res);
   fmtRouter.forEach(item => {
-    if (item.children.length !== 0) {
-      router.addRoute(item);
-    } else {
-      router.addRoute('Admin', item);
-    }
+    router.addRoute('Admin', item);
   });
-  
+
   store.commit('setPermissionMenu', fmtRouter);
 }
 
 export function formatRoutes(menuRouter: Array<MenuVO>): Array<MenuOptions> {
   const resRouters: Array<MenuOptions> = [];
+  if(menuRouter === undefined || menuRouter === null){
+    return [];
+  }
   menuRouter.forEach(route => {
-    if (route.children) {
-      route.children = formatRoutes(route.children);
-    }
     const fmtRoute = {
       path: route.path,
-      component: route.component === 'layout' ? AdminLayout
-        : modules[`../views/admin${route.component}/index.vue`],
-      nameZh: route.nameZh,
-      icon: route.icon,
-      children: route.children,
+      component: // route.component === 'layout' ? AdminLayout :
+         modules[`../views/admin${route.component}/index.vue`],
+      children: formatRoutes(route.children),
       meta: {
+        nameZh: route.nameZh,
+        icon: route.icon,
         title: route.nameZh,
         tag: route.component === 'layout' ? 'dashboard' : route.nameZh,
       }

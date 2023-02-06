@@ -64,7 +64,7 @@ const get: Get = async (opt ) => {
   const data = opt.data;
   const response = await service.get(opt.url, { data, ...opt.config });
   try {
-  return response.data;
+    return response.data;
   } catch {
     throw new Error('Server error');
   }
@@ -73,7 +73,7 @@ const post: Post = async (option ) => {
   const data = option.data;
   const res = await service.post(option.url, data, { ...option.config });
   try {
-  return res.data;
+    return res.data;
   } catch {
     throw new Error('Server error');
   }
@@ -82,7 +82,7 @@ const put: Put = async (option ) => {
   const data = option.data;
   const res = await service.post(option.url, data, { ...option.config });
   try {
-  return res.data;
+    return res.data;
   } catch {
     throw new Error('Server error');
   }
@@ -91,7 +91,7 @@ const deleteRequest: Delete = async (option ) => {
   const data = option.data;
   const res = await service.post(option.url, data, { ...option.config });
   try {
-  return res.data;
+    return res.data;
   } catch {
     throw new Error('Server error');
   }
