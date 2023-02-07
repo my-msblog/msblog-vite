@@ -1,7 +1,7 @@
 <template>
   <div class="text-left">
     <v-md-editor
-      v-model="text"
+      :text="text"
       :height="height + 'px'"
       @change="onValue"
       @copy-code-success="handleCopyCodeSuccess"
@@ -35,7 +35,6 @@ const { text } = toRefs(props);
 
 const onValue = (text: string) => {
   emits('change', text);
-  
 };
 const handleCopyCodeSuccess = () => {
   ElMessage.success('复制成功');

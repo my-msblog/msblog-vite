@@ -15,6 +15,10 @@
         <div class="">{{ $t('pages.visit_num') }}：</div>
         <div class="item-de">{{ total }}</div>
       </div>
+      <div class="flex-between run-item">
+        <div class="">当前版本：</div>
+        <div class="item-de">v1.0.1</div>
+      </div>
     </div>
   </el-card>
 </template>

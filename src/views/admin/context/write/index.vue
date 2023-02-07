@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-left">
     <div class="md-top">
       <el-row :gutter="20">
         <el-col :span="20">
@@ -53,7 +53,12 @@
         </el-option>
       </el-select>
     </div>
-    <Markdown v-model:text="data.md" :height="600" @change="handleMdChange" />
+    <v-md-editor
+      v-model="data.md"
+      :height="600 + 'px'"
+      @copy-code-success="handleCopyCodeSuccess"
+    />
+    <!-- <Markdown v-model:text="data.md" :height="600" @change="handleMdChange" /> -->
     <CommitForm v-model:show="show" @on-show="onShow" @on-commit="onCommit" />
   </div>
 </template>
@@ -122,7 +127,7 @@ export default defineComponent({
       },
       handleMdChange(text: string) {
         data.md = text;
-      }
+      },
     };
     const handleSubmit = () => {
       if (strIsEmpty(data.category)){
@@ -132,6 +137,9 @@ export default defineComponent({
         return;
       }
       formEvent.onShow();
+    };
+    const handleCopyCodeSuccess = () => {
+      ElMessage.success('复制成功');
     };
     watch(
       () => data.tagValues,
@@ -167,6 +175,7 @@ export default defineComponent({
       show,
       selectRef,
       ...formEvent,
+      handleCopyCodeSuccess,
     };
   },
 });
