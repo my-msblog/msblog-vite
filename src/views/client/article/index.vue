@@ -205,7 +205,7 @@ export default defineComponent({
         commentList: [],
         article: aData,
         nouns: [],
-        like: 15,
+        like: 0,
         recommendList: [],
     });
     const wapperBackground = computed(() => 'background: url(' + data.article.cover +') center center / cover no-repeat');

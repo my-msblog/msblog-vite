@@ -20,7 +20,7 @@ export default defineComponent({
       type: Array as PropType<Array<string>>,
       default: DataArray<string>(['人流量']),
     },
-    dataProp:{
+    dataProp: {
       type: Array as PropType<Array<number>>,
       default: DataArray<number>([50, 230, 224, 218, 135, 147, 260])
     }

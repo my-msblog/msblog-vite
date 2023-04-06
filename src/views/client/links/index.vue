@@ -13,7 +13,7 @@
           <div class="flink-list">
             <div v-for="(item, index) in data.linkList" :key="index" class="flink-list-item">
               <a
-                href="https://crazywong.com/"
+                :href="item.url"
                 rel="external nofollow noreferrer"
                 title="MYW"
                 target="_blank"
@@ -21,7 +21,7 @@
                 <div class="flink-item-icon">
                   <img 
                     class="no-lightbox entered loaded" 
-                    :src="item.url" 
+                    :src="item.header" 
                     alt="MYW"
                   >
                 </div>
@@ -52,7 +52,7 @@ export default defineComponent({
       linkList: [],
     });
     onMounted(() => {
-      //data.linkList = mock;
+      data.linkList = mock;
       
     });
     return {

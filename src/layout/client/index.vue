@@ -10,7 +10,9 @@
       <el-backtop :visibility-height="5" />
       <transition name="el-fade-in-linear" :duration="10000">
         <el-scrollbar>
-          <router-view />
+          <keep-alive>
+            <router-view />
+          </keep-alive>
         </el-scrollbar>
       </transition>
     </el-main>

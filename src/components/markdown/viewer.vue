@@ -6,16 +6,11 @@
     @copy-code-success="handleCopyCodeSuccess"
   ></v-md-preview-html>
 </template>
-<script lang="ts" >
-import { computed, defineComponent, onMounted, reactive, ref } from 'vue';
+<script setup lang="ts">
+import { reactive, ref, computed, onMounted } from 'vue';
 import VueMarkdownEditor, { xss } from '@kangc/v-md-editor';
 import { copyToClip } from '@/utils';
 
-export default defineComponent({
-  name: 'Viewer',
-});
-</script>
-<script setup lang="ts">
 interface IProps {
   text: string;
 }
@@ -47,7 +42,7 @@ const handleAnchorClick =(anchor: any) => {
     });
   }
 };
-const toHTML = computed(() => {
+const toHTML = computed<string>(() => {
   return xss.process(VueMarkdownEditor.vMdParser.themeConfig.markdownParser.render(props.text));
 });
 const handleCopyCodeSuccess = (text: string) => {
@@ -69,6 +64,7 @@ onMounted(()=> {
   emits('loadTitle', data.titles);
 });
 defineExpose({
+  name: 'Viewer',
   handleAnchorClick,
 });
 

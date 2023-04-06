@@ -14,3 +14,7 @@ export interface Page{
   page: number;
   size: number;
 }
+
+export const useColumn = (columns: Column[]) => {
+  return columns;
+};
